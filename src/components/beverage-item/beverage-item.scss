@@ -1,0 +1,20 @@
+@import '../../variables';
+
+.beverage-item {
+    padding: 5% 10%;
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 22px;
+    text-align: center;
+    color: $dark;
+    &_title {
+        font-style: bold;
+        font-size: 150%;
+    }
+    & img {
+        width: 150px;
+    }
+}
+

@@ -1,14 +1,14 @@
 import React from 'react';
-import './app.scss';
 import Home from '../home/home';
+import Beverages from '../beverages/beverages';
 
 const App = () => {
 
     return (
         <>
         <Home/>
-        {/* <CoffeeTypes/>
-        <Menu/>
+        <Beverages/>
+        {/*<Menu/>
         <Giftset/>
         <Combo/>
         <Footer/> */}

@@ -2,3 +2,26 @@ $grey: #415167;
 $beige: #C7A17A;
 $light: #EDF0F5;
 $dark: #151D28;
+
+.heading {
+    color: $grey;
+    text-align: center;
+    height: 15vh;
+    padding: 5% 0 5% 0;
+    &_small {
+        font-family: Nunito, sans-serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 24px;
+        /* or 120% */
+    }
+    &_big {
+        font-family: Montserrat, sans-serif;
+        font-style: normal;
+        font-weight: 900;
+        font-size: 130%;
+        line-height: 34px;
+        /* or 113% */
+    }
+}

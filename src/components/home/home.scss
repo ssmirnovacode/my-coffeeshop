@@ -1,6 +1,6 @@
 @import '../../variables';
 
-.container {
+.home_container {
     display: grid;
     grid-template-columns: 3fr 6fr 3fr; /* try auto-fill */
     height: 100vh;

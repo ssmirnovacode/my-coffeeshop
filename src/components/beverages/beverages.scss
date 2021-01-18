@@ -1,0 +1,10 @@
+@import '../../variables';
+
+.beverages_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin: 0 10%;
+    height: 40vh;
+    
+}
+

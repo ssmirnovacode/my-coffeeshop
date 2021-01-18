@@ -1,0 +1,28 @@
+{
+    "beverages": [
+        {
+            "id": 0,
+            "title": "Espresso",
+            "image": "some path",
+            "text": "Some Espresso text description"
+        },
+        {
+            "id": 1,
+            "title": "Ristretto",
+            "image": "some path",
+            "text": "Some Ristretto text description"
+        },
+        {
+            "id": 2,
+            "title": "With milk",
+            "image": "some path",
+            "text": "Some With milk text description"
+        },
+        {
+            "id": 3,
+            "title": "Chai",
+            "image": "some path",
+            "text": "Some Chai text description"
+        }
+    ]
+}
