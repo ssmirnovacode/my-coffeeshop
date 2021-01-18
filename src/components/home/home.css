@@ -1,0 +1,36 @@
+.container {
+    display: grid;
+    grid-template-columns: 3fr 6fr 3fr; /* try auto-fill */
+    height: 100vh;
+}
+
+.home-image {
+    background: url(../../img/home.png);
+}
+
+.right {
+    background: #415167;
+}
+
+.block {
+    position: relative;
+}
+.moto {
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 54px;
+    line-height: 70px;
+    /* or 130% */
+    color: #415167;
+}
+.moto span {
+    background: #C7A17A;
+    color: white;
+}
+/* .left {
+
+} */

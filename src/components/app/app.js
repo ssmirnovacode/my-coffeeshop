@@ -1,15 +1,16 @@
 import React from 'react';
+import Home from '../home/home';
 
 const App = () => {
 
     return (
         <>
         <Home/>
-        <CoffeeTypes/>
+        {/* <CoffeeTypes/>
         <Menu/>
         <Giftset/>
         <Combo/>
-        <Footer/>
+        <Footer/> */}
         </>
     )
 }
