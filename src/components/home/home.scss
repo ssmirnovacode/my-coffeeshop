@@ -1,3 +1,5 @@
+@import '../../variables';
+
 .container {
     display: grid;
     grid-template-columns: 3fr 6fr 3fr; /* try auto-fill */
@@ -9,7 +11,7 @@
 }
 
 .right {
-    background: #415167;
+    background: $grey;
 }
 
 .block {
@@ -25,12 +27,13 @@
     font-size: 54px;
     line-height: 70px;
     /* or 130% */
-    color: #415167;
+    color: $grey;
+    & span {
+        background: $beige;
+        color: $light;
+    }
 }
-.moto span {
-    background: #C7A17A;
-    color: white;
-}
+    
 /* .left {
 
 } */
