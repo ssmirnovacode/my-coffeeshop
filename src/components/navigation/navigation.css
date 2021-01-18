@@ -1,0 +1,30 @@
+.navmenu {
+    list-style-type: none;
+    position: absolute;
+    left: 5%;
+    top: 25%;
+    
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #EDF0F5;
+    font-family: Nunito, sans-serif;
+    font-style: normal;
+    font-weight: 100;
+    font-size: 16px;
+    line-height: 24px;
+    line-height: 300%;
+}
+
+nav ul li a:hover {
+    padding: 10px;
+    background-color: #fff;
+    color: #415167
+}
+
+nav ul li a span {
+    font-family: Montserrat, sans-serif;
+    font-weight: 800;
+    font-size: 150%;
+}

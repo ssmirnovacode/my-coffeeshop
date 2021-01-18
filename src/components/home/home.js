@@ -1,7 +1,9 @@
 import React from 'react';
 import './home.css';
+import Navigation from '../navigation/navigation';
 
 const Home = () => {
+
 
     return (
         <div className="container home">
@@ -14,7 +16,9 @@ const Home = () => {
             </div>
 
             <div className="right block">
-                <div className="navigation">{/* {navigation} */}</div>
+                <div className="navigation">
+                    <Navigation/>
+                </div>
             </div>
 
         </div>
