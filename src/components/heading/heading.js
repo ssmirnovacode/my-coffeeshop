@@ -1,4 +1,5 @@
 import React from 'react';
+import './heading.scss';
 
 const Heading = ({small, big}) => {
     return (
@@ -10,8 +11,3 @@ const Heading = ({small, big}) => {
 }
 
 export default Heading;
-
-/* <div className="heading beverages">
-                <div className="heading_small">Your Personalized Coffee</div>
-                <div className="heading_big">COFFEE BUILD YOUR BASE</div>
-        </div> */
