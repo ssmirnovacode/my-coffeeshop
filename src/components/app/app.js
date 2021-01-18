@@ -1,6 +1,7 @@
 import React from 'react';
 import Home from '../home/home';
 import Beverages from '../beverages/beverages';
+import Menu from '../menu/menu';
 
 const App = () => {
 
@@ -8,8 +9,8 @@ const App = () => {
         <>
         <Home/>
         <Beverages/>
-        {/*<Menu/>
-        <Giftset/>
+        <Menu/>
+        {/*<Giftset/>
         <Combo/>
         <Footer/> */}
         </>
