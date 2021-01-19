@@ -7,7 +7,7 @@ const GiftSet = () => {
         <section>
             <Heading small={'Best Gift For Best Friend'} big={'GIFTSET'}/>
             <div className="giftset_container">
-                <div className="giftset_image"><img src="https://www.pinclipart.com/picdir/middle/9-98243_gift-clipart-small-gift-imagens-de-caixas-de.png" alt="giftset"/></div>
+                <div className="giftset_img"></div>
                 <div className="giftset_content">
                     <div className="giftset_price">15.00 $</div>
                     <div className="giftset_title">Cool giftset</div>
