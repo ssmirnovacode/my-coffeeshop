@@ -2,7 +2,7 @@
 
 .footer {
     &_container {
-        background-color: $light;
+        background-color: $grey;
         display: grid;
         grid-template-columns: 1fr 1fr;
         font-family: Nunito, sans-serif;
@@ -12,7 +12,11 @@
         line-height: 22px;
         /* identical to box height, or 137% */
         padding: 5% 30%;
-        color: $dark;
+        color: $light;
+        //width: auto;
+        & a {
+            color: $light;
+        }
     }
     
 }

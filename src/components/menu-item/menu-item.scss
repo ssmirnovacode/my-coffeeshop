@@ -6,10 +6,7 @@
         font-family: Nunito, sans-serif;
         font-style: normal;
         padding: 5%;
-        
-        border-radius: 5px;;
-        box-sizing: border-box;
-        box-shadow: 5px 5px 15px 5px rgb(185, 185, 185);
+        @include item-box;
     }
     &_img img{
         width: 150px;

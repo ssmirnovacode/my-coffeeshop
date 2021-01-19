@@ -3,3 +3,14 @@ $beige: #C7A17A;
 $light: #EDF0F5;
 $dark: #151D28;
 $background: #F2F2F2;
+
+@mixin item-box {
+    background-color: #fff;
+    border-radius: 5px;;
+    box-sizing: border-box;
+    box-shadow: 5px 5px 15px 5px rgb(185, 185, 185)
+}
+
+body {
+    background-color: $background;
+}
