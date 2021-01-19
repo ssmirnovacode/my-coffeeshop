@@ -9,9 +9,9 @@
     line-height: 22px;
     text-align: center;
     color: $dark;
-    &_container {
-        @include item-box;
-    }
+    /* &_container {
+        
+    } */
     &_title {
         font-style: bold;
         font-size: 150%;
