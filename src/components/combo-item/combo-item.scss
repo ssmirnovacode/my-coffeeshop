@@ -1,0 +1,67 @@
+@import '../../variables';
+
+.combo-item {
+    &_container {
+        color: $dark;
+        font-family: Nunito, sans-serif;
+        font-style: normal;
+        padding: 5% 20%;
+        text-align: center;
+        border-radius: 5px;;
+        box-sizing: border-box;
+        box-shadow: 5px 5px 15px 5px rgb(185, 185, 185);
+    }
+    &_img img{
+        width: 200px;
+        margin-right: 5%;
+        margin-bottom: 10%;
+    }
+    &_price {
+        color: $beige;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 24px;
+        margin-bottom: 2%;
+        /* identical to box height, or 120% */
+        & span {
+            color: $dark;
+            font-style: italic;
+            font-weight: 300;
+            font-size: 14px;
+            line-height: 19px;
+            text-decoration-line: line-through;
+            margin-left: 10%;;
+        }
+    }
+    &_title {
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 28px;
+        /* identical to box height, or 117% */     
+    }
+    &_content {
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 22px;
+        margin: 10% auto;
+    }
+    &_details a {
+        text-decoration: none;
+        color: $dark;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 22px;
+        margin-left: 5%;
+        /* identical to box height */
+    }
+    &_btn {
+        font-family: Nunito, sans-serif;
+        //font-style: normal;
+        background-color: $beige;
+        color: $light;
+        border-radius: 19px;
+        float: left;
+        padding: 7px;
+        margin-right: 5px;
+    }
+}
