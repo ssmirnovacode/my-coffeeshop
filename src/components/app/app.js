@@ -4,6 +4,7 @@ import Beverages from '../beverages/beverages';
 import Menu from '../menu/menu';
 import GiftSet from '../giftset/giftset';
 import Combo from '../combo/combo';
+import Footer from '../footer/footer';
 
 const App = () => {
 
@@ -14,7 +15,7 @@ const App = () => {
         <Menu/>
         <GiftSet/>
         <Combo/>
-        {/*<Footer/> */}
+        <Footer/>
         </>
     )
 }
