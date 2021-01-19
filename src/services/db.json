@@ -3,26 +3,86 @@
         {
             "id": 0,
             "title": "Espresso",
-            "image": "some path",
+            "image": "../img/bev-1.png", 
             "text": "Some Espresso text description"
         },
         {
             "id": 1,
             "title": "Ristretto",
-            "image": "some path",
+            "image": "../img/bev-2.png",
             "text": "Some Ristretto text description"
         },
         {
             "id": 2,
             "title": "With milk",
-            "image": "some path",
+            "image": "../img/bev-3.png",
             "text": "Some With milk text description"
         },
         {
             "id": 3,
             "title": "Chai",
-            "image": "some path",
+            "image": "../img/bev-4.png",
             "text": "Some Chai text description"
+        }
+    ],
+    "menuItems": [
+        {
+            "id": 0,
+            "price": "5.00 $",
+            "title": "Chai latte",
+            "image": "",
+            "content": "Some Chai text description"
+        },
+        {
+            "id": 1,
+            "price": "4.00 $",
+            "title": "Coffee mocca",
+            "image": "",
+            "content": "Some Coffee moccatext description"
+        },
+        {
+            "id": 2,
+            "price": "6.00 $",
+            "title": "Espresso",
+            "image": "",
+            "content": "Some Espresso text description"
+        },
+        {
+            "id": 3,
+            "price": "4.50 $",
+            "title": "Cafe con leche",
+            "image": "",
+            "content": "Some Cafe con leche text description"
+        }
+    ],
+    "combos": [
+        {
+            "id": 0,
+            "price": "6.00 $",
+            "title": "Chai with espresso",
+            "image": "",
+            "content": "Some ChaiEspresso text description"
+        },
+        {
+            "id": 1,
+            "price": "4.00 $",
+            "title": "Mocca chocolate",
+            "image": "",
+            "content": "Some Mocca chocolate moccatext description"
+        },
+        {
+            "id": 2,
+            "price": "3.00 $",
+            "title": "Espresso with Cola",
+            "image": "",
+            "content": "Some Espresso with Cola text description"
+        },
+        {
+            "id": 3,
+            "price": "5.50 $",
+            "title": "Cafe con leche with cinnamon",
+            "image": "",
+            "content": "Some Cafe con leche with cinnamon con leche text description"
         }
     ]
 }
