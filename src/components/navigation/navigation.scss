@@ -3,11 +3,12 @@
 .nav {
     &_burger {
         @media only screen and (max-width: 942px) {
-            display: '';
+            display: block;
             position: absolute;
             top: 5%;
             left: 5%;
         }
+        display: none;
     }
     &_menu {
         @media only screen and (max-width: 942px) {

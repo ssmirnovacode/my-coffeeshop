@@ -5,7 +5,7 @@ const Navigation = () => {
     return(
         <nav>
             <div className="nav_burger">
-                <button>burger</button>
+                <button>bur</button>
             </div>
             <ul className="nav_menu">
                 <li><a href="#"><span>MY COFFEESHOP</span></a></li>
