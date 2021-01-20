@@ -6,16 +6,17 @@ import GiftSet from '../giftset/giftset';
 import Combo from '../combo/combo';
 import Footer from '../footer/footer';
 
+
 const App = () => {
 
     return (
         <>
-        <Home/>
-        <Beverages/>
-        <Menu/>
-        <GiftSet/>
-        <Combo/>
-        <Footer/>
+            <Home/>
+            <Beverages/>
+            <Menu/>
+            <GiftSet/>
+            <Combo/>
+            <Footer/>
         </>
     )
 }

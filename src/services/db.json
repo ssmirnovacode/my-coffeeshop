@@ -30,28 +30,28 @@
             "id": 0,
             "price": "5.00 $",
             "title": "Chai latte",
-            "image": "",
+            "image": "https://png.pngtree.com/png-vector/20190529/ourlarge/pngtree-coffee-cup-icon-png-image_1117239.jpg",
             "content": "Some Chai text description"
         },
         {
             "id": 1,
             "price": "4.00 $",
             "title": "Coffee mocca",
-            "image": "",
+            "image": "https://png.pngtree.com/png-vector/20190529/ourlarge/pngtree-coffee-cup-icon-png-image_1117239.jpg",
             "content": "Some Coffee moccatext description"
         },
         {
             "id": 2,
             "price": "6.00 $",
             "title": "Espresso",
-            "image": "",
+            "image": "https://png.pngtree.com/png-vector/20190529/ourlarge/pngtree-coffee-cup-icon-png-image_1117239.jpg",
             "content": "Some Espresso text description"
         },
         {
             "id": 3,
             "price": "4.50 $",
             "title": "Cafe con leche",
-            "image": "",
+            "image": "https://png.pngtree.com/png-vector/20190529/ourlarge/pngtree-coffee-cup-icon-png-image_1117239.jpg",
             "content": "Some Cafe con leche text description"
         }
     ],
