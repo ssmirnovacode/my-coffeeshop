@@ -4,7 +4,10 @@ import './navigation.scss';
 const Navigation = () => {
     return(
         <nav>
-            <ul className="navmenu">
+            <div className="nav_burger">
+                <button>burger</button>
+            </div>
+            <ul className="nav_menu">
                 <li><a href="#"><span>MY COFFEESHOP</span></a></li>
                 <li><a href="#">OUR BEVERAGES</a></li>
                 <li><a href="#">CHOOSE YOUR DRINK</a></li>
