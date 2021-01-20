@@ -1,15 +1,18 @@
 import React from 'react';
 import './combo-item.scss';
 
-const ComboItem = () => {
+const ComboItem = ({item}) => {
+
+    const {title, image, price, content} = item;
+
     return (
         <div className="combo-item_container">
             <div className="combo-item_img">
-               <img src="https://png.pngtree.com/png-vector/20190529/ourlarge/pngtree-coffee-cup-icon-png-image_1117239.jpg" alt="coffee icon"/> 
+               <img src={image} alt={title}/> 
             </div>
-            <div className="combo-item_price">5.00 $ <span>6.00 $</span></div>
-            <div className="combo-item_title">Some coffee</div>
-            <div className="combo-item_content">Coffee, sugar, dry milk</div>
+            <div className="combo-item_price">{price}<span>6.00 $</span></div>  {/* Add old prices to db.json */}
+            <div className="combo-item_title">{title}</div>
+            <div className="combo-item_content">{content}</div>
             <button className="combo-item_btn">ORDER NOW!</button>
             <div className="combo-item_details"><a href="#">Details</a></div>
         </div>
