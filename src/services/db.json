@@ -84,5 +84,28 @@
             "image": "https://png.pngtree.com/png-vector/20190529/ourlarge/pngtree-coffee-cup-icon-png-image_1117239.jpg",
             "content": "Some Cafe con leche with cinnamon con leche text description"
         }
+    ],
+    "giftset": [
+        {
+            "id": 0,
+            "price": "6.00 $",
+            "title": "Chai with espresso",
+            "image": "https://png.pngtree.com/png-vector/20190529/ourlarge/pngtree-coffee-cup-icon-png-image_1117239.jpg",
+            "text": "Two packs of tea and a mug. Two packs of tea and a mug.Two packs of tea and a mug."
+        },
+        {
+            "id": 1,
+            "price": "7.00 $",
+            "title": "Coffee set with kettle",
+            "image": "https://cdn.shopify.com/s/files/1/0330/5793/1397/products/kitmug_1024x1024@2x.jpg?v=1584659008",
+            "text": "Two packs of great coffee and a kettle to cook it in. Two packs of great coffee and a kettle to cook it in."
+        },
+        {
+            "id": 2,
+            "price": "8.00 $",
+            "title": "Four pack",
+            "image": "https://cdn.shopify.com/s/files/1/0009/3841/0044/products/allDripBag_noOrganic.jpg?v=1596651560",
+            "text": "Four packs of excellent coffee. Four packs of excellent coffee. Four packs of excellent coffee. "
+        }
     ]
 }
