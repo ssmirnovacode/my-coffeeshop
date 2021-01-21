@@ -1,7 +1,7 @@
-const toggleModal = (itemId=null) => {
+const toggleModal = (item) => {
     return {
         type: 'TOGGLE_MODAL',
-        payload: itemId
+        payload: item
     };
 }
 

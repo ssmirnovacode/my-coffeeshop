@@ -6,7 +6,7 @@ const initialState = {
     error: false,
     modal: {
         shown: false,
-        itemId: null
+        item: null
     }
 }
 
@@ -67,7 +67,7 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 modal: {
                     shown: !state.modal.shown,
-                    itemId: action.payload
+                    item: action.payload
                 }
             }    
         default:
