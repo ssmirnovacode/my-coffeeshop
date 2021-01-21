@@ -6,7 +6,7 @@ import {toggleModal} from '../../actions/modal';
 class ItemDetail extends Component {
 
     render() {
-        if (this.props.modalShown) {
+        if (this.props.modal.shown) {
             return(
                 <div className="modal_container">
                     <div className="modal_dialog">
@@ -29,7 +29,7 @@ class ItemDetail extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        modalShown: state.modalShown
+        modal: state.modal
     }
 }
 

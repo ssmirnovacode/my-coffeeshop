@@ -4,7 +4,10 @@ const initialState = {
     menuItems: [],
     loading: true,
     error: false,
-    modalShown: false
+    modal: {
+        shown: false,
+        itemId: null
+    }
 }
 
 const reducer = (state = initialState, action) => {
@@ -62,7 +65,10 @@ const reducer = (state = initialState, action) => {
         case 'TOGGLE_MODAL': 
             return {
                 ...state,
-                modalShown:!state.modalShown
+                modal: {
+                    shown: !state.modal.shown,
+                    itemId: action.payload
+                }
             }    
         default:
             return state;		

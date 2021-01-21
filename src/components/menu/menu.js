@@ -60,7 +60,7 @@ const mapStateToProps = (state) => {
         menuItems: state.menuItems,
         loading: state.loading,
         error: state.error,
-        modalShown: state.modalShown
+        modal: state.modal
     }
 }
 
