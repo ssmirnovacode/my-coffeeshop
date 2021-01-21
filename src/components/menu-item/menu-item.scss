@@ -33,13 +33,14 @@
         line-height: 22px;
         margin: 7% auto;
     }
-    &_details a {
+    &_details {
         text-decoration: none;
         color: $dark;
         font-weight: bold;
         font-size: 16px;
         line-height: 22px;
-        margin-left: 5%;
+        cursor: pointer;
+        //margin-left: 10%;
         /* identical to box height */
     }
     &_btn {
@@ -50,6 +51,6 @@
         border-radius: 19px;
         float: left;
         padding: 7px;
-        margin-right: 5px;
+        margin-right: 10%;
     }
 }

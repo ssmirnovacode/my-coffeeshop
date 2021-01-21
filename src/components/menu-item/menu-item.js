@@ -1,7 +1,8 @@
 import React from 'react';
 import './menu-item.scss';
 
-const MenuItem = ({item}) => {
+const MenuItem = ({item, toggleModal}) => {
+
     const {image, price, title, content} = item;
     return (
         <div className="menu-item_container">
@@ -12,7 +13,7 @@ const MenuItem = ({item}) => {
             <div className="menu-item_title">{title}</div>
             <div className="menu-item_content">{content}</div>
             <button className="menu-item_btn">ORDER NOW!</button>
-            <div className="menu-item_details"><a href="#">Details</a></div>
+            <div className="menu-item_details" onClick={() => toggleModal()}>Details</div>
         </div>
     )
 }

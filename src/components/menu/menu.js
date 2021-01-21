@@ -4,6 +4,7 @@ import Heading from '../heading/heading';
 import MenuItem from '../menu-item/menu-item';
 import {connect} from 'react-redux';
 import { menuItemsLoaded, menuItemsError, menuItemsRequested } from '../../actions/menu-itemsAC';
+import {toggleModal} from '../../actions/modal';
 import baseURL from '../../services/baseURL';
 import RequestService from '../../services/requestService';
 
@@ -43,7 +44,7 @@ class Menu extends Component {
                     {
                         menuItems.map(item => {
                             return (
-                                <MenuItem key={item.id} item={item}/>
+                                <MenuItem key={item.id} item={item} toggleModal={this.props.toggleModal}/>
                             )
                         })
                     }
@@ -58,14 +59,16 @@ const mapStateToProps = (state) => {
     return {
         menuItems: state.menuItems,
         loading: state.loading,
-        error: state.error
+        error: state.error,
+        modalShown: state.modalShown
     }
 }
 
 const mapDispatchToProps = {
     menuItemsLoaded,
     menuItemsRequested,
-    menuItemsError
+    menuItemsError,
+    toggleModal
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Menu);
