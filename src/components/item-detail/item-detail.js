@@ -7,6 +7,8 @@ import baseURL from '../../services/baseURL';
 
 class ItemDetail extends Component {
 
+    
+
     render() {
  
         if (this.props.modal.shown) {
@@ -16,14 +18,11 @@ class ItemDetail extends Component {
             /* let arrClicked = []; */
 
             requestService.getMenuItems(baseURL+'menuItems')
-            .then(res => res.filter(item => item.id === this.props.modal.itemId))
+            .then(res => res.filter(item => item.id === this.props.modal.itemId)[0])
             .then(item => {
                 console.log(item) // [{item}]
 
             })
-            
-            
-           /*  const {title, price, image, content} = arrClicked[0]; */
 
             return(
                 <div className="modal_container">
