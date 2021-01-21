@@ -1,3 +1,4 @@
+@import '../../variables';
 
 .modal {
     &_container {
@@ -10,11 +11,21 @@
         height: 100%;
         overflow: hidden;
         background-color: rgba(0,0,0,.5);
+        color: $dark;
+        font-family: Nunito, sans-serif;
+        font-style: normal;
+        //padding: 5%;
+        //@include item-box;
     }
-    
+    &_img img{
+        max-width: 150px;
+        float: left;
+        margin-right: 5%;
+        margin-bottom: 10%;
+    }
     &_dialog {
         max-width: 500px;
-        margin: 40px auto;
+        margin: 10% auto;
     }
     &_content {
         position: relative;
@@ -25,6 +36,11 @@
         border-radius: 4px;
         max-height: 80vh;
         overflow-y: auto;
+
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 22px;
+        margin: 7% auto;
     }
     &_close {
         position: absolute;
@@ -39,8 +55,31 @@
         cursor: pointer;
     }
     &_title {
-        text-align: center;
-        font-size: 22px;
-        //text-transform: uppercase;
+        font-weight: bold;
+        font-size: 24px;
+        margin-bottom: 5%;
     }
+    &_price {
+        color: $beige;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 24px;
+        margin-bottom: 2%;
+        /* identical to box height, or 120% */
+    }
+    &_btn {
+        font-family: Nunito, sans-serif;
+        //font-style: normal;
+        background-color: $beige;
+        color: $light;
+        border-radius: 19px;
+        //float: left;
+        padding: 7px;
+        margin-top: 5%;
+        margin-right: 10%;
+    }
+}
+
+.hidden {
+    display: none;
 }

@@ -9,22 +9,26 @@ class ItemDetail extends Component {
 
         if (this.props.modal.shown) {
             const {title, price, image, content} = this.props.modal.item;
+            document.body.style.overflow = 'hidden';
             return(
                 <div className="modal_container"  onClick={() => this.props.toggleModal()}>
                     <div className="modal_dialog">
                         <div className="modal_content">
-                            <div data-close className="modal_close" onClick={() => this.props.toggleModal()}>&times;</div>
+                            <div className="modal_close" onClick={() => this.props.toggleModal()}>&times;</div> {/* BUG on closing with X */}
+                            <div className="modal_img"><img src={image} alt={title}/></div>
                             <div className="modal_title">{title}</div>
-                            <div className="modal_price">{price}</div>
-                            <div className="modal_image"><img src={image} alt={title}/></div>
+                            <div className="modal_price">{price}</div>  
                             <div className="modal_text">{content}</div>
-                            <button className="menu-item_btn">Order now</button>
+                            <button className="modal_btn">Order now</button>
                         </div>
                     </div>
                 </div>
             )
         }
-        else return false;
+        else {
+            document.body.style.overflow = '';
+            return (<div className="hidden"></div>);
+        }
     } 
 }
 
