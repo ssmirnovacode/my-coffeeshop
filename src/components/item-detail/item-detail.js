@@ -11,10 +11,14 @@ class ItemDetail extends Component {
             const {title, price, image, content} = this.props.modal.item;
             document.body.style.overflow = 'hidden';
             return(
-                <div className="modal_container"  onClick={() => this.props.toggleModal()}>
+                <div className="modal_container" onClick={(event) => {
+                                                    if (event.target.classList.contains('modal_container')) {
+                                                        return this.props.toggleModal();
+                                                        }    
+                                                    }}> 
                     <div className="modal_dialog">
                         <div className="modal_content">
-                            <div className="modal_close" onClick={() => this.props.toggleModal()}>&times;</div> {/* BUG on closing with X */}
+                            <div className="modal_close" onClick={() => this.props.toggleModal()}>&times;</div> 
                             <div className="modal_img"><img src={image} alt={title}/></div>
                             <div className="modal_title">{title}</div>
                             <div className="modal_price">{price}</div>  
