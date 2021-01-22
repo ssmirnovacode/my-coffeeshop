@@ -4,6 +4,7 @@ import Heading from '../heading/heading';
 import ComboItem from '../combo-item/combo-item';
 import {connect} from 'react-redux';
 import { combosLoaded, combosError, combosRequested } from '../../actions/combosAC';
+import {toggleModal} from '../../actions/modal';
 import baseURL from '../../services/baseURL';
 import RequestService from '../../services/requestService';
 
@@ -42,7 +43,7 @@ class Combo extends Component {
                     {
                         combos.map(item => {
                             return(
-                                <ComboItem key={item.id} item={item}/>
+                                <ComboItem key={item.id} item={item} toggleModal={this.props.toggleModal}/>
                             )
                         })
                         }
@@ -58,14 +59,16 @@ const mapStateToProps = (state) => {
     return {
         combos: state.combos,
         loading: state.loading,
-        error: state.error
+        error: state.error,
+        modal: state.modal
     }
 }
 
 const mapDispatchToProps = {
     combosLoaded,
     combosRequested,
-    combosError
+    combosError,
+    toggleModal
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Combo);

@@ -1,7 +1,7 @@
 import React from 'react';
 import './combo-item.scss';
 
-const ComboItem = ({item}) => {
+const ComboItem = ({item, toggleModal}) => {
 
     const {title, image, price, content} = item;
 
@@ -14,7 +14,7 @@ const ComboItem = ({item}) => {
             <div className="combo-item_title">{title}</div>
             <div className="combo-item_content">{content}</div>
             <button className="combo-item_btn">ORDER NOW!</button>
-            <div className="combo-item_details"><a href="#">Details</a></div>
+            <div className="combo-item_details"  onClick={() => toggleModal(item)}>Details</div>
         </div>
     )
 }
