@@ -2,6 +2,7 @@ const initialState = {
     beverages: [],
     combos: [],
     menuItems: [],
+    giftset: [],
     loading: true,
     error: false,
     modal: {
@@ -41,6 +42,23 @@ const reducer = (state = initialState, action) => {
                 loading: true
             }
         case 'MENU_ITEMS_ERROR': 
+            return {
+                ...state,
+                error: true
+            }
+
+        case 'GIFTSET_LOADED': 
+            return {
+                ...state, 
+                giftset: action.payload,
+                loading: false
+            }
+        case 'GIFTSET_REQUESTED': 
+            return {
+                ...state,
+                loading: true
+            }
+        case 'GIFTSET_ERROR': 
             return {
                 ...state,
                 error: true

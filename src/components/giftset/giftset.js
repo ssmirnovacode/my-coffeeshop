@@ -1,31 +1,79 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './giftset.scss';
 import Heading from  '../heading/heading';
+import GiftsetItem from '../giftset-item/giftset-item';
+import {connect} from 'react-redux';
+import { giftsetLoaded, giftsetError, giftsetRequested } from '../../actions/giftset';
+import {toggleModal} from '../../actions/modal';
+import baseURL from '../../services/baseURL';
+import RequestService from '../../services/requestService';
 
-const GiftSet = () => {
-    return(
-        <section>
-            <Heading small={'Best Gift For Best Friend'} big={'GIFTSET'}/>
-            <div className="giftset_container">
-                <div className="giftset_img"></div>
-                <div className="giftset_content">
-                    
-                        <div className="giftset_price">15.00 $</div>
-                        <div className="giftset_title">Cool giftset</div>
-                        <div className="giftset_text">Awesome text description. Awesome text description. Awesome text description. 
-                                                        Awesome text description. Awesome text description. Awesome text description. 
-                                                        Awesome text description. Awesome text description. </div>
-                        <button className="giftset_btn">ORDER NOW</button>
-                        <div className="giftset_details"><a href="#">Details</a></div>
+class Giftset extends Component {
+
+    componentDidMount() {
+        this.props.giftsetRequested();
+
+        const requestService = new RequestService();
+
+        requestService.getMenuItems(baseURL+'giftset')
+        //.then(res => console.log(res))
+        .then(res => this.props.giftsetLoaded(res))
+        .catch( () => this.props.giftsetError());
+    }
+
+    render() {
+
+        const {giftset, /* loading, error */} = this.props;
+
+        /* if (loading) {
+            return(
+                <Loading/>
+            )
+        }
+
+        else if (error) {
+            return {
+                <Error/>
+            }
+        } */
+
+        return(
+            <section>
+                <Heading small={'Best Gift For Best Friend'} big={'GIFTSET'}/>
+                <div className="giftset_container">
+                    {
+                        giftset.map(item => {
+                            return (
+                                <GiftsetItem key={item.id} item={item} toggleModal={this.props.toggleModal}/>
+                            )
+                        })
+                    }
+                    <div className="giftset_tabs">
+                        <div className="giftset_tabs_item active">1</div>
+                        <div className="giftset_tabs_item">2</div>
+                        <div className="giftset_tabs_item">3</div>
+                    </div>
                 </div>
-                <div className="giftset_tabs">
-                    <div className="giftset_tabs_item active">1</div>
-                    <div className="giftset_tabs_item">2</div>
-                    <div className="giftset_tabs_item">3</div>
-                </div>
-            </div>
-        </section>
-    )
+            </section>
+        )
+    }
+    
 }
 
-export default GiftSet;
+const mapStateToProps = (state) => {
+    return {
+        giftset: state.giftset,
+        loading: state.loading,
+        error: state.error,
+        modal: state.modal
+    }
+}
+
+const mapDispatchToProps = {
+    giftsetLoaded,
+    giftsetRequested,
+    giftsetError,
+    toggleModal
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Giftset);
