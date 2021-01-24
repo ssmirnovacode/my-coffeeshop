@@ -8,7 +8,7 @@
         font-style: normal;
         position: relative;
         height: 69vh;
-        margin: 0 10%;
+        //margin: 0 10%;
     }
     &_tabs {
         position: absolute;
@@ -17,7 +17,7 @@
         bottom: 0%;
         display: grid;
         grid-template-rows: 1fr 1fr 1fr;
-        &_item {
+        &_item {   
             width: 88px;
             height: auto;
             text-align: center;

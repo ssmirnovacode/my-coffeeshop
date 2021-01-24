@@ -30,24 +30,19 @@ class Giftset extends Component {
         const requestService = new RequestService();
         requestService.getMenuItems(baseURL+'giftset')
         .then(res => this.props.giftsetLoaded(res))
-        /* .then( items => {
-            if (this.state.activeItem === null) {
-                this.setState({
-                    activeItem: items[0]
-                });
-            }
-        }) */
         .catch( () => this.props.giftsetError());
 
     }
 
 
-    showContent(targetId) {
+    showContent(e, targetId) {
         const targetItem = this.props.giftset.filter(item => item.id === targetId)[0];
         console.log(targetItem);
         this.setState({
             activeItem: targetItem
         });
+        e.target.parentNode.childNodes.forEach(item => item.classList.remove('active'));
+        e.target.classList.add('active');
         //console.log(this.state.activeItem); // somehow previous item here but works ok
     }
 
@@ -74,9 +69,9 @@ class Giftset extends Component {
                 <div className="giftset_container">
                      <GiftsetItem item={this.state.activeItem} toggleModal={this.props.toggleModal}/>
                     <div className="giftset_tabs">
-                        <div className="giftset_tabs_item active" onClick={() => this.showContent(0)}>1</div>
-                        <div className="giftset_tabs_item" onClick={() =>this.showContent(1)}>2</div>
-                        <div className="giftset_tabs_item" onClick={() => this.showContent(2)}>3</div>
+                        <div className="giftset_tabs_item active" onClick={(e, id) => this.showContent(e,0)}>1</div>
+                        <div className="giftset_tabs_item" onClick={(e, id) =>this.showContent(e, 1)}>2</div>
+                        <div className="giftset_tabs_item" onClick={(e, id) => this.showContent(e, 2)}>3</div>
                     </div>
                 </div>
             </section>
