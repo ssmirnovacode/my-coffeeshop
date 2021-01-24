@@ -13,7 +13,13 @@ class Giftset extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            activeItem: {}
+            activeItem: {
+                "id": 0,
+                "price": "6.00 $",
+                "title": "Chai with espresso",
+                "image": "https://png.pngtree.com/png-vector/20190529/ourlarge/pngtree-coffee-cup-icon-png-image_1117239.jpg",
+                "content": "Two packs of tea and a mug. Two packs of tea and a mug.Two packs of tea and a mug."
+            }
         }
         this.showContent = this.showContent.bind(this);
     }
@@ -22,26 +28,32 @@ class Giftset extends Component {
         this.props.giftsetRequested();
 
         const requestService = new RequestService();
-
         requestService.getMenuItems(baseURL+'giftset')
         .then(res => this.props.giftsetLoaded(res))
+        /* .then( items => {
+            if (this.state.activeItem === null) {
+                this.setState({
+                    activeItem: items[0]
+                });
+            }
+        }) */
         .catch( () => this.props.giftsetError());
 
-        this.showContent(0);
     }
+
 
     showContent(targetId) {
-        console.log(this.props.giftset);
         const targetItem = this.props.giftset.filter(item => item.id === targetId)[0];
         console.log(targetItem);
-        this.setState ({
+        this.setState({
             activeItem: targetItem
         });
-        console.log(this.state.activeItem);
+        //console.log(this.state.activeItem); // somehow previous item here but works ok
     }
 
+    
     render() {
-
+        console.log(this.state.activeItem);
         const {giftset, /* loading, error */} = this.props;
 
         /* if (loading) {
@@ -60,18 +72,10 @@ class Giftset extends Component {
             <section>
                 <Heading small={'Best Gift For Best Friend'} big={'GIFTSET'}/>
                 <div className="giftset_container">
-                   {/*  {
-                        giftset.map(item => {
-                            return (
-                                <GiftsetItem key={item.id} item={item} toggleModal={this.props.toggleModal}/>
-                            )
-                        })
-                    } */}
-                     {<GiftsetItem item={this.state.activeItem} toggleModal={this.props.toggleModal}/>}
-
+                     <GiftsetItem item={this.state.activeItem} toggleModal={this.props.toggleModal}/>
                     <div className="giftset_tabs">
                         <div className="giftset_tabs_item active" onClick={() => this.showContent(0)}>1</div>
-                        <div className="giftset_tabs_item" onClick={() => this.showContent(1)}>2</div>
+                        <div className="giftset_tabs_item" onClick={() =>this.showContent(1)}>2</div>
                         <div className="giftset_tabs_item" onClick={() => this.showContent(2)}>3</div>
                     </div>
                 </div>
