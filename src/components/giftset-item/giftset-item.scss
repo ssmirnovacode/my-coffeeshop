@@ -2,6 +2,12 @@
 
 .giftset {
     color: $dark;
+    /* &_item {
+        display:none;
+        &.active {
+            display: '';
+        }
+    } */
     &_content {
         position: absolute;
         left: 22.5%;

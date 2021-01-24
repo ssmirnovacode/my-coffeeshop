@@ -10,15 +10,34 @@ import RequestService from '../../services/requestService';
 
 class Giftset extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            activeItem: {}
+        }
+        this.showContent = this.showContent.bind(this);
+    }
+
     componentDidMount() {
         this.props.giftsetRequested();
 
         const requestService = new RequestService();
 
         requestService.getMenuItems(baseURL+'giftset')
-        //.then(res => console.log(res))
         .then(res => this.props.giftsetLoaded(res))
         .catch( () => this.props.giftsetError());
+
+        this.showContent(0);
+    }
+
+    showContent(targetId) {
+        console.log(this.props.giftset);
+        const targetItem = this.props.giftset.filter(item => item.id === targetId)[0];
+        console.log(targetItem);
+        this.setState ({
+            activeItem: targetItem
+        });
+        console.log(this.state.activeItem);
     }
 
     render() {
@@ -41,17 +60,19 @@ class Giftset extends Component {
             <section>
                 <Heading small={'Best Gift For Best Friend'} big={'GIFTSET'}/>
                 <div className="giftset_container">
-                    {
+                   {/*  {
                         giftset.map(item => {
                             return (
                                 <GiftsetItem key={item.id} item={item} toggleModal={this.props.toggleModal}/>
                             )
                         })
-                    }
+                    } */}
+                     {<GiftsetItem item={this.state.activeItem} toggleModal={this.props.toggleModal}/>}
+
                     <div className="giftset_tabs">
-                        <div className="giftset_tabs_item active">1</div>
-                        <div className="giftset_tabs_item">2</div>
-                        <div className="giftset_tabs_item">3</div>
+                        <div className="giftset_tabs_item active" onClick={() => this.showContent(0)}>1</div>
+                        <div className="giftset_tabs_item" onClick={() => this.showContent(1)}>2</div>
+                        <div className="giftset_tabs_item" onClick={() => this.showContent(2)}>3</div>
                     </div>
                 </div>
             </section>
