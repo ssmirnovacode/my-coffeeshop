@@ -17,7 +17,7 @@ class Giftset extends Component {
                 "id": 0,
                 "price": "6.00 $",
                 "title": "Chai with espresso",
-                "image": "https://png.pngtree.com/png-vector/20190529/ourlarge/pngtree-coffee-cup-icon-png-image_1117239.jpg",
+                "image": "https://d.radikal.ru/d16/2101/11/a47b4e47661d.png",
                 "content": "Two packs of tea and a mug. Two packs of tea and a mug.Two packs of tea and a mug."
             }
         }

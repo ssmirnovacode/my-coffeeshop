@@ -30,28 +30,28 @@
             "id": 0,
             "price": "5.00 $",
             "title": "Chai latte",
-            "image": "https://png.pngtree.com/png-vector/20190529/ourlarge/pngtree-coffee-cup-icon-png-image_1117239.jpg",
+            "image": "https://b.radikal.ru/b09/2101/4f/64b9dcd49499.png",
             "content": "Some Chai text description"
         },
         {
             "id": 1,
             "price": "4.00 $",
             "title": "Coffee mocca",
-            "image": "https://png.pngtree.com/png-vector/20190529/ourlarge/pngtree-coffee-cup-icon-png-image_1117239.jpg",
+            "image": "https://c.radikal.ru/c21/2101/2e/f79ad5aa2415.png",
             "content": "Some Coffee moccatext description"
         },
         {
             "id": 2,
             "price": "6.00 $",
             "title": "Espresso",
-            "image": "https://png.pngtree.com/png-vector/20190529/ourlarge/pngtree-coffee-cup-icon-png-image_1117239.jpg",
+            "image": "https://d.radikal.ru/d04/2101/91/048bf1ed4b86.png",
             "content": "Some Espresso text description"
         },
         {
             "id": 3,
             "price": "4.50 $",
             "title": "Cafe con leche",
-            "image": "https://png.pngtree.com/png-vector/20190529/ourlarge/pngtree-coffee-cup-icon-png-image_1117239.jpg",
+            "image": "https://b.radikal.ru/b17/2101/09/60db6e01a6af.png",
             "content": "Some Cafe con leche text description"
         }
     ],
@@ -60,29 +60,22 @@
             "id": 0,
             "price": "6.00 $",
             "title": "Chai with espresso",
-            "image": "https://png.pngtree.com/png-vector/20190529/ourlarge/pngtree-coffee-cup-icon-png-image_1117239.jpg",
+            "image": "https://d.radikal.ru/d43/2101/f5/1d6d17dd0b9a.png",
             "content": "Some ChaiEspresso text description"
         },
         {
             "id": 1,
             "price": "4.00 $",
             "title": "Mocca chocolate",
-            "image": "https://png.pngtree.com/png-vector/20190529/ourlarge/pngtree-coffee-cup-icon-png-image_1117239.jpg",
+            "image": "https://c.radikal.ru/c04/2101/95/e790422b6e18.png",
             "content": "Some Mocca chocolate moccatext description"
         },
         {
             "id": 2,
             "price": "3.00 $",
             "title": "Espresso with Cola",
-            "image": "https://png.pngtree.com/png-vector/20190529/ourlarge/pngtree-coffee-cup-icon-png-image_1117239.jpg",
+            "image": "https://c.radikal.ru/c22/2101/42/fb7ef76ff9cf.png",
             "content": "Some Espresso with Cola text description"
-        },
-        {
-            "id": 3,
-            "price": "5.50 $",
-            "title": "Cafe con leche with cinnamon",
-            "image": "https://png.pngtree.com/png-vector/20190529/ourlarge/pngtree-coffee-cup-icon-png-image_1117239.jpg",
-            "content": "Some Cafe con leche with cinnamon con leche text description"
         }
     ],
     "giftset": [
@@ -90,7 +83,7 @@
             "id": 0,
             "price": "6.00 $",
             "title": "Chai with espresso",
-            "image": "https://radikal.ru][img]https://d.radikal.ru/d16/2101/11/a47b4e47661d.png",
+            "image": "https://d.radikal.ru/d16/2101/11/a47b4e47661d.png",
             "content": "Two packs of tea and a mug. Two packs of tea and a mug.Two packs of tea and a mug."
         },
         {
