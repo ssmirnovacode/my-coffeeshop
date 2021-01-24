@@ -3,25 +3,25 @@
         {
             "id": 0,
             "title": "Espresso",
-            "image": "../img/bev-1.png", 
+            "image": "https://b.radikal.ru/b22/2101/0d/ca4e0dcb77bd.png", 
             "text": "Some Espresso text description"
         },
         {
             "id": 1,
             "title": "Ristretto",
-            "image": "../img/bev-2.png",
+            "image": "https://b.radikal.ru/b39/2101/87/950e28d710d7.png",
             "text": "Some Ristretto text description"
         },
         {
             "id": 2,
             "title": "With milk",
-            "image": "../img/bev-3.png",
+            "image": "https://b.radikal.ru/b00/2101/42/275165585b12.png",
             "text": "Some With milk text description"
         },
         {
             "id": 3,
             "title": "Chai",
-            "image": "../img/bev-4.png",
+            "image": "https://d.radikal.ru/d19/2101/ad/0a80bcc0a6a9.png",
             "text": "Some Chai text description"
         }
     ],
@@ -90,7 +90,7 @@
             "id": 0,
             "price": "6.00 $",
             "title": "Chai with espresso",
-            "image": "https://png.pngtree.com/png-vector/20190529/ourlarge/pngtree-coffee-cup-icon-png-image_1117239.jpg",
+            "image": "https://radikal.ru][img]https://d.radikal.ru/d16/2101/11/a47b4e47661d.png",
             "content": "Two packs of tea and a mug. Two packs of tea and a mug.Two packs of tea and a mug."
         },
         {
