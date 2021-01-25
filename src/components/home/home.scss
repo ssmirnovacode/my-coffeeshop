@@ -54,6 +54,15 @@
     }
 }
     
-/* .left {
-
-} */
+.cart {
+    position: absolute;
+    top:5%;
+    right: 5%;
+    color: $light;
+    &_image {
+        max-width: 40px;
+    }
+    &_total {
+        display: block;
+    }
+}
