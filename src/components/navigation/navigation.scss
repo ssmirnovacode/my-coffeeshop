@@ -4,9 +4,14 @@
     &_burger {
         @media only screen and (max-width: 942px) {
             display: block;
-            position: absolute;
-            top: 5%;
-            left: 5%;
+            /* position: absolute;
+            top: 50%;
+            left: 5%; */
+            text-align: center;
+            margin-top: 5%;
+            color: $light;
+            font-size: 30px;
+            cursor: pointer;
         }
         display: none;
     }

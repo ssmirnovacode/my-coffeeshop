@@ -55,9 +55,14 @@
 }
     
 .cart {
-    position: absolute;
-    top:5%;
-    right: 5%;
+    /* position: absolute;
+    top: 5%; */
+    @media only screen and (max-width: 942px) {
+        margin-top:40%;
+    }
+    margin-top:5%;
+    margin-right: 5%;
+    text-align: right;
     color: $light;
     &_image {
         max-width: 40px;
