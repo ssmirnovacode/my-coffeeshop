@@ -13,7 +13,7 @@ class ItemDetail extends Component {
             return(
                 <div className="modal_container" onClick={(event) => {
                                                     if (event.target.classList.contains('modal_container')) {
-                                                        return this.props.toggleModal();
+                                                        return this.props.toggleModal(); 
                                                         }    
                                                     }}> 
                     <div className="modal_dialog">
@@ -23,7 +23,7 @@ class ItemDetail extends Component {
                             <div className="modal_title">{title}</div>
                             <div className="modal_price">{price}</div>  
                             <div className="modal_text">{content}</div>
-                            <button className="modal_btn">Order now</button>
+                            <button className="modal_btn">ADD To CART</button>
                         </div>
                     </div>
                 </div>
@@ -31,7 +31,7 @@ class ItemDetail extends Component {
         }
         else {
             document.body.style.overflow = '';
-            return (<div className="hidden"></div>);
+            return (<div className="hidden"></div>); //change to 'null'
         }
     } 
 }

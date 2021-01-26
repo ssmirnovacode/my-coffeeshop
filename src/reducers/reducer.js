@@ -8,7 +8,8 @@ const initialState = {
     modal: {
         shown: false,
         item: null
-    }
+    },
+    cart: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -87,7 +88,27 @@ const reducer = (state = initialState, action) => {
                     shown: !state.modal.shown,
                     item: action.payload
                 }
-            }    
+            } 
+        case 'ADD_TO_CART':
+            const itemToAdd = action.payload;
+            if (state.cart.filter(item => item.id === itemToAdd.id)) {
+                const RepeatedItemIndex = state.cart.findIndex( item => item.id === itemToAdd.id);
+                const changedItem = state.cart[RepeatedItemIndex];
+                changedItem.qty++;
+
+                return {
+                    ...state,
+                    items: [
+                        ...state.cart.slice(0, RepeatedItemIndex),
+                        changedItem,
+                        ...state.cart.slice(RepeatedItemIndex+1)
+                    ]
+                }
+            }
+            else return {
+                ...state,
+                cart: [...state.cart, action.payload]
+            }   
         default:
             return state;		
     }

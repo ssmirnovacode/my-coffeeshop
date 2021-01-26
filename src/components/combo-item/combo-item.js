@@ -13,7 +13,7 @@ const ComboItem = ({item, toggleModal}) => {
             <div className="combo-item_price">{price}<span>6.00 $</span></div>  {/* Add old prices to db.json */}
             <div className="combo-item_title">{title}</div>
             <div className="combo-item_content">{content}</div>
-            <button className="combo-item_btn">ORDER NOW!</button>
+            <button className="combo-item_btn">ADD To CART</button>
             <div className="combo-item_details"  onClick={() => toggleModal(item)}>Details</div>
         </div>
     )

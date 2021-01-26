@@ -13,7 +13,7 @@ const GiftsetItem = ({item, toggleModal}) => {
                     <div className="giftset_price">{price}</div>
                     <div className="giftset_title">{title}</div>
                     <div className="giftset_text">{content}</div>
-                    <button className="giftset_btn">ORDER NOW</button>
+                    <button className="giftset_btn">ADD To CART</button>
                     <div className="giftset_details" onClick={() => toggleModal(item)}>Details</div>
             </div>
         </div>
