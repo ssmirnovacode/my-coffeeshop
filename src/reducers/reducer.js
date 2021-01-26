@@ -99,7 +99,7 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 cart: {
                     visible: !state.cart.visible,
-                    ...state.cart
+                    items: state.cart.items
                 }
             } 
         case 'ADD_TO_CART':
