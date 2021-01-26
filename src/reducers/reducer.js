@@ -131,10 +131,10 @@ const reducer = (state = initialState, action) => {
             else return {
                 ...state,
                 cart: {
-                    items: [
+                    items: state.cart.items.push(itemToAdd), /* [
                         ...state.cart.items,
                         itemToAdd
-                    ],
+                    ], */
                     ...state.cart
                 }
             }   

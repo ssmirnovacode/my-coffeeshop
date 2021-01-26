@@ -48,7 +48,7 @@ class Giftset extends Component {
 
     
     render() {
-        console.log(this.state.activeItem);
+        //console.log(this.state.activeItem);
         const {giftset, /* loading, error */} = this.props;
 
         /* if (loading) {
