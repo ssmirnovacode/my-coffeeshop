@@ -6,6 +6,7 @@ import Giftset from '../giftset/giftset';
 import Combo from '../combo/combo';
 import Footer from '../footer/footer';
 import ItemDetail from '../item-detail/item-detail';
+import Cart from '../cart/cart';
 
 
 const App = () => {
@@ -13,6 +14,7 @@ const App = () => {
     return (
         <>
             <Home/>
+            <Cart/>
             <Beverages/>
             <Menu/>
             <Giftset/>

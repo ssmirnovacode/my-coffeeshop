@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import '.cart.scss';
+import './cart.scss';
 import {connect} from 'react-redux';
 import {deleteFromCart, toggleCart} from '../../actions/cartAC';
 
@@ -7,7 +7,7 @@ class Cart extends Component {
 
     render() {
         if (this.props.cart.visible) {
-            document.body.style.overflow = 'hidden';
+            //document.body.style.overflow = 'hidden';
 
             return(
                 <div className="modal_container" onClick={(event) => {
