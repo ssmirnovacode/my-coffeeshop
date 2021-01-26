@@ -1,7 +1,7 @@
 import React from 'react';
 import './menu-item.scss';
 
-const MenuItem = ({item, toggleModal}) => {
+const MenuItem = ({item, toggleModal, addToCart}) => {
 
     const {image, price, title, content} = item;
     return (
@@ -12,7 +12,7 @@ const MenuItem = ({item, toggleModal}) => {
             <div className="menu-item_price">{price}</div>
             <div className="menu-item_title">{title}</div>
             <div className="menu-item_content">{content}</div>
-            <button className="menu-item_btn">ADD To CART</button>
+            <button className="menu-item_btn" onClick={() => addToCart()}>ADD To CART</button>
             <div className="menu-item_details" onClick={() => toggleModal(item)}>Details</div>
         </div>
     )

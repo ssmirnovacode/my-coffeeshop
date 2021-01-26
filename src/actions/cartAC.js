@@ -8,4 +8,8 @@ const deleteFromCart = (itemId) => ({
     payload: itemId
 });
 
-export {addToCart, deleteFromCart};
+const toggleCart = () => ({
+    type: 'TOGGLE_CART'
+})
+
+export {addToCart, deleteFromCart, toggleCart};

@@ -46,7 +46,7 @@ class Menu extends Component {
                         menuItems.map(item => {
                             return (
                                 <MenuItem key={item.id} item={item} toggleModal={this.props.toggleModal} 
-                                addToCart={() =>this.props.addToCart(item)} /* deleteFromCart={() => deleteFromCart(item.id)} *//>
+                                addToCart={() => this.props.addToCart(item)} /* deleteFromCart={() => deleteFromCart(item.id)} *//>
                             )
                         })
                     }
@@ -62,8 +62,8 @@ const mapStateToProps = (state) => {
         menuItems: state.menuItems,
         loading: state.loading,
         error: state.error,
-        modal: state.modal,
-        cart: state.cart
+        modal: state.modal, //delete?
+        cart: state.cart //delete?
     }
 }
 

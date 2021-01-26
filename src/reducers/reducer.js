@@ -9,7 +9,10 @@ const initialState = {
         shown: false,
         item: null
     },
-    cart: []
+    cart: {
+        items: [],
+        visible: false
+    }
 }
 
 const reducer = (state = initialState, action) => {
@@ -82,6 +85,7 @@ const reducer = (state = initialState, action) => {
                 error: true
             }
         case 'TOGGLE_MODAL': 
+        //console.log(state.modal);
             return {
                 ...state,
                 modal: {
@@ -89,25 +93,50 @@ const reducer = (state = initialState, action) => {
                     item: action.payload
                 }
             } 
+        case 'TOGGLE_CART': 
+            console.log(state.cart);
+            return {
+                ...state,
+                cart: {
+                    visible: !state.cart.visible,
+                    ...state.cart
+                }
+            } 
         case 'ADD_TO_CART':
+            console.log(state.cart);
             const itemToAdd = action.payload;
-            if (state.cart.filter(item => item.id === itemToAdd.id)) {
-                const RepeatedItemIndex = state.cart.findIndex( item => item.id === itemToAdd.id);
-                const changedItem = state.cart[RepeatedItemIndex];
+            itemToAdd.qty = 1;
+            console.log(itemToAdd);
+            
+
+            if (state.cart.items.filter(item => item.id === itemToAdd.id).length > 0) {
+                const RepeatedItemIndex = state.cart.items.findIndex( item => item.id === itemToAdd.id);
+                const changedItem = state.cart.items[RepeatedItemIndex];
                 changedItem.qty++;
+
+                console.log(changedItem);
 
                 return {
                     ...state,
-                    items: [
-                        ...state.cart.slice(0, RepeatedItemIndex),
+                    cart: {
+                        items: [
+                        ...state.cart.items.slice(0, RepeatedItemIndex),
                         changedItem,
-                        ...state.cart.slice(RepeatedItemIndex+1)
-                    ]
+                        ...state.cart.items.slice(RepeatedItemIndex+1)
+                        ],
+                        ...state.cart
+                    }
                 }
             }
             else return {
                 ...state,
-                cart: [...state.cart, action.payload]
+                cart: {
+                    items: [
+                        ...state.cart.items,
+                        itemToAdd
+                    ],
+                    ...state.cart
+                }
             }   
         default:
             return state;		
