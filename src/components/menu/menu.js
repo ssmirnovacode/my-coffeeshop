@@ -9,6 +9,7 @@ import {toggleModal} from '../../actions/modal';
 import baseURL from '../../services/baseURL';
 import RequestService from '../../services/requestService';
 import Loading from '../loading/loading';
+import Error from '../error/error';
 
 class Menu extends Component {
 
@@ -18,14 +19,13 @@ class Menu extends Component {
         const requestService = new RequestService();
 
         requestService.getMenuItems(baseURL+'menuItems')
-        //.then(res => console.log(res))
         .then(res => this.props.menuItemsLoaded(res))
         .catch( () => this.props.menuItemsError());
     }
 
     render() {
 
-        const {menuItems, loading, /* error */} = this.props;
+        const {menuItems, loading, error} = this.props;
 
         if (loading) {
             return(
@@ -33,11 +33,11 @@ class Menu extends Component {
             )
         }
 
-        /* else if (error) {
-            return {
+        else if (error) {
+            return (
                 <Error/>
-            }
-        } */
+            )
+        }
 
         return(
             <section className="stripe-left">
@@ -62,9 +62,7 @@ const mapStateToProps = (state) => {
     return {
         menuItems: state.menuItems,
         loading: state.loading,
-        error: state.error,
-        modal: state.modal, //delete?
-        cart: state.cart //delete?
+        error: state.error
     }
 }
 

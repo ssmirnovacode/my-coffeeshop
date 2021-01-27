@@ -8,6 +8,7 @@ import {toggleModal} from '../../actions/modal';
 import baseURL from '../../services/baseURL';
 import RequestService from '../../services/requestService';
 import Loading from '../loading/loading';
+import Error from '../error/error';
 
 class Combo extends Component {
 
@@ -23,7 +24,7 @@ class Combo extends Component {
 
     render() {
 
-        const {combos, loading, /* error */} = this.props;
+        const {combos, loading, error} = this.props;
 
         if (loading) {
             return(
@@ -31,11 +32,11 @@ class Combo extends Component {
             )
         }
 
-        /* else if (error) {
-            return {
+        else if (error) {
+            return (
                 <Error/>
-            }
-        } */
+            )
+        }
 
         return(
             <section>

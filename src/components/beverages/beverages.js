@@ -7,6 +7,7 @@ import { beveragesLoaded, beveragesError, beveragesRequested } from '../../actio
 import baseURL from '../../services/baseURL';
 import RequestService from '../../services/requestService';
 import Loading from '../loading/loading';
+import Error from '../error/error';
 
 class Beverages extends Component {
 
@@ -22,7 +23,7 @@ class Beverages extends Component {
 
     render() {
 
-        const {beverages, loading, /* error */} = this.props;
+        const {beverages, loading, error} = this.props;
 
         if (loading) {
             return(
@@ -30,11 +31,11 @@ class Beverages extends Component {
             )
         }
 
-        /* else if (error) {
-            return {
+        else if (error) {
+            return (
                 <Error/>
-            }
-        } */
+            )
+        }
 
         return (
             <section>
