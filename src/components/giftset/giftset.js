@@ -7,6 +7,7 @@ import { giftsetLoaded, giftsetError, giftsetRequested } from '../../actions/gif
 import {toggleModal} from '../../actions/modal';
 import baseURL from '../../services/baseURL';
 import RequestService from '../../services/requestService';
+import Loading from '../loading/loading';
 
 class Giftset extends Component {
 
@@ -49,15 +50,15 @@ class Giftset extends Component {
     
     render() {
         //console.log(this.state.activeItem);
-        const {giftset, /* loading, error */} = this.props;
+        const {giftset,  loading, /*error */} = this.props;
 
-        /* if (loading) {
+        if (loading) {
             return(
                 <Loading/>
             )
         }
 
-        else if (error) {
+        /* else if (error) {
             return {
                 <Error/>
             }

@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import { beveragesLoaded, beveragesError, beveragesRequested } from '../../actions/beveragesAC';
 import baseURL from '../../services/baseURL';
 import RequestService from '../../services/requestService';
+import Loading from '../loading/loading';
 
 class Beverages extends Component {
 
@@ -21,15 +22,15 @@ class Beverages extends Component {
 
     render() {
 
-        const {beverages, /* loading, error */} = this.props;
+        const {beverages, loading, /* error */} = this.props;
 
-        /* if (loading) {
+        if (loading) {
             return(
                 <Loading/>
             )
         }
 
-        else if (error) {
+        /* else if (error) {
             return {
                 <Error/>
             }

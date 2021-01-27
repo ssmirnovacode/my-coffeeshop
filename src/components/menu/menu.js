@@ -8,6 +8,7 @@ import {addToCart, deleteFromCart} from '../../actions/cartAC';
 import {toggleModal} from '../../actions/modal';
 import baseURL from '../../services/baseURL';
 import RequestService from '../../services/requestService';
+import Loading from '../loading/loading';
 
 class Menu extends Component {
 
@@ -24,15 +25,15 @@ class Menu extends Component {
 
     render() {
 
-        const {menuItems, /* loading, error */} = this.props;
+        const {menuItems, loading, /* error */} = this.props;
 
-        /* if (loading) {
+        if (loading) {
             return(
                 <Loading/>
             )
         }
 
-        else if (error) {
+        /* else if (error) {
             return {
                 <Error/>
             }
