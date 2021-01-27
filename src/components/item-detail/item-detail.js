@@ -21,7 +21,7 @@ class ItemDetail extends Component {
                             <div className="modal_close" onClick={() => this.props.toggleModal()}>&times;</div> 
                             <div className="modal_img"><img src={image} alt={title}/></div>
                             <div className="modal_title">{title}</div>
-                            <div className="modal_price">{price}</div>  
+                            <div className="modal_price">{price} $</div>  
                             <div className="modal_text">{content}</div>
                             <button className="modal_btn">ADD To CART</button>
                         </div>

@@ -9,7 +9,7 @@ const MenuItem = ({item, toggleModal, addToCart}) => {
             <div className="menu-item_img">
                <img src={image} alt={title}/> 
             </div>
-            <div className="menu-item_price">{price}</div>
+            <div className="menu-item_price">{price} $</div>
             <div className="menu-item_title">{title}</div>
             <div className="menu-item_content">{content}</div>
             <button className="menu-item_btn" onClick={() => addToCart()}>ADD To CART</button>

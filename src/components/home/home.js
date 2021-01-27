@@ -8,7 +8,11 @@ import {toggleCart} from '../../actions/cartAC';
 class Home extends Component {
     
     render() {
-        //console.log(this.props.cart);
+        let total = 0;
+        this.props.cart.items.forEach(item => {
+            total += item.price * item.qty;
+        })
+
         return (
             <div className="home_container">
                 <div className="left block">
@@ -22,7 +26,7 @@ class Home extends Component {
                 <div className="right block">
                     <div className="cart" >
                         <img className="cart_image" src={cartIcon} alt="cart" onClick={this.props.toggleCart}></img>
-                        <div className="cart_total">Total: 100 $</div>
+                        <div className="cart_total">Total: {total} $</div>
                         </div>
                     <div className="navigation">
                         <Navigation/>

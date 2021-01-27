@@ -17,7 +17,7 @@ class Giftset extends Component {
         this.state = {
             activeItem: {
                 "id": 0,
-                "price": "6.00 $",
+                "price": "6.00",
                 "title": "Chai with espresso",
                 "image": "https://d.radikal.ru/d16/2101/11/a47b4e47661d.png",
                 "content": "Two packs of tea and a mug. Two packs of tea and a mug.Two packs of tea and a mug."

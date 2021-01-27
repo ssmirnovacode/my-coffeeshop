@@ -10,7 +10,7 @@ const GiftsetItem = ({item, toggleModal}) => {
             <div className="giftset_img"><img src={image} alt={title}/></div>
             <div className="giftset_content">
                 
-                    <div className="giftset_price">{price}</div>
+                    <div className="giftset_price">{price} $</div>
                     <div className="giftset_title">{title}</div>
                     <div className="giftset_text">{content}</div>
                     <button className="giftset_btn">ADD To CART</button>

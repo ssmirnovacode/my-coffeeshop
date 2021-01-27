@@ -6,6 +6,11 @@ import {deleteFromCart, toggleCart} from '../../actions/cartAC';
 class Cart extends Component {
 
     render() {
+        let total = 0;
+        this.props.cart.items.forEach(item => {
+            total += item.price * item.qty;
+        })
+
         if (this.props.cart.visible) {
             //document.body.style.overflow = 'hidden';
 
@@ -24,14 +29,15 @@ class Cart extends Component {
                                         return(
                                             <div className="modal_cart_item" key={item.id}>
                                             <div className="modal_cart_item_title">{item.title}</div>
-                                            <div className="modal_cart_item_price">{item.price}</div>
-                                            <div className="modal_cart_item_qty">{item.qty}</div>
+                                            <div className="modal_cart_item_price">{item.price} $</div>
+                                            <div className="modal_cart_item_qty">Quantity: {item.qty}</div>
                                             <div /* onClick={() => deleteFromCart(item.id)} */ className="modal_cart_item_delete">&times;</div>
                                         </div>
                                         )
                                     })
                                 }
                             </div>
+                            <div className="modal_cart_total">Total: {total} $</div>
                             <button className="modal_btn" /* onClick={this.props.placeOrder} */>Order now</button>
                         </div>
                     </div>
