@@ -37,7 +37,7 @@ class Beverages extends Component {
 
         return (
             <section>
-                <Heading small={'Your Personalized Coffee'} big={'COFFEE BUILD YOUR BASE'}/>
+                <Heading small={'Your Personalized Coffee'} big={'COFFEE BUILD YOUR BASE'} id="beverages"/>
                 <div className="beverages_container">
                     {
                         beverages.map(item => {

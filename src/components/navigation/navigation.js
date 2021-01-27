@@ -9,10 +9,10 @@ const Navigation = () => {
             </div>
             <ul className="nav_menu">
                 <li><a href="#"><span>MY COFFEESHOP</span></a></li>
-                <li><a href="#">OUR BEVERAGES</a></li>
-                <li><a href="#">CHOOSE YOUR DRINK</a></li>
-                <li><a href="#">GIFTSET</a></li>
-                <li><a href="#">OUR COMBOS</a></li>
+                <li><a href="#beverages">OUR BEVERAGES</a></li>
+                <li><a href="#menu">CHOOSE YOUR DRINK</a></li>
+                <li><a href="#giftset">GIFTSET</a></li>
+                <li><a href="#combo">OUR COMBOS</a></li>
             </ul>
         </nav>
     )

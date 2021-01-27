@@ -85,7 +85,6 @@ const reducer = (state = initialState, action) => {
                 error: true
             }
         case 'TOGGLE_MODAL': 
-        //console.log(state.modal);
             return {
                 ...state,
                 modal: {
@@ -94,7 +93,6 @@ const reducer = (state = initialState, action) => {
                 }
             } 
         case 'TOGGLE_CART': 
-            console.log(state.cart);
             return {
                 ...state,
                 cart: {
@@ -103,18 +101,13 @@ const reducer = (state = initialState, action) => {
                 }
             } 
         case 'ADD_TO_CART':
-            console.log(state.cart);
             const itemToAdd = action.payload;
             itemToAdd.qty = 1;
-            console.log(itemToAdd);
             
-
             if (state.cart.items.filter(item => item.id === itemToAdd.id).length > 0) {
                 const RepeatedItemIndex = state.cart.items.findIndex( item => item.id === itemToAdd.id);
                 const changedItem = state.cart.items[RepeatedItemIndex];
                 changedItem.qty++;
-
-                console.log(changedItem);
 
                 return {
                     ...state,
@@ -122,7 +115,7 @@ const reducer = (state = initialState, action) => {
                         items: [
                         ...state.cart.items.slice(0, RepeatedItemIndex),
                         changedItem,
-                        ...state.cart.items.slice(RepeatedItemIndex+1)
+                        ...state.cart.items.slice(RepeatedItemIndex + 1)
                         ],
                         ...state.cart
                     }
@@ -131,10 +124,7 @@ const reducer = (state = initialState, action) => {
             else return {
                 ...state,
                 cart: {
-                    items: state.cart.items.push(itemToAdd), /* [
-                        ...state.cart.items,
-                        itemToAdd
-                    ], */
+                    items: state.cart.items.push(itemToAdd), 
                     ...state.cart
                 }
             }   

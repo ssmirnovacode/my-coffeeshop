@@ -65,7 +65,7 @@ class Giftset extends Component {
 
         return(
             <section>
-                <Heading small={'Best Gift For Best Friend'} big={'GIFTSET'}/>
+                <Heading small={'Best Gift For Best Friend'} big={'GIFTSET'} id="giftset"/>
                 <div className="giftset_container">
                      <GiftsetItem item={this.state.activeItem} toggleModal={this.props.toggleModal}/>
                     <div className="giftset_tabs">

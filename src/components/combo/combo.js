@@ -38,7 +38,7 @@ class Combo extends Component {
 
         return(
             <section>
-                <Heading small={'Your Personalized Coffee'} big={'OUR COMBOS'}/>
+                <Heading small={'Your Personalized Coffee'} big={'OUR COMBOS'} id="combo"/>
                 <div className="combo_container">
                     {
                         combos.map(item => {
