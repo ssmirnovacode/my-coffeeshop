@@ -128,6 +128,19 @@ const reducer = (state = initialState, action) => {
                     ...state.cart
                 }
             }   
+        case 'DELETE_FROM_CART':
+            const idx = action.payload; 
+            const itemIndex = state.cart.items.findIndex(item => item.id === idx);	
+            return {
+                ...state,
+                cart: {
+                    items: [ 
+                        ...state.cart.items.slice(0, itemIndex),
+                        ...state.cart.items.slice(itemIndex+1)
+                    ],
+                    visible: state.cart.visible
+                }
+            }
         default:
             return state;		
     }

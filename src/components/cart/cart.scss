@@ -73,4 +73,12 @@
         margin-top: 5%;
         margin-right: 10%;
     }
+    &_cart {
+        &_continue {
+            cursor: pointer;
+        }
+        &_item_delete {
+            cursor: pointer;
+        }
+    }
 }

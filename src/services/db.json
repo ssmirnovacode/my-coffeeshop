@@ -57,21 +57,21 @@
     ],
     "combos": [
         {
-            "id": 0,
+            "id": 4,
             "price": "6.00",
             "title": "Chai with espresso",
             "image": "https://d.radikal.ru/d43/2101/f5/1d6d17dd0b9a.png",
             "content": "Some ChaiEspresso text description"
         },
         {
-            "id": 1,
+            "id": 5,
             "price": "4.00",
             "title": "Mocca chocolate",
             "image": "https://c.radikal.ru/c04/2101/95/e790422b6e18.png",
             "content": "Some Mocca chocolate moccatext description"
         },
         {
-            "id": 2,
+            "id": 6,
             "price": "3.00",
             "title": "Espresso with Cola",
             "image": "https://c.radikal.ru/c22/2101/42/fb7ef76ff9cf.png",
@@ -80,21 +80,21 @@
     ],
     "giftset": [
         {
-            "id": 0,
+            "id": 7,
             "price": "6.00",
             "title": "Chai with espresso",
             "image": "https://d.radikal.ru/d16/2101/11/a47b4e47661d.png",
             "content": "Two packs of tea and a mug. Two packs of tea and a mug.Two packs of tea and a mug."
         },
         {
-            "id": 1,
+            "id": 8,
             "price": "7.00",
             "title": "Coffee set with kettle",
             "image": "https://cdn.shopify.com/s/files/1/0330/5793/1397/products/kitmug_1024x1024@2x.jpg?v=1584659008",
             "content": "Two packs of great coffee and a kettle to cook it in. Two packs of great coffee and a kettle to cook it in."
         },
         {
-            "id": 2,
+            "id": 9,
             "price": "8.00",
             "title": "Four pack",
             "image": "https://cdn.shopify.com/s/files/1/0009/3841/0044/products/allDripBag_noOrganic.jpg?v=1596651560",

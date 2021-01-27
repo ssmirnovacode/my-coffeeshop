@@ -47,7 +47,7 @@ class Menu extends Component {
                         menuItems.map(item => {
                             return (
                                 <MenuItem key={item.id} item={item} toggleModal={this.props.toggleModal} 
-                                addToCart={() => this.props.addToCart(item)} /* deleteFromCart={() => deleteFromCart(item.id)} *//>
+                                addToCart={() => this.props.addToCart(item)} deleteFromCart={() => deleteFromCart(item.id)}/>
                             )
                         })
                     }

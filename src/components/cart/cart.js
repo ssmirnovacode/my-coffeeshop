@@ -31,7 +31,7 @@ class Cart extends Component {
                                             <div className="modal_cart_item_title">{item.title}</div>
                                             <div className="modal_cart_item_price">{item.price} $</div>
                                             <div className="modal_cart_item_qty">Quantity: {item.qty}</div>
-                                            <div /* onClick={() => deleteFromCart(item.id)} */ className="modal_cart_item_delete">&times;</div>
+                                            <div onClick={() => this.props.deleteFromCart()} className="modal_cart_item_delete">&times;</div>
                                         </div>
                                         )
                                     })
@@ -39,6 +39,7 @@ class Cart extends Component {
                             </div>
                             <div className="modal_cart_total">Total: {total} $</div>
                             <button className="modal_btn" /* onClick={this.props.placeOrder} */>Order now</button>
+                            <div className="modal_cart_continue" onClick={() => this.props.toggleCart()}>Continue shopping</div>
                         </div>
                     </div>
                 </div>
