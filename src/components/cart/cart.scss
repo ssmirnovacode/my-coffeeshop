@@ -4,6 +4,7 @@
 .modal {
     &_container {
         @include modal-container;
+        z-index: 5;
     }
     &_dialog {
         @include modal-dialog;
@@ -16,6 +17,7 @@
     }
     &_title {
         @include title;
+        margin-bottom: 2%;
     }
     &_price {
         @include price;
@@ -25,11 +27,52 @@
         margin-top: 5%;
     }
     &_cart {
+        
         &_continue {
+            padding-top: 7%;;
             cursor: pointer;
+            text-align: center;
+            font-weight: bold;
         }
-        &_item_delete {
-            cursor: pointer;
+        &_total {
+            font-weight: bold;
+            font-size: 20px;
+            margin-top: 5%;
+            text-align: right;
         }
+        &_item {
+            margin-bottom: 5%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            //justify-items: center;
+            margin: 0 auto;
+            //grid-template-rows: repeat(auto-fill, 1fr);
+            &_delete {
+                margin-top: 5%;
+                cursor: pointer;
+                & i {
+                    font-size: 24px;
+                }
+            }
+            &_title {
+                @include title;
+                font-size: 16px;
+            }
+            &_price {
+                padding-top: 5%;
+                padding-bottom: 5%;
+                font-size: 16px;
+                font-weight: 400;
+            }
+            &_qty {
+                font-size: 16px;
+                font-weight: 400;
+            }
+            &_img img{
+                max-width: 100px;
+            }
+        }
+        
     }
 }
+

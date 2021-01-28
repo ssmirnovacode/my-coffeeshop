@@ -23,16 +23,19 @@ class Cart extends Component {
                     <div className="modal_dialog">
                         <div className="modal_content">
                             <div className="modal_close" onClick={() => this.props.toggleCart()}>&times;</div> {/* Change to 'continue shopping' */}
+                            <div className="modal_title">Items in your cart:</div>
                             <div className="modal_cart_list">
                                 {
                                     this.props.cart.items.map(item => {
                                         return(
                                             <div className="modal_cart_item" key={item.id}>
-                                            <div className="modal_cart_item_title">{item.title}</div>
-                                            <div className="modal_cart_item_price">{item.price} $</div>
-                                            <div className="modal_cart_item_qty">Quantity: {item.qty}</div>
-                                            <div onClick={() => this.props.deleteFromCart(item.id)} className="modal_cart_item_delete">&times;</div>
-                                        </div>
+                                                <div className="modal_cart_item_title">{item.title}</div>
+                                                <div className="modal_cart_item_price">Price: {item.price} $</div>
+                                                <div onClick={() => this.props.deleteFromCart(item.id)} className="modal_cart_item_delete">{/* &times; */} <i className="fa fa-trash-o"></i></div>
+                                                <div className="modal_cart_item_img"><img src={item.image} alt={item.title}/></div>                                               
+                                                <div className="modal_cart_item_qty">Quantity: {item.qty}</div>
+                                                
+                                            </div>
                                         )
                                     })
                                 }
