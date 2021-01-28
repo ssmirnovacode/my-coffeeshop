@@ -37,7 +37,7 @@
             /* identical to box height, or 113% */
             color: grey;
             background-color: $light;
-            //border: 0.1px solid grey;
+            cursor: pointer;
             &.active {
                 background-color: #fff;
                 color: $grey;

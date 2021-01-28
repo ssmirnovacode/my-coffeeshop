@@ -16,7 +16,7 @@ class Giftset extends Component {
         super(props);
         this.state = {
             activeItem: {
-                "id": 0,
+                "id": 7,
                 "price": "6.00",
                 "title": "Chai with espresso",
                 "image": "https://d.radikal.ru/d16/2101/11/a47b4e47661d.png",
@@ -39,7 +39,6 @@ class Giftset extends Component {
 
     showContent(e, targetId) {
         const targetItem = this.props.giftset.filter(item => item.id === targetId)[0];
-        console.log(targetItem);
         this.setState({
             activeItem: targetItem
         });
@@ -50,7 +49,7 @@ class Giftset extends Component {
 
     
     render() {
-        const {giftset,  loading, error} = this.props;
+        const {giftset, loading, error} = this.props;
 
         if (loading) {
             return(
@@ -70,9 +69,21 @@ class Giftset extends Component {
                 <div className="giftset_container">
                      <GiftsetItem item={this.state.activeItem} toggleModal={this.props.toggleModal}/>
                     <div className="giftset_tabs">
-                        <div className="giftset_tabs_item active" onClick={(e, id) => this.showContent(e,0)}>1</div>
-                        <div className="giftset_tabs_item" onClick={(e, id) =>this.showContent(e, 1)}>2</div>
-                        <div className="giftset_tabs_item" onClick={(e, id) => this.showContent(e, 2)}>3</div>
+                        {
+                            this.props.giftset.map((item,i )=> {
+                                if (item.id === this.state.activeItem.id) {
+                                    return(
+                                        <div className="giftset_tabs_item active" onClick={(e,id) =>this.showContent(e, item.id)}>{i}</div>
+                                    ) 
+                                }
+                                else return(
+                                    <div className="giftset_tabs_item" onClick={(e,id) =>this.showContent(e, item.id)}>{i}</div>
+                                )
+                            })
+                        }
+                        {/* <div className="giftset_tabs_item active" onClick={(e, id) => this.showContent(e,7)}>1</div>
+                        <div className="giftset_tabs_item" onClick={(e, id) =>this.showContent(e, 8)}>2</div>
+                        <div className="giftset_tabs_item" onClick={(e, id) => this.showContent(e, 9)}>3</div> */}
                     </div>
                 </div>
             </section>
