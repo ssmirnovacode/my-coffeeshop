@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './item-detail.scss';
 import {connect} from 'react-redux';
 import {toggleModal} from '../../actions/modal';
+import {addToCart} from '../../actions/cartAC';
 
 class ItemDetail extends Component {
 
@@ -23,7 +24,8 @@ class ItemDetail extends Component {
                             <div className="modal_title">{title}</div>
                             <div className="modal_price">{price} $</div>  
                             <div className="modal_text">{content}</div>
-                            <button className="modal_btn">ADD To CART</button>
+                            <button className="modal_btn" 
+                            addToCart={() => this.props.addToCart(this.props.modal.item)}>ADD To CART</button>
                         </div>
                     </div>
                 </div>
@@ -43,7 +45,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    toggleModal
+    toggleModal,
+    addToCart
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ItemDetail);

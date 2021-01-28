@@ -104,7 +104,7 @@ const reducer = (state = initialState, action) => {
             const itemToAdd = action.payload;
             itemToAdd.qty = 1;
             
-            if (state.cart.items.filter(item => item.id === itemToAdd.id).length > 0) {
+            if (state.cart.items.filter(item => item.id === itemToAdd.id)[0]) {
                 const RepeatedItemIndex = state.cart.items.findIndex( item => item.id === itemToAdd.id);
                 const changedItem = state.cart.items[RepeatedItemIndex];
                 changedItem.qty++;
