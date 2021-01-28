@@ -20,7 +20,8 @@
     }
     &_dialog {
         max-width: 500px;
-        margin: 10% auto;
+        margin: 5% auto;
+        z-index:3;
     }
     &_content {
         position: relative;

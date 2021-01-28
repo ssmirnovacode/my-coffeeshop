@@ -1,7 +1,7 @@
 import React from 'react';
 import './giftset-item.scss';
 
-const GiftsetItem = ({item, toggleModal}) => {
+const GiftsetItem = ({item, toggleModal, addToCart}) => {
 
     const {title, image, price, content} = item;
 
@@ -13,7 +13,7 @@ const GiftsetItem = ({item, toggleModal}) => {
                     <div className="giftset_price">{price} $</div>
                     <div className="giftset_title">{title}</div>
                     <div className="giftset_text">{content}</div>
-                    <button className="giftset_btn">ADD To CART</button>
+                    <button className="giftset_btn" onClick={() => addToCart()}>ADD To CART</button>
                     <div className="giftset_details" onClick={() => toggleModal(item)}>Details</div>
             </div>
         </div>
