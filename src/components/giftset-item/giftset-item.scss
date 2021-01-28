@@ -2,12 +2,7 @@
 
 .giftset {
     color: $dark;
-    /* &_item {
-        display:none;
-        &.active {
-            display: '';
-        }
-    } */
+
     &_content {
         position: absolute;
         left: 22.5%;
@@ -35,43 +30,20 @@
         }
     }
     &_price {
-        color: $beige;
-        font-weight: 600;
-        font-size: 20px;
-        line-height: 24px;
-        margin-bottom: 2%;
-        /* identical to box height, or 120% */
+        @include price;
     }
     &_title {
-        font-weight: bold;
-        font-size: 24px;
-        line-height: 28px;
-        /* identical to box height, or 117% */     
+        @include title;    
     }
     &_text {
-        font-weight: 300;
-        font-size: 16px;
-        line-height: 22px;
+        @include content;
         margin: 7% 2% 2% auto;
     }
     &_details {
-        text-decoration: none;
-        color: $dark;
-        font-weight: bold;
-        font-size: 16px;
-        line-height: 22px;
+        @include details;
         margin-left: 5%;
-        /* identical to box height */
-        cursor: pointer;
     }
     &_btn {
-        font-family: Nunito, sans-serif;
-        //font-style: normal;
-        background-color: $beige;
-        color: $light;
-        border-radius: 19px;
-        float: left;
-        padding: 7px;
-        margin-right: 5px;
+        @include btn;
     }
 }

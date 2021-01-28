@@ -15,12 +15,7 @@
         margin-bottom: 10%;
     }
     &_price {
-        color: $beige;
-        font-weight: 600;
-        font-size: 20px;
-        line-height: 24px;
-        margin-bottom: 2%;
-        /* identical to box height, or 120% */
+        @include price;
         & span {
             color: $dark;
             font-style: italic;
@@ -32,35 +27,18 @@
         }
     }
     &_title {
-        font-weight: bold;
-        font-size: 24px;
-        line-height: 28px;
-        /* identical to box height, or 117% */     
+        @include title;    
     }
     &_content {
-        font-weight: 300;
-        font-size: 16px;
-        line-height: 22px;
+        @include content;
         margin: 10% auto;
     }
     &_details {
-        text-decoration: none;
-        color: $dark;
-        font-weight: bold;
-        font-size: 16px;
-        line-height: 22px;
+        @include details;
         margin-left: 5%;
-        cursor: pointer;
-        /* identical to box height */
+
     }
     &_btn {
-        font-family: Nunito, sans-serif;
-        //font-style: normal;
-        background-color: $beige;
-        color: $light;
-        border-radius: 19px;
-        float: left;
-        padding: 7px;
-        margin-right: 5px;
+        @include btn;
     }
 }
