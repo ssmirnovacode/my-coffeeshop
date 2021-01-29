@@ -68,6 +68,7 @@ class Giftset extends Component {
             <section>
                 <Heading small={'Best Gift For Best Friend'} big={'GIFTSET'} id="giftset"/>
                 <div className="giftset_container">
+                    <div className="bg-giftset"></div>
                      <GiftsetItem item={this.state.activeItem} toggleModal={this.props.toggleModal}
                         addToCart={() => this.props.addToCart(this.state.activeItem)}/>
                     <div className="giftset_tabs">

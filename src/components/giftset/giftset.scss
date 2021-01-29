@@ -46,3 +46,13 @@
     }
     
 }
+
+.bg-giftset {
+    background-color: $light;
+    position: absolute;
+    top: -55%;
+    bottom: -10%;
+    left: -10%;
+    z-index: -1;
+    width: 85%;
+}

@@ -8,4 +8,15 @@
     margin: 0 10% 5% 10%;
     row-gap: 50px;
     column-gap: 30px;   
+    position: relative;
+}
+
+.bg-combo {
+    position: absolute;
+    top: -58%;
+    bottom: -10%;
+    right: -10%;
+    background-color: $grey;
+    width: 35%;
+    z-index: -1;
 }

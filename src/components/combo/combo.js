@@ -43,6 +43,7 @@ class Combo extends Component {
             <section>
                 <Heading small={'Your Personalized Coffee'} big={'OUR COMBOS'} id="combo"/>
                 <div className="combo_container">
+                    <div className="bg-combo"></div>
                     {
                         combos.map(item => {
                             return(
