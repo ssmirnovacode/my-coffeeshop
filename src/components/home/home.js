@@ -27,7 +27,7 @@ class Home extends Component {
                     <div className="cart" >
                         <img className="cart_image" src={cartIcon} alt="cart" onClick={this.props.toggleCart}></img>
                         <div className="cart_total">Total: {total} $</div>
-                        </div>
+                    </div>
                     <div className="navigation">
                         <Navigation/>
                     </div>
