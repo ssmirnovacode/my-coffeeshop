@@ -3,7 +3,10 @@
 .menu_container {
    
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    @media only screen and (max-width: 1045px) {
+        grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    }
     height: auto;
     margin: 0 10%;
     row-gap: 50px;
