@@ -43,6 +43,7 @@ class Menu extends Component {
             <section className="stripe-left">
                 <Heading small={'Choose Your Favorite'} big={'ORDER YOUR DRINK ONLINE'} id="menu"/>
                 <div className="menu_container">
+                    <div className="bg-menu"></div>
                     {
                         menuItems.map(item => {
                             return (

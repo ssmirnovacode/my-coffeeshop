@@ -8,4 +8,15 @@
     margin: 0 10%;
     row-gap: 50px;
     column-gap: 30px;
+    position: relative;
+}
+
+.bg-menu {
+    position: absolute;
+    z-index:-1;
+    background-color: $grey;
+    width: 40%;
+    top:-10%;
+    bottom: -10%;
+    left: -10%;
 }
