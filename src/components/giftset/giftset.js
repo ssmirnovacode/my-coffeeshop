@@ -76,11 +76,11 @@ class Giftset extends Component {
                             this.props.giftset.map((item,i )=> {
                                 if (item.id === this.state.activeItem.id) {
                                     return(
-                                        <div className="giftset_tabs_item active" onClick={(e,id) =>this.showContent(e, item.id)}>{i}</div>
+                                        <div className="giftset_tabs_item active" key={item.id} onClick={(e,id) =>this.showContent(e, item.id)}>{i}</div>
                                     ) 
                                 }
                                 else return(
-                                    <div className="giftset_tabs_item" onClick={(e,id) =>this.showContent(e, item.id)}>{i}</div>
+                                    <div className="giftset_tabs_item" key={item.id} onClick={(e,id) =>this.showContent(e, item.id)}>{i}</div>
                                 )
                             })
                         }
