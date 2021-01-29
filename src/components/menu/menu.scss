@@ -19,4 +19,10 @@
     top:-20%;
     bottom: -10%;
     left: -10%;
+    @media  only screen and (max-width: 1053px) {
+        top:-5%;
+    }
+    @media only screen and (max-width: 436px) {
+        display: none;
+    }
 }
