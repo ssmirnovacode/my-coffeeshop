@@ -41,6 +41,7 @@
             }
         }  
         &_sidebar {
+            z-index: 4;
             display: none;
             &.active {
                 display: block;
@@ -49,7 +50,7 @@
                 position: absolute;
                 right: 5%;
                 top: 10%;
-                width:40vw;
+                width: 50vw;
                 & li a {
                     text-decoration: none;
                     color: $light;
@@ -59,6 +60,11 @@
                     font-size: 16px;
                     line-height: 24px;
                     line-height: 300%;
+                    @media only screen and (max-width: 360px) {
+                        font-size: 14px;
+                        line-height: 18px;
+                        line-height: 250%;
+                    }
                     &:hover {
                         padding: 10px;
                         background-color: $light;
@@ -67,7 +73,7 @@
                     & span {
                         font-family: Montserrat, sans-serif;
                         font-weight: 800;
-                        font-size: 150%;
+                        font-size: 130%;
                     }
                 }
             }
