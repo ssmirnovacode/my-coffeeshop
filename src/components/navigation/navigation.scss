@@ -40,6 +40,38 @@
                 font-size: 150%;
             }
         }  
+        &_sidebar {
+            display: none;
+            &.active {
+                display: block;
+                background-color: $grey;
+                list-style-type: none;
+                position: absolute;
+                right: 5%;
+                top: 10%;
+                width:40vw;
+                & li a {
+                    text-decoration: none;
+                    color: $light;
+                    font-family: Nunito, sans-serif;
+                    font-style: normal;
+                    font-weight: 100;
+                    font-size: 16px;
+                    line-height: 24px;
+                    line-height: 300%;
+                    &:hover {
+                        padding: 10px;
+                        background-color: $light;
+                        color: $grey;
+                    }
+                    & span {
+                        font-family: Montserrat, sans-serif;
+                        font-weight: 800;
+                        font-size: 150%;
+                    }
+                }
+            }
+        }
     }
 }
 
