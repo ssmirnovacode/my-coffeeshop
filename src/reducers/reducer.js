@@ -95,6 +95,10 @@ const reducer = (state = initialState, action) => {
         case 'TOGGLE_CART': 
             return {
                 ...state,
+                modal: {
+                    shown: false,
+                    item: state.modal.item
+                },
                 cart: {
                     visible: !state.cart.visible,
                     items: state.cart.items

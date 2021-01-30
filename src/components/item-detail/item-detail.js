@@ -2,9 +2,19 @@ import React, {Component} from 'react';
 import './item-detail.scss';
 import {connect} from 'react-redux';
 import {toggleModal} from '../../actions/modal';
-import {addToCart} from '../../actions/cartAC';
+import {addToCart, toggleCart} from '../../actions/cartAC';
 
 class ItemDetail extends Component {
+    constructor(props) {
+        super(props);
+
+        this.toggleButton = this.toggleButton.bind(this);
+    }
+
+    toggleButton = () => {
+        document.querySelector('.modal_btn_viewcart').classList.remove('hidden');
+        document.querySelector('.modal_btn').classList.add('hidden');
+    }
 
     render() {
 
@@ -25,7 +35,12 @@ class ItemDetail extends Component {
                             <div className="modal_price">{price} $</div>  
                             <div className="modal_text">{content}</div>
                             <button className="modal_btn" 
-                            onClick={() => this.props.addToCart(this.props.modal.item)}>ADD To CART</button>
+                            onClick={() => {                                           
+                                this.props.addToCart(this.props.modal.item);
+                                this.toggleButton();
+                                }}>ADD To CART</button>
+                            <button className="modal_btn_viewcart hidden"
+                            onClick={this.props.toggleCart}>View cart</button>    
                         </div>
                     </div>
                 </div>
@@ -46,7 +61,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
     toggleModal,
-    addToCart
+    addToCart,
+    toggleCart
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ItemDetail);
