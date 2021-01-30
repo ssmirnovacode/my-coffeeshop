@@ -9,9 +9,13 @@
     }
     &_dialog {
         @include modal-dialog;
+        
     }
     &_content {
         @include modal-content;
+        @media only screen and (max-width: 675px) {
+            max-width: 245px;
+        }
     }
     &_close {
         @include close;
