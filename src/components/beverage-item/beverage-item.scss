@@ -5,13 +5,10 @@
     font-family: Nunito;
     font-style: normal;
     font-weight: 300;
-    font-size: 16px;
-    line-height: 22px;
+    @include fz-text-basic;
     text-align: center;
     color: $dark;
-    /* &_container {
-        
-    } */
+
     &_title {
         font-style: bold;
         font-size: 150%;

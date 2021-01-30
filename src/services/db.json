@@ -43,9 +43,9 @@
         {
             "id": 2,
             "price": "6.50",
-            "title": "Espresso",
+            "title": "Double lungo",
             "image": "https://d.radikal.ru/d04/2101/91/048bf1ed4b86.png",
-            "content": "Some Espresso text description"
+            "content": "Some Lungo text description text text"
         },
         {
             "id": 3,
@@ -59,14 +59,14 @@
         {
             "id": 4,
             "price": "6.00",
-            "title": "Chai with espresso",
+            "title": "Chai with coco",
             "image": "https://d.radikal.ru/d43/2101/f5/1d6d17dd0b9a.png",
             "content": "Some ChaiEspresso text description"
         },
         {
             "id": 5,
             "price": "4.00",
-            "title": "Mocca chocolate",
+            "title": "Mocca coffee",
             "image": "https://c.radikal.ru/c04/2101/95/e790422b6e18.png",
             "content": "Some Mocca chocolate moccatext description"
         },
@@ -82,7 +82,7 @@
         {
             "id": 7,
             "price": "6.00",
-            "title": "Chai with espresso",
+            "title": "Chai with spices",
             "image": "https://d.radikal.ru/d16/2101/11/a47b4e47661d.png",
             "content": "Two packs of tea and a mug. Two packs of tea and a mug.Two packs of tea and a mug."
         },

@@ -12,16 +12,9 @@
         font-family: Nunito, sans-serif;
         font-style: italic;
         font-weight: 500;
-        font-size: 16px;
-        line-height: 22px;
-        /* identical to box height, or 137% */
-        
+        @include fz-text-basic;  
         padding: 5% 10%;
-        
-        /* margin-left: -33.33%;
-        margin-right: -33.33%; */
-        
-        //width: auto;
+
         & a {
             color: $light;
         }

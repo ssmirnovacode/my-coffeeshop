@@ -25,6 +25,7 @@
     }
     &_price {
         @include price;
+        
     }
     &_btn {
         @include btn;

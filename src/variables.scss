@@ -21,6 +21,22 @@ $background: #fcfcfc;
     line-height: 22px;
 }
 
+@mixin fz-price-small {
+    font-size: 18px;
+    line-height: 21px;
+}
+
+@mixin fz-title-small {
+    font-size: 21px;
+    line-height: 25px;
+    /* identical to box height, or 117% */
+}
+
+@mixin fz-text-small {
+    font-size: 14px;
+    line-height: 19px;
+}
+
 //modal
 @mixin modal-container {
     position: fixed;

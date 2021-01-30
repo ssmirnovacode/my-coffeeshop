@@ -19,7 +19,7 @@ class Giftset extends Component {
             activeItem: {
                 "id": 7,
                 "price": "6.00",
-                "title": "Chai with espresso",
+                "title": "Chai with spices",
                 "image": "https://d.radikal.ru/d16/2101/11/a47b4e47661d.png",
                 "content": "Two packs of tea and a mug. Two packs of tea and a mug.Two packs of tea and a mug."
             }
