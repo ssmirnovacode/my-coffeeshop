@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/ssmirnovacode/my-coffeeshop.git/static/css/main.dd69d632.chunk.css",
+    "main.js": "/ssmirnovacode/my-coffeeshop.git/static/js/main.53724992.chunk.js",
+    "main.js.map": "/ssmirnovacode/my-coffeeshop.git/static/js/main.53724992.chunk.js.map",
+    "runtime-main.js": "/ssmirnovacode/my-coffeeshop.git/static/js/runtime-main.f0a86e44.js",
+    "runtime-main.js.map": "/ssmirnovacode/my-coffeeshop.git/static/js/runtime-main.f0a86e44.js.map",
+    "static/js/2.7c9ceb07.chunk.js": "/ssmirnovacode/my-coffeeshop.git/static/js/2.7c9ceb07.chunk.js",
+    "static/js/2.7c9ceb07.chunk.js.map": "/ssmirnovacode/my-coffeeshop.git/static/js/2.7c9ceb07.chunk.js.map",
+    "static/js/3.7d824952.chunk.js": "/ssmirnovacode/my-coffeeshop.git/static/js/3.7d824952.chunk.js",
+    "static/js/3.7d824952.chunk.js.map": "/ssmirnovacode/my-coffeeshop.git/static/js/3.7d824952.chunk.js.map",
+    "index.html": "/ssmirnovacode/my-coffeeshop.git/index.html",
+    "static/css/main.dd69d632.chunk.css.map": "/ssmirnovacode/my-coffeeshop.git/static/css/main.dd69d632.chunk.css.map",
+    "static/js/2.7c9ceb07.chunk.js.LICENSE.txt": "/ssmirnovacode/my-coffeeshop.git/static/js/2.7c9ceb07.chunk.js.LICENSE.txt",
+    "static/media/error.scss": "/ssmirnovacode/my-coffeeshop.git/static/media/error.61fcdbb0.jpg",
+    "static/media/home.scss": "/ssmirnovacode/my-coffeeshop.git/static/media/home.416d129a.png",
+    "static/media/shopping-cart-solid.f0d47d21.svg": "/ssmirnovacode/my-coffeeshop.git/static/media/shopping-cart-solid.f0d47d21.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f0a86e44.js",
+    "static/js/2.7c9ceb07.chunk.js",
+    "static/css/main.dd69d632.chunk.css",
+    "static/js/main.53724992.chunk.js"
+  ]
+}
