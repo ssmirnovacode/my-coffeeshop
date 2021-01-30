@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/ssmirnovacode/my-coffeeshop.git/static/css/main.dd69d632.chunk.css",
-    "main.js": "/ssmirnovacode/my-coffeeshop.git/static/js/main.3feed77f.chunk.js",
-    "main.js.map": "/ssmirnovacode/my-coffeeshop.git/static/js/main.3feed77f.chunk.js.map",
+    "main.js": "/ssmirnovacode/my-coffeeshop.git/static/js/main.eaab49bc.chunk.js",
+    "main.js.map": "/ssmirnovacode/my-coffeeshop.git/static/js/main.eaab49bc.chunk.js.map",
     "runtime-main.js": "/ssmirnovacode/my-coffeeshop.git/static/js/runtime-main.f0a86e44.js",
     "runtime-main.js.map": "/ssmirnovacode/my-coffeeshop.git/static/js/runtime-main.f0a86e44.js.map",
     "static/js/2.7c9ceb07.chunk.js": "/ssmirnovacode/my-coffeeshop.git/static/js/2.7c9ceb07.chunk.js",
@@ -20,6 +20,6 @@
     "static/js/runtime-main.f0a86e44.js",
     "static/js/2.7c9ceb07.chunk.js",
     "static/css/main.dd69d632.chunk.css",
-    "static/js/main.3feed77f.chunk.js"
+    "static/js/main.eaab49bc.chunk.js"
   ]
 }
