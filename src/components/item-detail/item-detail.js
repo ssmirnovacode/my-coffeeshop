@@ -25,7 +25,7 @@ class ItemDetail extends Component {
                             <div className="modal_price">{price} $</div>  
                             <div className="modal_text">{content}</div>
                             <button className="modal_btn" 
-                            addToCart={() => this.props.addToCart(this.props.modal.item)}>ADD To CART</button>
+                            onClick={() => this.props.addToCart(this.props.modal.item)}>ADD To CART</button>
                         </div>
                     </div>
                 </div>
