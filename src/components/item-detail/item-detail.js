@@ -3,18 +3,9 @@ import './item-detail.scss';
 import {connect} from 'react-redux';
 import {toggleModal} from '../../actions/modal';
 import {addToCart, toggleCart} from '../../actions/cartAC';
+import toggleButton from '../../local-functions/toggleButton';
 
 class ItemDetail extends Component {
-    constructor(props) {
-        super(props);
-
-        this.toggleButton = this.toggleButton.bind(this);
-    }
-
-    toggleButton = () => {
-        document.querySelector('.modal_btn_viewcart').classList.remove('hidden');
-        document.querySelector('.modal_btn').classList.add('hidden');
-    }
 
     render() {
 
@@ -37,7 +28,7 @@ class ItemDetail extends Component {
                             <button className="modal_btn" 
                             onClick={() => {                                           
                                 this.props.addToCart(this.props.modal.item);
-                                this.toggleButton();
+                                toggleButton('.modal_btn','.modal_btn_viewcart');
                                 }}>ADD To CART</button>
                             <button className="modal_btn_viewcart hidden"
                             onClick={this.props.toggleCart}>View cart</button>    
