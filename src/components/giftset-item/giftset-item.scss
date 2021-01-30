@@ -2,7 +2,6 @@
 
 .giftset {
     color: $dark;
-
     &_content {
         position: absolute;
         left: 22.5%;
@@ -14,14 +13,24 @@
         border-radius: 5px;
         box-sizing: border-box;
         box-shadow: 5px 5px 15px 5px rgb(185, 185, 185);
+        @media only screen and (max-width: 400px) {
+            padding-top: 50%;
+            left: 5%;
+            padding-left: 10%;
+        }
     }
     &_img{
         position: absolute;
         left: 0%;
         right: 59.31%;
         top: 11.45%;
+        @media only screen and (max-width: 400px) {
+            top: 5%;
+            left: 10%;
+            width: 50%;
+            margin-left: 15%;
+        }
         //bottom: -1.3%;
-        //background: url('../../img/giftset.png');
         background-repeat: no-repeat;
         border-radius: 5px;
         z-index:2;
@@ -42,8 +51,10 @@
     &_details {
         @include details;
         margin-left: 5%;
+        margin-top: 10%;
     }
     &_btn {
         @include btn;
+        margin-top: 5%;
     }
 }
