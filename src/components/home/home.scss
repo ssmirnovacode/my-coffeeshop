@@ -3,7 +3,7 @@
 .home_container {
     display: grid;
     @media only screen and (max-width: 942px) {
-        grid-template-columns: 3fr 8fr 1fr;
+        grid-template-columns: 3fr 7fr 2fr;
         height: 40vh;
     }
     grid-template-columns: 3fr 6fr 3fr; /* try auto-fill */

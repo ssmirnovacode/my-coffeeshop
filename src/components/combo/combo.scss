@@ -3,7 +3,7 @@
 .combo_container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-    justify-items: center;
+    justify-items: space-around;
     height: auto;
     margin: 0 10% 5% 10%;
     row-gap: 50px;

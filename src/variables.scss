@@ -4,6 +4,24 @@ $light: #EDF0F5;
 $dark: #151D28;
 $background: #fcfcfc;
 
+//font-sizes
+@mixin fz-price-basic {
+    font-size: 20px;
+    line-height: 24px;
+}
+
+@mixin fz-title-basic {
+    font-size: 24px;
+    line-height: 28px;
+    /* identical to box height, or 117% */
+}
+
+@mixin fz-text-basic {
+    font-size: 16px;
+    line-height: 22px;
+}
+
+//modal
 @mixin modal-container {
     position: fixed;
     top: 0;
@@ -51,10 +69,10 @@ $background: #fcfcfc;
     cursor: pointer;
 }
 
+//box elements
 @mixin content {
     font-weight: 300;
-    font-size: 16px;
-    line-height: 22px;
+    @include fz-text-basic;
 }
 
 @mixin img {
@@ -68,23 +86,20 @@ $background: #fcfcfc;
     text-decoration: none;
     color: $dark;
     font-weight: bold;
-    font-size: 16px;
-    line-height: 22px;
+    @include fz-text-basic;
     cursor: pointer;
 }
 
 @mixin title {
     font-weight: bold;
-    font-size: 24px;
-    line-height: 28px;
-    /* identical to box height, or 117% */ 
+    @include fz-title-basic;
+     
 }
 
 @mixin price {
     color: $beige;
     font-weight: 600;
-    font-size: 20px;
-    line-height: 24px;
+    @include fz-price-basic;
     margin-bottom: 2%;
     /* identical to box height, or 120% */
 }
