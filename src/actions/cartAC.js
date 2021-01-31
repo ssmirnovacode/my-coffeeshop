@@ -8,13 +8,13 @@ const deleteFromCart = (itemId) => ({
     payload: itemId
 });
 
-const plusQty = (id) => ({  // 1 or -1
+const plusQty = (id) => ({  
     type: 'PLUS_QTY',
     payload: id
 })
 
-const minusQty = (id) => ({  // 1 or -1
-    type: 'PLUS_QTY',
+const minusQty = (id) => ({  
+    type: 'MINUS_QTY',
     payload: id
 })
 

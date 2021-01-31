@@ -108,7 +108,7 @@ const reducer = (state = initialState, action) => {
             const itemToAdd = action.payload;
             itemToAdd.qty = 1;
             
-            /* if (state.cart.items.filter(item => item.id === itemToAdd.id)[0]) {
+            if (state.cart.items.filter(item => item.id === itemToAdd.id)[0]) {
                 const RepeatedItemIndex = state.cart.items.findIndex( item => item.id === itemToAdd.id);
                 const changedItem = state.cart.items[RepeatedItemIndex];
                 changedItem.qty++;
@@ -125,7 +125,7 @@ const reducer = (state = initialState, action) => {
                     }
                 }
             }
-            else */ return {
+            else return {
                 ...state,
                 cart: {
                     items: state.cart.items.push(itemToAdd), 
@@ -141,20 +141,20 @@ const reducer = (state = initialState, action) => {
                         {...item, qty: item.qty + 1}
                           : item
                       ),
-                      ...state.cart
+                      visible: state.cart.visible
                 }
-              };
+            };
         case 'MINUS_QTY':
             return {
                 ...state,
                 cart: {
                     items: state.cart.items.map(item =>
                         item.id === action.payload ? 
-                        {...item, qty: item.qty -1}
-                            : item,
-                        ),
-                        ...state.cart
-                     }
+                        {...item, qty: item.qty - 1}
+                          : item
+                      ),
+                      visible: state.cart.visible
+                }
                 };
         case 'DELETE_FROM_CART':
             const idx = action.payload; 

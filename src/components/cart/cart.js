@@ -8,11 +8,11 @@ class Cart extends Component {
     constructor(props) {
         super(props);
 
-        this.changeQtyView = this.changeQtyView.bind(this);
+        //this.changeQtyView = this.changeQtyView.bind(this);
     }
 
-    changeQtyView = (id) => {
-        const targetItem = this.props.cart.items.filter(item => item.id === id)[0];
+    /* changeQtyView = (id) => {
+        const targetItem = this.props.cart.items.find(item => item.id === id);
         console.log(targetItem);
         const oldQty = targetItem.qty;
         const newQty = document.querySelector('[type="number"]').value;
@@ -26,7 +26,7 @@ class Cart extends Component {
             document.querySelector('[type="number"]').value = targetItem.qty--;
         }
         
-    }
+    } */
 
     render() {
         let total = 0;
@@ -56,10 +56,15 @@ class Cart extends Component {
                                                 <div className="modal_cart_item_price">Price: {item.price} $</div>
                                                 <div onClick={() => this.props.deleteFromCart(item.id)} className="modal_cart_item_delete"><i className="fa fa-trash-o"></i></div>
                                                 <div className="modal_cart_item_img"><img src={item.image} alt={item.title}/></div>                                               
-                                                <div className="modal_cart_item_qty">Quantity: <input type="number" value={item.qty} onChange={() => {
-                                                    //this.props.plusQty(item.id);
-                                                    this.changeQtyView(item.id)
-                                                    }}/></div>
+                                                <div className="modal_cart_item_qty">Quantity: 
+                                                    <button className="plus" onClick={() => {
+                                                        this.props.plusQty(item.id);
+                                                        console.log(item);
+                                                        }}> + </button>
+                                                     {item.qty} 
+                                                    <button className="minus" onClick={()=> this.props.minusQty(item.id)}> - </button>
+                                                </div>
+                                                
                                                 
                                             </div>
                                         )
