@@ -31,7 +31,7 @@ const toggleButton = (addToCartBtnSelector, viewCartBtnSelector, e) => {
             message.classList.add('message');
             elem.parentNode.appendChild(message);
             
-            const messageTimerId = setInterval( () => {
+            const messageTimerId = setTimeout( () => {
                 message.remove();
             }, 1500)
         }
