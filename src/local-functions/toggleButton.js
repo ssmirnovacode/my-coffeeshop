@@ -16,17 +16,27 @@ const toggleButton = (addToCartBtnSelector, viewCartBtnSelector, e) => {
     viewCartBtns.forEach(elem => {
         if (elem.getAttribute('data-id') === cardId) {
             elem.classList.remove('hidden');
-            elem.addEventListener('click', () => {
+
+            elem.addEventListener('click', () => { //when cart modal is toggled and seen, we restore initial btns
                 addToCartBtns.forEach(elem => {                   
                     elem.classList.remove('hidden');
                 });
                 viewCartBtns.forEach(elem => {                   
                     elem.classList.add('hidden');
-                });             
-            })
+                }); 
+            });
+
+            const message = document.createElement('div');
+            message.innerHTML = 'Item added to cart';
+            message.classList.add('message');
+            elem.parentNode.appendChild(message);
             
+            const messageTimerId = setInterval( () => {
+                message.remove();
+            }, 1500)
         }
     });
+
 }
 
 

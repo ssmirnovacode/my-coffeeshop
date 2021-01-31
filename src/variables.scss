@@ -137,6 +137,10 @@ $background: #fcfcfc;
     box-shadow: 5px 5px 15px 5px rgb(185, 185, 185)
 }
 
+.message {
+    color: green;
+    text-align: right;
+}
 body {
     background-color: $background;
     /* width: 1033px;
