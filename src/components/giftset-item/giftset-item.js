@@ -8,7 +8,7 @@ const GiftsetItem = ({item, toggleModal, addToCart, toggleCart}) => {
 
     return(
         <div className="giftset_item">
-            <div className="giftset_img"><img src={image} alt={title}/></div>
+            <div className="giftset_img"><img src={image} alt={title} onClick={() => toggleModal(item)}/></div>
             <div className="giftset_content">
                 
                     <div className="giftset_price">{price} $</div>

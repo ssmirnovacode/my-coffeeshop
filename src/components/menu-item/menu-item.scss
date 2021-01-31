@@ -10,6 +10,7 @@
     }
     &_img img{
         @include img;
+        cursor: pointer;
     }
     &_price {
         @include price;

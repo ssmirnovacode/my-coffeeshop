@@ -13,6 +13,7 @@
         width: 200px;
         margin-right: 5%;
         margin-bottom: 10%;
+        cursor: pointer;
     }
     &_price {
         @include price;

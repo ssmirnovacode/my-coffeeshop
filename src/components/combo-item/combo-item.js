@@ -9,7 +9,7 @@ const ComboItem = ({item, toggleModal, addToCart, toggleCart}) => {
     return (
         <div className="combo-item_container">
             <div className="combo-item_img">
-               <img src={image} alt={title}/> 
+               <img src={image} alt={title} onClick={() => toggleModal(item)}/> 
             </div>
             <div className="combo-item_price">{price} $<span>6.00 $</span></div>  {/* Add old prices to db.json */}
             <div className="combo-item_title">{title}</div>
