@@ -1,13 +1,8 @@
-/* const toggleButton = (orderBtnSelector, viewCatBtnSelector) => {
-    document.querySelector(viewCatBtnSelector).classList.remove('hidden');
-    document.querySelector(orderBtnSelector).classList.add('hidden');
-} */
-
 const toggleButton = (addToCartBtnSelector, viewCartBtnSelector, e) => {
 
     console.log(e.target);
 
-    const cardId = e.target.getAttribute('data-id'); // getting the item.id
+    const cardId = e.target.getAttribute('data-id'); 
 
     const addToCartBtns = document.querySelectorAll(addToCartBtnSelector),
         viewCartBtns = document.querySelectorAll(viewCartBtnSelector);
@@ -21,9 +16,17 @@ const toggleButton = (addToCartBtnSelector, viewCartBtnSelector, e) => {
     viewCartBtns.forEach(elem => {
         if (elem.getAttribute('data-id') === cardId) {
             elem.classList.remove('hidden');
+            elem.addEventListener('click', () => {
+                elem.classList.add('hidden');
+                addToCartBtns.forEach(elem => {
+                    if (elem.getAttribute('data-id') === cardId) {
+                        elem.classList.remove('hidden');
+                    }
+                });
+            })
         }
     });
-
 }
+
 
 export default toggleButton;
