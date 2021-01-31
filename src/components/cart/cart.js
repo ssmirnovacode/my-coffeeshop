@@ -1,9 +1,32 @@
 import React, {Component} from 'react';
 import './cart.scss';
 import {connect} from 'react-redux';
-import {deleteFromCart, toggleCart} from '../../actions/cartAC';
+import {deleteFromCart, toggleCart, plusQty, minusQty} from '../../actions/cartAC';
 
 class Cart extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.changeQtyView = this.changeQtyView.bind(this);
+    }
+
+    changeQtyView = (id) => {
+        const targetItem = this.props.cart.items.filter(item => item.id === id)[0];
+        console.log(targetItem);
+        const oldQty = targetItem.qty;
+        const newQty = document.querySelector('[type="number"]').value;
+
+        if (newQty > oldQty) {
+            this.props.plusQty(id);
+            document.querySelector('[type="number"]').value = targetItem.qty++;
+        }
+        else {
+            this.props.minusQty(id);
+            document.querySelector('[type="number"]').value = targetItem.qty--;
+        }
+        
+    }
 
     render() {
         let total = 0;
@@ -31,9 +54,12 @@ class Cart extends Component {
                                             <div className="modal_cart_item" key={item.id}>
                                                 <div className="modal_cart_item_title">{item.title}</div>
                                                 <div className="modal_cart_item_price">Price: {item.price} $</div>
-                                                <div onClick={() => this.props.deleteFromCart(item.id)} className="modal_cart_item_delete">{/* &times; */} <i className="fa fa-trash-o"></i></div>
+                                                <div onClick={() => this.props.deleteFromCart(item.id)} className="modal_cart_item_delete"><i className="fa fa-trash-o"></i></div>
                                                 <div className="modal_cart_item_img"><img src={item.image} alt={item.title}/></div>                                               
-                                                <div className="modal_cart_item_qty">Quantity: {item.qty}</div>
+                                                <div className="modal_cart_item_qty">Quantity: <input type="number" value={item.qty} onChange={() => {
+                                                    //this.props.plusQty(item.id);
+                                                    this.changeQtyView(item.id)
+                                                    }}/></div>
                                                 
                                             </div>
                                         )
@@ -66,7 +92,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
     toggleCart,
-    deleteFromCart
+    deleteFromCart,
+    plusQty,
+    minusQty
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);

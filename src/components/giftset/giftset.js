@@ -47,13 +47,6 @@ class Giftset extends Component {
         e.target.classList.add('active');
         //console.log(this.state.activeItem); // somehow previous item here but works ok
 
-        /* const giftItem = document.querySelector('.gift-item');
-        console.log(giftItem);
-
-        if (!giftItem.querySelector('.giftset_btn_viewcart').classList.contains('hidden')) {
-            giftItem.querySelector('.giftset_btn_viewcart').classList.add('hidden');
-            giftItem.querySelector('.giftset_btn').classList.remove('hidden');
-        } */
     }
 
     
