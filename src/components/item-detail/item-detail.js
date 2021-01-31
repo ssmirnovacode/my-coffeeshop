@@ -10,7 +10,7 @@ class ItemDetail extends Component {
     render() {
 
         if (this.props.modal.shown) {
-            const {title, price, image, content} = this.props.modal.item;
+            const {title, price, image, content, id} = this.props.modal.item;
             document.body.style.overflow = 'hidden';
             return(
                 <div className="modal_container" onClick={(event) => {
@@ -25,12 +25,12 @@ class ItemDetail extends Component {
                             <div className="modal_title">{title}</div>
                             <div className="modal_price">{price} $</div>  
                             <div className="modal_text">{content}</div>
-                            <button className="modal_btn" 
-                            onClick={() => {                                           
+                            <button className="modal_btn" data-id={id}
+                            onClick={(e) => {                                           
                                 this.props.addToCart(this.props.modal.item);
-                                toggleButton('.modal_btn','.modal_btn_viewcart');
+                                toggleButton('.modal_btn','.modal_btn_viewcart', e);
                                 }}>ADD To CART</button>
-                            <button className="modal_btn_viewcart hidden"
+                            <button className="modal_btn_viewcart hidden" data-id={id}
                             onClick={this.props.toggleCart}>View cart</button>    
                         </div>
                     </div>

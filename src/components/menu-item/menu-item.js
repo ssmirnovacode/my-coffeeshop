@@ -1,29 +1,6 @@
 import React from 'react';
 import './menu-item.scss';
-//import toggleButton from '../../local-functions/toggleButton';
-
-const toggleButton = (addToCartBtnSelector, viewCartBtnSelector, e) => {
-
-        console.log(e.target);
-
-        const cardId = e.target.getAttribute('data-id'); // getting the item.id
-
-        const addToCartBtns = document.querySelectorAll(addToCartBtnSelector),
-            viewCartBtns = document.querySelectorAll(viewCartBtnSelector);
-
-        addToCartBtns.forEach(elem => {
-            if (elem.getAttribute('data-id') === cardId) {
-                elem.classList.add('hidden');
-            }
-        });
-
-        viewCartBtns.forEach(elem => {
-            if (elem.getAttribute('data-id') === cardId) {
-                elem.classList.remove('hidden');
-            }
-        });
-    
-}
+import toggleButton from '../../local-functions/toggleButton';
 
 const MenuItem = ({item, toggleModal, addToCart, toggleCart}) => {
 
