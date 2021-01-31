@@ -56,5 +56,16 @@
     &_btn {
         @include btn;
         margin-top: 5%;
+        &.hidden {
+            display: none;
+        }
+        &_viewcart {
+            @include btn;
+            margin-top: 5%;
+            background-color: $grey;
+            &.hidden {
+                display: none;
+            }
+        }
     }
 }

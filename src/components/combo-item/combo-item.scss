@@ -40,5 +40,15 @@
     }
     &_btn {
         @include btn;
+        &.hidden {
+            display: none;
+        }
+        &_viewcart {
+            @include btn;
+            background-color: $grey;
+            &.hidden {
+                display: none;
+            }
+        }
     }
 }
