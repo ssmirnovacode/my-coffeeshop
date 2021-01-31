@@ -17,13 +17,14 @@ const toggleButton = (addToCartBtnSelector, viewCartBtnSelector, e) => {
         if (elem.getAttribute('data-id') === cardId) {
             elem.classList.remove('hidden');
             elem.addEventListener('click', () => {
-                elem.classList.add('hidden');
-                addToCartBtns.forEach(elem => {
-                    if (elem.getAttribute('data-id') === cardId) {
-                        elem.classList.remove('hidden');
-                    }
+                addToCartBtns.forEach(elem => {                   
+                    elem.classList.remove('hidden');
                 });
+                viewCartBtns.forEach(elem => {                   
+                    elem.classList.add('hidden');
+                });             
             })
+            
         }
     });
 }
