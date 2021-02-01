@@ -1,2 +1,26 @@
 @import '../../variables';
 @import '../item-detail/item-detail.scss';
+
+.modal {
+    &_container {
+        @include modal-container;
+        z-index: 5;
+    }
+    &_dialog {
+        @include modal-dialog;
+    }
+    &_content {
+        @include modal-content;
+    }
+    &_close {
+        @include close;
+    }
+    &_title {
+        @include title;
+        margin-bottom: 2%;
+    }
+    &_btn {
+        @include btn;
+        margin-top: 5%;
+    }
+}

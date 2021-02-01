@@ -2,31 +2,9 @@ import React, {Component} from 'react';
 import './cart.scss';
 import {connect} from 'react-redux';
 import {deleteFromCart, toggleCart, plusQty, minusQty} from '../../actions/cartAC';
+import {toggleOrderForm} from '../../actions/orderAC';
 
 class Cart extends Component {
-
-    constructor(props) {
-        super(props);
-
-        //this.changeQtyView = this.changeQtyView.bind(this);
-    }
-
-    /* changeQtyView = (id) => {
-        const targetItem = this.props.cart.items.find(item => item.id === id);
-        console.log(targetItem);
-        const oldQty = targetItem.qty;
-        const newQty = document.querySelector('[type="number"]').value;
-
-        if (newQty > oldQty) {
-            this.props.plusQty(id);
-            document.querySelector('[type="number"]').value = targetItem.qty++;
-        }
-        else {
-            this.props.minusQty(id);
-            document.querySelector('[type="number"]').value = targetItem.qty--;
-        }
-        
-    } */
 
     render() {
         let total = 0;
@@ -35,7 +13,7 @@ class Cart extends Component {
         })
 
         if (this.props.cart.visible) {
-            //document.body.style.overflow = 'hidden';
+            document.body.style.overflow = 'hidden';
 
             return(
                 <div className="modal_container" onClick={(event) => {
@@ -72,7 +50,10 @@ class Cart extends Component {
                                 }
                             </div>
                             <div className="modal_cart_total">Total: {total} $</div>
-                            <button className="modal_btn" /* onClick={this.props.placeOrder} */>Make your order</button>
+                            <button className="modal_btn" onClick={() => {
+                                this.props.toggleOrderForm();
+                                this.props.toggleCart();
+                                }}>Make your order</button>
                             <div className="modal_cart_continue" onClick={() => this.props.toggleCart()}>Continue shopping</div>
                         </div>
                     </div>
@@ -99,7 +80,8 @@ const mapDispatchToProps = {
     toggleCart,
     deleteFromCart,
     plusQty,
-    minusQty
+    minusQty,
+    toggleOrderForm
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);

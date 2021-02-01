@@ -190,7 +190,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 order: {
-                    ...state.order,
+                    data: state.order.data,
                     shown: !state.order.shown
                 }
             }

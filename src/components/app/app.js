@@ -7,6 +7,7 @@ import Combo from '../combo/combo';
 import Footer from '../footer/footer';
 import ItemDetail from '../item-detail/item-detail';
 import Cart from '../cart/cart';
+//import PlaceOrder from '../place-order/place-order';
 
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
         <>
             <Home/>
             <Cart/>
+            {/* <PlaceOrder/> */}
             <Beverages/>
             <Menu/>
             <Giftset/>
