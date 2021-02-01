@@ -72,7 +72,7 @@ class Cart extends Component {
                                 }
                             </div>
                             <div className="modal_cart_total">Total: {total} $</div>
-                            <button className="modal_btn" /* onClick={this.props.placeOrder} */>Order now</button>
+                            <button className="modal_btn" /* onClick={this.props.placeOrder} */>Make your order</button>
                             <div className="modal_cart_continue" onClick={() => this.props.toggleCart()}>Continue shopping</div>
                         </div>
                     </div>

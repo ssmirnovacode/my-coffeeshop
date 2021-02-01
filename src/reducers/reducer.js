@@ -15,6 +15,10 @@ const initialState = {
     cart: {
         items: [],
         visible: false
+    },
+    order: {
+        clientData: {},
+        shown: false
     }
 }
 
