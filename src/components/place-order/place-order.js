@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './place-order.scss';
 import {connect} from 'react-redux';
+import {toggleOrderForm, clearForm, saveFormData} from '../../actions/orderAC';
 import { Control, Form, Errors} from 'react-redux-form';
 
 class PlaceOrder extends Component {
@@ -21,7 +22,7 @@ class PlaceOrder extends Component {
             <div className="modal_container" > 
                 <div className="modal_dialog">
                     <div className="modal_content">
-                            <div className="modal_close" onClick={() => this.props.toggleModal()}>&times;</div> 
+                            <div className="modal_close" onClick={() => this.props.toggleOrderForm()}>&times;</div> 
                             <div className="modal_title">Please fill in your data</div>
                             <Form model="placeOrder" onSubmit={(values) => this.handleSubmit(values)}>
                                 <Control.text model=".firstname" id="firstname" name ="firstname"  
@@ -41,5 +42,16 @@ class PlaceOrder extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        order: state.cart
+    }
+}
 
-export default PlaceOrder;
+const mapDispatchToProps = {
+    toggleOrderForm,
+    saveFormData,
+    clearForm
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PlaceOrder);

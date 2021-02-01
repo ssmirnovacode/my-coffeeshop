@@ -17,7 +17,7 @@ const initialState = {
         visible: false
     },
     order: {
-        clientData: {},
+        data: {},
         shown: false
     }
 }
@@ -186,6 +186,23 @@ const reducer = (state = initialState, action) => {
                     visible: state.cart.visible
                 }
             }
+        case 'TOGGLE_ORDER_FORM':
+            return {
+                ...state,
+                order: {
+                    ...state.order,
+                    shown: !state.order.shown
+                }
+            }
+        case 'SAVE_FORM_DATA':
+            return {
+                ...state,
+                order: {
+                    data: action.payload,
+                    shown: state.order.shown // make it hide later
+                }
+            }
+
         default:
             return state;		
     }
