@@ -15,7 +15,7 @@ class Giftset extends Component {
 
     constructor(props) {
         super(props);
-        this.showContent = this.showContent.bind(this);
+        this.activateTab = this.activateTab.bind(this);
     }
 
     componentDidMount() {
@@ -28,14 +28,9 @@ class Giftset extends Component {
 
     }
 
-
-    showContent(e) {
-        //const targetItem = this.props.giftset.filter(item => item.id === targetId)[0];
-
-        //styling active tab
+    activateTab(e) {
         e.target.parentNode.childNodes.forEach(item => item.classList.remove('active'));
         e.target.classList.add('active');
-
     }
 
     
@@ -90,9 +85,7 @@ class Giftset extends Component {
                                     <div className="giftset_tabs_item" key={item.id} 
                                         onClick={(e) =>{
                                             this.props.giftsetTabClick(item.id);
-                                            console.log(giftset.activeItemId);
-                                            //console.log(item.id);
-                                            this.showContent(e);
+                                            this.activateTab(e);
                                         }}>{i}</div>
                                 )
                             })
