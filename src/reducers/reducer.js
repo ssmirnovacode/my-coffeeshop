@@ -2,7 +2,10 @@ const initialState = {
     beverages: [],
     combos: [],
     menuItems: [],
-    giftset: [],
+    giftset: {
+        items: [],
+        activeItemId: 7
+    },
     loading: true,
     error: false,
     modal: {
@@ -54,7 +57,10 @@ const reducer = (state = initialState, action) => {
         case 'GIFTSET_LOADED': 
             return {
                 ...state, 
-                giftset: action.payload,
+                giftset: {
+                    items: action.payload,
+                    activeItemId: state.giftset.activeItemId
+                },
                 loading: false
             }
         case 'GIFTSET_REQUESTED': 
@@ -67,7 +73,14 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 error: true
             }
-
+        case 'GIFTSET_TAB_CLICK':
+            return {
+                ...state,
+                giftset: {
+                    ...state.giftset,
+                    activeItemId: action.payload
+                }
+            }
         case 'COMBOS_LOADED': 
             return {
                 ...state, 

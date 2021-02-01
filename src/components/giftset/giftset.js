@@ -3,7 +3,7 @@ import './giftset.scss';
 import Heading from  '../heading/heading';
 import GiftsetItem from '../giftset-item/giftset-item';
 import {connect} from 'react-redux';
-import { giftsetLoaded, giftsetError, giftsetRequested } from '../../actions/giftset';
+import { giftsetLoaded, giftsetError, giftsetRequested, giftsetTabClick } from '../../actions/giftset';
 import {addToCart, toggleCart} from '../../actions/cartAC';
 import {toggleModal} from '../../actions/modal';
 import baseURL from '../../services/baseURL';
@@ -15,15 +15,6 @@ class Giftset extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            activeItem: {
-                "id": 7,
-                "price": "6.00",
-                "title": "Chai with spices",
-                "image": "https://d.radikal.ru/d16/2101/11/a47b4e47661d.png",
-                "content": "Two packs of tea and a mug. Two packs of tea and a mug.Two packs of tea and a mug."
-            }
-        }
         this.showContent = this.showContent.bind(this);
     }
 
@@ -38,14 +29,12 @@ class Giftset extends Component {
     }
 
 
-    showContent(e, targetId) {
-        const targetItem = this.props.giftset.filter(item => item.id === targetId)[0];
-        this.setState({
-            activeItem: targetItem
-        });
+    showContent(e) {
+        //const targetItem = this.props.giftset.filter(item => item.id === targetId)[0];
+
+        //styling active tab
         e.target.parentNode.childNodes.forEach(item => item.classList.remove('active'));
         e.target.classList.add('active');
-        //console.log(this.state.activeItem); // somehow previous item here but works ok
 
     }
 
@@ -70,20 +59,41 @@ class Giftset extends Component {
                 <Heading small={'Best Gift For Best Friend'} big={'GIFTSET'} id="giftset"/>
                 <div className="giftset_container">
                     <div className="bg-giftset"></div>
-                    <GiftsetItem className="gift-item" item={this.state.activeItem} 
-                        toggleModal={this.props.toggleModal}
-                        addToCart={() => this.props.addToCart(this.state.activeItem)}
-                        toggleCart={() => this.props.toggleCart()}/>
+                    {
+                        giftset.items.map(item => {
+
+                            if (item.id === giftset.activeItemId) {
+                                return(
+                                    <GiftsetItem key={item.id} item={item} 
+                                    toggleModal={this.props.toggleModal}
+                                    addToCart={() => this.props.addToCart(item)}
+                                    toggleCart={() => this.props.toggleCart()}/>
+                                )         
+                            }
+                                             
+                        })
+                    }
                     <div className="giftset_tabs">
                         {
-                            this.props.giftset.map((item,i )=> {
-                                if (item.id === this.state.activeItem.id) {
-                                    return(
-                                        <div className="giftset_tabs_item active" key={item.id} onClick={(e,id) =>this.showContent(e, item.id)}>{i}</div>
-                                    ) 
+                            giftset.items.map((item,i )=> {
+
+                                if (giftset.activeItemId === item.id) {
+                                    return (
+                                        <div className="giftset_tabs_item active" key={item.id} 
+                                        onClick={(e) =>{
+                                            this.props.giftsetTabClick(item.id);
+                                            this.showContent(e);
+                                        }}>{i}</div>
+                                    )
                                 }
                                 else return(
-                                    <div className="giftset_tabs_item" key={item.id} onClick={(e,id) =>this.showContent(e, item.id)}>{i}</div>
+                                    <div className="giftset_tabs_item" key={item.id} 
+                                        onClick={(e) =>{
+                                            this.props.giftsetTabClick(item.id);
+                                            console.log(giftset.activeItemId);
+                                            //console.log(item.id);
+                                            this.showContent(e);
+                                        }}>{i}</div>
                                 )
                             })
                         }
@@ -109,6 +119,7 @@ const mapDispatchToProps = {
     giftsetLoaded,
     giftsetRequested,
     giftsetError,
+    giftsetTabClick,
     toggleModal,
     addToCart,
     toggleCart

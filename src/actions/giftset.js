@@ -1,7 +1,7 @@
-const giftsetLoaded = (newItem) => {
+const giftsetLoaded = (newItems) => {
     return {
         type: 'GIFTSET_LOADED',
-        payload: newItem
+        payload: newItems
     };
 };
 
@@ -17,4 +17,11 @@ const giftsetError = () => {
     };
 };
 
-export {giftsetError, giftsetRequested, giftsetLoaded};
+const giftsetTabClick = (itemId) => {
+    return {
+        type: 'GIFTSET_TAB_CLICK',
+        payload: itemId
+    }
+}
+
+export {giftsetError, giftsetRequested, giftsetLoaded, giftsetTabClick};

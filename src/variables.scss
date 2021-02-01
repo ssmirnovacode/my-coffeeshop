@@ -128,6 +128,7 @@ $background: #fcfcfc;
     float: left;
     padding: 7px;
     margin-right: 10%;
+    cursor: pointer;
 }
 
 @mixin item-box {
@@ -139,7 +140,7 @@ $background: #fcfcfc;
 
 .message {
     color: green;
-    text-align: right;
+    text-align: left;
 }
 body {
     background-color: $background;

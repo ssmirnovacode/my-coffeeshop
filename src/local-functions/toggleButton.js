@@ -27,7 +27,7 @@ const toggleButton = (addToCartBtnSelector, viewCartBtnSelector, e) => {
             });
 
             const message = document.createElement('div');
-            message.innerHTML = 'Item added to cart';
+            message.innerHTML = 'Added to cart';
             message.classList.add('message');
             elem.parentNode.appendChild(message);
             
