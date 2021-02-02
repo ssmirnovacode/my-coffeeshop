@@ -3,72 +3,84 @@
 
 .cart {
     &_container {
-        @include modal-container;
-        z-index: 5;
+        color: $dark;
+        font-family: Nunito, sans-serif;
+        font-style: normal;
+        padding: 5%;
+        margin: 2% 10%;
+        //@include item-box;
     }
     &_title {
         @include title;
         margin-bottom: 2%;
+        text-align: center;
     }
-    &_price {
-        @include price;
-    }
+
     &_btn {
         @include btn;
         margin-top: 5%;
+        margin-left: 10%;
     }
-    &_cart {
-        
-        &_continue {
-            padding-top: 7%;;
+    
+    &_continue {
+        padding-top: 5%;;
+        cursor: pointer;
+        text-align: center;
+        font-weight: bold;
+        @include details;
+        & a {
+            text-decoration: none;
+            color: black;
+        }
+    }
+    &_total {
+        font-weight: bold;
+        font-size: 20px;
+        margin-top: 5%;
+        text-align: right;
+        margin-right: 10%;
+    }
+    &_item {
+        margin-bottom: 5%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        justify-items: center;
+        //margin: 0 auto;
+        //grid-template-rows: repeat(auto-fill, 1fr);
+        &_delete {
+            margin-top: 10%;
             cursor: pointer;
-            text-align: center;
-            font-weight: bold;
-        }
-        &_total {
-            font-weight: bold;
-            font-size: 20px;
-            margin-top: 5%;
-            text-align: right;
-        }
-        &_item {
-            margin-bottom: 5%;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            //justify-items: center;
-            margin: 0 auto;
-            //grid-template-rows: repeat(auto-fill, 1fr);
-            &_delete {
-                margin-top: 5%;
-                cursor: pointer;
-                & i {
-                    font-size: 24px;
-                }
-            }
-            &_title {
-                @include title;
-                font-size: 16px;
-            }
-            &_price {
-                padding-top: 5%;
-                padding-bottom: 5%;
-                font-size: 16px;
-                font-weight: 400;
-            }
-            &_qty {
-                font-size: 16px;
-                font-weight: 400;
-            }
-            &_img img{
-                max-width: 100px;
+            & i {
+                font-size: 24px;
             }
         }
-        
+        &_title {
+            @include title;
+            font-size: 16px;
+        }
+        &_price {
+            padding-top: 5%;
+            padding-bottom: 5%;
+            font-size: 16px;
+            font-weight: 400;
+        }
+        &_qty {
+            font-size: 16px;
+            font-weight: 400;
+        }
+        &_img img{
+            max-width: 100px;
+        }
     }
+        
+    
 }
 
 .plus, .minus {
-    margin: 5%;
+    @media only screen and (max-width: 400px) {
+        margin: 5%;
+    }
+    //margin: 1%;
     //width: 20px;
     background-color: $grey;
     color: $light;

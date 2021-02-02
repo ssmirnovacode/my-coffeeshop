@@ -24,7 +24,7 @@ class Cart extends Component {
                                     <div className="cart_item" key={item.id}>
                                         <div className="cart_item_title">{item.title}</div>
                                         <div className="cart_item_price">Price: {item.price} $</div>
-                                        <div onClick={() => this.props.deleteFromCart(item.id)} className="modal_cart_item_delete"><i className="fa fa-trash-o"></i></div>
+                                        <div onClick={() => this.props.deleteFromCart(item.id)} className="cart_item_delete"><i className="fa fa-trash-o"></i></div>
                                         <div className="cart_item_img"><img src={item.image} alt={item.title}/></div>                                               
                                         <div className="cart_item_qty">Quantity: 
                                             <button className="plus" onClick={() => {
@@ -41,9 +41,9 @@ class Cart extends Component {
                             })
                         }
                     </div>
-                    <div className="modal_cart_total">Total: {total} $</div>
-                    <button className="modal_btn" onClick={() => this.props.toggleOrderForm()}>Make your order</button>
-                    <div className="modal_cart_continue"><Link to={`${basePath}/menu`}>Continue shopping</Link></div>
+                    <div className="cart_total">Total: {total} $</div>
+                    <button className="cart_btn" onClick={() => this.props.toggleOrderForm()}>Make your order</button>
+                    <div className="cart_continue"><Link to={`${basePath}/menu`}>Continue shopping</Link></div>
 
                 </div>
             )

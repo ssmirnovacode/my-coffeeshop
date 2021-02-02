@@ -28,7 +28,7 @@ class Home extends Component {
                 <div className="right block">
                     <div className="cart" >
                         <Link to={`${basePath}/cart`}><img className="cart_image" src={cartIcon} alt="cart"/></Link>
-                        <div className="cart_total">Total: {total} $</div>
+                        <div className="cart__total">Total: {total} $</div>
                     </div>
                     <div className="navigation">
                         <Navigation/>
