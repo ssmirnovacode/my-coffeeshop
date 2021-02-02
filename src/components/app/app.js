@@ -14,14 +14,12 @@ const App = () => {
 
     return (
         <Router>        
-            <Home/>
-            <Switch>
+            <Home/>           
             <Route path={`${basePath}/beverages`} component={Beverages}/>
             <Route path={`${basePath}/menu`} component={(Menu)}/>
             <Route path={`${basePath}/giftset`} component={Giftset}/>
-            <Route path={`${basePath}/combo`} component={Combo}/>   
-            </Switch>                             
-            <Cart/>
+            <Route path={`${basePath}/combo`} component={Combo}/>                                          
+            <Route path={`${basePath}/cart`} component={Cart}/>
             <ItemDetail/>
             <Footer/>
         </Router>

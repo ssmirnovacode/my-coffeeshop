@@ -11,10 +11,6 @@ class Cart extends Component {
         this.props.cart.items.forEach(item => {
             total += item.price * item.qty;
         })
-
-        if (this.props.cart.visible) {
-            document.body.style.overflow = 'hidden';
-
             return(
                 <div className="modal_container" onClick={(event) => {
                                                         if (event.target.classList.contains('modal_container')) {
@@ -59,15 +55,8 @@ class Cart extends Component {
                     </div>
                 </div>
             )
-        }
-
-        else {
-            document.body.style.overflow = '';
-            return null;
-        }
-        
-    }
-    
+               
+    }   
 }
 
 const mapStateToProps = (state) => {

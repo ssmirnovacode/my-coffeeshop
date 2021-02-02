@@ -4,6 +4,8 @@ import Navigation from '../navigation/navigation';
 import cartIcon from '../../img/shopping-cart-solid.svg';
 import {connect} from 'react-redux';
 import {toggleCart} from '../../actions/cartAC';
+import {Link} from 'react-router-dom';
+import basePath from '../../services/basePath';
 
 class Home extends Component {
     
@@ -25,7 +27,7 @@ class Home extends Component {
     
                 <div className="right block">
                     <div className="cart" >
-                        <img className="cart_image" src={cartIcon} alt="cart" onClick={this.props.toggleCart}></img>
+                        <Link to={`${basePath}/cart`}><img className="cart_image" src={cartIcon} alt="cart"/></Link>
                         <div className="cart_total">Total: {total} $</div>
                     </div>
                     <div className="navigation">
