@@ -7,18 +7,22 @@ import Combo from '../combo/combo';
 import Footer from '../footer/footer';
 import ItemDetail from '../item-detail/item-detail';
 import Cart from '../cart/cart';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import basePath from '../../services/basePath';
 
 const App = () => {
+
     return (
         <Router>        
-            <Route path="/" component={Home}/>
-            <Route path="/beverages" component={Beverages}/>
-            <Route path="/menu" component={Menu}/>
-            <Route path="/giftset" component={Giftset}/>
-            <Route path="/combo" component={Combo}/>                                
-{/*             <Cart/>
-            <ItemDetail/> */}
+            <Home/>
+            <Switch>
+            <Route path={`${basePath}/beverages`} component={Beverages}/>
+            <Route path={`${basePath}/menu`} component={(Menu)}/>
+            <Route path={`${basePath}/giftset`} component={Giftset}/>
+            <Route path={`${basePath}/combo`} component={Combo}/>   
+            </Switch>                             
+            <Cart/>
+            <ItemDetail/>
             <Footer/>
         </Router>
     )
