@@ -7,23 +7,20 @@ import Combo from '../combo/combo';
 import Footer from '../footer/footer';
 import ItemDetail from '../item-detail/item-detail';
 import Cart from '../cart/cart';
-//import PlaceOrder from '../place-order/place-order';
-
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 const App = () => {
-
     return (
-        <>
-            <Home/>
-            <Cart/>
-            {/* <PlaceOrder/> */}
-            <Beverages/>
-            <Menu/>
-            <Giftset/>
-            <Combo/>
-            <ItemDetail/>
+        <Router>        
+            <Route path="/" component={Home}/>
+            <Route path="/beverages" component={Beverages}/>
+            <Route path="/menu" component={Menu}/>
+            <Route path="/giftset" component={Giftset}/>
+            <Route path="/combo" component={Combo}/>                                
+{/*             <Cart/>
+            <ItemDetail/> */}
             <Footer/>
-        </>
+        </Router>
     )
 }
 
