@@ -1,8 +1,10 @@
 import React from 'react';
 import './menu-item.scss';
 import toggleButton from '../../local-functions/toggleButton';
+import {Link} from 'react-router-dom';
+import basePath from '../../services/basePath';
 
-const MenuItem = ({item, toggleModal, addToCart, toggleCart}) => {
+const MenuItem = ({item, toggleModal, addToCart}) => {
 
     const {image, price, title, content, id} = item;
     return (
@@ -17,7 +19,9 @@ const MenuItem = ({item, toggleModal, addToCart, toggleCart}) => {
                 addToCart();
                 toggleButton('.menu-item_btn', '.menu-item_btn_viewcart', e);
                 }}>ADD To CART</button>
-            <button className="menu-item_btn_viewcart hidden" data-id={id} onClick={toggleCart}>View cart</button>
+            <button className="menu-item_btn_viewcart hidden" data-id={id}>
+                <Link to={`${basePath}/cart`}>View cart</Link>
+            </button>
             <div className="menu-item_details" onClick={() => toggleModal(item)}>Details</div>
         </div>
     )

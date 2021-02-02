@@ -20,6 +20,7 @@ const App = () => {
             <Route path={`${basePath}/giftset`} component={Giftset}/>
             <Route path={`${basePath}/combo`} component={Combo}/>                                          
             <Route path={`${basePath}/cart`} component={Cart}/>
+            {/* <Route path={`${basePath}/item-detail`} component={ItemDetail}/> */}
             <ItemDetail/>
             <Footer/>
         </Router>

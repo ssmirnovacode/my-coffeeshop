@@ -31,11 +31,7 @@
             display: none;
         }
         &_viewcart {
-            @include btn;
-            background-color: $grey;
-            &.hidden {
-                display: none;
-            }
+            @include btn-viewCart;
         }
     }
 }

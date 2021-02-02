@@ -1,8 +1,10 @@
 import React from 'react';
 import './giftset-item.scss';
 import toggleButton from '../../local-functions/toggleButton';
+import {Link} from 'react-router-dom';
+import basePath from '../../services/basePath';
 
-const GiftsetItem = ({item, toggleModal, addToCart, toggleCart}) => {
+const GiftsetItem = ({item, toggleModal, addToCart}) => {
 
     const {title, image, price, content, id} = item;
 
@@ -18,7 +20,7 @@ const GiftsetItem = ({item, toggleModal, addToCart, toggleCart}) => {
                         addToCart();
                         toggleButton('.giftset_btn', '.giftset_btn_viewcart', e);            
                     }}>ADD To CART</button>
-                    <button className="giftset_btn_viewcart hidden" data-id={id} onClick={toggleCart}>View cart</button>
+                    <button className="giftset_btn_viewcart hidden" data-id={id}><Link to={`${basePath}/cart`}>View cart</Link></button>
                     <div className="giftset_details" onClick={() => toggleModal(item)}>Details</div>
             </div>
         </div>

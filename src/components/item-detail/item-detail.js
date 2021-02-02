@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 import {toggleModal} from '../../actions/modal';
 import {addToCart, toggleCart} from '../../actions/cartAC';
 import toggleButton from '../../local-functions/toggleButton';
+import {Link} from 'react-router-dom';
+import basePath from '../../services/basePath';
 
 class ItemDetail extends Component {
 
@@ -30,8 +32,9 @@ class ItemDetail extends Component {
                                 this.props.addToCart(this.props.modal.item);
                                 toggleButton('.modal_btn','.modal_btn_viewcart', e);
                                 }}>ADD To CART</button>
-                            <button className="modal_btn_viewcart hidden" data-id={id}
-                            onClick={this.props.toggleCart}>View cart</button>    
+                            <button className="modal_btn_viewcart hidden" data-id={id}>
+                                <Link to={`${basePath}/cart`}>View cart</Link>
+                            </button>    
                         </div>
                     </div>
                 </div>
