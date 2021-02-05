@@ -1,31 +1,28 @@
 @import '../../variables';
 
-.modal {
+.item-detail {
     &_container {
-        @include modal-container;
+        color: $dark;
+        font-family: Nunito, sans-serif;
+        font-style: normal;
+        display: grid;
+        grid-template-columns: 4fr 8fr;
+        padding: 5%;
+        margin: 5% 10%;
+        @include item-box;
     }
     &_img img{
-        @include img;
-    }
-    &_dialog {
-        @include modal-dialog;
-        
-    }
-    &_content {
-        @include modal-content;
-        @media only screen and (max-width: 675px) {
-            max-width: 245px;
-        }
-    }
-    &_close {
-        @include close;
+        max-width: 150px;
     }
     &_title {
         @include title;
+        margin-bottom: 5%;
     }
     &_price {
-        @include price;
-        
+        @include price;     
+    }
+    &_text {
+        margin-top: 0;
     }
     &_btn {
         @include btn;

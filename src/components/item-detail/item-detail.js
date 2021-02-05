@@ -1,62 +1,55 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './item-detail.scss';
 import {connect} from 'react-redux';
-import {toggleModal} from '../../actions/modal';
-import {addToCart, toggleCart} from '../../actions/cartAC';
+import {addToCart} from '../../actions/cartAC';
 import toggleButton from '../../local-functions/toggleButton';
 import {Link} from 'react-router-dom';
 import basePath from '../../services/basePath';
 
-class ItemDetail extends Component {
+const ItemDetail = (props) => {
+    const {itemId} = props;
+    const allItems = [...props.menuItems, ...props.combos, ...props.giftset.items]; // 2 из 3 массивов не загрузятся, но нужный будет
+    //console.log(allItems); // ok
+    //console.log(itemId); // ok
+    const item = allItems.filter(item => item.id == itemId)[0];
+    //console.log(item); 
+    const {id, image, title, price, content} = item;
 
-    render() {
+    return(
+        <div className="item-detail_container" > 
+        
+            <div className="item-detail_img"><img src={image} alt={title}/></div>
+            
+            <div className="item-detail_content">
+                <div className="item-detail_title">{title}</div>
+                <div className="item-detail_price">{price} $</div>  
+                <div className="item-detail_text">{content}</div>
+            </div>
 
-        if (this.props.modal.shown) {
-            const {title, price, image, content, id} = this.props.modal.item;
-            document.body.style.overflow = 'hidden';
-            return(
-                <div className="modal_container" onClick={(event) => {
-                                                    if (event.target.classList.contains('modal_container')) {
-                                                        return this.props.toggleModal(); 
-                                                        }    
-                                                    }}> 
-                    <div className="modal_dialog">
-                        <div className="modal_content">
-                            <div className="modal_close" onClick={() => this.props.toggleModal()}>&times;</div> 
-                            <div className="modal_img"><img src={image} alt={title}/></div>
-                            <div className="modal_title">{title}</div>
-                            <div className="modal_price">{price} $</div>  
-                            <div className="modal_text">{content}</div>
-                            <button className="modal_btn" data-id={id}
-                            onClick={(e) => {                                           
-                                this.props.addToCart(this.props.modal.item);
-                                toggleButton('.modal_btn','.modal_btn_viewcart', e);
-                                }}>ADD To CART</button>
-                            <button className="modal_btn_viewcart hidden" data-id={id}>
-                                <Link to={`${basePath}/cart`}>View cart</Link>
-                            </button>    
-                        </div>
-                    </div>
-                </div>
-            )
-        }
-        else {
-            document.body.style.overflow = '';
-            return (<div className="hidden"></div>); //change to 'null'
-        }
-    } 
+            <button className="item-detail_btn" data-id={id}
+            onClick={(e) => {                                           
+                props.addToCart(item);
+                toggleButton('.item-detail_btn','.item-detail_btn_viewcart', e);
+                }}>ADD To CART</button>
+            <button className="item-detail_btn_viewcart hidden" data-id={id}>
+                <Link to={`${basePath}/cart`}>View cart</Link>
+            </button>    
+                           
+        </div>
+    )
+    
 }
 
 const mapStateToProps = (state) => {
     return {
-        modal: state.modal
+        menuItems: state.menuItems,
+        combos: state.combos,
+        giftset: state.giftset
     }
 }
 
 const mapDispatchToProps = {
-    toggleModal,
-    addToCart,
-    toggleCart
+    addToCart
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ItemDetail);

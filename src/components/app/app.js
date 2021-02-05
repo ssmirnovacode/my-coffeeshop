@@ -7,7 +7,7 @@ import Combo from '../combo/combo';
 import Footer from '../footer/footer';
 import ItemDetail from '../item-detail/item-detail';
 import Cart from '../cart/cart';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route } from 'react-router-dom';
 import basePath from '../../services/basePath';
 
 const App = () => {
@@ -20,8 +20,11 @@ const App = () => {
             <Route path={`${basePath}/giftset`} component={Giftset}/>
             <Route path={`${basePath}/combo`} component={Combo}/>                                          
             <Route path={`${basePath}/cart`} component={Cart}/>
-            {/* <Route path={`${basePath}/item-detail`} component={ItemDetail}/> */}
-            <ItemDetail/>
+            <Route path={`${basePath}/item-detail/:id`} render={ ({match}) => {
+                const {id} = match.params;
+                return <ItemDetail itemId={id}/>
+            }}/>
+            
             <Footer/>
         </Router>
     )
