@@ -43,7 +43,7 @@ class Cart extends Component {
                     </div>
                     <div className="cart_total">Total: {total} $</div>
                     <button className="cart_btn" onClick={() => this.props.toggleOrderForm()}>Make your order</button>
-                    <div className="cart_continue"><Link to={`${basePath}/menu`}>Continue shopping</Link></div>
+                    <div className="cart_continue"><Link to={`${basePath}/`}>Continue shopping</Link></div>
 
                 </div>
             )

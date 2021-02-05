@@ -1,0 +1,9 @@
+@import '../../variables';
+
+.app_container {
+    margin: 0 10%; // не работает. Почему?
+    @media only screen and (max-width: 1600px) {
+        margin: 0;
+    }
+    
+}

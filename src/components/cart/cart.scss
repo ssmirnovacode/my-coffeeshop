@@ -8,7 +8,7 @@
         font-style: normal;
         padding: 5%;
         margin: 2% 10%;
-        //@include item-box;
+        @include item-box;
     }
     &_title {
         @include title;
