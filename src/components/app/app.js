@@ -1,5 +1,6 @@
 import React from 'react';
 import Home from '../home/home';
+import HomePage from '../pages/homePage';
 import Beverages from '../beverages/beverages';
 import Menu from '../menu/menu';
 import Giftset from '../giftset/giftset';
@@ -14,11 +15,12 @@ const App = () => {
 
     return (
         <Router>        
-            <Home/>           
-            <Route path={`${basePath}/beverages`} component={Beverages}/>
+            <Home/>  
+            <Route path={`${basePath}/`} exact component={HomePage}/>        
+            {/* <Route path={`${basePath}/beverages`} component={Beverages}/>
             <Route path={`${basePath}/menu`} component={(Menu)}/>
             <Route path={`${basePath}/giftset`} component={Giftset}/>
-            <Route path={`${basePath}/combo`} component={Combo}/>                                          
+            <Route path={`${basePath}/combo`} component={Combo}/>   */}                                        
             <Route path={`${basePath}/cart`} component={Cart}/>
             <Route path={`${basePath}/item-detail/:id`} render={ ({match}) => {
                 const {id} = match.params;

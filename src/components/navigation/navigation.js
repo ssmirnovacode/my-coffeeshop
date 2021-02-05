@@ -24,17 +24,17 @@ class Navigation extends Component {
                 </div>
                 <ul className="nav_menu">
                     <li><Link to={`${basePath}/`}><span>MY COFFEESHOP</span></Link></li>
-                    <li><Link to={`${basePath}/beverages`}>OUR BEVERAGES</Link></li>
-                    <li><Link to={`${basePath}/menu`}>CHOOSE YOUR DRINK</Link></li>
-                    <li><Link to={`${basePath}/giftset`}>GIFTSET</Link></li>
-                    <li><Link to={`${basePath}/combo`}>OUR COMBOS</Link></li>
+                    <li><a href="#beverages">OUR BEVERAGES</a></li>
+                    <li><a href="#menu">CHOOSE YOUR DRINK</a></li>
+                    <li><a href="#giftset">GIFTSET</a></li>
+                    <li><a href="#combo">OUR COMBOS</a></li>
                 </ul>
                 <ul className="nav_menu_sidebar">
                     <li><Link to={`${basePath}/`}><span>MY COFFEESHOP</span></Link></li>
-                    <li><Link to={`${basePath}/beverages`}>OUR BEVERAGES</Link></li>
-                    <li><Link to={`${basePath}/menu`}>CHOOSE YOUR DRINK</Link></li>
-                    <li><Link to={`${basePath}/giftset`}>GIFTSET</Link></li>
-                    <li><Link to={`${basePath}/combo`}>OUR COMBOS</Link></li>
+                    <li><a href="#beverages">OUR BEVERAGES</a></li>
+                    <li><a href="#menu">CHOOSE YOUR DRINK</a></li>
+                    <li><a href="#giftset">GIFTSET</a></li>
+                    <li><a href="#combo">OUR COMBOS</a></li>
                 </ul>
             </nav>
         )
