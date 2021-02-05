@@ -8,10 +8,6 @@ const initialState = {
     },
     loading: true,
     error: false,
-    modal: {
-        shown: false,
-        item: null
-    },
     cart: {
         items: [],
         visible: false
@@ -101,26 +97,6 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 error: true
             }
-        case 'TOGGLE_MODAL': 
-            return {
-                ...state,
-                modal: {
-                    shown: !state.modal.shown,
-                    item: action.payload
-                }
-            } 
-        case 'TOGGLE_CART': 
-            return {
-                ...state,
-                modal: {
-                    shown: false,
-                    item: state.modal.item
-                },
-                cart: {
-                    visible: !state.cart.visible,
-                    items: state.cart.items
-                }
-            } 
         case 'ADD_TO_CART':
             const itemToAdd = action.payload;
             itemToAdd.qty = 1;
@@ -184,14 +160,6 @@ const reducer = (state = initialState, action) => {
                         ...state.cart.items.slice(itemIndex+1)
                     ],
                     visible: state.cart.visible
-                }
-            }
-        case 'TOGGLE_ORDER_FORM':
-            return {
-                ...state,
-                order: {
-                    data: state.order.data,
-                    shown: !state.order.shown
                 }
             }
         case 'SAVE_FORM_DATA':

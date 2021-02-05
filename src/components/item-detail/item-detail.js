@@ -31,9 +31,9 @@ const ItemDetail = (props) => {
                 props.addToCart(item);
                 toggleButton('.item-detail_btn','.item-detail_btn_viewcart', e);
                 }}>ADD To CART</button>
-            <button className="item-detail_btn_viewcart hidden" data-id={id}>
-                <Link to={`${basePath}/cart`}>View cart</Link>
-            </button>    
+
+                <Link to={`${basePath}/cart`}  className="item-detail_btn_viewcart hidden" data-id={id}>View cart</Link>
+   
                            
         </div>
     )

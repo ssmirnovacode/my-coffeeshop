@@ -1,6 +1,6 @@
 const toggleButton = (addToCartBtnSelector, viewCartBtnSelector, e) => {
 
-    console.log(e.target);
+    //console.log(e.target);
 
     const cardId = e.target.getAttribute('data-id'); 
 
@@ -31,7 +31,7 @@ const toggleButton = (addToCartBtnSelector, viewCartBtnSelector, e) => {
             message.classList.add('message');
             elem.parentNode.appendChild(message);
             
-            const messageTimerId = setTimeout( () => {
+            setTimeout( () => {
                 message.remove();
             }, 1500)
         }

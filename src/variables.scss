@@ -135,12 +135,12 @@ $background: #fcfcfc;
     @include btn;
     //margin-top: 5%;
     background-color: $grey;
+    text-decoration: none;
+    color: $light;
+    display: block;
+    text-align: center;
     &.hidden {
         display: none;
-    }
-    & a {
-        text-decoration: none;
-        color: $light;
     }
 }
 

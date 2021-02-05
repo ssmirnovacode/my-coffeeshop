@@ -4,8 +4,7 @@ import Heading from  '../heading/heading';
 import GiftsetItem from '../giftset-item/giftset-item';
 import {connect} from 'react-redux';
 import { giftsetLoaded, giftsetError, giftsetRequested, giftsetTabClick } from '../../actions/giftset';
-import {addToCart, toggleCart} from '../../actions/cartAC';
-import {toggleModal} from '../../actions/modal';
+import {addToCart} from '../../actions/cartAC';
 import baseURL from '../../services/baseURL';
 import RequestService from '../../services/requestService';
 import Loading from '../loading/loading';
@@ -59,10 +58,7 @@ class Giftset extends Component {
 
                             if (item.id === giftset.activeItemId) {
                                 return(
-                                    <GiftsetItem key={item.id} item={item} 
-                                    toggleModal={this.props.toggleModal}
-                                    addToCart={() => this.props.addToCart(item)}
-                                    toggleCart={() => this.props.toggleCart()}/>
+                                    <GiftsetItem key={item.id} item={item} addToCart={() => this.props.addToCart(item)}/>
                                 )         
                             }
                                              
@@ -113,9 +109,7 @@ const mapDispatchToProps = {
     giftsetRequested,
     giftsetError,
     giftsetTabClick,
-    toggleModal,
-    addToCart,
-    toggleCart
+    addToCart
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Giftset);

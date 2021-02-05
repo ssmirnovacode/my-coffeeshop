@@ -4,8 +4,7 @@ import Heading from '../heading/heading';
 import MenuItem from '../menu-item/menu-item';
 import {connect} from 'react-redux';
 import { menuItemsLoaded, menuItemsError, menuItemsRequested } from '../../actions/menu-itemsAC';
-import {addToCart, deleteFromCart, toggleCart} from '../../actions/cartAC';
-import {toggleModal} from '../../actions/modal';
+import {addToCart, deleteFromCart} from '../../actions/cartAC';
 import baseURL from '../../services/baseURL';
 import RequestService from '../../services/requestService';
 import Loading from '../loading/loading';
@@ -47,8 +46,7 @@ class Menu extends Component {
                     {
                         menuItems.map(item => {
                             return (
-                                <MenuItem key={item.id} item={item} toggleModal={this.props.toggleModal} 
-                                addToCart={() => this.props.addToCart(item)} toggleCart={() => this.props.toggleCart()}/>
+                                <MenuItem key={item.id} item={item} addToCart={() => this.props.addToCart(item)}/>
                             )
                         })
                     }
@@ -71,10 +69,8 @@ const mapDispatchToProps = {
     menuItemsLoaded,
     menuItemsRequested,
     menuItemsError,
-    toggleModal,
     addToCart,
-    deleteFromCart,
-    toggleCart
+    deleteFromCart
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Menu);
