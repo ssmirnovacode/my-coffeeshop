@@ -4,14 +4,16 @@ import toggleButton from '../../local-functions/toggleButton';
 import {Link} from 'react-router-dom';
 import basePath from '../../services/basePath';
 
-const ComboItem = ({item, toggleModal, addToCart}) => {
+const ComboItem = ({item, addToCart}) => {
 
     const {title, image, price, content, id} = item;
 
     return (
         <div className="combo-item_container">
             <div className="combo-item_img">
-               <img src={image} alt={title} onClick={() => toggleModal(item)}/> 
+                <Link to={`${basePath}/item-detail/:${id}`}>
+                    <img src={image} alt={title}/> 
+                </Link>
             </div>
             <div className="combo-item_price">{price} $<span>6.00 $</span></div>  {/* Add old prices to db.json */}
             <div className="combo-item_title">{title}</div>
@@ -23,7 +25,7 @@ const ComboItem = ({item, toggleModal, addToCart}) => {
             <button className="combo-item_btn_viewcart hidden" data-id={id}>
                 <Link to={`${basePath}/cart`}>View cart</Link>
             </button>
-            <div className="combo-item_details"  onClick={() => toggleModal(item)}>Details</div>
+            <div className="combo-item_details"><Link to={`${basePath}/item-detail/${id}`}>Details</Link></div>
         </div>
     )
 }

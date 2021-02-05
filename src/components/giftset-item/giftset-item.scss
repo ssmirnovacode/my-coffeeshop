@@ -49,10 +49,10 @@
         @include content;
         margin: 7% 2% 2% auto;
     }
-    &_details {
+    &_details a {
         @include details;
         margin-left: 5%;
-        margin-top: 10%;
+        //margin-top: 10%;
     }
     &_btn {
         @include btn;

@@ -34,7 +34,7 @@
         @include content;
         margin: 10% auto;
     }
-    &_details {
+    &_details a {
         @include details;
         //margin-left: 10%;
 

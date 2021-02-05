@@ -22,7 +22,7 @@
         @include content;
         margin: 7% auto;
     }
-    &_details {
+    &_details a {
         @include details;
     }
     &_btn {

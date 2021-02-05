@@ -4,13 +4,17 @@ import toggleButton from '../../local-functions/toggleButton';
 import {Link} from 'react-router-dom';
 import basePath from '../../services/basePath';
 
-const GiftsetItem = ({item, toggleModal, addToCart}) => {
+const GiftsetItem = ({item, addToCart}) => {
 
     const {title, image, price, content, id} = item;
 
     return(
         <div className="giftset_item">
-            <div className="giftset_img"><img src={image} alt={title} onClick={() => toggleModal(item)}/></div>
+            <div className="giftset_img">
+                <Link to={`${basePath}/item-detail/:${id}`}>
+                    <img src={image} alt={title}/> 
+                </Link>
+            </div>
             <div className="giftset_content">
                 
                     <div className="giftset_price">{price} $</div>
@@ -21,7 +25,7 @@ const GiftsetItem = ({item, toggleModal, addToCart}) => {
                         toggleButton('.giftset_btn', '.giftset_btn_viewcart', e);            
                     }}>ADD To CART</button>
                     <button className="giftset_btn_viewcart hidden" data-id={id}><Link to={`${basePath}/cart`}>View cart</Link></button>
-                    <div className="giftset_details" onClick={() => toggleModal(item)}>Details</div>
+                    <div className="giftset_details"><Link to={`${basePath}/item-detail/${id}`}>Details</Link></div>
             </div>
         </div>
     )
