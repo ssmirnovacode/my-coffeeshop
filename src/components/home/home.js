@@ -3,15 +3,15 @@ import './home.scss';
 import Navigation from '../navigation/navigation';
 import cartIcon from '../../img/shopping-cart-solid.svg';
 import {connect} from 'react-redux';
-import {toggleCart} from '../../actions/cartAC';
 import {Link} from 'react-router-dom';
 import basePath from '../../services/basePath';
+import {addToCart} from '../../actions/cartAC'; // to be deleted
 
 class Home extends Component {
     
     render() {
         let total = 0;
-        this.props.cart.items.forEach(item => {
+        this.props.cart.forEach(item => {
             total += item.price * item.qty;
         })
 
@@ -47,7 +47,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    toggleCart
+    addToCart // to be deleted
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

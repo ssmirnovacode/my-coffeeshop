@@ -10,7 +10,7 @@ class Cart extends Component {
 
     render() {
         let total = 0;
-        this.props.cart.items.forEach(item => {
+        this.props.cart.forEach(item => {
             total += item.price * item.qty;
         })
             return(
@@ -19,7 +19,7 @@ class Cart extends Component {
                     <div className="cart_title">Items in your cart:</div>
                     <div className="cart_list">
                         {
-                            this.props.cart.items.map(item => {
+                            this.props.cart.map(item => {
                                 return(
                                     <div className="cart_item" key={item.id}>
                                         <div className="cart_item_title">{item.title}</div>
