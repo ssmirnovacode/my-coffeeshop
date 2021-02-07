@@ -21,7 +21,7 @@ const PlaceOrder = (props) => {
             console.log(data);
             resetForm();
             props.clearCart();
-            
+            props.history.push(`${basePath}/thank-you`);
         },
       });
 

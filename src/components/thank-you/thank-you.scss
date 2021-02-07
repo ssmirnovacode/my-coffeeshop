@@ -1,0 +1,34 @@
+@import '../../variables';
+
+.thank-you {
+    &_container {
+        font-family: Nunito, sans-serif;
+        background-color: $background;
+        color: $grey;
+        @include item-box;
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto;
+        margin-bottom: 5%;
+        margin-top: 5%;
+    }
+    &_title {
+        @include title;
+        padding-top: 5%;
+
+    }
+    &_text {
+        padding: 0 5%;
+    }
+    &_back {
+        cursor: pointer;
+        text-align: right;
+        font-weight: bold;
+        padding: 0 5% 10% 0;
+        @include details;
+        & a {
+            text-decoration: none;
+            color: black;
+        }
+    }
+}
