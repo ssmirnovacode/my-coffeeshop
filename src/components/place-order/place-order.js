@@ -11,12 +11,11 @@ class PlaceOrder extends Component {
         super(props);
 
         this.handleSubmit = this.handleSubmit.bind(this);
-    }
+    };
 
-    handleSubmit = (values) => {
-        console.log(values);
-        //post request
-        //clear form
+    handleSubmit = (e) => {
+        e.preventDefault();
+    
     }
 
     render() {
@@ -26,26 +25,30 @@ class PlaceOrder extends Component {
                     
                             <div className="order_title">Please fill in your data</div>
 
-                            <form onSubmit={(values) => this.handleSubmit(values)}>
+                            <form id="form" onSubmit={(e) => this.handleSubmit(e)}>
                                 <div className="order_form-field">
-                                    <label for="firstname">First name: </label>
+                                    <label>First name: 
                                     <input type="text" id="firstname" name ="firstname"  
                                         placeholder="First Name" />
+                                    </label>
                                 </div>
                                 <div className="order_form-field">
-                                    <label for="lastname">Last name: </label>
+                                    <label>Last name: 
                                     <input type="text" id="lastname" name ="lastname"  
                                         placeholder="Last Name" />
+                                    </label>
                                 </div>
                                 <div className="order_form-field">
-                                    <label for="tel">Phone number: </label>
+                                    <label>Phone number: 
                                     <input type="text" id="tel" name ="tel"  
                                         placeholder="Phone number" />
+                                    </label>
                                 </div>
                                 <div className="order_form-field">
-                                    <label for="email">Email: </label>
+                                    <label>Email: 
                                     <input type="email" id="email" name ="email" 
                                         placeholder="Email" />  
+                                    </label>
                                 </div>
 
                                 <p className="order_instructions">
