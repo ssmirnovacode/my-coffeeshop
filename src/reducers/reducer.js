@@ -143,8 +143,9 @@ const reducer = (state = initialState, action) => {
                 cart: {
                     items: state.cart.items.map(item =>
                         item.id === action.payload ? 
-                        {...item, qty: item.qty - 1}
-                          : item
+                        {...item, 
+                            qty: item.qty !== 1 ? item.qty -1 : 1}
+                            : item,                       
                       ),
                       visible: state.cart.visible
                 }
