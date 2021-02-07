@@ -4,7 +4,7 @@ import Heading from '../heading/heading';
 import MenuItem from '../menu-item/menu-item';
 import {connect} from 'react-redux';
 import { menuItemsLoaded, menuItemsError, menuItemsRequested } from '../../actions/menu-itemsAC';
-import {addToCart, deleteFromCart} from '../../actions/cartAC';
+import {addToCart} from '../../actions/cartAC';
 import baseURL from '../../services/baseURL';
 import RequestService from '../../services/requestService';
 import Loading from '../loading/loading';
@@ -69,8 +69,7 @@ const mapDispatchToProps = {
     menuItemsLoaded,
     menuItemsRequested,
     menuItemsError,
-    addToCart,
-    deleteFromCart
+    addToCart
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Menu);
