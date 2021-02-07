@@ -15,7 +15,7 @@ class Home extends Component {
         })
 
         return (
-            <div className="home_container">
+            <div className="home_container" id="home">
                 <div className="left block">
                     <div className="moto">YOUR <span>PERSONALIZED</span> COFFEE</div>
                 </div>
@@ -31,6 +31,10 @@ class Home extends Component {
                     </div>
                     <div className="navigation">
                         <Navigation/>
+                    </div>
+                    <div className="up">
+                        <a href="#home">&uarr;</a>
+                        
                     </div>
                 </div>
     

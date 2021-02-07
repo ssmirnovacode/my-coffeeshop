@@ -80,3 +80,20 @@
     }
     z-index: 3;
 }
+
+.up {
+    width: 30px;
+    height: 40px;
+    position: fixed;
+    bottom: 5%;
+    right: 1%;
+    border-radius: 3px;
+    background-color: $grey;
+    text-align: center;
+    font-size: 150%;   
+    border: 1px solid $light;
+    & a {
+        text-decoration: none;
+        color: $light;
+    }
+}
