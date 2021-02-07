@@ -129,6 +129,8 @@ $background: #fcfcfc;
     padding: 7px;
     margin-right: 10%;
     cursor: pointer;
+    border: none;
+    box-shadow: 3px 3px 10px 3px rgb(119, 118, 118)
 }
 
 @mixin btn-viewCart {
