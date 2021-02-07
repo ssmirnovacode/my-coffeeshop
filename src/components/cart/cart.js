@@ -2,7 +2,6 @@ import React from 'react';
 import './cart.scss';
 import {connect} from 'react-redux';
 import {deleteFromCart, plusQty, minusQty} from '../../actions/cartAC';
-import {toggleOrderForm} from '../../actions/orderAC';
 import {Link} from 'react-router-dom';
 import basePath from '../../services/basePath';
 
@@ -26,8 +25,8 @@ const Cart = (props) => {
                                         <div className="cart_item_price">Price: {item.price} $</div>
                                         <div onClick={() => props.deleteFromCart(item.id)} className="cart_item_delete"><i className="fa fa-trash-o"></i></div>
                                         <div className="cart_item_img"><img src={item.image} alt={item.title}/></div>                                               
-                                        <div className="cart_item_qty">Quantity: 
-                                            <button className="minus" onClick={()=> props.minusQty(item.id)}> - </button>
+                                        <div className="cart_item_qty">Quantity: <br/>
+                                            <button className="minus" onClick={()=> props.minusQty(item.id)}>  -  </button>
                                                 {item.qty} 
                                             <button className="plus" onClick={() => props.plusQty(item.id)}> + </button>
                                         </div>
@@ -57,8 +56,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
     deleteFromCart,
     plusQty,
-    minusQty,
-    toggleOrderForm
+    minusQty
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);

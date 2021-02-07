@@ -40,7 +40,7 @@ class Menu extends Component {
 
         return(
             <section className="menu">
-                <Heading small={'Choose Your Favorite'} big={'ORDER YOUR DRINK ONLINE'} id="menu"/>
+                <Heading small={'Choose Your Drink'} big={'ORDER ONLINE AND SKIP THE LINE'} id="menu"/>
                 <div className="menu_container">
                     <div className="bg-menu"></div>
                     {

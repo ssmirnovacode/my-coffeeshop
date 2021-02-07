@@ -1,104 +1,115 @@
 {
-    "beverages": [
-        {
-            "id": 0,
-            "title": "Espresso",
-            "image": "https://b.radikal.ru/b22/2101/0d/ca4e0dcb77bd.png", 
-            "text": "Some Espresso text description"
-        },
-        {
-            "id": 1,
-            "title": "Ristretto",
-            "image": "https://b.radikal.ru/b39/2101/87/950e28d710d7.png",
-            "text": "Some Ristretto text description"
-        },
-        {
-            "id": 2,
-            "title": "With milk",
-            "image": "https://b.radikal.ru/b00/2101/42/275165585b12.png",
-            "text": "Some With milk text description"
-        },
-        {
-            "id": 3,
-            "title": "Chai",
-            "image": "https://d.radikal.ru/d19/2101/ad/0a80bcc0a6a9.png",
-            "text": "Some Chai text description"
-        }
-    ],
-    "menuItems": [
-        {
-            "id": 0,
-            "price": "5.50",
-            "title": "Chai latte",
-            "image": "https://b.radikal.ru/b09/2101/4f/64b9dcd49499.png",
-            "content": "Some Chai text description"
-        },
-        {
-            "id": 1,
-            "price": "4.50",
-            "title": "Coffee mocca",
-            "image": "https://c.radikal.ru/c21/2101/2e/f79ad5aa2415.png",
-            "content": "Some Coffee moccatext description"
-        },
-        {
-            "id": 2,
-            "price": "6.50",
-            "title": "Double lungo",
-            "image": "https://d.radikal.ru/d04/2101/91/048bf1ed4b86.png",
-            "content": "Some Lungo text description text text"
-        },
-        {
-            "id": 3,
-            "price": "4.50",
-            "title": "Cafe con leche",
-            "image": "https://b.radikal.ru/b17/2101/09/60db6e01a6af.png",
-            "content": "Some Cafe con leche text description"
-        }
-    ],
-    "combos": [
-        {
-            "id": 4,
-            "price": "6.00",
-            "title": "Chai with coco",
-            "image": "https://d.radikal.ru/d43/2101/f5/1d6d17dd0b9a.png",
-            "content": "Some ChaiEspresso text description"
-        },
-        {
-            "id": 5,
-            "price": "4.00",
-            "title": "Mocca coffee",
-            "image": "https://c.radikal.ru/c04/2101/95/e790422b6e18.png",
-            "content": "Some Mocca chocolate moccatext description"
-        },
-        {
-            "id": 6,
-            "price": "3.00",
-            "title": "Espresso with Cola",
-            "image": "https://c.radikal.ru/c22/2101/42/fb7ef76ff9cf.png",
-            "content": "Some Espresso with Cola text description"
-        }
-    ],
-    "giftset": [
-        {
-            "id": 7,
-            "price": "6.00",
-            "title": "Chai with spices",
-            "image": "https://d.radikal.ru/d16/2101/11/a47b4e47661d.png",
-            "content": "Two packs of tea and a mug. Two packs of tea and a mug.Two packs of tea and a mug."
-        },
-        {
-            "id": 8,
-            "price": "7.00",
-            "title": "Coffee set with kettle",
-            "image": "https://cdn.shopify.com/s/files/1/0330/5793/1397/products/kitmug_1024x1024@2x.jpg?v=1584659008",
-            "content": "Two packs of great coffee and a kettle to cook it in. Two packs of great coffee and a kettle to cook it in."
-        },
-        {
-            "id": 9,
-            "price": "8.00",
-            "title": "Four pack",
-            "image": "https://cdn.shopify.com/s/files/1/0009/3841/0044/products/allDripBag_noOrganic.jpg?v=1596651560",
-            "content": "Four packs of excellent coffee. Four packs of excellent coffee. Four packs of excellent coffee. "
-        }
-    ]
+  "beverages": [
+    {
+      "id": 0,
+      "title": "Espresso",
+      "image": "https://b.radikal.ru/b22/2101/0d/ca4e0dcb77bd.png",
+      "text": "Some Espresso text description"
+    },
+    {
+      "id": 1,
+      "title": "Ristretto",
+      "image": "https://b.radikal.ru/b39/2101/87/950e28d710d7.png",
+      "text": "Some Ristretto text description"
+    },
+    {
+      "id": 2,
+      "title": "With milk",
+      "image": "https://b.radikal.ru/b00/2101/42/275165585b12.png",
+      "text": "Some With milk text description"
+    },
+    {
+      "id": 3,
+      "title": "Chai",
+      "image": "https://d.radikal.ru/d19/2101/ad/0a80bcc0a6a9.png",
+      "text": "Some Chai text description"
+    }
+  ],
+  "menuItems": [
+    {
+      "id": 0,
+      "price": "5.50",
+      "title": "Chai latte",
+      "image": "https://b.radikal.ru/b09/2101/4f/64b9dcd49499.png",
+      "content": "Some Chai text description"
+    },
+    {
+      "id": 1,
+      "price": "4.50",
+      "title": "Coffee mocca",
+      "image": "https://c.radikal.ru/c21/2101/2e/f79ad5aa2415.png",
+      "content": "Some Coffee moccatext description"
+    },
+    {
+      "id": 2,
+      "price": "6.50",
+      "title": "Double lungo",
+      "image": "https://d.radikal.ru/d04/2101/91/048bf1ed4b86.png",
+      "content": "Some Lungo text description text text"
+    },
+    {
+      "id": 3,
+      "price": "4.50",
+      "title": "Cafe con leche",
+      "image": "https://b.radikal.ru/b17/2101/09/60db6e01a6af.png",
+      "content": "Some Cafe con leche text description"
+    }
+  ],
+  "combos": [
+    {
+      "id": 4,
+      "price": "6.00",
+      "title": "Chai with coco",
+      "image": "https://d.radikal.ru/d43/2101/f5/1d6d17dd0b9a.png",
+      "content": "Some ChaiEspresso text description"
+    },
+    {
+      "id": 5,
+      "price": "4.00",
+      "title": "Mocca coffee",
+      "image": "https://c.radikal.ru/c04/2101/95/e790422b6e18.png",
+      "content": "Some Mocca chocolate moccatext description"
+    },
+    {
+      "id": 6,
+      "price": "3.00",
+      "title": "Espresso with Cola",
+      "image": "https://c.radikal.ru/c22/2101/42/fb7ef76ff9cf.png",
+      "content": "Some Espresso with Cola text description"
+    }
+  ],
+  "giftset": [
+    {
+      "id": 7,
+      "price": "6.00",
+      "title": "Chai with spices",
+      "image": "https://d.radikal.ru/d16/2101/11/a47b4e47661d.png",
+      "content": "Two packs of tea and a mug. Two packs of tea and a mug.Two packs of tea and a mug."
+    },
+    {
+      "id": 8,
+      "price": "7.00",
+      "title": "Coffee set with kettle",
+      "image": "https://cdn.shopify.com/s/files/1/0330/5793/1397/products/kitmug_1024x1024@2x.jpg?v=1584659008",
+      "content": "Two packs of great coffee and a kettle to cook it in. Two packs of great coffee and a kettle to cook it in."
+    },
+    {
+      "id": 9,
+      "price": "8.00",
+      "title": "Four pack",
+      "image": "https://cdn.shopify.com/s/files/1/0009/3841/0044/products/allDripBag_noOrganic.jpg?v=1596651560",
+      "content": "Four packs of excellent coffee. Four packs of excellent coffee. Four packs of excellent coffee. "
+    }
+  ],
+  "orders": [
+    {
+      "id": 1
+    },
+    {
+      "id": 2
+    },
+    {
+      "id": 3
+    }
+  ]
 }

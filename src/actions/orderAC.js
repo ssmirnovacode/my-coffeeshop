@@ -1,20 +1,14 @@
-const toggleOrderForm = () => {
+const orderSubmitted = (order) => {
     return {
-        type: 'TOGGLE_ORDER_FORM'
+        type: 'ORDER_SUBMITTED',
+        payload: order
     }
 }
 
-const saveFormData = (data) => {
+const orderError = () => {
     return {
-        type: 'SAVE_FORM_DATA',
-        payload: data
-    }
-}
+        type: 'ORDER_ERROR'
+    };
+};
 
-const clearForm = () => {
-    return {
-        type: 'CLEAR_FORM'
-    }
-}
-
-export {toggleOrderForm, saveFormData, clearForm};
+export {orderSubmitted, orderError};

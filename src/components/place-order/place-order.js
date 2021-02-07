@@ -5,6 +5,9 @@ import {connect} from 'react-redux';
 import {clearCart} from '../../actions/cartAC';
 import {Link} from 'react-router-dom';
 import basePath from '../../services/basePath';
+import baseURL from '../../services/baseURL';
+import RequestService from '../../services/requestService';
+import {orderSubmitted, orderError} from '../../actions/orderAC';
 import { useFormik } from 'formik';
 
 const PlaceOrder = (props) => {
@@ -20,9 +23,24 @@ const PlaceOrder = (props) => {
             values.items = props.cart;
             const data = JSON.stringify(values);  
             console.log(data);
+
             resetForm();
             props.clearCart();
             props.history.push(`${basePath}/thank-you`);
+
+            /* const requestService = new RequestService();
+            const url = baseURL+'orders';
+
+            requestService.postMenuItems(url, data)
+            .then(res => props.orderSubmitted(res))
+            .then( res => console.log(res))
+            .catch( () => props.orderError())
+            .finally( () => {
+                resetForm();
+                props.clearCart();
+                props.history.push(`${basePath}/thank-you`);
+                //console.log(props.order);
+            });      */      
         },
       });
 
@@ -89,12 +107,15 @@ const PlaceOrder = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        cart: state.cart
+        cart: state.cart,
+        order: state.order
     }
 }
 
 const mapDispatchToProps = {
-    clearCart
+    clearCart,
+    orderSubmitted,
+    orderError
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlaceOrder);

@@ -44,10 +44,8 @@
     &_item {
         margin-bottom: 5%;
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns:repeat(3, 1fr); //4fr 6fr 1fr; 
         justify-items: center;
-        //margin: 0 auto;
-        //grid-template-rows: repeat(auto-fill, 1fr);
         &_delete {
             margin-top: 10%;
             cursor: pointer;
@@ -68,22 +66,17 @@
         &_qty {
             font-size: 16px;
             font-weight: 400;
+            margin-bottom: 5%;
         }
         &_img img{
             max-width: 100px;
         }
-    }
-        
-    
+    }  
 }
 
 .plus, .minus {
-    @media only screen and (max-width: 400px) {
-        margin: 5%;
-    }
-    //margin: 1%;
-    //width: 20px;
     background-color: $grey;
     color: $light;
+    width: 25px;
 }
 

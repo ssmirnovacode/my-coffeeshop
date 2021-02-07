@@ -152,7 +152,16 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 cart: []
             }
-
+        case 'ORDER_SUBMITTED':
+            return {
+                ...state,
+                order: action.payload
+            }
+        case 'ORDER_ERROR':
+            return {
+                ...state,
+                error: true
+            }
         default:
             return state;		
     }
