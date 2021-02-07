@@ -3,7 +3,7 @@ import './place-order.scss';
 import Cart from '../cart/cart';
 import {connect} from 'react-redux';
 import {clearCart} from '../../actions/cartAC';
-//import {Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import basePath from '../../services/basePath';
 import { useFormik } from 'formik';
 
@@ -29,6 +29,7 @@ const PlaceOrder = (props) => {
     return(
         <div className="wrapper">
             <Cart/>
+            
             <div className="order_container" >            
                 <div className="order_title">Please fill in your data</div>
                 <form onSubmit={formik.handleSubmit}>
@@ -78,6 +79,7 @@ const PlaceOrder = (props) => {
                     <button className="order_btn" type="submit">Order now</button>
                     {/* <div className="order_back"><Link to={`${basePath}/cart`}>Back to the cart</Link></div> */}
                 </form>
+                <div className="order_back"><Link to={`${basePath}/`}>Back to the store</Link></div>
 
             </div>
         </div>

@@ -4,11 +4,15 @@
     @include item-box;
     display: grid;
     grid-template-columns: 1fr 1fr;
-}
-
-.withOrder {
-    max-height: 70vh;
-    overflow-y: scroll;
+    & .cart {
+        &_container {
+            max-height: 70vh;
+            overflow-y: scroll;
+        }    
+        &_btn, &_continue {
+            display: none;
+        }
+    }
 }
 
 .order {

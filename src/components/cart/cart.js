@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './cart.scss';
 import {connect} from 'react-redux';
 import {deleteFromCart, plusQty, minusQty} from '../../actions/cartAC';
