@@ -10,7 +10,7 @@ const MenuItem = ({item, addToCart}) => {
     return (
         <div className="menu-item_container">
             <div className="menu-item_img">
-                <Link to={`${basePath}/item-detail/:${id}`}>
+                <Link to={`${basePath}/item-detail/${id}`}>
                     <img src={image} alt={title}/> 
                 </Link>
             </div>

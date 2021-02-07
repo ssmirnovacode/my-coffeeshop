@@ -10,7 +10,7 @@ class Cart extends Component {
 
     render() {
         let total = 0;
-        this.props.cart.forEach(item => {
+        this.props.cart.items.forEach(item => {
             total += item.price * item.qty;
         })
             return(
@@ -19,7 +19,7 @@ class Cart extends Component {
                     <div className="cart_title">Items in your cart:</div>
                     <div className="cart_list">
                         {
-                            this.props.cart.map(item => {
+                            this.props.cart.items.map(item => {
                                 return(
                                     <div className="cart_item" key={item.id}>
                                         <div className="cart_item_title">{item.title}</div>
@@ -28,11 +28,8 @@ class Cart extends Component {
                                         <div className="cart_item_img"><img src={item.image} alt={item.title}/></div>                                               
                                         <div className="cart_item_qty">Quantity: 
                                             <button className="minus" onClick={()=> this.props.minusQty(item.id)}> - </button>
-                                                {item.qty}                  
-                                            <button className="plus" onClick={() => {
-                                                this.props.plusQty(item.id);
-                                                console.log(item);
-                                                }}> + </button>
+                                                {item.qty} 
+                                            <button className="plus" onClick={() => this.props.plusQty(item.id)}> + </button>
                                         </div>
                                         
                                         

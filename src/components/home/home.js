@@ -3,6 +3,7 @@ import './home.scss';
 import Navigation from '../navigation/navigation';
 import cartIcon from '../../img/shopping-cart-solid.svg';
 import {connect} from 'react-redux';
+import {toggleCart} from '../../actions/cartAC';
 import {Link} from 'react-router-dom';
 import basePath from '../../services/basePath';
 
@@ -10,8 +11,7 @@ class Home extends Component {
     
     render() {
         let total = 0;
-        console.log(typeof(this.props.cart)); // 1 wtf
-        this.props.cart.forEach(item => {
+        this.props.cart.items.forEach(item => {
             total += item.price * item.qty;
         })
 
@@ -46,4 +46,8 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(Home);
+const mapDispatchToProps = {
+    toggleCart
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

@@ -62,7 +62,8 @@ const mapStateToProps = (state) => {
     return {
         combos: state.combos,
         loading: state.loading,
-        error: state.error
+        error: state.error,
+        modal: state.modal
     }
 }
 

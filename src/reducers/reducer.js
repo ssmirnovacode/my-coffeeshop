@@ -8,7 +8,10 @@ const initialState = {
     },
     loading: true,
     error: false,
-    cart: [],
+    cart: {
+        items: [],
+        visible: false
+    },
     order: {
         data: {},
         shown: false
@@ -97,56 +100,67 @@ const reducer = (state = initialState, action) => {
         case 'ADD_TO_CART':
             const itemToAdd = action.payload;
             itemToAdd.qty = 1;
-            console.log(state.cart); //  [itemToAdd]
-
-            /* return {
-                ...state,
-                cart: state.cart.map( item => item.id === itemToAdd.id ?  {...item, qty: item.qty + 1} :  {...item, qty: 1})
-            } */
             
-            if (state.cart.find(item => item.id === itemToAdd.id)) {
-                const RepeatedItemIndex = state.cart.findIndex( item => item.id === itemToAdd.id);
-                const changedItem = state.cart[RepeatedItemIndex];
+            if (state.cart.items.filter(item => item.id === itemToAdd.id)[0]) {
+                const RepeatedItemIndex = state.cart.items.findIndex( item => item.id === itemToAdd.id);
+                const changedItem = state.cart.items[RepeatedItemIndex];
                 changedItem.qty++;
 
                 return {
                     ...state,
-                    cart: [
-                        ...state.cart.slice(0, RepeatedItemIndex),
+                    cart: {
+                        items: [
+                        ...state.cart.items.slice(0, RepeatedItemIndex),
                         changedItem,
-                        ...state.cart.slice(RepeatedItemIndex + 1)
-                        ]
+                        ...state.cart.items.slice(RepeatedItemIndex + 1)
+                        ],
+                        ...state.cart
+                    }
                 }
             }
             else return {
                 ...state,
-                cart: state.cart.push(itemToAdd),                     
+                cart: {
+                    items: state.cart.items.push(itemToAdd), 
+                    ...state.cart
+                }
             }
         case 'PLUS_QTY':
             return {
                 ...state,
-                cart: state.cart.map(item => item.id === action.payload ? 
-                                                    {...item, qty: item.qty + 1}
-                                                    : item
-                                            )
+                cart: {
+                    items: state.cart.items.map(item =>
+                        item.id === action.payload ? 
+                        {...item, qty: item.qty + 1}
+                          : item
+                      ),
+                      visible: state.cart.visible
+                }
             };
         case 'MINUS_QTY':
             return {
                 ...state,
-                cart: state.cart.map(item => item.id === action.payload ? 
-                    {...item, qty: item.qty - 1}
-                    : item
-            )
+                cart: {
+                    items: state.cart.items.map(item =>
+                        item.id === action.payload ? 
+                        {...item, qty: item.qty - 1}
+                          : item
+                      ),
+                      visible: state.cart.visible
+                }
                 };
         case 'DELETE_FROM_CART':
             const idx = action.payload; 
-            const itemIndex = state.cart.findIndex(item => item.id === idx);	
+            const itemIndex = state.cart.items.findIndex(item => item.id === idx);	
             return {
                 ...state,
-                cart: [ 
-                        ...state.cart.slice(0, itemIndex),
-                        ...state.cart.slice(itemIndex+1)
-                    ]
+                cart: {
+                    items: [ 
+                        ...state.cart.items.slice(0, itemIndex),
+                        ...state.cart.items.slice(itemIndex+1)
+                    ],
+                    visible: state.cart.visible
+                }
             }
         case 'SAVE_FORM_DATA':
             return {

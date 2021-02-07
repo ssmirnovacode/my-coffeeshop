@@ -11,7 +11,7 @@ const GiftsetItem = ({item, addToCart}) => {
     return(
         <div className="giftset_item">
             <div className="giftset_img">
-                <Link to={`${basePath}/item-detail/:${id}`}>
+                <Link to={`${basePath}/item-detail/${id}`}>
                     <img src={image} alt={title}/> 
                 </Link>
             </div>

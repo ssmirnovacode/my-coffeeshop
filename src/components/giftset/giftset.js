@@ -99,7 +99,8 @@ const mapStateToProps = (state) => {
     return {
         giftset: state.giftset,
         loading: state.loading,
-        error: state.error
+        error: state.error,
+        modal: state.modal
     }
 }
 
