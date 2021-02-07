@@ -147,10 +147,10 @@ const reducer = (state = initialState, action) => {
                     ]
                 
             }
-        case 'SAVE_FORM_DATA':
+        case 'CLEAR_CART':
             return {
                 ...state,
-                order: []
+                cart: []
             }
 
         default:
