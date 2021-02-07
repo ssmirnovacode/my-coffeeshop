@@ -10,7 +10,7 @@ class Home extends Component {
     
     render() {
         let total = 0;
-        this.props.cart.items.forEach(item => {
+        this.props.cart.forEach(item => {
             total += item.price * item.qty;
         })
 
