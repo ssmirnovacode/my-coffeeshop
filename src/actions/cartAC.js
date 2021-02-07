@@ -18,8 +18,4 @@ const minusQty = (id) => ({
     payload: id
 })
 
-const toggleCart = () => ({
-    type: 'TOGGLE_CART'
-})
-
-export {addToCart, deleteFromCart, toggleCart, plusQty, minusQty};
+export {addToCart, deleteFromCart, plusQty, minusQty};

@@ -3,7 +3,6 @@ import './home.scss';
 import Navigation from '../navigation/navigation';
 import cartIcon from '../../img/shopping-cart-solid.svg';
 import {connect} from 'react-redux';
-import {toggleCart} from '../../actions/cartAC';
 import {Link} from 'react-router-dom';
 import basePath from '../../services/basePath';
 
@@ -46,8 +45,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = {
-    toggleCart
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps)(Home);
