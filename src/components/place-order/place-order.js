@@ -1,8 +1,9 @@
 import React from 'react';
 import './place-order.scss';
+import Cart from '../cart/cart';
 import {connect} from 'react-redux';
 import {clearCart} from '../../actions/cartAC';
-import {Link} from 'react-router-dom';
+//import {Link} from 'react-router-dom';
 import basePath from '../../services/basePath';
 import { useFormik } from 'formik';
 
@@ -26,56 +27,59 @@ const PlaceOrder = (props) => {
       });
 
     return(
-        <div className="order_container" >            
-            <div className="order_title">Please fill in your data</div>
-            <form onSubmit={formik.handleSubmit}>
+        <div className="wrapper">
+            <Cart/>
+            <div className="order_container" >            
+                <div className="order_title">Please fill in your data</div>
+                <form onSubmit={formik.handleSubmit}>
 
-                <div className="order_form-field">
-                    <label>First name: 
-                    <input required type="text" id="firstname" name ="firstname"  
-                        placeholder="First Name" 
-                        onChange={formik.handleChange}
-                        value={formik.values.firstname}/>
-                    </label>
-                </div>
+                    <div className="order_form-field">
+                        <label>First name: 
+                        <input required type="text" id="firstname" name ="firstname"  
+                            placeholder="First Name" 
+                            onChange={formik.handleChange}
+                            value={formik.values.firstname}/>
+                        </label>
+                    </div>
 
-                <div className="order_form-field">
-                    <label>Last name: 
-                    <input required type="text" id="lastname" name ="lastname"  
-                        placeholder="Last Name" 
-                        onChange={formik.handleChange}
-                        value={formik.values.lastname}/>
-                    </label>
-                </div>
+                    <div className="order_form-field">
+                        <label>Last name: 
+                        <input required type="text" id="lastname" name ="lastname"  
+                            placeholder="Last Name" 
+                            onChange={formik.handleChange}
+                            value={formik.values.lastname}/>
+                        </label>
+                    </div>
 
-                <div className="order_form-field">
-                    <label>Phone number: 
-                    <input required type="text" id="tel" name ="tel"  
-                        placeholder="Phone number" 
-                        onChange={formik.handleChange}
-                        value={formik.values.tel}/>
-                    </label>
-                </div>
-                
-                <div className="order_form-field">
-                    <label>Email: 
-                    <input required type="email" id="email" name ="email" 
-                        placeholder="Email" 
-                        onChange={formik.handleChange}
-                        value={formik.values.email}/>  
-                    </label>
-                </div>
+                    <div className="order_form-field">
+                        <label>Phone number: 
+                        <input required type="text" id="tel" name ="tel"  
+                            placeholder="Phone number" 
+                            onChange={formik.handleChange}
+                            value={formik.values.tel}/>
+                        </label>
+                    </div>
+                    
+                    <div className="order_form-field">
+                        <label>Email: 
+                        <input required type="email" id="email" name ="email" 
+                            placeholder="Email" 
+                            onChange={formik.handleChange}
+                            value={formik.values.email}/>  
+                        </label>
+                    </div>
 
-                <p className="order_instructions">
-                    When your order is ready we will send you 
-                    an SMS notification so you can pick up your order in our shop.
-                    No need to wait in the queue! Go straight to the register, pay for your order and pick it up.
-                </p>
+                    <p className="order_instructions">
+                        When your order is ready we will send you 
+                        an SMS notification so you can pick up your order in our shop.
+                        No need to wait in the queue! Go straight to the register, pay for your order and pick it up.
+                    </p>
 
-                <button className="order_btn" type="submit">Order now</button>
-                <div className="order_back"><Link to={`${basePath}/cart`}>Back to the cart</Link></div>
-            </form>
+                    <button className="order_btn" type="submit">Order now</button>
+                    {/* <div className="order_back"><Link to={`${basePath}/cart`}>Back to the cart</Link></div> */}
+                </form>
 
+            </div>
         </div>
     );
         
