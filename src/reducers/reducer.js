@@ -144,13 +144,11 @@ const reducer = (state = initialState, action) => {
             const itemIndex = state.cart.findIndex(item => item.id === idx);	
             return {
                 ...state,
-                cart: {
-                    items: [ 
+                cart: [ 
                         ...state.cart.slice(0, itemIndex),
                         ...state.cart.slice(itemIndex+1)
-                    ],
-                    visible: state.cart.visible
-                }
+                    ]
+                
             }
         case 'SAVE_FORM_DATA':
             return {
