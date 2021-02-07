@@ -97,6 +97,7 @@ const reducer = (state = initialState, action) => {
         case 'ADD_TO_CART':
             const itemToAdd = action.payload;
             itemToAdd.qty = 1;
+            console.log(state.cart); //  [itemToAdd]
 
             /* return {
                 ...state,

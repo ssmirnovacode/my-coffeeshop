@@ -5,12 +5,12 @@ import cartIcon from '../../img/shopping-cart-solid.svg';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import basePath from '../../services/basePath';
-import {addToCart} from '../../actions/cartAC'; // to be deleted
 
 class Home extends Component {
     
     render() {
         let total = 0;
+        console.log(typeof(this.props.cart)); // 1 wtf
         this.props.cart.forEach(item => {
             total += item.price * item.qty;
         })
@@ -46,8 +46,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = {
-    addToCart // to be deleted
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps)(Home);

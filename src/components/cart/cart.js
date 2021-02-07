@@ -27,12 +27,12 @@ class Cart extends Component {
                                         <div onClick={() => this.props.deleteFromCart(item.id)} className="cart_item_delete"><i className="fa fa-trash-o"></i></div>
                                         <div className="cart_item_img"><img src={item.image} alt={item.title}/></div>                                               
                                         <div className="cart_item_qty">Quantity: 
+                                            <button className="minus" onClick={()=> this.props.minusQty(item.id)}> - </button>
+                                                {item.qty}                  
                                             <button className="plus" onClick={() => {
                                                 this.props.plusQty(item.id);
                                                 console.log(item);
                                                 }}> + </button>
-                                                {item.qty} 
-                                            <button className="minus" onClick={()=> this.props.minusQty(item.id)}> - </button>
                                         </div>
                                         
                                         
