@@ -4,50 +4,58 @@ import {connect} from 'react-redux';
 import {clearForm, saveFormData} from '../../actions/orderAC';
 import {Link} from 'react-router-dom';
 import basePath from '../../services/basePath';
-import { Control, Form, Errors} from 'react-redux-form';
+import { useFormik } from 'formik';
 
-class PlaceOrder extends Component {
-    constructor(props) {
-        super(props);
+const PlaceOrder = () => {
 
-        this.handleSubmit = this.handleSubmit.bind(this);
-    };
+    const formik = useFormik({
+        initialValues: {
+            firstname: '',
+            lastname: '',
+            tel: '',
+            email: '',
+        },
+        onSubmit: values => {
+          console.log(JSON.stringify(values, null, 2));
+        },
+      });
 
-    handleSubmit = (e) => {
-        e.preventDefault();
-    
-    }
-
-    render() {
-       
             return(
                 <div className="order_container" > 
                     
                             <div className="order_title">Please fill in your data</div>
 
-                            <form id="form" onSubmit={(e) => this.handleSubmit(e)}>
+                            <form onSubmit={formik.handleSubmit}>
                                 <div className="order_form-field">
                                     <label>First name: 
                                     <input type="text" id="firstname" name ="firstname"  
-                                        placeholder="First Name" />
+                                        placeholder="First Name" 
+                                        onChange={formik.handleChange}
+                                        value={formik.values.firstname}/>
                                     </label>
                                 </div>
                                 <div className="order_form-field">
                                     <label>Last name: 
                                     <input type="text" id="lastname" name ="lastname"  
-                                        placeholder="Last Name" />
+                                        placeholder="Last Name" 
+                                        onChange={formik.handleChange}
+                                        value={formik.values.lastname}/>
                                     </label>
                                 </div>
                                 <div className="order_form-field">
                                     <label>Phone number: 
                                     <input type="text" id="tel" name ="tel"  
-                                        placeholder="Phone number" />
+                                        placeholder="Phone number" 
+                                        onChange={formik.handleChange}
+                                        value={formik.values.tel}/>
                                     </label>
                                 </div>
                                 <div className="order_form-field">
                                     <label>Email: 
                                     <input type="email" id="email" name ="email" 
-                                        placeholder="Email" />  
+                                        placeholder="Email" 
+                                        onChange={formik.handleChange}
+                                        value={formik.values.email}/>  
                                     </label>
                                 </div>
 
@@ -62,9 +70,9 @@ class PlaceOrder extends Component {
                             </form>
 
                 </div>
-            )
-        }
-}
+            );
+        
+};
 
 const mapStateToProps = (state) => {
     return {
