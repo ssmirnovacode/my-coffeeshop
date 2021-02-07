@@ -123,27 +123,21 @@ const reducer = (state = initialState, action) => {
         case 'PLUS_QTY':
             return {
                 ...state,
-                cart: {
-                    items: state.cart.map(item =>
+                cart: state.cart.map(item =>
                         item.id === action.payload ? 
                         {...item, qty: item.qty + 1}
-                          : item
-                      ),
-                      visible: state.cart.visible
-                }
+                          : item )               
             };
         case 'MINUS_QTY':
             return {
                 ...state,
-                cart: {
-                    items: state.cart.map(item =>
+                cart: state.cart.map(item =>
                         item.id === action.payload ? 
                         {...item, 
                             qty: item.qty !== 1 ? item.qty -1 : 1}
                             : item,                       
-                      ),
-                      visible: state.cart.visible
-                }
+                      )
+                
                 };
         case 'DELETE_FROM_CART':
             const idx = action.payload; 
