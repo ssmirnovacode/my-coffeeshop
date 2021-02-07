@@ -30,11 +30,11 @@ class Navigation extends Component {
                     <li><a href="#combo">OUR COMBOS</a></li>
                 </ul>
                 <ul className="nav_menu_sidebar">
-                    <li><Link to={`${basePath}/`}><span>MY COFFEESHOP</span></Link></li>
-                    <li><a href="#beverages">OUR BEVERAGES</a></li>
-                    <li><a href="#menu">CHOOSE YOUR DRINK</a></li>
-                    <li><a href="#giftset">GIFTSET</a></li>
-                    <li><a href="#combo">OUR COMBOS</a></li>
+                    <li><Link to={`${basePath}/`} onClick={this.toggleMenu}><span>MY COFFEESHOP</span></Link></li>
+                    <li><a href="#beverages" onClick={this.toggleMenu}>OUR BEVERAGES</a></li>
+                    <li><a href="#menu" onClick={this.toggleMenu}>CHOOSE YOUR DRINK</a></li>
+                    <li><a href="#giftset" onClick={this.toggleMenu}>GIFTSET</a></li>
+                    <li><a href="#combo" onClick={this.toggleMenu}>OUR COMBOS</a></li>
                 </ul>
             </nav>
         )

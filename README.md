@@ -9,3 +9,6 @@ A website of an imaginary coffeeshop, for demonsttation purposes only.
  - JavaScript (including fetch api)
  - JSON REST api
 
+### Additional libraries
+ - Framik
+ - react-router-dom
