@@ -34,6 +34,10 @@
             margin-top: 5%;
         }
     }
+    &_back {
+        @include details;
+        text-align: right;
+    }
 }
 
 .hidden {
