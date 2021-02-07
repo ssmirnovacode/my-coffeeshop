@@ -9,10 +9,7 @@ const initialState = {
     loading: true,
     error: false,
     cart: [],
-    order: {
-        data: {},
-        shown: false
-    }
+    order: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -153,10 +150,7 @@ const reducer = (state = initialState, action) => {
         case 'SAVE_FORM_DATA':
             return {
                 ...state,
-                order: {
-                    data: action.payload,
-                    shown: state.order.shown // make it hide later
-                }
+                order: []
             }
 
         default:

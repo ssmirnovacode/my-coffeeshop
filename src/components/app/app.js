@@ -4,6 +4,7 @@ import HomePage from '../pages/homePage';
 import Footer from '../footer/footer';
 import ItemDetail from '../item-detail/item-detail';
 import Cart from '../cart/cart';
+import PlaceOrder from '../place-order/place-order';
 import {BrowserRouter as Router, Route } from 'react-router-dom';
 import basePath from '../../services/basePath';
 import './app.scss';
@@ -20,7 +21,7 @@ const App = () => {
                     const {id} = match.params;
                     return <ItemDetail itemId={id}/>
                 }}/>
-                
+                <Route path={`${basePath}/order`} component={PlaceOrder}/>
                 <Footer/>
             </div> 
         </Router>
