@@ -113,6 +113,9 @@ $background: #fcfcfc;
     font-weight: bold;
     @include fz-text-basic;
     cursor: pointer;
+    &:focus {
+        text-decoration: underline;
+    }
 }
 
 @mixin title {
