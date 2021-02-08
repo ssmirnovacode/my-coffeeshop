@@ -41,17 +41,26 @@
             }
         }  
         &_sidebar {
-            z-index: 4;
-            display: none;
+            //display: none;
+            z-index: 5;
+            //margin-right: -50%;
+            list-style-type: none;
+            width: 0;
+            & li a {
+                display: none;
+            }
             &.active {
+                transition: .8s;
+                //transform: translateX(-50%);
+                width: 50vw;
                 display: block;
                 background-color: $grey;
                 list-style-type: none;
                 position: absolute;
                 right: 5%;
                 top: 10%;
-                width: 50vw;
                 & li a {
+                    display: inherit;
                     text-decoration: none;
                     color: $light;
                     font-family: Nunito, sans-serif;
