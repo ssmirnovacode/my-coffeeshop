@@ -5,6 +5,7 @@ import cartIcon from '../../img/shopping-cart-solid.svg';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import basePath from '../../services/basePath';
+import animateScrollTo from 'animated-scroll-to';
 
 class Home extends Component {
     
@@ -32,10 +33,7 @@ class Home extends Component {
                     <div className="navigation">
                         <Navigation/>
                     </div>
-                    <div className="up">
-                        <a href="#home">&uarr;</a>
-                        
-                    </div>
+                    <div className="up" onClick={() => animateScrollTo(document.querySelector('#home'))}> &uarr; </div>
                 </div>
     
             </div>

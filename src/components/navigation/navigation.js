@@ -2,11 +2,14 @@ import React, {Component} from 'react';
 import './navigation.scss';
 import {Link} from 'react-router-dom';
 import basePath from '../../services/basePath';
+import animateScrollTo from 'animated-scroll-to';
+import Menu from '../menu/menu';
 
 class Navigation extends Component {
     constructor(props) {
         super(props);
         this.toggleMenu = this.toggleMenu.bind(this);
+        this.animatedScroll = this.animatedScroll.bind(this);
     }
 
     toggleMenu = () => {
@@ -14,6 +17,10 @@ class Navigation extends Component {
             document.querySelector('.nav_menu_sidebar').classList.remove('active');
         }
         else document.querySelector('.nav_menu_sidebar').classList.add('active');
+    }
+
+    animatedScroll = () => {
+
     }
 
     render() {
@@ -24,10 +31,10 @@ class Navigation extends Component {
                 </div>
                 <ul className="nav_menu">
                     <li><Link to={`${basePath}/`}><span>MY COFFEESHOP</span></Link></li>
-                    <li><a href="#beverages">OUR BEVERAGES</a></li>
-                    <li><a href="#menu">CHOOSE YOUR DRINK</a></li>
-                    <li><a href="#giftset">GIFTSET</a></li>
-                    <li><a href="#combo">OUR COMBOS</a></li>
+                    <li><div onClick={() => animateScrollTo(500)}>OUR BEVERAGES</div></li>
+                    <li onClick={() => animateScrollTo(1000)}>CHOOSE YOUR DRINK</li>
+                    <li onClick={() => animateScrollTo(1900)}>GIFTSET</li>
+                    <li onClick={() => animateScrollTo(2600)}>OUR COMBOS</li>
                 </ul>
                 <ul className="nav_menu_sidebar">
                     <li><Link to={`${basePath}/`} onClick={this.toggleMenu}><span>MY COFFEESHOP</span></Link></li>

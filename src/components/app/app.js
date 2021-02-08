@@ -10,6 +10,7 @@ import {BrowserRouter as Router, Route } from 'react-router-dom';
 import basePath from '../../services/basePath';
 import './app.scss';
 
+
 const App = () => {
 
     return (
