@@ -11,6 +11,11 @@ import Loading from '../loading/loading';
 import Error from '../error/error';
 
 class Menu extends Component {
+    constructor(props) {
+        super(props);
+
+        this.showMore = this.showMore.bind(this);
+    }
 
     componentDidMount() {
         this.props.menuItemsRequested();
@@ -22,9 +27,27 @@ class Menu extends Component {
         .catch( () => this.props.menuItemsError());
     }
 
+    showMore = () => {
+        document.querySelectorAll('.toExpand').forEach(item => item.classList.remove('toExpand'));
+        document.querySelector('.menu_more').remove();
+              
+    }
+
     render() {
 
         const {menuItems, loading, error} = this.props;
+
+        /* const usualView = ({
+            
+                menuItems.map((item, i) => {
+                    if ( i > 3) {
+                       return (
+                           <MenuItem key={item.id} item={item} addToCart={() => this.props.addToCart(item)}/>
+                       )
+                   }  
+                   else return null;  
+                })
+        }) */
 
         if (loading) {
             return(
@@ -44,13 +67,22 @@ class Menu extends Component {
                 <div className="menu_container">
                     <div className="bg-menu"></div>
                     {
-                        menuItems.map(item => {
-                            return (
-                                <MenuItem key={item.id} item={item} addToCart={() => this.props.addToCart(item)}/>
-                            )
-                        })
-                    }
+                            menuItems.map((item, i) => {
+                                if ( i < 4) {
+                                   return (
+                                       <MenuItem key={item.id} item={item} addToCart={() => this.props.addToCart(item)}/>
+                                   )
+                               }  
+                                else return (
+                                    <div className="toExpand">
+                                        <MenuItem key={item.id} item={item} addToCart={() => this.props.addToCart(item)}/>
+                                    </div>
+                                )  
+                            })
+                    }    
+                    
                 </div>
+                <div className="menu_more" onClick={this.showMore}>View more</div>
             </section>
         )
     }
