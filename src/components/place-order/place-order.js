@@ -25,11 +25,9 @@ const PlaceOrder = (props) => {
                 title: item.title,
                 qty: item.qty
             }));
-            console.log(values);
-            /* const data = JSON.stringify(values);  
-            console.log(data); */
 
-            /* resetForm();
+            /* props.orderSubmitted(values);
+            resetForm();
             props.clearCart();
             props.history.push(`${basePath}/thank-you`); */
 
@@ -44,7 +42,6 @@ const PlaceOrder = (props) => {
                 resetForm();
                 props.clearCart();
                 props.history.push(`${basePath}/thank-you`);
-                //console.log(props.order);
             });           
         },
       });
