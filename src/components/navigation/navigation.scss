@@ -43,15 +43,15 @@
         &_sidebar {
             //display: none;
             z-index: 5;
-            //margin-right: -50%;
+            margin-left: -50%;
             list-style-type: none;
-            width: 0;
+            //width: 0;
             & li a {
                 display: none;
             }
             &.active {
-                transition: .8s;
-                //transform: translateX(-50%);
+                transition: .7s;
+                transform: translateX(-25%);
                 width: 50vw;
                 display: block;
                 background-color: $grey;
