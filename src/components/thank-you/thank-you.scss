@@ -20,6 +20,9 @@
     }
     &_text {
         padding: 0 5%;
+        & span {
+            font-weight: bold;
+        }
     }
     &_back {
         cursor: pointer;
@@ -31,5 +34,8 @@
             text-decoration: none;
             color: black;
         }
+    }
+    & span {
+        font-weight: bold;
     }
 }
