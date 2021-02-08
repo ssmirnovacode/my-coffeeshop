@@ -47,7 +47,7 @@
             margin-left: -50%;
             list-style-type: none;
             //width: 0;
-            & li a {
+            & li, & li a  {
                 display: none;
             }
             &.active {
@@ -60,7 +60,7 @@
                 position: absolute;
                 right: 5%;
                 top: 10%;
-                & li a {
+                & li, & li a  {
                     display: inherit;
                     text-decoration: none;
                     color: $light;

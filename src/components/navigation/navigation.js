@@ -31,17 +31,17 @@ class Navigation extends Component {
                 </div>
                 <ul className="nav_menu">
                     <li><Link to={`${basePath}/`}><span>MY COFFEESHOP</span></Link></li>
-                    <li><div onClick={() => animateScrollTo(500)}>OUR BEVERAGES</div></li>
+                    <li onClick={() => animateScrollTo(500)}>OUR BEVERAGES</li>
                     <li onClick={() => animateScrollTo(1000)}>CHOOSE YOUR DRINK</li>
                     <li onClick={() => animateScrollTo(1900)}>GIFTSET</li>
                     <li onClick={() => animateScrollTo(2600)}>OUR COMBOS</li>
                 </ul>
                 <ul className="nav_menu_sidebar">
                     <li><Link to={`${basePath}/`} onClick={this.toggleMenu}><span>MY COFFEESHOP</span></Link></li>
-                    <li><a href="#beverages" onClick={this.toggleMenu}>OUR BEVERAGES</a></li>
-                    <li><a href="#menu" onClick={this.toggleMenu}>CHOOSE YOUR DRINK</a></li>
-                    <li><a href="#giftset" onClick={this.toggleMenu}>GIFTSET</a></li>
-                    <li><a href="#combo" onClick={this.toggleMenu}>OUR COMBOS</a></li>
+                    <li onClick={() => {animateScrollTo(500); this.toggleMenu();}}>OUR BEVERAGES</li>
+                    <li onClick={() => {animateScrollTo(1500); this.toggleMenu();}}>CHOOSE YOUR DRINK</li>
+                    <li onClick={() => {animateScrollTo(2800); this.toggleMenu();}}>GIFTSET</li>
+                    <li onClick={() => {animateScrollTo(3500); this.toggleMenu();}}>OUR COMBOS</li>
                 </ul>
             </nav>
         )
