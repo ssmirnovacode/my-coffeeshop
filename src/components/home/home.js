@@ -26,8 +26,8 @@ class Home extends Component {
     
                 <div className="right block">
                     <div className="cart" >
-                        <Link to={`${basePath}/cart`}><img className="cart_image" src={cartIcon} alt="cart"/></Link>
-                        <div className="cart__total">Total: {total} $</div>
+                        <Link to={`${basePath}/cart`}><img className="cart_image" src={cartIcon} alt="cart"/>
+                        <div className="cart__total">Total: {total} $</div></Link>
                     </div>
                     <div className="navigation">
                         <Navigation/>

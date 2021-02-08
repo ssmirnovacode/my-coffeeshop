@@ -17,6 +17,7 @@
 
 .order {
     &_container {
+        @include appear;
         font-family: Nunito, sans-serif;
         background-color: $background;
         color: $grey;

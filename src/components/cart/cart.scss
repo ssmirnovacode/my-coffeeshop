@@ -3,6 +3,7 @@
 
 .cart {
     &_container {
+        @include appear;
         color: $dark;
         font-family: Nunito, sans-serif;
         font-style: normal;

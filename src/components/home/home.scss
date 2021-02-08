@@ -69,6 +69,10 @@
         max-width: 40px;
         cursor: pointer;
     }
+    & a {
+        text-decoration: none;
+        color: $light;
+    }
     &__total {
         display: block;
     }

@@ -3,6 +3,7 @@
 .giftset {
     color: $dark;
     &_content {
+        @include appear;
         position: absolute;
         left: 22.5%;
         //right: 7.73%;
@@ -36,6 +37,7 @@
         border-radius: 5px;
         z-index:2;
         & img {
+            @include appear;
             max-width: 90%;
         }
     }

@@ -4,6 +4,15 @@ $light: #EDF0F5;
 $dark: #151D28;
 $background: #fcfcfc;
 
+//Animations
+@mixin appear {
+    animation: appear 1.5s;
+    @keyframes appear {
+        from {opacity: 0;}
+        to {opacity: 1;}
+        }
+}
+
 //font-sizes
 @mixin fz-price-basic {
     font-size: 20px;
@@ -130,7 +139,12 @@ $background: #fcfcfc;
     margin-right: 10%;
     cursor: pointer;
     border: none;
-    box-shadow: 3px 3px 10px 3px rgb(119, 118, 118)
+    box-shadow: 3px 3px 10px 3px rgb(185, 185, 185);
+    &:focus {
+        background-color: $light;
+        color: $beige;
+        border: 2px solid $beige;
+    }
 }
 
 @mixin btn-viewCart {
@@ -143,6 +157,11 @@ $background: #fcfcfc;
     text-align: center;
     &.hidden {
         display: none;
+    }
+    &:focus {
+        background-color: $light;
+        color: $grey;
+        border: 2px solid $grey;
     }
 }
 
