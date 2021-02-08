@@ -20,18 +20,23 @@ const PlaceOrder = (props) => {
             email: '',
         },
         onSubmit: (values, { resetForm }) => {
-            values.items = props.cart;
-            const data = JSON.stringify(values);  
-            console.log(data);
+            values.items = props.cart.map(item => ({
+                id: item.id,
+                title: item.title,
+                qty: item.qty
+            }));
+            console.log(values);
+            /* const data = JSON.stringify(values);  
+            console.log(data); */
 
-            resetForm();
+            /* resetForm();
             props.clearCart();
-            props.history.push(`${basePath}/thank-you`);
+            props.history.push(`${basePath}/thank-you`); */
 
-            /* const requestService = new RequestService();
+            const requestService = new RequestService();
             const url = baseURL+'orders';
 
-            requestService.postMenuItems(url, data)
+            requestService.postMenuItems(url, values)
             .then(res => props.orderSubmitted(res))
             .then( res => console.log(res))
             .catch( () => props.orderError())
@@ -40,7 +45,7 @@ const PlaceOrder = (props) => {
                 props.clearCart();
                 props.history.push(`${basePath}/thank-you`);
                 //console.log(props.order);
-            });      */      
+            });           
         },
       });
 
