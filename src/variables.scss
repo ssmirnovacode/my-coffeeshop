@@ -113,7 +113,7 @@ $background: #fcfcfc;
     font-weight: bold;
     @include fz-text-basic;
     cursor: pointer;
-    &:focus {
+    &:active {
         text-decoration: underline;
     }
 }
@@ -143,7 +143,7 @@ $background: #fcfcfc;
     cursor: pointer;
     border: none;
     box-shadow: 3px 3px 10px 3px rgb(185, 185, 185);
-    &:focus {
+    &:active {
         background-color: $light;
         color: $beige;
         border: 2px solid $beige;
@@ -161,7 +161,7 @@ $background: #fcfcfc;
     &.hidden {
         display: none;
     }
-    &:focus {
+    &:active {
         background-color: $light;
         color: $grey;
         border: 2px solid $grey;
