@@ -143,11 +143,6 @@ $background: #fcfcfc;
     cursor: pointer;
     border: none;
     box-shadow: 3px 3px 10px 3px rgb(185, 185, 185);
-    &:active {
-        background-color: $light;
-        color: $beige;
-        border: 2px solid $beige;
-    }
 }
 
 @mixin btn-viewCart {
@@ -160,11 +155,6 @@ $background: #fcfcfc;
     text-align: center;
     &.hidden {
         display: none;
-    }
-    &:active {
-        background-color: $light;
-        color: $grey;
-        border: 2px solid $grey;
     }
 }
 
