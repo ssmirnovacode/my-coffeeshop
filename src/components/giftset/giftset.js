@@ -61,6 +61,7 @@ class Giftset extends Component {
                                     <GiftsetItem key={item.id} item={item} addToCart={() => this.props.addToCart(item)}/>
                                 )         
                             }
+                            else return null;
                                              
                         })
                     }

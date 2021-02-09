@@ -3,7 +3,6 @@ import './navigation.scss';
 import {Link} from 'react-router-dom';
 import basePath from '../../services/basePath';
 import animateScrollTo from 'animated-scroll-to';
-import Menu from '../menu/menu';
 
 class Navigation extends Component {
     constructor(props) {
@@ -27,7 +26,7 @@ class Navigation extends Component {
         return(
             <nav>
                 <div className="nav_burger" onClick={this.toggleMenu}>            
-                     &#9776;
+                    &#8801;
                 </div>
                 <ul className="nav_menu">
                     <li><Link to={`${basePath}/`}><span>MY COFFEESHOP</span></Link></li>

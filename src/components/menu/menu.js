@@ -57,26 +57,17 @@ class Menu extends Component {
                 <div className="menu_container">
                     <div className="bg-menu"></div>
                     {
-                            menuItems.map((item, i) => {
-                                
-                                   return (
-                                       <MenuItem key={i} item={item} addToCart={() => this.props.addToCart(item)}/>
-                                   )
-                                 
-                                /* else return (
-                                    <div className="toExpand">
-                                        <MenuItem key={i} item={item} addToCart={() => this.props.addToCart(item)}/>
-                                    </div>
-                                )   */
-                            })
-                    }    
-                    
+                        menuItems.map((item, i) => {                           
+                            return (
+                                <MenuItem key={i} item={item} addToCart={() => this.props.addToCart(item)}/>
+                            )
+                        })
+                    }                       
                 </div>
                 <div className="menu_more" onClick={this.showMore}>View more</div>
             </section>
         )
-    }
-    
+    }   
 }
 
 const mapStateToProps = (state) => {

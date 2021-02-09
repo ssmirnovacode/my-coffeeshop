@@ -21,7 +21,7 @@ const App = () => {
                 <Route path={`${basePath}/cart`} component={Cart}/>
                 <Route path={`${basePath}/item-detail/:id`} render={ ({match}) => {
                     const {id} = match.params;
-                    return <ItemDetail itemId={id}/>
+                    return <ItemDetail itemId={+id}/>
                 }}/>
                 <Route path={`${basePath}/order`} component={PlaceOrder}/>
                 <Route path={`${basePath}/thank-you`} component={ThankYou}/>

@@ -9,10 +9,7 @@ import basePath from '../../services/basePath';
 const ItemDetail = (props) => {
     const {itemId} = props;
     const allItems = [...props.menuItems, ...props.combos, ...props.giftset.items]; // 2 из 3 массивов не загрузятся, но нужный будет
-    //console.log(allItems); // ok
-    //console.log(itemId); // ok
-    const item = allItems.filter(item => item.id == itemId)[0];
-    //console.log(item); 
+    const item = allItems.filter(item => item.id === itemId)[0]; 
     const {id, image, title, price, content} = item;
 
     return(
