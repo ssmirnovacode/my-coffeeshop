@@ -40,7 +40,7 @@ class Combo extends Component {
 
         return(
             <section>
-                <Heading small={'Your Personalized Coffee'} big={'OUR COMBOS'} id="combo"/>
+                <Heading small={'Our artesan pastry'} big={'ORGANIC INGREDIENTS ONLY'} id="combo"/>
                 <div className="combo_container">
                     <div className="bg-combo"></div>
                     {
@@ -49,7 +49,7 @@ class Combo extends Component {
                                 <ComboItem key={item.id} item={item} addToCart={() => this.props.addToCart(item)}/>
                             )
                         })
-                        }
+                    }
                     
                 </div>
             </section>

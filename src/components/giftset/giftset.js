@@ -75,7 +75,7 @@ class Giftset extends Component {
                                         onClick={(e) =>{
                                             this.props.giftsetTabClick(item.id);
                                             this.showContent(e);
-                                        }}>{i}</div>
+                                        }}>{i+1}</div>
                                     )
                                 }
                                 else return(
@@ -83,7 +83,7 @@ class Giftset extends Component {
                                         onClick={(e) =>{
                                             this.props.giftsetTabClick(item.id);
                                             this.activateTab(e);
-                                        }}>{i}</div>
+                                        }}>{i+1}</div>
                                 )
                             })
                         }

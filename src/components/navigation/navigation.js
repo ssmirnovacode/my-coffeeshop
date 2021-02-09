@@ -33,14 +33,14 @@ class Navigation extends Component {
                     <li onClick={() => animateScrollTo(500)}>OUR BEVERAGES</li>
                     <li onClick={() => animateScrollTo(1000)}>CHOOSE YOUR DRINK</li>
                     <li onClick={() => animateScrollTo(1900)}>GIFTSET</li>
-                    <li onClick={() => animateScrollTo(2600)}>OUR COMBOS</li>
+                    <li onClick={() => animateScrollTo(2600)}>OUR PASTRY</li>
                 </ul>
                 <ul className="nav_menu_sidebar">
                     <li><Link to={`${basePath}/`} onClick={this.toggleMenu}><span>MY COFFEESHOP</span></Link></li>
                     <li onClick={() => {animateScrollTo(500); this.toggleMenu();}}>OUR BEVERAGES</li>
                     <li onClick={() => {animateScrollTo(1500); this.toggleMenu();}}>CHOOSE YOUR DRINK</li>
                     <li onClick={() => {animateScrollTo(2800); this.toggleMenu();}}>GIFTSET</li>
-                    <li onClick={() => {animateScrollTo(3500); this.toggleMenu();}}>OUR COMBOS</li>
+                    <li onClick={() => {animateScrollTo(3500); this.toggleMenu();}}>OUR PASTRY</li>
                 </ul>
             </nav>
         )
