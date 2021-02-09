@@ -15,8 +15,23 @@
 }
 
 .menu_more {
-    @include btn-viewCart;
+    font-family: Nunito, sans-serif;
+    background-color: $grey;
+    color: $light;
+    border-radius: 19px;
+    //float: left;
+    padding: 7px;
+    //margin-right: 10%;
+    cursor: pointer;
+    border: none;
+    box-shadow: 3px 3px 10px 3px rgb(185, 185, 185);
     margin: 2% 45%;
+    text-align: center;
+    &:active {
+        background-color: $light;
+        color: $grey;
+        border: 2px solid $grey;
+    }
 }
 
 .bg-menu {
@@ -33,8 +48,4 @@
     @media only screen and (max-width: 436px) {
         display: none;
     }
-}
-
-.toExpand {
-    display: none;
 }

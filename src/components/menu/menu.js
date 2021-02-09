@@ -10,6 +10,8 @@ import RequestService from '../../services/requestService';
 import Loading from '../loading/loading';
 import Error from '../error/error';
 
+const requestService = new RequestService();
+
 class Menu extends Component {
     constructor(props) {
         super(props);
@@ -20,16 +22,17 @@ class Menu extends Component {
     componentDidMount() {
         this.props.menuItemsRequested();
 
-        const requestService = new RequestService();
-
         requestService.getMenuItems(baseURL+'menuItems')
+        .then(res => res.filter((item, i) => i < 4))
         .then(res => this.props.menuItemsLoaded(res))
         .catch( () => this.props.menuItemsError());
     }
 
     showMore = () => {
-        document.querySelectorAll('.toExpand').forEach(item => item.classList.remove('toExpand'));
-        document.querySelector('.menu_more').remove();          
+        requestService.getMenuItems(baseURL+'menuItems')
+        .then(res => this.props.menuItemsLoaded(res))
+        .catch( () => this.props.menuItemsError())
+        .finally(() => document.querySelector('.menu_more').remove());
     }
 
     render() {
@@ -55,16 +58,16 @@ class Menu extends Component {
                     <div className="bg-menu"></div>
                     {
                             menuItems.map((item, i) => {
-                                if ( i < 4) {
+                                
                                    return (
-                                       <MenuItem key={item.id} item={item} addToCart={() => this.props.addToCart(item)}/>
+                                       <MenuItem key={i} item={item} addToCart={() => this.props.addToCart(item)}/>
                                    )
-                               }  
-                                else return (
+                                 
+                                /* else return (
                                     <div className="toExpand">
-                                        <MenuItem key={item.id} item={item} addToCart={() => this.props.addToCart(item)}/>
+                                        <MenuItem key={i} item={item} addToCart={() => this.props.addToCart(item)}/>
                                     </div>
-                                )  
+                                )   */
                             })
                     }    
                     
