@@ -38,7 +38,7 @@ const Cart = (props) => {
                         }
                     </div>
                     <div className="cart_total">Total: {total} $</div>
-                    <Link  className="cart_btn" to={`${basePath}/order`}>Order form</Link>
+                    <Link  className="cart_btn" to={`${basePath}/order`}>Order ONLINE</Link>
                     <div className="cart_continue"><Link to={`${basePath}/`}>Continue shopping</Link></div>
 
                 </div>

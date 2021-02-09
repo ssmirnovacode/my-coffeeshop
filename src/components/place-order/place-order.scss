@@ -36,12 +36,13 @@
 
     }
     &_instructions {
-        padding: 0 5%;
+        padding: 0 5% 5% 5%;
     }
     &_btn {
         @include btn;
         //margin: 0 auto 5% auto;
-        float: none;
+        margin-right: 10%;
+        float: right;
     }
     &_back {
         cursor: pointer;
@@ -49,6 +50,8 @@
         font-weight: bold;
         padding: 0 5% 5% 0;
         @include details;
+        text-align: left;
+        margin-left: 10%;
         & a {
             text-decoration: none;
             color: black;
