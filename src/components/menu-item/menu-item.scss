@@ -69,6 +69,7 @@
         @include btn;
         grid-column: 1/3;
         grid-row: 8/9;
+        //margin-right: 40%;;
         @media only screen and (max-width: 420px) {
             grid-column: 1/3;
             grid-row: 8/9;

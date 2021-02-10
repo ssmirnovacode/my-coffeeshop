@@ -10,7 +10,7 @@
         @include item-box;
     }
     &_img img{
-        width: 200px;
+        max-width: 150px;
         margin-right: 5%;
         margin-bottom: 10%;
         cursor: pointer;
