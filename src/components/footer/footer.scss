@@ -14,7 +14,10 @@
         font-weight: 500;
         @include fz-text-basic;  
         padding: 5% 10%;
-
+        @media only screen and (max-width: 470px) {
+            font-size: 80%;
+            padding: 5% 5%;
+        }
         & a {
             color: $light;
         }
