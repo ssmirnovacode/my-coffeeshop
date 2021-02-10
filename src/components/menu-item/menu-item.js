@@ -20,8 +20,8 @@ const MenuItem = ({item, addToCart}) => {
             <button className="menu-item_btn" data-id={id} onClick={(e) => {
                 addToCart();
                 toggleButton('.menu-item_btn', '.menu-item_btn_viewcart', e);
-                }}>ADD To CART</button>
-            <Link to={`${basePath}/cart`}  className="menu-item_btn_viewcart hidden" data-id={id}>View cart</Link>
+                }}>ADD TO CART</button>
+            <Link to={`${basePath}/cart`}  className="menu-item_btn_viewcart hidden" data-id={id}>VIEW CART</Link>
             <div className="menu-item_details"><Link to={`${basePath}/item-detail/${id}`}>Details</Link></div>
         </div>
     )

@@ -23,8 +23,8 @@ const GiftsetItem = ({item, addToCart}) => {
                     <button className="giftset_btn" data-id={id} onClick={(e) => {
                         addToCart();
                         toggleButton('.giftset_btn', '.giftset_btn_viewcart', e);            
-                    }}>ADD To CART</button>
-                   <Link to={`${basePath}/cart`}  className="giftset_btn_viewcart hidden" data-id={id}>View cart</Link>
+                    }}>ADD TO CART</button>
+                   <Link to={`${basePath}/cart`}  className="giftset_btn_viewcart hidden" data-id={id}>VIEW CART</Link>
                     <div className="giftset_details"><Link to={`${basePath}/item-detail/${id}`}>Details</Link></div>
             </div>
         </div>

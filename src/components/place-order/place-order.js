@@ -96,7 +96,7 @@ const PlaceOrder = (props) => {
                         No need to wait in the queue! Go straight to the register, pay for your order and pick it up.
                     </p>
 
-                    <button className="order_btn" type="submit">Order now</button>
+                    <button className="order_btn" type="submit">ORDER NOW</button>
                     {/* <div className="order_back"><Link to={`${basePath}/cart`}>Back to the cart</Link></div> */}
                 </form>
                 <div className="order_back"><Link to={`${basePath}/`}>Back to the store</Link></div>

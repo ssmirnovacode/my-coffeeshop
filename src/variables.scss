@@ -98,6 +98,7 @@ $background: #fcfcfc;
 @mixin content {
     font-weight: 300;
     @include fz-text-basic;
+    text-align:justify;
 }
 
 @mixin img {

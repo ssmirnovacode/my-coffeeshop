@@ -37,12 +37,14 @@
     }
     &_instructions {
         padding: 0 5% 5% 5%;
+        text-align: justify;
     }
     &_btn {
         @include btn;
         //margin: 0 auto 5% auto;
         margin-right: 10%;
         float: right;
+        margin-bottom: 5%;
     }
     &_back {
         cursor: pointer;
