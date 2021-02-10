@@ -159,6 +159,12 @@ $background: #fcfcfc;
     }
 }
 
+/* @mixin item-card-hor {
+    @include item-box;
+    display: grid;
+
+} */
+
 @mixin item-box {
     background-color: #fff;
     border-radius: 5px;;
