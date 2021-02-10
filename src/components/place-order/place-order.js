@@ -15,9 +15,7 @@ const PlaceOrder = (props) => {
     const formik = useFormik({
         initialValues: {
             firstname: '',
-            lastname: '',
-            tel: '',
-            email: '',
+            tel: ''
         },
         onSubmit: (values, { resetForm }) => {
             values.items = props.cart.map(item => ({
@@ -55,38 +53,20 @@ const PlaceOrder = (props) => {
                 <form onSubmit={formik.handleSubmit}>
 
                     <div className="order_form-field">
-                        <label>First name: 
+                        <label>Name: 
                         <input required type="text" id="firstname" name ="firstname"  
-                            placeholder="First Name" 
+                            placeholder="Your Name" 
                             onChange={formik.handleChange}
                             value={formik.values.firstname}/>
                         </label>
                     </div>
 
                     <div className="order_form-field">
-                        <label>Last name: 
-                        <input required type="text" id="lastname" name ="lastname"  
-                            placeholder="Last Name" 
-                            onChange={formik.handleChange}
-                            value={formik.values.lastname}/>
-                        </label>
-                    </div>
-
-                    <div className="order_form-field">
-                        <label>Phone number: 
+                        <label>Phone number:  
                         <input required type="text" id="tel" name ="tel"  
-                            placeholder="Phone number" 
+                            placeholder="Your phone number" 
                             onChange={formik.handleChange}
                             value={formik.values.tel}/>
-                        </label>
-                    </div>
-                    
-                    <div className="order_form-field">
-                        <label>Email: 
-                        <input required type="email" id="email" name ="email" 
-                            placeholder="Email" 
-                            onChange={formik.handleChange}
-                            value={formik.values.email}/>  
                         </label>
                     </div>
 
@@ -97,7 +77,7 @@ const PlaceOrder = (props) => {
                     </p>
 
                     <button className="order_btn" type="submit">ORDER NOW</button>
-                    {/* <div className="order_back"><Link to={`${basePath}/cart`}>Back to the cart</Link></div> */}
+
                 </form>
                 <div className="order_back"><Link to={`${basePath}/`}>Back to the store</Link></div>
 
