@@ -23,7 +23,7 @@ const ComboItem = ({item, addToCart}) => {
                 toggleButton('.combo-item_btn','.combo-item_btn_viewcart', e)
             }}>ADD TO CART</button>
             <Link to={`${basePath}/cart`}  className="combo-item_btn_viewcart hidden" data-id={id}>VIEW CART</Link>
-            <div className="combo-item_details"><Link to={`${basePath}/item-detail/${id}`}>Details</Link></div>
+            <div className="combo-item_details"><Link to={`${basePath}/item-detail/${id}`}>Details</Link></div><br/>
         </div>
     )
 }

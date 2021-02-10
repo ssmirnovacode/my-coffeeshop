@@ -25,7 +25,7 @@ const GiftsetItem = ({item, addToCart}) => {
                         toggleButton('.giftset_btn', '.giftset_btn_viewcart', e);            
                     }}>ADD TO CART</button>
                    <Link to={`${basePath}/cart`}  className="giftset_btn_viewcart hidden" data-id={id}>VIEW CART</Link>
-                    <div className="giftset_details"><Link to={`${basePath}/item-detail/${id}`}>Details</Link></div>
+                    <div className="giftset_details"><Link to={`${basePath}/item-detail/${id}`}>Details</Link></div><br/>
             </div>
         </div>
     )
