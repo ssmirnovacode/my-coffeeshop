@@ -54,12 +54,18 @@
     right: 1%;
     padding: 1%;
     border-radius: 3px;
+    font-family: Nunito, sans-serif;
     @media only screen and (max-width: 942px) {
         margin-top:10%;
     }
+    @media only screen and (min-width: 1650px) {
+        margin-top:2%;
+        margin-right: 10%;
+    }
     @media only screen and (max-width: 430px) {
         margin-top:15%;
-        width: 35px;
+        margin-right: 1%;;
+        width: 40px;
         font-size: 80%;
     }
     margin-top:2%;
