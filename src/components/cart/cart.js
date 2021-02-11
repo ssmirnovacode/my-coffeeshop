@@ -6,8 +6,7 @@ import {Link} from 'react-router-dom';
 import basePath from '../../services/basePath';
 
 const Cart = (props) => {
-
-    
+  
         let total = 0;
         props.cart.forEach(item => {
             total += item.price * item.qty;
@@ -43,9 +42,7 @@ const Cart = (props) => {
                     <div className="cart_continue"><Link to={`${basePath}/`}>Continue shopping</Link></div>
 
                 </div>
-            )
-               
-       
+            )     
 }
 
 const mapStateToProps = (state) => {

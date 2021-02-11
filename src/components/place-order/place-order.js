@@ -18,29 +18,40 @@ const PlaceOrder = (props) => {
             tel: ''
         },
         onSubmit: (values, { resetForm }) => {
-            values.items = props.cart.map(item => ({
-                id: item.id,
-                title: item.title,
-                qty: item.qty
-            }));
-
-            /* props.orderSubmitted(values);
-            resetForm();
-            props.clearCart();
-            props.history.push(`${basePath}/thank-you`); */
-
-            const requestService = new RequestService();
-            const url = baseURL+'orders';
-
-            requestService.postMenuItems(url, values)
-            .then(res => props.orderSubmitted(res))
-            .then( res => console.log(res))
-            .catch( () => props.orderError())
-            .finally( () => {
+            if (props.cart.length > 0) {
+                values.items = props.cart.map(item => ({
+                    id: item.id,
+                    title: item.title,
+                    qty: item.qty
+                }));
+    
+                /* props.orderSubmitted(values);
                 resetForm();
                 props.clearCart();
-                props.history.push(`${basePath}/thank-you`);
-            });           
+                props.history.push(`${basePath}/thank-you`); */
+    
+                const requestService = new RequestService();
+                const url = baseURL+'orders';
+    
+                requestService.postMenuItems(url, values)
+                .then(res => props.orderSubmitted(res))
+                .then( res => console.log(res))
+                .catch( () => props.orderError())
+                .finally( () => {
+                    resetForm();
+                    props.clearCart();
+                    props.history.push(`${basePath}/thank-you`);
+                });
+            }
+            else {
+                const failMsg = document.createElement('div');
+                failMsg.classList.add('fail');
+                failMsg.innerHTML = 'Cart is empty';
+                document.querySelector('.order_back').parentNode.appendChild(failMsg);
+                setTimeout( () => {
+                    failMsg.remove();
+                },1500);
+            }          
         },
       });
 
@@ -77,7 +88,6 @@ const PlaceOrder = (props) => {
                     </p>
 
                     <button className="order_btn" type="submit">ORDER NOW</button>
-
                 </form>
                 <div className="order_back"><Link to={`${basePath}/`}>Back to the store</Link></div>
 
