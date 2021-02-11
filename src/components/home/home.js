@@ -21,13 +21,19 @@ class Home extends Component {
         const renderNav = this.props.location.pathname !== '/my-coffeeshop/cart' 
                             && this.props.location.pathname !=='/my-coffeeshop/order' 
                             && this.props.location.pathname !=='/my-coffeeshop/thank-you'
-                            ? <Navigation/> : null;
+                            ? <Navigation/> : 
+                                <> 
+                                <Link className="homelink" to={`${basePath}/`}><span>MY COFFEESHOP</span></Link>
+                                <Link className="homeicon" to={`${basePath}/`}><i className="fa fa-home" aria-hidden="true"></i> </Link>
+                                </> ;
 
         const renderCartIcon = this.props.location.pathname !== '/my-coffeeshop/cart' 
                             && this.props.location.pathname !=='/my-coffeeshop/order' 
                             && this.props.location.pathname !=='/my-coffeeshop/thank-you' ? 
+                            <div className="cart" >
                             <Link to={`${basePath}/cart`}><img className="cart_image" src={cartIcon} alt="cart"/>
                             <div className="cart__total">Total: {total} $</div></Link>
+                            </div>
                             : null;
 
         return (
@@ -41,9 +47,7 @@ class Home extends Component {
                 </div>
     
                 <div className="right block">
-                    <div className="cart" >
                         {renderCartIcon}
-                    </div>
                     <div className="navigation">
                         {renderNav}
                     </div>

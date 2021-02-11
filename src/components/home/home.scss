@@ -17,6 +17,7 @@
 
 .right {
     background: $grey;
+    position: relative;
 }
 
 .block {
@@ -99,4 +100,48 @@
     border: 1px solid $light;
     color: $light;
     cursor: pointer;
+}
+
+.homelink {
+    text-decoration: none;
+    color: $light;
+    font-style: normal;
+    font-family: Montserrat, sans-serif;
+    font-weight: 800;
+    font-size: 200%;
+    line-height: 150%;
+    cursor: pointer;
+    position: absolute;
+    bottom: 25%;
+    right: 5%;
+    &:hover {
+        background-color: $light;
+        color: $grey;
+    }
+    @media only screen and (max-width: 1040px) { //570px
+        display: none;
+    }             
+}
+.homeicon {
+    text-decoration: none; 
+}
+
+.fa-home {
+    display: none;
+    @media only screen and (max-width: 1040px) { //570px
+        display: block;
+        color: $light;
+        font-size: 300%;
+        text-align: center;
+        margin-top: 200%;
+        cursor: pointer;
+    }  
+    @media only screen and (max-width: 570px) {
+        display: block;
+        color: $light;
+        font-size: 300%;
+        text-align: center;
+        margin-top: 250%;   
+        cursor: pointer;   
+    }
 }
