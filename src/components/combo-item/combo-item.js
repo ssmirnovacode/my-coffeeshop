@@ -15,8 +15,9 @@ const ComboItem = ({item, addToCart}) => {
                     <img src={image} alt={title}/> 
                 </Link>
             </div>
-            <div className="combo-item_price">{price} $<span>6.00 $</span></div>  {/* Add old prices to db.json */}
+            
             <div className="combo-item_title">{title}</div>
+            <div className="combo-item_price">{price} $<span>6.00 $</span></div>  {/* Add old prices to db.json */}
             <div className="combo-item_content">{content}</div>
             <button className="combo-item_btn" data-id={id} onClick={(e) => {
                 addToCart();

@@ -28,7 +28,8 @@
         }
     }
     &_title {
-        @include title;    
+        @include title;   
+        margin-bottom: 5%; 
     }
     &_content {
         @include content;

@@ -31,7 +31,7 @@ const ItemDetail = (props) => {
 
             <Link to={`${basePath}/cart`}  className="item-detail_btn_viewcart hidden" data-id={id}>VIEW CART</Link>
 
-            <Link to={`${basePath}/`} className="item-detail_back">Back to the store</Link>
+            <Link to={`${basePath}/`} className="item-detail_back">Back</Link>
    
                            
         </div>
