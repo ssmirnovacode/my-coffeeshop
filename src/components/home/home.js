@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import basePath from '../../services/basePath';
 import animateScrollTo from 'animated-scroll-to';
+import { withRouter } from "react-router-dom";
 
 class Home extends Component {
     
@@ -14,6 +15,17 @@ class Home extends Component {
         this.props.cart.forEach(item => {
             total += item.price * item.qty;
         })
+
+        console.log(this.props.location);
+
+        const renderNav = this.props.location.pathname !== '/my-coffeeshop/cart' 
+                            && this.props.location.pathname !=='/my-coffeeshop/order' ? <Navigation/> : null;
+
+        const renderCartIcon = this.props.location.pathname !== '/my-coffeeshop/cart' 
+                            && this.props.location.pathname !=='/my-coffeeshop/order' ? 
+                            <Link to={`${basePath}/cart`}><img className="cart_image" src={cartIcon} alt="cart"/>
+                            <div className="cart__total">Total: {total} $</div></Link>
+                            : null;
 
         return (
             <div className="home_container" id="home">
@@ -27,11 +39,10 @@ class Home extends Component {
     
                 <div className="right block">
                     <div className="cart" >
-                        <Link to={`${basePath}/cart`}><img className="cart_image" src={cartIcon} alt="cart"/>
-                        <div className="cart__total">Total: {total} $</div></Link>
+                        {renderCartIcon}
                     </div>
                     <div className="navigation">
-                        <Navigation/>
+                        {renderNav}
                     </div>
                     <div className="up" onClick={() => animateScrollTo(document.querySelector('#home'))}> &uarr; </div>
                 </div>
@@ -47,4 +58,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(Home);
+export default withRouter(connect(mapStateToProps)(Home));
