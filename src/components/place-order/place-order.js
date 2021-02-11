@@ -9,6 +9,7 @@ import baseURL from '../../services/baseURL';
 import RequestService from '../../services/requestService';
 import {orderSubmitted, orderError} from '../../actions/orderAC';
 import { useFormik } from 'formik';
+import orderFailMsg from '../../local-functions/orderFailMsg';
 
 const PlaceOrder = (props) => {
 
@@ -24,12 +25,7 @@ const PlaceOrder = (props) => {
                     title: item.title,
                     qty: item.qty
                 }));
-    
-                /* props.orderSubmitted(values);
-                resetForm();
-                props.clearCart();
-                props.history.push(`${basePath}/thank-you`); */
-    
+
                 const requestService = new RequestService();
                 const url = baseURL+'orders';
     
@@ -44,13 +40,7 @@ const PlaceOrder = (props) => {
                 });
             }
             else {
-                const failMsg = document.createElement('div');
-                failMsg.classList.add('fail');
-                failMsg.innerHTML = 'Cart is empty';
-                document.querySelector('.order_back').parentNode.appendChild(failMsg);
-                setTimeout( () => {
-                    failMsg.remove();
-                },1500);
+                orderFailMsg('.order_back');
             }          
         },
       });

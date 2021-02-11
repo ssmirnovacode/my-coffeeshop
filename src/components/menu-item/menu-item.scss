@@ -82,6 +82,11 @@
             @include btn-viewCart;
             grid-column: 1/3;
             grid-row: 8/9;
+            @media only screen and (max-width: 420px) {
+                grid-column: 1/3;
+                grid-row: 8/9;
+                width: 100px;
+            }
         }
     }
 }
