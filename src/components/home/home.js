@@ -19,10 +19,13 @@ class Home extends Component {
         console.log(this.props.location);
 
         const renderNav = this.props.location.pathname !== '/my-coffeeshop/cart' 
-                            && this.props.location.pathname !=='/my-coffeeshop/order' ? <Navigation/> : null;
+                            && this.props.location.pathname !=='/my-coffeeshop/order' 
+                            && this.props.location.pathname !=='/my-coffeeshop/thank-you'
+                            ? <Navigation/> : null;
 
         const renderCartIcon = this.props.location.pathname !== '/my-coffeeshop/cart' 
-                            && this.props.location.pathname !=='/my-coffeeshop/order' ? 
+                            && this.props.location.pathname !=='/my-coffeeshop/order' 
+                            && this.props.location.pathname !=='/my-coffeeshop/thank-you' ? 
                             <Link to={`${basePath}/cart`}><img className="cart_image" src={cartIcon} alt="cart"/>
                             <div className="cart__total">Total: {total} $</div></Link>
                             : null;
