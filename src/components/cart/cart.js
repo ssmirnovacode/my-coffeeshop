@@ -11,7 +11,10 @@ const Cart = (props) => {
         let total = 0;
         props.cart.forEach(item => {
             total += item.price * item.qty;
-        })
+        });
+
+        const orderBtn =  total !== 0 ? <Link  className="cart_btn" to={`${basePath}/order`}>Order ONLINE</Link> : null;
+
             return(
                 <div className="cart_container" >
 
@@ -29,16 +32,14 @@ const Cart = (props) => {
                                             <button className="minus" onClick={()=> props.minusQty(item.id)}>  -  </button>
                                                 {item.qty} 
                                             <button className="plus" onClick={() => props.plusQty(item.id)}> + </button>
-                                        </div>
-                                        
-                                        
+                                        </div>                                      
                                     </div>
                                 )
                             })
                         }
                     </div>
                     <div className="cart_total">Total: {total} $</div>
-                    <Link  className="cart_btn" to={`${basePath}/order`}>Order ONLINE</Link>
+                    {orderBtn}
                     <div className="cart_continue"><Link to={`${basePath}/`}>Continue shopping</Link></div>
 
                 </div>

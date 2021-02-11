@@ -16,6 +16,7 @@
         //padding-right:5%;
         & img{
             @include img;
+            max-width: 130px;
         }
     }
     
@@ -32,13 +33,15 @@
     }
     &_btn {
         @include btn;
-        margin-left: 5%;;
+        margin-left: 5%;
+        margin-bottom: 5%;
         &.hidden {
             display: none;
         }
         &_viewcart {
             @include btn-viewCart;
-            margin-top: 5%;
+            margin-left: 5%;
+            margin-bottom: 5%;
         }
     }
     &_back {
