@@ -21,6 +21,7 @@ class Home extends Component {
         const renderNav = this.props.location.pathname !== '/my-coffeeshop/cart' 
                             && this.props.location.pathname !=='/my-coffeeshop/order' 
                             && this.props.location.pathname !=='/my-coffeeshop/thank-you'
+                            && this.props.location.pathname.substring(0, 26) !=='/my-coffeeshop/item-detail'
                             ? <Navigation/> : 
                                 <> 
                                 <Link className="homelink" to={`${basePath}/`}><span>MY COFFEESHOP</span></Link>

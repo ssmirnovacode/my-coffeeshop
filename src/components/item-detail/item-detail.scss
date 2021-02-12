@@ -11,6 +11,10 @@
         padding: 5%;
         margin: 5% 8%;
         @include item-box;
+        @media only screen and (min-width: 1040px) { //570px
+            width: 60%;
+            margin: 5% auto;
+        }   
     }
     &_img {
         //padding-right:5%;
