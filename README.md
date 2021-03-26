@@ -10,10 +10,9 @@ https://ssmirnovacode.github.io/my-coffeeshop/
  - redux
  - SCSS
  - JavaScript
- - JSON REST api
 
 ### Additional libraries
- - Framik
+ - Formik
  - react-router-dom
 
 #### Functionality
