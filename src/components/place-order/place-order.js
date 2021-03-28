@@ -10,6 +10,7 @@ import RequestService from '../../services/requestService';
 import {orderSubmitted, orderError} from '../../actions/orderAC';
 import { useFormik } from 'formik';
 import orderFailMsg from '../../local-functions/orderFailMsg';
+import validate from '../../services/validate';
 
 const PlaceOrder = (props) => {
 
@@ -18,6 +19,7 @@ const PlaceOrder = (props) => {
             firstname: '',
             tel: ''
         },
+        validate,
         onSubmit: (values, { resetForm }) => {
             if (props.cart.length > 0) {
                 values.items = props.cart.map(item => ({
@@ -60,6 +62,7 @@ const PlaceOrder = (props) => {
                             onChange={formik.handleChange}
                             value={formik.values.firstname}/>
                         </label>
+                        {formik.errors.firstname ? <div className="errMess">{formik.errors.firstname}</div> : null}
                     </div>
 
                     <div className="order_form-field">
@@ -69,6 +72,7 @@ const PlaceOrder = (props) => {
                             onChange={formik.handleChange}
                             value={formik.values.tel}/>
                         </label>
+                        {formik.errors.tel ? <div className="errMess">{formik.errors.tel}</div> : null}
                     </div>
 
                     <p className="order_instructions">
