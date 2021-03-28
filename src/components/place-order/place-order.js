@@ -56,7 +56,7 @@ const PlaceOrder = (props) => {
                 <form onSubmit={formik.handleSubmit}>
 
                     <div className="order_form-field">
-                        <label>Name: 
+                        <label>Name:   
                         <input required type="text" id="firstname" name ="firstname"  
                             placeholder="Your Name" 
                             onChange={formik.handleChange}
@@ -66,7 +66,7 @@ const PlaceOrder = (props) => {
                     </div>
 
                     <div className="order_form-field">
-                        <label>Phone number:  
+                        <label>Phone number:    
                         <input required type="text" id="tel" name ="tel"  
                             placeholder="Your phone number" 
                             onChange={formik.handleChange}
