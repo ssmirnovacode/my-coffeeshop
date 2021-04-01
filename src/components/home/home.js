@@ -16,7 +16,7 @@ class Home extends Component {
             total += item.price * item.qty;
         })
 
-        console.log(this.props.location);
+        //console.log(this.props.location);
 
         const renderNav = this.props.location.pathname !== '/my-coffeeshop/cart' 
                             && this.props.location.pathname !=='/my-coffeeshop/order' 

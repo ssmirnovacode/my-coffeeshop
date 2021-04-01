@@ -3,9 +3,10 @@ const orderFailMsg = (childSelector) => {
         failMsg.classList.add('fail');
         failMsg.innerHTML = 'Cart is empty';
         document.querySelector(childSelector).parentNode.appendChild(failMsg);
-        setTimeout( () => {
+        const timerId = setTimeout( () => {
             failMsg.remove();
-        },1500);
+            clearInterval(timerId);
+        }, 1500);
 }
 
 export default orderFailMsg;
