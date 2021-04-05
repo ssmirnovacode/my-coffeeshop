@@ -1,9 +1,9 @@
 import React from 'react';
 import './cart.scss';
 import {connect} from 'react-redux';
-import {deleteFromCart, plusQty, minusQty} from '../../actions/cartAC';
+import {deleteFromCart, plusQty, minusQty} from '../../redux/actions/cartAC';
 import {Link} from 'react-router-dom';
-import basePath from '../../services/basePath';
+import basePath from '../../assets/basePath';
 
 const Cart = (props) => {
   

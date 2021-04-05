@@ -7,7 +7,7 @@ import Cart from '../cart/cart';
 import PlaceOrder from '../place-order/place-order';
 import ThankYou from '../thank-you/thank-you';
 import {BrowserRouter as Router, Route } from 'react-router-dom';
-import basePath from '../../services/basePath';
+import basePath from '../../assets/basePath';
 import './app.scss';
 
 

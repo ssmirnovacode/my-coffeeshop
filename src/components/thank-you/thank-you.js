@@ -1,7 +1,7 @@
 import React from 'react';
 import './thank-you.scss';
 import {Link} from 'react-router-dom';
-import basePath from '../../services/basePath';
+import basePath from '../../assets/basePath';
 import {connect} from 'react-redux';
 
 const ThankYou = (props) => {

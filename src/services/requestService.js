@@ -1,4 +1,4 @@
-import baseURL from '../services/baseURL';
+import baseURL from '../assets/baseURL';
 
 export default class RequestService {
 

@@ -2,7 +2,7 @@ import React from 'react';
 import './giftset-item.scss';
 import toggleButton from '../../local-functions/toggleButton';
 import {Link} from 'react-router-dom';
-import basePath from '../../services/basePath';
+import basePath from '../../assets/basePath';
 
 const GiftsetItem = ({item, addToCart}) => {
 

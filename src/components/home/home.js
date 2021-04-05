@@ -4,7 +4,7 @@ import Navigation from '../navigation/navigation';
 import cartIcon from '../../img/shopping-cart-solid.svg';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import basePath from '../../services/basePath';
+import basePath from '../../assets/basePath';
 import animateScrollTo from 'animated-scroll-to';
 import { withRouter } from "react-router-dom";
 

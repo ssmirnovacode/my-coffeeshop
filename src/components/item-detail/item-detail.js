@@ -1,10 +1,10 @@
 import React from 'react';
 import './item-detail.scss';
 import {connect} from 'react-redux';
-import {addToCart} from '../../actions/cartAC';
+import {addToCart} from '../../redux/actions/cartAC';
 import toggleButton from '../../local-functions/toggleButton';
 import {Link} from 'react-router-dom';
-import basePath from '../../services/basePath';
+import basePath from '../../assets/basePath';
 
 const ItemDetail = (props) => {
     const {itemId} = props;

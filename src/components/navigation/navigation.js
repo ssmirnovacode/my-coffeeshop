@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './navigation.scss';
 import {Link} from 'react-router-dom';
-import basePath from '../../services/basePath';
+import basePath from '../../assets/basePath';
 import animateScrollTo from 'animated-scroll-to';
 
 class Navigation extends Component {
