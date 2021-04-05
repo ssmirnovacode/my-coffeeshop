@@ -21,7 +21,7 @@ $background: #fcfcfc;
 }
 
 @mixin fz-title-basic {
-    font-size: 24px;
+    font-size: 22px;
     line-height: 28px;
     /* identical to box height, or 117% */
 }
@@ -99,7 +99,7 @@ $background: #fcfcfc;
 @mixin content {
     font-weight: 300;
     @include fz-text-basic;
-    //text-align:justify;
+    min-height: 5rem;
 }
 
 @mixin img {

@@ -8,86 +8,40 @@
         font-style: normal;
         padding: 5%;
         @include item-box;
-        display: grid;
-        height:400px;;
-        grid-auto-flow: row;
     }
     &_img {
-        @include img;
-        cursor: pointer;
-        grid-column: 1/4;
-        grid-row: 1/8;
-        @media only screen and (max-width: 420px) {
-            grid-column: 1/2;
-            grid-row: 1/3;
-        }
         & img {
             @include img;
+            cursor: pointer;
         }
     }
     &_price {
         @include price;
-        grid-column: 4/15;
-        grid-row: 2/3;
-        @media only screen and (max-width: 420px) {
-            grid-column: 3/6;
-            grid-row: 2/3;
-        }
     }
     &_title {
         @include title;  
-        grid-column: 4/15;
-        grid-row: 1/2;
-        @media only screen and (max-width: 420px) {
-            margin-top: 20%;
-            grid-column: 3/6;
-            grid-row: 1/2;
-        }
     }
     &_content {
         @include content;
-        margin: 0 auto 5% auto;
-        grid-column: 4/15;
-        grid-row: 3/8;
-        @media only screen and (max-width: 420px) {
-            grid-column: 1/6;
-            grid-row: 4/8;
-        }
+        margin: 7% auto;
+        display: block;
     }
     &_details {
-        
-        grid-column: 8/11;
-        grid-row: 8/9;
-        @media only screen and (max-width: 420px) {
-            grid-column: 4/6;
-            grid-row: 8/9;
-        }
         & a {
             @include details;
         }
     }
+    &_btns {
+        display: block;
+
+    }
     &_btn {
         @include btn;
-        grid-column: 1/3;
-        grid-row: 8/9;
-        //margin-right: 40%;;
-        @media only screen and (max-width: 420px) {
-            grid-column: 1/3;
-            grid-row: 8/9;
-            width: 100px;
-        }
         &.hidden {
             display: none;
         }
         &_viewcart {
             @include btn-viewCart;
-            grid-column: 1/3;
-            grid-row: 8/9;
-            @media only screen and (max-width: 420px) {
-                grid-column: 1/3;
-                grid-row: 8/9;
-                width: 100px;
-            }
         }
     }
 }
@@ -96,8 +50,8 @@
     /* grid-column: 1/6;
     grid-row: 9/10; */
     font-size: .8rem;
-    @media only screen and (max-width: 420px) {
+    /* @media only screen and (max-width: 420px) {
         grid-column: 1/6;
         grid-row: 9/10;
-    }
+    } */
 }

@@ -16,13 +16,16 @@ const MenuItem = ({item, addToCart}) => {
             </div>
             <div className="menu-item_price">{price} $</div>
             <div className="menu-item_title">{title}</div>
-            <div className="menu-item_content">{content}</div>
-            <button className="menu-item_btn" data-id={id} onClick={(e) => {
-                addToCart();
-                toggleButton('.menu-item_btn', '.menu-item_btn_viewcart', e);
-                }}>ADD TO CART</button>
-            <button className="menu-item_btn_viewcart hidden" data-id={id}><Link to={`${basePath}/cart`} >VIEW CART</Link></button> 
-            <div className="menu-item_details"><Link to={`${basePath}/item-detail/${id}`}>Details</Link></div><br/>
+            <div className="menu-item_content">{content}</div><br/>
+            <div className="menu-item_btns">
+                <button className="menu-item_btn" data-id={id} onClick={(e) => {
+                    addToCart();
+                    toggleButton('.menu-item_btn', '.menu-item_btn_viewcart', e);
+                    }}>ADD TO CART</button>
+                <button className="menu-item_btn_viewcart hidden" data-id={id}><Link to={`${basePath}/cart`} >VIEW CART</Link></button> 
+                <div className="menu-item_details"><Link to={`${basePath}/item-detail/${id}`}>Details</Link></div><br/>
+            </div>
+            
         </div>
     )
 }
