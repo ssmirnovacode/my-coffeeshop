@@ -22,7 +22,7 @@
         @include appear;
         font-family: Nunito, sans-serif;
         background-color: $background;
-        color: $grey;
+        color: $dark;
         @include item-box;
         text-align: center;
         max-width: 800px;
@@ -65,7 +65,7 @@
         margin-left: 10%;
         & a {
             text-decoration: none;
-            color: $grey;
+            color: $dark;
         }
     }
 }

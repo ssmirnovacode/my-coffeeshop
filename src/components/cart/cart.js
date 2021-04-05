@@ -27,9 +27,9 @@ const Cart = (props) => {
                                         <div className="cart_item_price">Price: {item.price} $</div>
                                         <div onClick={() => props.deleteFromCart(item.id)} className="cart_item_delete"><i className="fa fa-trash-o"></i></div>
                                         <div className="cart_item_img"><img src={item.image} alt={item.title}/></div>                                               
-                                        <div className="cart_item_qty">Quantity: <br/>
+                                        <div className="cart_item_qty"><div>Quantity: </div><br/>
                                             <button className="minus" onClick={()=> props.minusQty(item.id)}>  -  </button>
-                                                {item.qty} 
+                                                <div className="cart_item_qty_number">{item.qty}</div>
                                             <button className="plus" onClick={() => props.plusQty(item.id)}> + </button>
                                         </div>                                      
                                     </div>

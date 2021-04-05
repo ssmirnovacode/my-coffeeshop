@@ -4,7 +4,7 @@
 .cart {
     &_container {
         @include appear;
-        color: $grey;
+        color: $dark;
         font-family: Nunito, sans-serif;
         font-style: normal;
         //padding: 5%;
@@ -14,7 +14,7 @@
     }
     &_title {
         @include title;
-        margin-bottom: 2%;
+        margin-bottom: 5%;
         text-align: center;
     }
 
@@ -36,7 +36,7 @@
         margin-left: 10%;
         & a {
             text-decoration: none;
-            color: black;
+            color: $dark;
             &:focus {
                 text-decoration: underline;
             }
@@ -52,8 +52,15 @@
     }
     &_item {
         margin-bottom: 5%;
+        @media only screen and (max-width: 380px) { //570px
+            margin-bottom: 10%;
+        } 
         display: grid;
-        grid-template-columns:repeat(3, 1fr); //4fr 6fr 1fr; 
+        grid-template-columns:repeat(3, 1fr); //4fr 6fr 1fr; repeat(3, 1fr)
+        @media only screen and (max-width: 600px) { //570px
+            grid-template-columns: 4fr 6fr 1fr;
+        } 
+        gap: 1rem;
         justify-items: center;
         &_delete {
             margin-top: 10%;
@@ -65,6 +72,7 @@
         &_title {
             @include title;
             font-size: 16px;
+            text-align: center;
         }
         &_price {
             padding-top: 5%;
@@ -75,7 +83,10 @@
         &_qty {
             font-size: 16px;
             font-weight: 400;
-            margin-bottom: 5%;
+            &_number {
+                display: inline-block;
+                padding: 0 4%;
+            }
         }
         &_img img{
             max-width: 100px;
