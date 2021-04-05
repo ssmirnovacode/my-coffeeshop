@@ -8,7 +8,7 @@ const ThankYou = (props) => {
 
     const {firstname} = props.order.order;
 
-    const timerId = setTimeout(() =>{ props.history.push(`${basePath}/`); clearInterval(timerId)}, 10000);
+    //const timerId = setTimeout(() =>{ props.history.push(`${basePath}/`); clearInterval(timerId)}, 10000);
 
     return(
         <div className="thank-you_container">

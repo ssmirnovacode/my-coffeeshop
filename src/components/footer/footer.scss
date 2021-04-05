@@ -2,9 +2,10 @@
 
 .footer {
     &_container {
+        margin: 0;
         background-color: $grey;
         color: $light;
-
+        //height: 8rem;
         display: grid;
         grid-template-columns: 1fr 1fr;
         justify-content: center;
@@ -14,6 +15,9 @@
         font-weight: 500;
         @include fz-text-basic;  
         padding: 5% 10%;
+        @media only screen and (max-width: 630px) {
+            height: 8rem;
+        }
         @media only screen and (max-width: 470px) {
             font-size: 80%;
             padding: 5% 5%;
