@@ -10,17 +10,17 @@
         grid-template-columns: 4fr 8fr; */
         //padding: 5%;
         margin: 5% auto;
-        max-width: 800px;
+        max-width: 700px;
         @include item-box;
         @media only screen and (min-width: 1040px) { //570px
             width: 60%;
         }   
     }
     &_img {
-        //padding-right:5%;
         & img{
             @include img;
             max-width: 130px;
+            padding-right: 5%;
         }
     }
     
@@ -33,7 +33,7 @@
     }
     &_text {
         margin: 0 0 5% 2%;
-        text-align: justify;
+        //text-align: justify;
     }
     &_btn {
         @include btn;
