@@ -4,11 +4,12 @@
 .cart {
     &_container {
         @include appear;
-        color: $dark;
+        color: $grey;
         font-family: Nunito, sans-serif;
         font-style: normal;
-        padding: 5%;
-        margin: 2% 10%;
+        //padding: 5%;
+        max-width: 700px;
+        margin: 5% auto;
         @include item-box;
     }
     &_title {

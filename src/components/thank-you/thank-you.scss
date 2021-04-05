@@ -9,10 +9,10 @@
         @include item-box;
         text-align: center;
         max-width: 800px;
-        margin: 0 auto;
-        margin-bottom: 5%;
-        margin-top: 5%;
-        padding: 2rem;
+        margin: 5% auto;
+        @media only screen and (min-width: 1040px) { //570px
+            width: 60%;
+        }  
     }
     &_title {
         @include title;

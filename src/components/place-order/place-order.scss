@@ -1,12 +1,14 @@
 @import '../../variables';
 
 .wrapper {
-    @include item-box;
+    margin: 5% 0;
+    //@include item-box;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     & .cart {
         &_container {
-            max-height: 70vh;
+            margin: 2% 5%;
+            //max-height: 70vh;
             overflow-y: scroll;
         }    
         &_btn, &_continue {
@@ -25,6 +27,9 @@
         text-align: center;
         max-width: 800px;
         margin: 2% 5%;
+        @media only screen and (max-width: 380px) { //570px
+            margin: 2% auto;
+        } 
         position: relative;
     }
     &_form-field {
@@ -60,7 +65,7 @@
         margin-left: 10%;
         & a {
             text-decoration: none;
-            color: black;
+            color: $grey;
         }
     }
 }
