@@ -64,7 +64,7 @@ class Menu extends Component {
                         })
                     }                       
                 </div>
-                <div className="menu_more" onClick={this.showMore}>View more</div>
+                <div className="menu_more" onClick={this.showMore}>VIEW MORE</div>
             </section>
         )
     }   

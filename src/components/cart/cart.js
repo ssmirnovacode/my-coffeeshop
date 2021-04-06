@@ -12,7 +12,7 @@ const Cart = (props) => {
             total += item.price * item.qty;
         });
 
-        const orderBtn =  total !== 0 ? <Link  className="cart_btn" to={`${basePath}/order`}>Order ONLINE</Link> : null;
+        const orderBtn =  total !== 0 ? <Link  className="cart_btn" to={`${basePath}/order`}>ORDER ONLINE</Link> : null;
 
             return(
                 <div className="cart_container" >
