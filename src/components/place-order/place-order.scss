@@ -51,18 +51,19 @@
     &_btn {
         @include btn;
         //margin: 0 auto 5% auto;
-        margin-right: 10%;
+        margin-right: 5%;
         float: right;
         margin-bottom: 5%;
     }
     &_back {
+        @include details;
         cursor: pointer;
         text-align: right;
         font-weight: bold;
         padding: 0 5% 5% 0;
-        @include details;
+        
         text-align: left;
-        margin-left: 10%;
+        margin-left: 5%;
         & a {
             text-decoration: none;
             color: $dark;
