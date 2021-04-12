@@ -19,9 +19,9 @@ const Footer = () => {
             <div className="footer_social">
                 <div className="footer_social_title">Find us on social media:</div><br/>
                 <div className="footer_social_icons">
-                    <a href={'https://github.com/ssmirnovacode'} ><i className="fa fa-facebook-square"></i></a>
-                    <a href={'https://github.com/ssmirnovacode'} ><i className="fa fa-linkedin-square"></i></a>
-                    <a href={'https://github.com/ssmirnovacode'} ><i className="fa fa-github-square"></i></a>
+                    <a href={'https://github.com/ssmirnovacode/my-coffeeshop'} target="blank" ><i className="fa fa-facebook-square"></i></a>
+                    <a href={'https://github.com/ssmirnovacode/my-coffeeshop'} target="blank" ><i className="fa fa-linkedin-square"></i></a>
+                    <a href={'https://github.com/ssmirnovacode/my-coffeeshop'} target="blank" ><i className="fa fa-github-square"></i></a>
                 </div>
             </div>
             
