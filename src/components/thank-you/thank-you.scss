@@ -13,6 +13,9 @@
         @media only screen and (min-width: 1040px) { //570px
             width: 60%;
         }  
+        @media only screen and (max-width: 523px) {
+            margin: 15% auto;
+        }
     }
     &_title {
         @include title;
