@@ -1,14 +1,22 @@
 @import '../../variables';
 
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
 .app_container {
-    margin: 0 10%; // не работает. Почему?
+    margin: 0 10%; 
     @media only screen and (max-width: 1600px) {
         margin: 0;
     }
-    /* display: flex;
-    flex-direction: column */;
+    /* min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; */
 }
 .app_content {
-    //flex: 1 0 auto;
+    /* flex-grow: 1;
+    flex-shrink: 0; */
     min-height: 80vh;
 }
