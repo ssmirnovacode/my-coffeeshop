@@ -9,6 +9,7 @@ import baseURL from '../../assets/baseURL';
 import RequestService from '../../services/requestService';
 import Loading from '../loading/loading';
 import Error from '../error/error';
+import firebase from '../../firebase.config';
 
 const requestService = new RequestService();
 
@@ -22,10 +23,19 @@ class Menu extends Component {
     componentDidMount() {
         this.props.menuItemsRequested();
 
-        requestService.getMenuItems(baseURL+'menuItems')
+        const todoRef = firebase.database().ref('items');
+        todoRef.on('value', (snapshot) => {
+        const todos = snapshot.val();
+        const todoList = [];
+        for (let id in todos) {
+            todoList.push({ id, ...todos[id] });
+        }
+        this.props.menuItemsLoaded(todoList);
+        }, (err) => {this.props.menuItemsError(err)});
+        /* requestService.getMenuItems(baseURL+'menuItems')
         .then(res => res.filter((item, i) => i < 4))
         .then(res => this.props.menuItemsLoaded(res))
-        .catch( () => this.props.menuItemsError());
+        .catch( () => this.props.menuItemsError()); */
     }
 
     showMore = () => {
