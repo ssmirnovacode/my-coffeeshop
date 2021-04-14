@@ -5,5 +5,9 @@
     @media only screen and (max-width: 1600px) {
         margin: 0;
     }
-    
+    display: flex;
+    flex-direction: column;
+}
+.app_content {
+    flex: 1 0 auto;
 }

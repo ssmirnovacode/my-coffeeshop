@@ -15,16 +15,18 @@ const App = () => {
 
     return (
         <Router> 
-            <div className="app_container">      
-                <Home/>  
-                <Route path={`${basePath}/`} exact component={HomePage}/>                                               
-                <Route path={`${basePath}/cart`} component={Cart}/>
-                <Route path={`${basePath}/item-detail/:id`} render={ ({match}) => {
-                    const {id} = match.params;
-                    return <ItemDetail itemId={+id}/>
-                }}/>
-                <Route path={`${basePath}/order`} component={PlaceOrder}/>
-                <Route path={`${basePath}/thank-you`} component={ThankYou}/>
+            <div className="app_container">  
+                <div className="app_content">
+                    <Home/>  
+                    <Route path={`${basePath}/`} exact component={HomePage}/>                                               
+                    <Route path={`${basePath}/cart`} component={Cart}/>
+                    <Route path={`${basePath}/item-detail/:id`} render={ ({match}) => {
+                        const {id} = match.params;
+                        return <ItemDetail itemId={+id}/>
+                    }}/>
+                    <Route path={`${basePath}/order`} component={PlaceOrder}/>
+                    <Route path={`${basePath}/thank-you`} component={ThankYou}/>
+                </div>
                 <Footer/>
             </div> 
         </Router>
