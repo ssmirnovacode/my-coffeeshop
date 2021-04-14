@@ -23,7 +23,7 @@ class Menu extends Component {
     componentDidMount() {
         this.props.menuItemsRequested();
 
-        const todoRef = firebase.database().ref('items');
+        const todoRef = firebase.database().ref('/menuItems/');
         todoRef.on('value', (snapshot) => {
         const todos = snapshot.val();
         const todoList = [];
