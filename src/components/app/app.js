@@ -26,7 +26,7 @@ const App = () => {
                     }}/>
                     <Route path={`${basePath}/order`} component={PlaceOrder}/>
                     <Route path={`${basePath}/thank-you`} component={ThankYou}/>
-                </div>
+                </div> 
                 <Footer/>
             </div> 
         </Router>
