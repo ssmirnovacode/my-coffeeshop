@@ -14,7 +14,7 @@ const Beverages = (props) => {
 
     useEffect( () => {
         props.beveragesRequested();
-        const bevRef = firebase.database().ref('/beverages/');
+        const bevRef = firebase.database().ref('beverages');
         console.log(bevRef);
         bevRef.on('value', (snapshot) => {
             const items = snapshot.val();

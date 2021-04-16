@@ -47,54 +47,6 @@ $background: #fcfcfc;
     line-height: 19px;
 }
 
-//modal
-@mixin modal-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background-color: rgba(0,0,0,.5);
-    color: $dark;
-    font-family: Nunito, sans-serif;
-    font-style: normal;
-}
-
-@mixin modal-dialog {
-    max-width: 500px;
-    margin: 5% auto;
-    z-index:3;
-}
-
-@mixin modal-content {
-    position: relative;
-    width: 100%;
-    padding: 40px;
-    background-color: #fff;
-    border: 1px solid rgba(0,0,0,.2);
-    border-radius: 4px;
-    max-height: 80vh;
-    overflow-y: auto;
-
-    @include content;
-    margin: 7% auto;
-}
-
-@mixin close {
-    position: absolute;
-    top: 8px;
-    right: 14px;
-    font-size: 30px;
-    color: #000;
-    opacity: .5;
-    font-weight: 700;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-}
-
 //box elements
 @mixin content {
     font-weight: 300;
