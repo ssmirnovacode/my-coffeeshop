@@ -30,15 +30,21 @@ class Menu extends Component {
         for (let id in items) {
             itemList.push({ id, ...items[id] });
         }
-        this.props.menuItemsLoaded(itemList);
+        this.props.menuItemsLoaded(itemList.filter((item, i) => i < 4));
         }, (err) => {this.props.menuItemsError(err)});
     }
 
     showMore = () => {
-        requestService.getMenuItems(baseURL+'menuItems')
-        .then(res => this.props.menuItemsLoaded(res))
-        .catch( () => this.props.menuItemsError())
-        .finally(() => document.querySelector('.menu_more').remove());
+        const itemRef = firebase.database().ref('menuItems');
+        itemRef.on('value', (snapshot) => {
+        const items = snapshot.val();
+        const itemList = [];
+        for (let id in items) {
+            itemList.push({ id, ...items[id] });
+        }
+        this.props.menuItemsLoaded(itemList);
+        }, (err) => {this.props.menuItemsError(err)});
+        document.querySelector('.menu_more').remove();
     }
 
     render() {
