@@ -9,6 +9,7 @@ import baseURL from '../../assets/baseURL';
 import RequestService from '../../services/requestService';
 import Loading from '../loading/loading';
 import Error from '../error/error';
+import firebase from '../../firebase.config';
 
 class Giftset extends Component {
 
@@ -20,10 +21,15 @@ class Giftset extends Component {
     componentDidMount() {
         this.props.giftsetRequested();
 
-        const requestService = new RequestService();
-        requestService.getMenuItems(baseURL+'giftset')
-        .then(res => this.props.giftsetLoaded(res))
-        .catch( () => this.props.giftsetError());
+        const itemRef = firebase.database().ref('giftset');
+        itemRef.on('value', (snapshot) => {
+        const items = snapshot.val();
+        const itemList = [];
+        for (let id in items) {
+            itemList.push({ id, ...items[id] });
+        }
+        this.props.giftsetLoaded(itemList);
+        }, (err) => {this.props.giftsetError(err)});
 
     }
 

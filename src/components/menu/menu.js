@@ -23,19 +23,15 @@ class Menu extends Component {
     componentDidMount() {
         this.props.menuItemsRequested();
 
-        const todoRef = firebase.database().ref('/menuItems/');
-        todoRef.on('value', (snapshot) => {
-        const todos = snapshot.val();
-        const todoList = [];
-        for (let id in todos) {
-            todoList.push({ id, ...todos[id] });
+        const itemRef = firebase.database().ref('menuItems');
+        itemRef.on('value', (snapshot) => {
+        const items = snapshot.val();
+        const itemList = [];
+        for (let id in items) {
+            itemList.push({ id, ...items[id] });
         }
-        this.props.menuItemsLoaded(todoList);
+        this.props.menuItemsLoaded(itemList);
         }, (err) => {this.props.menuItemsError(err)});
-        /* requestService.getMenuItems(baseURL+'menuItems')
-        .then(res => res.filter((item, i) => i < 4))
-        .then(res => this.props.menuItemsLoaded(res))
-        .catch( () => this.props.menuItemsError()); */
     }
 
     showMore = () => {

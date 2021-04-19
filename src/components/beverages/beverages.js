@@ -1,4 +1,4 @@
-import React, {Component, useEffect} from 'react';
+import React, {Component} from 'react';
 import './beverages.scss';
 import BeverageItem from '../beverage-item/beverage-item';
 import Heading from '../heading/heading';
@@ -10,25 +10,26 @@ import Loading from '../loading/loading';
 import Error from '../error/error';
 import firebase from '../../firebase.config';
 
-const Beverages = (props) => {
+class Beverages extends Component {
 
-    useEffect( () => {
-        props.beveragesRequested();
+    componentDidMount() {
+        this.props.beveragesRequested();
         const bevRef = firebase.database().ref('beverages');
-        console.log(bevRef);
+        //console.log(bevRef);
         bevRef.on('value', (snapshot) => {
             const items = snapshot.val();
-            console.log(items);
+            //console.log(items);
             const itemList = [];
             for (let id in items) {
                 itemList.push({ id, ...items[id] });
             };
             console.log(itemList);
-            props.beveragesLoaded(itemList);
-        }, (err) => {props.beveragesError(err)});
-    }, []);
+            this.props.beveragesLoaded(itemList);
+        }, (err) => {this.props.beveragesError(err)});
+    };
 
-        const {beverages, loading, error} = props;
+    render() {
+        const {beverages, loading, error} = this.props;
 
         if (loading) {
             return(
@@ -56,8 +57,7 @@ const Beverages = (props) => {
                 </div>
             </section>
         )
-    
-    
+    } 
 }
 
 const mapStateToProps = (state) => {
