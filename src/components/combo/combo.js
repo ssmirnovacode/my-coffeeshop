@@ -5,21 +5,24 @@ import ComboItem from '../combo-item/combo-item';
 import {connect} from 'react-redux';
 import { combosLoaded, combosError, combosRequested } from '../../redux/actions/combosAC';
 import {addToCart} from '../../redux/actions/cartAC';
-import baseURL from '../../assets/baseURL';
-import RequestService from '../../services/requestService';
 import Loading from '../loading/loading';
 import Error from '../error/error';
+import firebase from '../../firebase.config';
 
 class Combo extends Component {
 
     componentDidMount() {
         this.props.combosRequested();
 
-        const getService = new RequestService();
-
-        getService.getMenuItems(baseURL+'combos')
-        .then(res => this.props.combosLoaded(res))
-        .catch( () => this.props.combosError);
+        const itemRef = firebase.database().ref('combos');
+        itemRef.on('value', (snapshot) => {
+        const items = snapshot.val();
+        const itemList = [];
+        for (let id in items) {
+            itemList.push({ id, ...items[id] });
+        }
+        this.props.combosLoaded(itemList);
+        }, (err) => {this.props.combosError(err)});
     }
 
     render() {

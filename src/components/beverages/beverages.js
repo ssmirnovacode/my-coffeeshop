@@ -4,25 +4,26 @@ import BeverageItem from '../beverage-item/beverage-item';
 import Heading from '../heading/heading';
 import {connect} from 'react-redux';
 import { beveragesLoaded, beveragesError, beveragesRequested } from '../../redux/actions/beveragesAC';
-import baseURL from '../../assets/baseURL';
-import RequestService from '../../services/requestService';
 import Loading from '../loading/loading';
 import Error from '../error/error';
+import firebase from '../../firebase.config';
 
 class Beverages extends Component {
 
     componentDidMount() {
         this.props.beveragesRequested();
-
-        const getService = new RequestService();
-
-        getService.getMenuItems(baseURL+'beverages')
-        .then(res => this.props.beveragesLoaded(res))
-        .catch(() => this.props.beveragesError());
-    }
+        const bevRef = firebase.database().ref('beverages');
+        bevRef.on('value', (snapshot) => {
+            const items = snapshot.val();
+            const itemList = [];
+            for (let id in items) {
+                itemList.push({ id, ...items[id] });
+            };
+            this.props.beveragesLoaded(itemList);
+        }, (err) => {this.props.beveragesError(err)});
+    };
 
     render() {
-
         const {beverages, loading, error} = this.props;
 
         if (loading) {
@@ -51,8 +52,7 @@ class Beverages extends Component {
                 </div>
             </section>
         )
-    }
-    
+    } 
 }
 
 const mapStateToProps = (state) => {

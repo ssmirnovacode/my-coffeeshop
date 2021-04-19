@@ -8,6 +8,7 @@
     "@testing-library/react": "^11.2.3",
     "@testing-library/user-event": "^12.6.0",
     "animated-scroll-to": "^2.0.12",
+    "firebase": "^8.4.1",
     "formik": "^2.2.6",
     "json-server": "^0.16.3",
     "node-sass": "^4.14.1",

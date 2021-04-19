@@ -5,12 +5,11 @@ import {connect} from 'react-redux';
 import {clearCart} from '../../redux/actions/cartAC';
 import {Link} from 'react-router-dom';
 import basePath from '../../assets/basePath';
-import baseURL from '../../assets/baseURL';
-import RequestService from '../../services/requestService';
 import {orderSubmitted, orderError} from '../../redux/actions/orderAC';
 import { useFormik } from 'formik';
 import orderFailMsg from '../../local-functions/orderFailMsg';
 import validate from '../../services/validate';
+import firebase from '../../firebase.config';
 
 const PlaceOrder = (props) => {
 
@@ -27,8 +26,16 @@ const PlaceOrder = (props) => {
                     title: item.title,
                     qty: item.qty
                 }));
-
-                const requestService = new RequestService();
+                values.id = Math.random().toString(36).substr(2, 9);
+                const orderRef = firebase.database().ref('orders');
+                orderRef.push(values);
+                console.log(values);
+                props.orderSubmitted(values);
+                console.log(props.order);
+                resetForm();
+                props.clearCart();
+                props.history.push(`${basePath}/thank-you`);
+                /* const requestService = new RequestService();
                 const url = baseURL+'orders';
     
                 requestService.postMenuItems(url, values)
@@ -39,7 +46,7 @@ const PlaceOrder = (props) => {
                     resetForm();
                     props.clearCart();
                     props.history.push(`${basePath}/thank-you`);
-                });
+                }); */
             }
             else {
                 orderFailMsg('.order_back');
