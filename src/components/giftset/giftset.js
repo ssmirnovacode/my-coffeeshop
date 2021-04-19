@@ -5,8 +5,6 @@ import GiftsetItem from '../giftset-item/giftset-item';
 import {connect} from 'react-redux';
 import { giftsetLoaded, giftsetError, giftsetRequested, giftsetTabClick } from '../../redux/actions/giftset';
 import {addToCart} from '../../redux/actions/cartAC';
-import baseURL from '../../assets/baseURL';
-import RequestService from '../../services/requestService';
 import Loading from '../loading/loading';
 import Error from '../error/error';
 import firebase from '../../firebase.config';

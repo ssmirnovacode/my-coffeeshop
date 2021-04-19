@@ -5,13 +5,9 @@ import MenuItem from '../menu-item/menu-item';
 import {connect} from 'react-redux';
 import { menuItemsLoaded, menuItemsError, menuItemsRequested } from '../../redux/actions/menu-itemsAC';
 import {addToCart} from '../../redux/actions/cartAC';
-import baseURL from '../../assets/baseURL';
-import RequestService from '../../services/requestService';
 import Loading from '../loading/loading';
 import Error from '../error/error';
 import firebase from '../../firebase.config';
-
-const requestService = new RequestService();
 
 class Menu extends Component {
     constructor(props) {

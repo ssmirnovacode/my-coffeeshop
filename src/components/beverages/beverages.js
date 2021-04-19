@@ -4,8 +4,6 @@ import BeverageItem from '../beverage-item/beverage-item';
 import Heading from '../heading/heading';
 import {connect} from 'react-redux';
 import { beveragesLoaded, beveragesError, beveragesRequested } from '../../redux/actions/beveragesAC';
-import baseURL from '../../assets/baseURL';
-import RequestService from '../../services/requestService';
 import Loading from '../loading/loading';
 import Error from '../error/error';
 import firebase from '../../firebase.config';
@@ -15,15 +13,12 @@ class Beverages extends Component {
     componentDidMount() {
         this.props.beveragesRequested();
         const bevRef = firebase.database().ref('beverages');
-        //console.log(bevRef);
         bevRef.on('value', (snapshot) => {
             const items = snapshot.val();
-            //console.log(items);
             const itemList = [];
             for (let id in items) {
                 itemList.push({ id, ...items[id] });
             };
-            console.log(itemList);
             this.props.beveragesLoaded(itemList);
         }, (err) => {this.props.beveragesError(err)});
     };

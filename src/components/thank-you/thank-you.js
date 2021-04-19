@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 
 const ThankYou = (props) => {
 
-    const {firstname} = props.order.order;
+    const {firstname} = props.order;
 
     const timerId = setTimeout(() =>{ props.history.push(`${basePath}/`); clearInterval(timerId)}, 10000);
 

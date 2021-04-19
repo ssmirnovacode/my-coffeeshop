@@ -9,7 +9,7 @@ const initialState = {
     loading: true,
     error: false,
     cart: [],
-    order: []
+    order: null
 }
 
 const reducer = (state = initialState, action) => {

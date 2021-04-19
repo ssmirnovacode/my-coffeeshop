@@ -130,6 +130,26 @@
     }
   ],
   "orders": [
-    
+    {
+      "id": 1,
+      "order": {
+        "firstname": "Lana",
+        "lastname": "Smthson",
+        "tel": "23213",
+        "email": "smth@foo.com",
+        "items": [
+          {
+            "id": 1,
+            "title": "Coffee mocca",
+            "qty": 2
+          },
+          {
+            "id": 3,
+            "title": "Cafe con leche",
+            "qty": 3
+          }
+        ]
+      }
+    }
   ]
 }
