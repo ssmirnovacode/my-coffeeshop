@@ -13,14 +13,21 @@ class Beverages extends Component {
     componentDidMount() {
         this.props.beveragesRequested();
         const bevRef = firebase.database().ref('beverages');
+
         bevRef.on('value', (snapshot) => {
             const items = snapshot.val();
-            const itemList = [];
-            for (let id in items) {
-                itemList.push({ id, ...items[id] });
-            };
-            this.props.beveragesLoaded(itemList);
-        }, (err) => {this.props.beveragesError(err)});
+            if (items) {
+                const itemList = [];
+                for (let id in items) {
+                    itemList.push({ id, ...items[id] });
+                };
+                this.props.beveragesLoaded(itemList);
+            }
+            else {
+                this.props.beveragesError();
+                console.log(this.props.error);
+            }
+        });
     };
 
     render() {

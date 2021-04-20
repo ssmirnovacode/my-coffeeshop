@@ -16,13 +16,19 @@ class Combo extends Component {
 
         const itemRef = firebase.database().ref('combos');
         itemRef.on('value', (snapshot) => {
-        const items = snapshot.val();
-        const itemList = [];
-        for (let id in items) {
-            itemList.push({ id, ...items[id] });
-        }
-        this.props.combosLoaded(itemList);
-        }, (err) => {this.props.combosError(err)});
+            const items = snapshot.val();
+            if (items) {
+                const itemList = [];
+                for (let id in items) {
+                    itemList.push({ id, ...items[id] });
+                };
+                this.props.combosLoaded(itemList);
+            }
+            else {
+                this.props.combosError();
+                console.log(this.props.error);
+            }
+        });
     }
 
     render() {
