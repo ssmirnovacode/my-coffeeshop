@@ -38,7 +38,7 @@ class Home extends Component {
                             : null;
 
         return (
-            <div className="home_container" id="home">
+            <header className="home_container" id="home">
                 <div className="left block">
                     <div className="moto">YOUR <span>PERSONALIZED</span> COFFEE</div>
                 </div>
@@ -55,7 +55,7 @@ class Home extends Component {
                     <div className="up" onClick={() => animateScrollTo(document.querySelector('#home'))}> &uarr; </div>
                 </div>
     
-            </div>
+            </header>
         )
     }  
 }
