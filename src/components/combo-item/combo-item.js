@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './combo-item.scss';
 import toggleButton from '../../local-functions/toggleButton';
 import {Link} from 'react-router-dom';
@@ -7,6 +7,13 @@ import basePath from '../../assets/basePath';
 const ComboItem = ({item, addToCart}) => {
 
     const {title, image, price, content, id} = item;
+
+    const [activeBtn, setActiveBtn] = useState('addToCart');
+
+    const toggleBtn = () => {
+        setActiveBtn('viewCart');
+        setTimeout( () => setActiveBtn('addToCart'), 2000);
+    }
 
     return (
         <div className="combo-item_container">
@@ -19,12 +26,17 @@ const ComboItem = ({item, addToCart}) => {
             <div className="combo-item_title">{title}</div>
             <div className="combo-item_price">{price} $<span>6.00 $</span></div>  {/* Add old prices to db.json */}
             <div className="combo-item_content">{content}</div>
-            <button className="combo-item_btn" data-id={id} onClick={(e) => {
-                addToCart();
-                toggleButton('.combo-item_btn','.combo-item_btn_viewcart', e)
-            }}>ADD TO CART</button>
-            <Link to={`${basePath}/cart`}  className="combo-item_btn_viewcart hidden" data-id={id}>VIEW CART</Link>
+            {
+                  activeBtn === 'addToCart' ? <button className="combo-item_btn" data-id={id} onClick={(e) => {
+                    addToCart();
+                    toggleBtn();
+                }}>ADD TO CART</button> :
+                <Link to={`${basePath}/cart`}  className="combo-item_btn_viewcart" data-id={id}>VIEW CART</Link>
+            }
             <div className="combo-item_details"><Link to={`${basePath}/item-detail/${id}`}>Details</Link></div><br/>
+            {
+                    activeBtn === 'addToCart' ? null : <div className="message">Added to cart</div>
+                }
         </div>
     )
 }

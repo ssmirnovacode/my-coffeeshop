@@ -56,7 +56,6 @@ class Menu extends Component {
             this.props.menuItemsError();
         }
         });
-        //document.querySelector('.menu_more').remove();
     }
 
     render() {
