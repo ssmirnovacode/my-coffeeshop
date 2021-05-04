@@ -11,11 +11,6 @@ import firebase from '../../firebase.config';
 
 class Giftset extends Component {
 
-    constructor(props) {
-        super(props);
-        this.activateTab = this.activateTab.bind(this);
-    }
-
     componentDidMount() {
         this.props.giftsetRequested();
 
@@ -30,12 +25,6 @@ class Giftset extends Component {
         }, (err) => {this.props.giftsetError(err)});
 
     }
-
-    activateTab(e) {
-        e.target.parentNode.childNodes.forEach(item => item.classList.remove('active'));
-        e.target.classList.add('active');
-    }
-
     
     render() {
         const {giftset, loading, error} = this.props;
@@ -71,24 +60,13 @@ class Giftset extends Component {
                     }
                     <div className="giftset_tabs">
                         {
-                            giftset.items.map((item,i )=> {
-
-                                if (giftset.activeItemId === item.id) {
-                                    return (
-                                        <div className="giftset_tabs_item active" key={item.id} 
+                            giftset.items.map((item,i ) => {
+                                return (
+                                <div className={giftset.activeItemId === item.id ? "giftset_tabs_item active" : "giftset_tabs_item"} key={item.id} 
                                         onClick={(e) =>{
                                             this.props.giftsetTabClick(item.id);
-                                            this.showContent(e);
                                         }}>{i+1}</div>
-                                    )
-                                }
-                                else return(
-                                    <div className="giftset_tabs_item" key={item.id} 
-                                        onClick={(e) =>{
-                                            this.props.giftsetTabClick(item.id);
-                                            this.activateTab(e);
-                                        }}>{i+1}</div>
-                                )
+                                        )
                             })
                         }
                         
