@@ -1,12 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './giftset-item.scss';
-import toggleButton from '../../local-functions/toggleButton';
 import {Link} from 'react-router-dom';
 import basePath from '../../assets/basePath';
 
 const GiftsetItem = ({item, addToCart}) => {
 
     const {title, image, price, content, id} = item;
+
+    const [activeBtn, setActiveBtn] = useState('addToCart');
+
+    const toggleBtn = () => {
+        setActiveBtn('viewCart');
+        setTimeout( () => setActiveBtn('addToCart'), 2000);
+    }
 
     return(
         <div className="giftset_item">
@@ -20,12 +26,17 @@ const GiftsetItem = ({item, addToCart}) => {
                     <div className="giftset_price">{price} $</div>
                     <div className="giftset_title">{title}</div>
                     <div className="giftset_text">{content}</div>
-                    <button className="giftset_btn" data-id={id} onClick={(e) => {
-                        addToCart();
-                        toggleButton('.giftset_btn', '.giftset_btn_viewcart', e);            
-                    }}>ADD TO CART</button>
-                   <Link to={`${basePath}/cart`}  className="giftset_btn_viewcart hidden" data-id={id}>VIEW CART</Link>
+                    {
+                        activeBtn === 'addToCart' ? <button className="giftset_btn" data-id={id} onClick={(e) => {
+                            addToCart();
+                            toggleBtn();            
+                        }}>ADD TO CART</button> :
+                        <Link to={`${basePath}/cart`}  className="giftset_btn_viewcart" data-id={id}>VIEW CART</Link>
+                    }
                     <div className="giftset_details"><Link to={`${basePath}/item-detail/${id}`}>Details</Link></div><br/>
+                    {
+                    activeBtn === 'addToCart' ? null : <div className="message">Added to cart</div>
+                }
             </div>
         </div>
     )

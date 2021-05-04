@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import './combo-item.scss';
-import toggleButton from '../../local-functions/toggleButton';
 import {Link} from 'react-router-dom';
 import basePath from '../../assets/basePath';
 
