@@ -2,12 +2,18 @@
 
 .menu-item {
     &_container {
+        position: relative;
         @include appear;
         color: $dark;
         font-family: Nunito, sans-serif;
         font-style: normal;
         padding: 5%;
         @include item-box;
+        & .message {
+            position: absolute;
+            bottom: 22%;
+            left: 10%;
+        }
     }
     &_img {
         & img {
@@ -48,5 +54,6 @@
 
 .message {
     font-size: .8rem;
-    padding: 0.5rem;
+    //padding: 0.5rem;
+    
 }

@@ -2,12 +2,18 @@
 
 .combo-item {
     &_container {
+        position: relative;
         color: $dark;
         font-family: Nunito, sans-serif;
         font-style: normal;
         padding: 5% 10%;
         text-align: center;
         @include item-box;
+        & .message {
+            position: absolute;
+            bottom: 20%;
+            left: 10%;
+        }
     }
     &_img img{
         max-width: 130px;
