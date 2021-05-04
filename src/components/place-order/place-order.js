@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './place-order.scss';
 import Cart from '../cart/cart';
 import {connect} from 'react-redux';
@@ -7,11 +7,12 @@ import {Link} from 'react-router-dom';
 import basePath from '../../assets/basePath';
 import {orderSubmitted, orderError} from '../../redux/actions/orderAC';
 import { useFormik } from 'formik';
-import orderFailMsg from '../../local-functions/orderFailMsg';
 import validate from '../../services/validate';
 import firebase from '../../firebase.config';
 
 const PlaceOrder = (props) => {
+
+    const [isFailMsgVisible, setFailMsg] = useState(false);
 
     const formik = useFormik({
         initialValues: {
@@ -35,21 +36,10 @@ const PlaceOrder = (props) => {
                 resetForm();
                 props.clearCart();
                 props.history.push(`${basePath}/thank-you`);
-                /* const requestService = new RequestService();
-                const url = baseURL+'orders';
-    
-                requestService.postMenuItems(url, values)
-                .then(res => props.orderSubmitted(res))
-                .then( res => console.log(res))
-                .catch( () => props.orderError())
-                .finally( () => {
-                    resetForm();
-                    props.clearCart();
-                    props.history.push(`${basePath}/thank-you`);
-                }); */
             }
             else {
-                orderFailMsg('.order_back');
+                setFailMsg(true);
+                setTimeout( () => setFailMsg(false), 1500)
             }          
         },
       });
@@ -91,7 +81,10 @@ const PlaceOrder = (props) => {
                     <button className="order_btn" type="submit">ORDER NOW</button>
                 </form>
                 <div className="order_back"><Link to={`${basePath}/`}>Back to the store</Link></div>
-
+                {
+                    isFailMsgVisible ? <div className="fail">Cart is empty</div> : null
+                }
+                
             </div>
         </div>
     );
