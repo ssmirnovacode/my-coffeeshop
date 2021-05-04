@@ -8,18 +8,15 @@ class Navigation extends Component {
     constructor(props) {
         super(props);
         this.toggleMenu = this.toggleMenu.bind(this);
-        this.animatedScroll = this.animatedScroll.bind(this);
+        this.state = {
+            isDropdownVisible: false
+        }
     }
 
     toggleMenu = () => {
-        if(document.querySelector('.nav_menu_sidebar').classList.contains('active')) {
-            document.querySelector('.nav_menu_sidebar').classList.remove('active');
-        }
-        else document.querySelector('.nav_menu_sidebar').classList.add('active');
-    }
-
-    animatedScroll = () => {
-
+        this.setState((state) => ({
+            isDropdownVisible: !state.isDropdownVisible
+        }))
     }
 
     render() {
@@ -35,7 +32,7 @@ class Navigation extends Component {
                     <li onClick={() => animateScrollTo(1900)}>GIFTSET</li>
                     <li onClick={() => animateScrollTo(2600)}>OUR PASTRY</li>
                 </ul>
-                <ul className="nav_menu_sidebar">
+                <ul className={this.state.isDropdownVisible ? "nav_menu_sidebar active" : "nav_menu_sidebar"}>
                     <li><Link to={`${basePath}/`} onClick={this.toggleMenu}><span>MY COFFEESHOP</span></Link></li>
                     <li onClick={() => {animateScrollTo(500); this.toggleMenu();}}>OUR BEVERAGES</li>
                     <li onClick={() => {animateScrollTo(1500); this.toggleMenu();}}>CHOOSE YOUR DRINK</li>
