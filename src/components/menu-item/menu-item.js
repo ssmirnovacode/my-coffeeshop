@@ -9,7 +9,7 @@ const MenuItem = ({item, addToCart}) => {
 
     const toggleBtn = () => {
         setActiveBtn('viewCart');
-        setTimeout( () => setActiveBtn('addToCart'), 2000);
+        const timerId = setTimeout( () => {setActiveBtn('addToCart'); clearInterval(timerId);}, 2000);
     }
 
     const {image, price, title, content, id} = item;
