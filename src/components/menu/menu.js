@@ -14,6 +14,9 @@ class Menu extends Component {
         super(props);
 
         this.showMore = this.showMore.bind(this);
+        this.state = {
+            isMoreBtnVisible: true
+        }
     }
 
     componentDidMount() {
@@ -45,12 +48,15 @@ class Menu extends Component {
                 itemList.push({ id, ...items[id] });
             };
             this.props.menuItemsLoaded(itemList);
+            this.setState({
+                isMoreBtnVisible: false
+            })
         }
         else {
             this.props.menuItemsError();
         }
         });
-        document.querySelector('.menu_more').remove();
+        //document.querySelector('.menu_more').remove();
     }
 
     render() {
@@ -82,7 +88,10 @@ class Menu extends Component {
                         })
                     }                       
                 </div>
-                <div className="menu_more" onClick={this.showMore}>VIEW MORE</div>
+                {
+                    this.state.isMoreBtnVisible ? <div className="menu_more" onClick={this.showMore}>VIEW MORE</div> : null
+                }
+                
             </section>
         )
     }   
