@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './menu-item.scss';
 import {Link} from 'react-router-dom';
 import basePath from '../../assets/basePath';
@@ -7,9 +7,13 @@ const MenuItem = ({item, addToCart}) => {
 
     const [activeBtn, setActiveBtn] = useState('addToCart');
 
+    useEffect( () => {
+        const timerId = setTimeout( () => setActiveBtn('addToCart'), 2000);
+        return () => clearInterval(timerId);
+    }, [activeBtn])
+
     const toggleBtn = () => {
         setActiveBtn('viewCart');
-        const timerId = setTimeout( () => {setActiveBtn('addToCart'); clearInterval(timerId);}, 2000);
     }
 
     const {image, price, title, content, id} = item;
