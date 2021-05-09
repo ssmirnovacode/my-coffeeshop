@@ -11,6 +11,7 @@ https://ssmirnovacode.github.io/my-coffeeshop/
 
 ## Technologies used in this project
  - ReactJS
+ - React hooks
  - Redux
  - SCSS
  - JavaScript
