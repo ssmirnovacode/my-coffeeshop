@@ -10,7 +10,7 @@ const HomePage = () => {
             <Beverages/>
             <Menu/>
             <Giftset/>
-            <Combo/> 
+            <Combo type={'combos'}/> 
         </>
     )
 }
