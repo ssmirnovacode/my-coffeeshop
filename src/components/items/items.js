@@ -71,9 +71,8 @@ const Items = (props) => {
                 for (let id in items) {
                     itemList.push({ id, ...items[id] });
                 };
-                isMoreBtnVisible && itemList.filter((item, i) => i < 4);
                 setLocalState({
-                    items: itemList,
+                    items: props.type === 'menuItems' && isMoreBtnVisible ? itemList.slice(0,4) : itemList,
                     loading: false,
                     error: false
                 });
