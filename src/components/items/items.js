@@ -26,7 +26,25 @@ const ThemeSelector = ({ children }, typeOfTheme) => {
         {children}
       </>
     )
-  }
+}
+
+const comboHeadingProps = {
+    id: 'combo',
+    small: 'Our artesan pastry',
+    big: 'ORGANIC INGREDIENTS ONLY'
+};
+
+const menuHeadingProps = {
+    id: 'menu',
+    small: 'Choose Your Drink',
+    big: 'ORDER ONLINE AND SKIP THE LINE'
+};
+
+const beveragesHeadingProps = {
+    id: 'beverages',
+    small: 'Your Personalized Coffee',
+    big: 'COFFEE BUILD YOUR BASE'
+};
 
 const Items = (props) => {
 
@@ -77,17 +95,24 @@ const Items = (props) => {
             )
         }
 
+        const headingProps = props.type === 'combos' ? comboHeadingProps : 
+            props.type === 'menuItems' ? menuHeadingProps : beveragesHeadingProps;
+
         return(
             <ThemeSelector typeOfTheme={props.type}>
             <section>
-                <Heading small={'Our artesan pastry'} big={'ORGANIC INGREDIENTS ONLY'} id="combo"/>
-                <div className="combo_container">
-                    <div className="bg-combo"></div>
+                <Heading small={headingProps.small} big={headingProps.big} id={headingProps.id}/>
+                <div className={`${headingProps.id}_container`}>
+                    {
+                      props.type === 'combos' ? <div className="bg-combo"></div> :
+                      props.type === 'menuItems' ? <div className="bg-menu"></div> : null
+                    }
+                    
                     {
                         localState.items.map((item, i) => {
                             if (props.type === 'menuItems') {
                                 return (
-                                    <MenuItem key={i} item={item} addToCart={() => this.props.addToCart(item)}/>
+                                    <MenuItem key={i} item={item} addToCart={() => props.addToCart(item)}/>
                                 )
                             }
                             else if (props.type === 'beverages') {

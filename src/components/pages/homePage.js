@@ -8,7 +8,7 @@ import Items from '../items/items';
 const HomePage = () => {
     return (
         <>
-            <Beverages/>
+            <Items type={'beverages'}/>
             <Menu/>
             <Giftset/>
             <Items type={'combos'}/> 
