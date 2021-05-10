@@ -3,7 +3,6 @@ import './combo.scss';
 import Heading from '../heading/heading';
 import ComboItem from '../combo-item/combo-item';
 import {connect} from 'react-redux';
-//import { combosLoaded, combosError, combosRequested } from '../../redux/actions/combosAC';
 import {addToCart} from '../../redux/actions/cartAC';
 import Loading from '../loading/loading';
 import Error from '../error/error';
@@ -18,7 +17,7 @@ const Combo = (props) => {
         error: false
     });
 
-    const itemRef = useMemo( () => firebase.database().ref(props.type), [props.type]); // useMemo to add here
+    const itemRef = useMemo( () => firebase.database().ref(props.type), [props.type]); // useMemo makes the difference
 
     useEffect( () => {
         itemRef.on('value', (snapshot) => {
@@ -81,9 +80,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    /* combosLoaded,
-    combosRequested,
-    combosError, */
+
     addToCart
 }
 

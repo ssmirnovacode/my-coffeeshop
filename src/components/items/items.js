@@ -1,15 +1,34 @@
 import React, {useState, useEffect, useMemo} from 'react';
-import './combo.scss';
+//import './combo.scss';
 import Heading from '../heading/heading';
 import ComboItem from '../combo-item/combo-item';
+import MenuItem from '../menu-item/menu-item';
+import BeverageItem from '../beverage-item/beverage-item';
 import {connect} from 'react-redux';
-//import { combosLoaded, combosError, combosRequested } from '../../redux/actions/combosAC';
 import {addToCart} from '../../redux/actions/cartAC';
 import Loading from '../loading/loading';
 import Error from '../error/error';
 import firebase from '../../firebase.config';
 
-const Combo = (props) => {
+const ComboTheme = React.lazy(() => import('./combo.scss'));
+const MenuTheme = React.lazy(() => import('./menu.scss'));
+const BeveragesTheme = React.lazy(() => import('./beverages.scss'));
+
+const ThemeSelector = ({ children }, typeOfTheme) => {
+    //const CHOSEN_THEME = localStorage.getItem('TYPE_OF_THEME') || TYPE_OF_THEME.DEFAULT;
+    return (
+      <>
+        <React.Suspense fallback={<></>}>
+          {(typeOfTheme === 'combos') && <ComboTheme />}
+          {(typeOfTheme === 'menu') && <MenuTheme />}
+          {(typeOfTheme === 'beverages') && <BeveragesTheme />}
+        </React.Suspense>
+        {children}
+      </>
+    )
+  }
+
+const Items = (props) => {
 
     //console.log(props.type);
     const [localState, setLocalState] = useState({
@@ -59,19 +78,31 @@ const Combo = (props) => {
         }
 
         return(
+            <ThemeSelector typeOfTheme={props.type}>
             <section>
                 <Heading small={'Our artesan pastry'} big={'ORGANIC INGREDIENTS ONLY'} id="combo"/>
                 <div className="combo_container">
                     <div className="bg-combo"></div>
                     {
-                        localState.items.map(item => {
-                            return(
+                        localState.items.map((item, i) => {
+                            if (props.type === 'menuItems') {
+                                return (
+                                    <MenuItem key={i} item={item} addToCart={() => this.props.addToCart(item)}/>
+                                )
+                            }
+                            else if (props.type === 'beverages') {
+                                return(
+                                    <BeverageItem key={item.id} item={item}/>
+                                )
+                            }
+                            else return(
                                 <ComboItem key={item.id} item={item} addToCart={() => props.addToCart(item)}/>
                             )
                         })
                     }   
                 </div>
             </section>
+            </ThemeSelector>
         )
     
 }
@@ -87,4 +118,4 @@ const mapDispatchToProps = {
     addToCart
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Combo);
+export default connect(mapStateToProps, mapDispatchToProps)(Items);

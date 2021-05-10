@@ -1,0 +1,46 @@
+@import '../../variables';
+
+.menu_container {
+   
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    @media only screen and (max-width: 1045px) {
+        grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    }
+    height: auto;
+    margin: 0 10%;
+    row-gap: 50px;
+    column-gap: 30px;
+    position: relative;
+}
+
+.menu_more {
+    font-family: Nunito, sans-serif;
+    background-color: $grey;
+    color: $light;
+    border-radius: 19px;
+    font-size: 16px;
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    box-shadow: 3px 3px 10px 3px rgb(185, 185, 185);
+    margin: 3% auto;
+    text-align: center;
+    width: 120px;
+}
+
+.bg-menu {
+    position: absolute;
+    z-index:-1;
+    background-color: $grey;
+    width: 40%;
+    top:-20%;
+    bottom: -10%;
+    left: -10%;
+    @media  only screen and (max-width: 1053px) {
+        top:-5%;
+    }
+    @media only screen and (max-width: 436px) {
+        display: none;
+    }
+}

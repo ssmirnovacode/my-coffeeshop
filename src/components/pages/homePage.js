@@ -3,6 +3,7 @@ import Beverages from '../beverages/beverages';
 import Menu from '../menu/menu';
 import Giftset from '../giftset/giftset';
 import Combo from '../combo/combo';
+import Items from '../items/items';
 
 const HomePage = () => {
     return (
@@ -10,7 +11,7 @@ const HomePage = () => {
             <Beverages/>
             <Menu/>
             <Giftset/>
-            <Combo type={'combos'}/> 
+            <Items type={'combos'}/> 
         </>
     )
 }
