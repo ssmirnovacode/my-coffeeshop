@@ -55,6 +55,12 @@ const Items = (props) => {
         error: false
     });
 
+    const [isMoreBtnVisible, setMoreBtnVisible] = useState(true);
+
+    const showMore = () => {
+        setMoreBtnVisible(false);
+    }
+
     const itemRef = useMemo( () => firebase.database().ref(props.type), [props.type]); // useMemo to add here
 
     useEffect( () => {
@@ -65,12 +71,13 @@ const Items = (props) => {
                 for (let id in items) {
                     itemList.push({ id, ...items[id] });
                 };
+                isMoreBtnVisible && itemList.filter((item, i) => i < 4);
                 setLocalState({
                     items: itemList,
                     loading: false,
                     error: false
                 });
-                console.log('Items received from server');
+                console.log(`${props.type} items received from server`);
             }
             else {
                 setLocalState((localState) => ({
@@ -78,10 +85,10 @@ const Items = (props) => {
                     loading: false,
                     error: true
                 }));
-                console.log('Error occured');
+                console.log(`${props.type} - ERROR in fetching`);
             }
         });
-    }, [itemRef])
+    }, [itemRef, isMoreBtnVisible])
 
         if (localState.loading) {
             return(
@@ -126,6 +133,9 @@ const Items = (props) => {
                         })
                     }   
                 </div>
+                {
+                   props.type === 'menuItems' && isMoreBtnVisible ? <div className="menu_more" onClick={showMore}>VIEW MORE</div> : null
+                }
             </section>
             </ThemeSelector>
         )

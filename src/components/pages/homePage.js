@@ -9,7 +9,7 @@ const HomePage = () => {
     return (
         <>
             <Items type={'beverages'}/>
-            <Menu/>
+            <Items type={'menuItems'}/>
             <Giftset/>
             <Items type={'combos'}/> 
         </>
