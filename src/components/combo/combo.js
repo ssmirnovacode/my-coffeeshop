@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {useState, useEffect, useMemo} from 'react';
 import './combo.scss';
 import Heading from '../heading/heading';
 import ComboItem from '../combo-item/combo-item';
@@ -9,9 +9,43 @@ import Loading from '../loading/loading';
 import Error from '../error/error';
 import firebase from '../../firebase.config';
 
-class Combo extends Component {
+const Combo = (props) => {
 
-    componentDidMount() {
+    const [localState, setLocalState] = useState({
+        items: [],
+        loading: true,
+        error: false
+    });
+
+    const itemRef = useMemo( () => firebase.database().ref('combos'), []); // useMemo to add here
+
+    useEffect( () => {
+        itemRef.on('value', (snapshot) => {
+            const items = snapshot.val();
+            if (items) {
+                const itemList = [];
+                for (let id in items) {
+                    itemList.push({ id, ...items[id] });
+                };
+                setLocalState({
+                    items: itemList,
+                    loading: false,
+                    error: false
+                });
+                console.log('Items received from server');
+            }
+            else {
+                setLocalState((localState) => ({
+                    items: localState.itemList,
+                    loading: false,
+                    error: true
+                }));
+                console.log('Error occured');
+            }
+        });
+    }, [itemRef])
+
+    /* componentDidMount() {
         this.props.combosRequested();
 
         const itemRef = firebase.database().ref('combos');
@@ -29,19 +63,17 @@ class Combo extends Component {
                 console.log(this.props.error);
             }
         });
-    }
+    } */
 
-    render() {
+    //const {combos, loading, error} = this.props;
 
-        const {combos, loading, error} = this.props;
-
-        if (loading) {
+        if (localState.loading) {
             return(
                 <Loading/>
             )
         }
 
-        else if (error) {
+        else if (localState.error) {
             return (
                 <Error/>
             )
@@ -53,7 +85,7 @@ class Combo extends Component {
                 <div className="combo_container">
                     <div className="bg-combo"></div>
                     {
-                        combos.map(item => {
+                        localState.items.map(item => {
                             return(
                                 <ComboItem key={item.id} item={item} addToCart={() => this.props.addToCart(item)}/>
                             )
@@ -63,7 +95,6 @@ class Combo extends Component {
                 </div>
             </section>
         )
-    }
     
 }
 
