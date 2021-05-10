@@ -3,7 +3,6 @@ import './menu.scss';
 import Heading from '../heading/heading';
 import MenuItem from '../menu-item/menu-item';
 import {connect} from 'react-redux';
-import { menuItemsLoaded, menuItemsError, menuItemsRequested } from '../../redux/actions/menu-itemsAC';
 import {addToCart} from '../../redux/actions/cartAC';
 import Loading from '../loading/loading';
 import Error from '../error/error';
@@ -98,16 +97,12 @@ class Menu extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        menuItems: state.menuItems,
         loading: state.loading,
         error: state.error
     }
 }
 
 const mapDispatchToProps = {
-    menuItemsLoaded,
-    menuItemsRequested,
-    menuItemsError,
     addToCart
 }
 

@@ -3,7 +3,7 @@ import './beverages.scss';
 import BeverageItem from '../beverage-item/beverage-item';
 import Heading from '../heading/heading';
 import {connect} from 'react-redux';
-import { beveragesLoaded, beveragesError, beveragesRequested } from '../../redux/actions/beveragesAC';
+//import { beveragesLoaded, beveragesError, beveragesRequested } from '../../redux/actions/beveragesAC';
 import Loading from '../loading/loading';
 import Error from '../error/error';
 import firebase from '../../firebase.config';
@@ -64,16 +64,10 @@ class Beverages extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        beverages: state.beverages,
         loading: state.loading,
         error: state.error
     }
 }
 
-const mapDispatchToProps = {
-    beveragesLoaded,
-    beveragesRequested,
-    beveragesError
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Beverages);
+export default connect(mapStateToProps)(Beverages);
