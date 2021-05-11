@@ -4,7 +4,7 @@ import Heading from  '../heading/heading';
 import GiftsetItem from '../giftset-item/giftset-item';
 import {connect} from 'react-redux';
 import { giftsetLoaded, giftsetError, giftsetRequested, giftsetTabClick } from '../../redux/actions/giftset';
-import {addToCart} from '../../redux/actions/cartAC';
+import {addToCart, addToAllItems} from '../../redux/actions/cartAC';
 import Loading from '../loading/loading';
 import Error from '../error/error';
 import firebase from '../../firebase.config';
@@ -21,6 +21,7 @@ class Giftset extends Component {
         for (let id in items) {
             itemList.push({ id, ...items[id] });
         }
+        this.props.addToAllItems(itemList);
         this.props.giftsetLoaded(itemList);
         }, (err) => {this.props.giftsetError(err)});
 
@@ -91,7 +92,8 @@ const mapDispatchToProps = {
     giftsetRequested,
     giftsetError,
     giftsetTabClick,
-    addToCart
+    addToCart,
+    addToAllItems
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Giftset);

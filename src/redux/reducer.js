@@ -13,9 +13,10 @@ const initialState = {
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case 'ADD_TO_ALLITEMS': 
+        const newItems = action.payload.filter(item => state.allItems.includes(item) === false); // почему-то не фильтрует
         return {
             ...state,
-            allItems: [...state.allItems, ...action.payload]
+            allItems: [...state.allItems, ...newItems]
         }
 
         case 'GIFTSET_LOADED': 
