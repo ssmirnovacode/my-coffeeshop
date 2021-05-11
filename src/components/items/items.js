@@ -5,7 +5,7 @@ import ComboItem from '../combo-item/combo-item';
 import MenuItem from '../menu-item/menu-item';
 import BeverageItem from '../beverage-item/beverage-item';
 import {connect} from 'react-redux';
-import {addToCart} from '../../redux/actions/cartAC';
+import {addToCart, addToAllItems} from '../../redux/actions/cartAC';
 import Loading from '../loading/loading';
 import Error from '../error/error';
 import firebase from '../../firebase.config';
@@ -47,7 +47,7 @@ const beveragesHeadingProps = {
 };
 
 const Items = (props) => {
-
+    console.log(props.allItems)
     //console.log(props.type);
     const [localState, setLocalState] = useState({
         items: [],
@@ -71,6 +71,7 @@ const Items = (props) => {
                 for (let id in items) {
                     itemList.push({ id, ...items[id] });
                 };
+                props.addToAllItems(itemList);
                 setLocalState({
                     items: props.type === 'menuItems' && isMoreBtnVisible ? itemList.slice(0,4) : itemList,
                     loading: false,
@@ -142,14 +143,17 @@ const Items = (props) => {
 }
 
 const mapStateToProps = (state) => {
-    return {}
+    return {
+        allItems: state.allItems
+    }
 }
 
 const mapDispatchToProps = {
     /* combosLoaded,
     combosRequested,
     combosError, */
-    addToCart
+    addToCart,
+    addToAllItems
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Items);

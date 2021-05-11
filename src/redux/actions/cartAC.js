@@ -22,4 +22,9 @@ const clearCart = () => ({
     type: 'CLEAR_CART'
 })
 
-export {addToCart, deleteFromCart, plusQty, minusQty, clearCart};
+const addToAllItems = (items) => ({
+    type: 'ADD_TO_ALLITEMS',
+    payload: items
+})
+
+export {addToCart, deleteFromCart, plusQty, minusQty, clearCart, addToAllItems};

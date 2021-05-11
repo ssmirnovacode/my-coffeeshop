@@ -2,50 +2,26 @@ import React, {useState, useEffect, useMemo} from 'react';
 import './item-detail.scss';
 import {connect} from 'react-redux';
 import {addToCart} from '../../redux/actions/cartAC';
-//import toggleButton from '../../local-functions/toggleButton';
 import {Link} from 'react-router-dom';
 import basePath from '../../assets/basePath';
-import firebase from '../../firebase.config';
 
 const ItemDetail = (props) => {
     const {itemId} = props;
+    console.log(props.allItems[itemId]);
 
     const [localState, setLocalState] = useState({
-        item: null,
+        item: props.allItems[itemId],
         loading: true,
         error: false
     });
+    console.log(localState.item);
 
-    const itemRef = useMemo( () => firebase.database().ref('menuItems'), []);
+    /* useEffect( () => {
+        const targetItem = props.allItems.find(item => item.id === itemId); 
+        console.log(targetItem);
+        setLocalState(targetItem);
+    }, [itemId]) */
 
-    useEffect( () => {
-        itemRef.on('value', (snapshot) => {
-            const items = snapshot.val();
-            if (items) {
-                const itemList = [];
-                for (let id in items) {
-                    itemList.push({ id, ...items[id] });
-                };
-
-                setLocalState({
-                    item: itemList.filter(item => item.id === itemId)[0],
-                    loading: false,
-                    error: false
-                });
-                console.log(`Item received from server`);
-            }
-            else {
-                setLocalState((localState) => ({
-                    item: localState.item,
-                    loading: false,
-                    error: true
-                }));
-                console.log(`ERROR in fetching`);
-            }
-        });
-    }, [itemRef, itemId])
-    /* const allItems = [...props.menuItems, ...props.combos, ...props.giftset.items]; // 2 из 3 массивов не загрузятся, но нужный будет
-    const item = allItems.filter(item => item.id === itemId)[0];  */
     const {id, image, title, price, content} = localState.item;
 
     const [activeBtn, setActiveBtn] = useState('addToCart');
@@ -86,9 +62,8 @@ const ItemDetail = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        menuItems: state.menuItems,
-        combos: state.combos,
-        giftset: state.giftset
+        allItems: state.allItems
+        //add giftset - in giftse.js to all ITems
     }
 }
 

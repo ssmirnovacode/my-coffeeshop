@@ -1,4 +1,5 @@
 const initialState = {
+    allItems: [],
     giftset: {
         items: [],
         activeItemId: 7
@@ -11,6 +12,11 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
+        case 'ADD_TO_ALLITEMS': 
+        return {
+            ...state,
+            allItems: [...state.allItems, ...action.payload]
+        }
 
         case 'GIFTSET_LOADED': 
             return {
