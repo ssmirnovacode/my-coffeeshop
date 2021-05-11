@@ -116,10 +116,10 @@ const Items = (props) => {
                     }
                     
                     {
-                        localState.items.map((item, i) => {
+                        localState.items.map((item) => {
                             if (props.type === 'menuItems') {
                                 return (
-                                    <MenuItem key={i} item={item} addToCart={() => props.addToCart(item)}/>
+                                    <MenuItem key={item.id} item={item} addToCart={() => props.addToCart(item)}/>
                                 )
                             }
                             else if (props.type === 'beverages') {

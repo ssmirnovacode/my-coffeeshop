@@ -7,28 +7,20 @@ import basePath from '../../assets/basePath';
 
 const ItemDetail = (props) => {
     const {itemId} = props;
-    console.log(props.allItems[itemId]);
 
-    const [localState, setLocalState] = useState({
-        item: props.allItems[itemId],
-        loading: true,
-        error: false
-    });
-    console.log(localState.item);
+    const targetItem = props.allItems.find(item => item.id === itemId);
 
-    /* useEffect( () => {
-        const targetItem = props.allItems.find(item => item.id === itemId); 
-        console.log(targetItem);
-        setLocalState(targetItem);
-    }, [itemId]) */
-
-    const {id, image, title, price, content} = localState.item;
+    const {id, image, title, price, content} = targetItem;
 
     const [activeBtn, setActiveBtn] = useState('addToCart');
 
+    useEffect( () => {
+        const timerId = setTimeout( () => setActiveBtn('addToCart'), 2000);
+        return () => clearInterval(timerId);
+    }, [activeBtn])
+
     const toggleBtn = () => {
         setActiveBtn('viewCart');
-        const timerId = setTimeout( () => {setActiveBtn('addToCart'); clearInterval(timerId);}, 2000);
     }
 
     return(
@@ -47,7 +39,7 @@ const ItemDetail = (props) => {
                 {
                     activeBtn === 'addToCart' ? <button className="item-detail_btn" data-id={id}
                     onClick={(e) => {                                           
-                        props.addToCart(localState.item);
+                        props.addToCart(targetItem);
                         toggleBtn();
                         }}>ADD TO CART</button> :
                     <Link to={`${basePath}/cart`}  className="item-detail_btn_viewcart" data-id={id}>VIEW CART</Link>
