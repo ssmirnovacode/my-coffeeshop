@@ -21,7 +21,7 @@ const GiftsetItem = ({item, addToCart}) => {
     return(
         <div className="giftset_item">
             <div className="giftset_img">
-                <Link to={`${basePath}/item-detail/${id}`}>
+                <Link to={`${basePath}/giftset/${id}`}>
                     <img src={image} alt={title}/> 
                 </Link>
             </div>
@@ -37,7 +37,7 @@ const GiftsetItem = ({item, addToCart}) => {
                         }}>ADD TO CART</button> :
                         <Link to={`${basePath}/cart`}  className="giftset_btn_viewcart" data-id={id}>VIEW CART</Link>
                     }
-                    <div className="giftset_details"><Link to={`${basePath}/item-detail/${id}`}>Details</Link></div><br/>
+                    <div className="giftset_details"><Link to={`${basePath}/giftset/${id}`}>Details</Link></div><br/>
                     {
                     activeBtn === 'addToCart' ? null : <div className="message">Added to cart</div>
                 }

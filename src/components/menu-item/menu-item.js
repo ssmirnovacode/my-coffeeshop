@@ -20,7 +20,7 @@ const MenuItem = ({item, addToCart}) => {
     return (
         <div className="menu-item_container">
             <div className="menu-item_img">
-                <Link to={`${basePath}/item-detail/${id}`}>
+                <Link to={`${basePath}/menuItems/${id}`}>
                     <img src={image} alt={title}/> 
                 </Link>
             </div>
@@ -35,7 +35,7 @@ const MenuItem = ({item, addToCart}) => {
                         }}>ADD TO CART</button> :
                         <button className="menu-item_btn_viewcart" data-id={id}><Link to={`${basePath}/cart`} >VIEW CART</Link></button> 
                 }
-                <div className="menu-item_details"><Link to={`${basePath}/item-detail/${id}`}>Details</Link></div><br/>
+                <div className="menu-item_details"><Link to={`${basePath}/menuItems/${id}`}>Details</Link></div><br/>
                 {
                     activeBtn === 'addToCart' ? null : <div className="message">Added to cart</div>
                 }
