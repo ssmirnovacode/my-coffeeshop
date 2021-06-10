@@ -17,33 +17,11 @@ const reducer = (state = initialState, action) => {
                 ...state, 
                 beverages: action.payload,
             }
-        /* case 'BEVERAGES_REQUESTED': 
-            return {
-                ...state,
-                loading: true
-            }
-        case 'BEVERAGES_ERROR': 
-            return {
-                ...state,
-                error: true
-            } */
-
         case 'MENU_ITEMS_LOADED': 
             return {
                 ...state, 
                 menuItems: action.payload
             }
-        /* case 'MENU_ITEMS_REQUESTED': 
-            return {
-                ...state,
-                loading: true
-            }
-        case 'MENU_ITEMS_ERROR': 
-            return {
-                ...state,
-                error: true
-            } */
-
         case 'GIFTSET_LOADED': 
             return {
                 ...state, 
@@ -52,16 +30,6 @@ const reducer = (state = initialState, action) => {
                     activeItemId: state.giftset.activeItemId
                 }
             }
-        /* case 'GIFTSET_REQUESTED': 
-            return {
-                ...state,
-                loading: true
-            }
-        case 'GIFTSET_ERROR': 
-            return {
-                ...state,
-                error: true
-            } */
         case 'GIFTSET_TAB_CLICK':
             return {
                 ...state,
@@ -75,16 +43,6 @@ const reducer = (state = initialState, action) => {
                 ...state, 
                 combos: action.payload
             }
-        /* case 'COMBOS_REQUESTED': 
-            return {
-                ...state,
-                loading: true
-            }
-        case 'COMBOS_ERROR': 
-            return {
-                ...state,
-                error: true
-            } */
         case 'ADD_TO_CART':
             const itemToAdd = action.payload;
             itemToAdd.qty = 1;

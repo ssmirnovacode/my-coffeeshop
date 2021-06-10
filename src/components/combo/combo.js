@@ -22,11 +22,16 @@ class Combo extends Component {
         db.collection('combos').get()
         .then(snapshot => {
             this.props.combosLoaded(firebaseLoop(snapshot));
-            this.setState(state => ({
+            firebaseLoop(snapshot).length > 0 ? this.setState(state => ({
                 items: firebaseLoop(snapshot),
                 loading: false,
                 error: state.error
-            }));
+            })) :
+            this.setState(state => ({
+                ...state,
+                loading: false,
+                error: true
+            }))
         })
         .catch( err => console.error(err.message));
     }
@@ -35,32 +40,24 @@ class Combo extends Component {
 
         const {combos} = this.props;
 
-        if (this.state.loading) {
-            return(
-                <Loading/>
-            )
-        }
-
-        else if (this.state.error) {
-            return (
-                <Error/>
-            )
-        }
-
         return(
             <section>
                 <Heading small={'Our artesan pastry'} big={'ORGANIC INGREDIENTS ONLY'} id="combo"/>
-                <div className="combo_container">
-                    <div className="bg-combo"></div>
-                    {
-                        combos.map(item => {
-                            return(
-                                <ComboItem key={item.id} item={item} addToCart={() => this.props.addToCart(item)}/>
-                            )
-                        })
+                {
+                    this.state.loading ? <Loading /> : this.state.error ? <Error /> :
+                        <div className="combo_container">
+                            <div className="bg-combo"></div>
+                            {
+                                combos.map(item => {
+                                    return(
+                                        <ComboItem key={item.id} item={item} addToCart={() => this.props.addToCart(item)}/>
+                                    )
+                                })
+                            }
+                            
+                        </div>
                     }
-                    
-                </div>
+                
             </section>
         )
     }
@@ -69,9 +66,7 @@ class Combo extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        combos: state.combos,
-        loading: state.loading,
-        error: state.error
+        combos: state.combos
     }
 }
 

@@ -28,11 +28,16 @@ class Menu extends Component {
         db.collection('menuItems').get()
         .then(snapshot => {
             this.props.menuItemsLoaded(firebaseLoop(snapshot).filter((item, i) => i < 4));
-            this.setState(state => ({
+            firebaseLoop(snapshot).length > 0 ? this.setState(state => ({
                 items: firebaseLoop(snapshot).filter((item, i) => i < 4),
                 loading: false,
                 error: state.error
-            }));
+            })) :
+            this.setState(state => ({
+                ...state,
+                loading: false,
+                error: true
+            }))
         })
         .catch( err => console.error(err.message));
     }
@@ -56,35 +61,27 @@ class Menu extends Component {
 
         const {menuItems} = this.props;
 
-        if (this.state.loading) {
-            return(
-                <Loading/>
-            )
-        }
-
-        else if (this.state.error) {
-            return (
-                <Error/>
-            )
-        }
-
         return(
             <section className="menu">
                 <Heading small={'Choose Your Drink'} big={'ORDER ONLINE AND SKIP THE LINE'} id="menu"/>
-                <div className="menu_container">
-                    <div className="bg-menu"></div>
-                    {
-                        menuItems.map((item, i) => {                           
-                            return (
-                                <MenuItem key={i} item={item} addToCart={() => this.props.addToCart(item)}/>
-                            )
-                        })
-                    }                       
-                </div>
                 {
-                    this.state.isMoreBtnVisible ? <div className="menu_more" onClick={this.showMore}>VIEW MORE</div> : null
+                    this.state.loading ? <Loading /> : this.state.error ? <Error /> :
+                    <>
+                        <div className="menu_container">
+                            <div className="bg-menu"></div>
+                            {
+                                menuItems.map((item, i) => {                           
+                                    return (
+                                        <MenuItem key={i} item={item} addToCart={() => this.props.addToCart(item)}/>
+                                    )
+                                })
+                            }                       
+                        </div>
+                        {
+                            this.state.isMoreBtnVisible ? <div className="menu_more" onClick={this.showMore}>VIEW MORE</div> : null
+                        }
+                    </>
                 }
-                
             </section>
         )
     }   
@@ -93,8 +90,6 @@ class Menu extends Component {
 const mapStateToProps = (state) => {
     return {
         menuItems: state.menuItems,
-        loading: state.loading,
-        error: state.error
     }
 }
 
