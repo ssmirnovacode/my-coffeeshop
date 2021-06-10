@@ -1,5 +1,5 @@
 import React from 'react';
-import './home.scss';
+import './header.scss';
 import Navigation from '../navigation/navigation';
 import cartIcon from '../../img/shopping-cart-solid.svg';
 import {connect} from 'react-redux';
@@ -8,7 +8,7 @@ import basePath from '../../assets/basePath';
 import animateScrollTo from 'animated-scroll-to';
 import { withRouter } from "react-router-dom";
 
-const Home = props => {
+const Header = props => {
 
     let total = 0;
     props.cart.forEach(item => {
@@ -18,7 +18,6 @@ const Home = props => {
     const renderNav = props.location.pathname !== '/my-coffeeshop/cart' 
                         && props.location.pathname !=='/my-coffeeshop/order' 
                         && props.location.pathname !=='/my-coffeeshop/thank-you'
-                        //&& props.location.pathname.substring(0, 26) !=='/my-coffeeshop/item-detail'
                         && props.location.pathname.substring(0, 21) !=='/my-coffeeshop/combos'
                         && props.location.pathname.substring(0, 22) !=='/my-coffeeshop/giftset'
                         && props.location.pathname.substring(0, 24) !=='/my-coffeeshop/menuItems'
@@ -66,4 +65,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default withRouter(connect(mapStateToProps)(Home));
+export default withRouter(connect(mapStateToProps)(Header));

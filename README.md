@@ -14,7 +14,6 @@ https://ssmirnovacode.github.io/my-coffeeshop/
  - React hooks
  - Redux
  - SCSS
- - JavaScript
  - Firebase Cloud Firestore
 
 ### Additional libraries

@@ -1,5 +1,5 @@
 import React from 'react';
-import Home from '../home/home';
+import Header from '../header/header';
 import HomePage from '../pages/homePage';
 import Footer from '../footer/footer';
 import ItemDetail from '../item-detail/item-detail';
@@ -17,7 +17,7 @@ const App = () => {
         <Router> 
             <div className="app_container">  
                 <div className="app_content">
-                    <Home/>  
+                    <Header/>  
                     <Route path={`${basePath}/`} exact component={HomePage}/>                                               
                     <Route path={`${basePath}/cart`} component={Cart}/>
                     <Route path={`${basePath}/combos/:id`} render={ ({match}) => {
