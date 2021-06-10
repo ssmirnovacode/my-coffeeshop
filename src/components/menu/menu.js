@@ -3,7 +3,7 @@ import './menu.scss';
 import Heading from '../heading/heading';
 import MenuItem from '../menu-item/menu-item';
 import {connect} from 'react-redux';
-import { menuItemsLoaded, menuItemsError, menuItemsRequested } from '../../redux/actions/menu-itemsAC';
+import { menuItemsLoaded} from '../../redux/actions/menu-itemsAC';
 import {addToCart} from '../../redux/actions/cartAC';
 import Loading from '../loading/loading';
 import Error from '../error/error';
@@ -13,7 +13,11 @@ import {firebaseLoop} from '../../services/tools';
 class Menu extends Component {
     constructor(props) {
         super(props);
-
+        this.state = {
+            items: this.props.combos,
+            loading: true,
+            error: false
+        }
         this.showMore = this.showMore.bind(this);
         this.state = {
             isMoreBtnVisible: true
@@ -21,18 +25,27 @@ class Menu extends Component {
     }
 
     componentDidMount() {
-        this.props.menuItemsRequested();
         db.collection('menuItems').get()
         .then(snapshot => {
             this.props.menuItemsLoaded(firebaseLoop(snapshot).filter((item, i) => i < 4));
+            this.setState(state => ({
+                items: firebaseLoop(snapshot).filter((item, i) => i < 4),
+                loading: false,
+                error: state.error
+            }));
         })
-        .catch( () => this.props.menuItemsError());
+        .catch( err => console.error(err.message));
     }
 
     showMore = () => {
         db.collection('menuItems').get()
         .then(snapshot => {
             this.props.menuItemsLoaded(firebaseLoop(snapshot));
+            this.setState(state => ({
+                items: firebaseLoop(snapshot),
+                loading: false,
+                error: state.error
+            }));
             this.setState({
                 isMoreBtnVisible: false
             });
@@ -41,15 +54,15 @@ class Menu extends Component {
 
     render() {
 
-        const {menuItems, loading, error} = this.props;
+        const {menuItems} = this.props;
 
-        if (loading) {
+        if (this.state.loading) {
             return(
                 <Loading/>
             )
         }
 
-        else if (error) {
+        else if (this.state.error) {
             return (
                 <Error/>
             )
@@ -87,8 +100,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
     menuItemsLoaded,
-    menuItemsRequested,
-    menuItemsError,
     addToCart
 }
 

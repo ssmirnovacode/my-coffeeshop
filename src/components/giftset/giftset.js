@@ -3,7 +3,7 @@ import './giftset.scss';
 import Heading from  '../heading/heading';
 import GiftsetItem from '../giftset-item/giftset-item';
 import {connect} from 'react-redux';
-import { giftsetLoaded, giftsetError, giftsetRequested, giftsetTabClick } from '../../redux/actions/giftset';
+import { giftsetLoaded, giftsetTabClick } from '../../redux/actions/giftset';
 import {addToCart} from '../../redux/actions/cartAC';
 import Loading from '../loading/loading';
 import Error from '../error/error';
@@ -12,27 +12,36 @@ import {firebaseLoop} from '../../services/tools';
 
 class Giftset extends Component {
 
-    componentDidMount() {
-        this.props.giftsetRequested();
+    state = {
+        items: this.props.combos,
+        loading: true,
+        error: false
+    }
 
+    componentDidMount() {
         db.collection('giftset').get()
         .then(snapshot => {
             this.props.giftsetLoaded(firebaseLoop(snapshot));
+            this.setState(state => ({
+                items: firebaseLoop(snapshot),
+                loading: false,
+                error: state.error
+            }));
         })
-        .catch( () => this.props.giftsetError());
+        .catch( err => console.error(err.message));
 
     }
     
     render() {
-        const {giftset, loading, error} = this.props;
+        const {giftset} = this.props;
 
-        if (loading) {
+        if (this.state.loading) {
             return(
                 <Loading/>
             )
         }
 
-        else if (error) {
+        else if (this.state.error) {
             return (
                 <Error/>
             )
@@ -85,8 +94,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
     giftsetLoaded,
-    giftsetRequested,
-    giftsetError,
     giftsetTabClick,
     addToCart
 }

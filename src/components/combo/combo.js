@@ -19,8 +19,6 @@ class Combo extends Component {
     }
 
     componentDidMount() {
-        //this.props.combosRequested();
-
         db.collection('combos').get()
         .then(snapshot => {
             this.props.combosLoaded(firebaseLoop(snapshot));
@@ -30,7 +28,7 @@ class Combo extends Component {
                 error: state.error
             }));
         })
-        .catch( () => this.props.combosError());
+        .catch( err => console.error(err.message));
     }
 
     render() {
