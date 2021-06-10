@@ -1,48 +1,67 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './item-detail.scss';
 import {connect} from 'react-redux';
+import {detailsLoaded, detailsError, detailsRequested} from '../../redux/actions/detailsAC';
 import {addToCart} from '../../redux/actions/cartAC';
-//import toggleButton from '../../local-functions/toggleButton';
 import {Link} from 'react-router-dom';
 import basePath from '../../assets/basePath';
+import { db } from '../../firebase.config';
+import Loading from '../loading/loading';
+import Error from '../error/error';
 
 const ItemDetail = (props) => {
-    const {itemId} = props;
-    const allItems = [...props.menuItems, ...props.combos, ...props.giftset.items]; // 2 из 3 массивов не загрузятся, но нужный будет
-    const item = allItems.filter(item => item.id === itemId)[0]; 
-    const {id, image, title, price, content} = item;
+    
+    const {itemId, page, details, detailsError, detailsLoaded, detailsRequested} = props;
 
     const [activeBtn, setActiveBtn] = useState('addToCart');
 
+    useEffect( () => {
+        let mounted = true;
+        detailsRequested();
+        mounted && db.collection(page).doc(itemId).get()
+        .then( snapshot => {
+            snapshot.data() ? detailsLoaded({...snapshot.data(), id: itemId}) :
+            detailsError();
+        })
+        .catch(err => console.error(err.message));
+        return () => mounted = false;
+    }, [itemId, page, detailsError, detailsLoaded, detailsRequested]);
+
     const toggleBtn = () => {
         setActiveBtn('viewCart');
-        const timerId = setTimeout( () => {setActiveBtn('addToCart'); clearInterval(timerId);}, 2000);
     }
+
+    useEffect( () => {
+        const timerId = setTimeout( () => setActiveBtn('addToCart'), 2000);
+        return () => clearInterval(timerId);
+    }, [activeBtn]);
 
     return(
         <div className="item-detail_container" > 
-        
-            <div className="item-detail_img"><img src={image} alt={title}/></div>
-            
-            <div className="item-detail_content">
-                <div className="item-detail_title">{title}</div>
-                <div className="item-detail_price">{price} $</div>  
-                <div className="item-detail_text">{content}</div>
-            </div>
             {
-                    activeBtn === 'addToCart' ? null : <div className="message">Added to cart</div>
-                }  
-                {
-                    activeBtn === 'addToCart' ? <button className="item-detail_btn" data-id={id}
-                    onClick={(e) => {                                           
-                        props.addToCart(item);
-                        toggleBtn();
-                        }}>ADD TO CART</button> :
-                    <Link to={`${basePath}/cart`}  className="item-detail_btn_viewcart" data-id={id}>VIEW CART</Link>
-                }
-            <Link to={`${basePath}/`} className="item-detail_back">Back</Link><br/>
+                details.loading ? <Loading /> : details.error ? <Error /> :
+                <>
+                    <div className="item-detail_img"><img src={details.item.image} alt={details.item.title}/></div>
             
-                   
+                    <div className="item-detail_content">
+                        <div className="item-detail_title">{details.item.title}</div>
+                        <div className="item-detail_price">{details.item.price} $</div>  
+                        <div className="item-detail_text">{details.item.content}</div>
+                    </div>
+                    {
+                            activeBtn === 'addToCart' ? null : <div className="message">Added to cart</div>
+                        }  
+                        {
+                            activeBtn === 'addToCart' ? <button className="item-detail_btn" data-id={itemId}
+                            onClick={(e) => {                                           
+                                props.addToCart(details.item); 
+                                toggleBtn();
+                                }}>ADD TO CART</button> :
+                            <Link to={`${basePath}/cart`}  className="item-detail_btn_viewcart" data-id={itemId}>VIEW CART</Link>
+                        }
+                    <Link to={`${basePath}/`} className="item-detail_back">Back</Link><br/>
+                </>
+            }
         </div>
     )
     
@@ -50,13 +69,14 @@ const ItemDetail = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        menuItems: state.menuItems,
-        combos: state.combos,
-        giftset: state.giftset
+        details: state.details
     }
 }
 
 const mapDispatchToProps = {
+    detailsLoaded, 
+    detailsError, 
+    detailsRequested,
     addToCart
 }
 

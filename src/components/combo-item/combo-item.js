@@ -21,7 +21,7 @@ const ComboItem = ({item, addToCart}) => {
     return (
         <div className="combo-item_container">
             <div className="combo-item_img">
-                <Link to={`${basePath}/item-detail/${id}`}>
+                <Link to={`${basePath}/combos/${id}`}>
                     <img src={image} alt={title}/> 
                 </Link>
             </div>
@@ -36,7 +36,7 @@ const ComboItem = ({item, addToCart}) => {
                 }}>ADD TO CART</button> :
                 <Link to={`${basePath}/cart`}  className="combo-item_btn_viewcart" data-id={id}>VIEW CART</Link>
             }
-            <div className="combo-item_details"><Link to={`${basePath}/item-detail/${id}`}>Details</Link></div><br/>
+            <div className="combo-item_details"><Link to={`${basePath}/combos/${id}`}>Details</Link></div><br/>
             {
                     activeBtn === 'addToCart' ? null : <div className="message">Added to cart</div>
                 }

@@ -1,114 +1,83 @@
-import React, {Component} from 'react';
+import React, {useState, useEffect} from 'react';
 import './menu.scss';
 import Heading from '../heading/heading';
 import MenuItem from '../menu-item/menu-item';
 import {connect} from 'react-redux';
-import { menuItemsLoaded, menuItemsError, menuItemsRequested } from '../../redux/actions/menu-itemsAC';
+import { menuItemsLoaded, menuItemsError, menuItemsRequested} from '../../redux/actions/menu-itemsAC';
 import {addToCart} from '../../redux/actions/cartAC';
 import Loading from '../loading/loading';
 import Error from '../error/error';
-import firebase from '../../firebase.config';
+import { db } from '../../firebase.config';
+import {firebaseLoop} from '../../services/tools';
 
-class Menu extends Component {
-    constructor(props) {
-        super(props);
+const Menu = props => {
 
-        this.showMore = this.showMore.bind(this);
-        this.state = {
-            isMoreBtnVisible: true
-        }
-    }
+    const {menuItems, menuItemsError, menuItemsLoaded, menuItemsRequested, addToCart} = props;
 
-    componentDidMount() {
-        this.props.menuItemsRequested();
+    const [isMoreBtnVisible, setMoreBtnVisible] = useState(true);
 
-        const itemRef = firebase.database().ref('menuItems');
-        itemRef.on('value', (snapshot) => {
-            const items = snapshot.val();
-            if (items) {
-                const itemList = [];
-                for (let id in items) {
-                    itemList.push({ id, ...items[id] });
-                };
-                this.props.menuItemsLoaded(itemList.filter((item, i) => i < 4));
+    useEffect(() => {
+        let mounted = true;
+        menuItemsRequested();
+        mounted && db.collection('menuItems').get()
+        .then(snapshot => {
+            firebaseLoop(snapshot).length > 0 ? menuItemsLoaded(firebaseLoop(snapshot).filter((item, i) => i < 4)) :
+            menuItemsError();
+        })
+        .catch( err => console.error(err.message));
+        return () => mounted = false;
+    }, [menuItemsRequested, menuItemsError, menuItemsLoaded])
+
+    const showMore = () => {
+        db.collection('menuItems').get()
+        .then(snapshot => {
+            if (firebaseLoop(snapshot).length > 4) {
+                menuItemsLoaded(firebaseLoop(snapshot)); // showing all menu items
+                setMoreBtnVisible(false);
             }
-            else {
-                this.props.menuItemsError();
-            }
-        });
+        })
+        .catch( err => console.error(err.message));
     }
 
-    showMore = () => {
-        const itemRef = firebase.database().ref('menuItems');
-        itemRef.on('value', (snapshot) => {
-        const items = snapshot.val();
-        if (items) {
-            const itemList = [];
-            for (let id in items) {
-                itemList.push({ id, ...items[id] });
-            };
-            this.props.menuItemsLoaded(itemList);
-            this.setState({
-                isMoreBtnVisible: false
-            })
-        }
-        else {
-            this.props.menuItemsError();
-        }
-        });
-    }
+    const {items, loading, error} = menuItems;
 
-    render() {
-
-        const {menuItems, loading, error} = this.props;
-
-        if (loading) {
-            return(
-                <Loading/>
-            )
-        }
-
-        else if (error) {
-            return (
-                <Error/>
-            )
-        }
-
-        return(
-            <section className="menu">
-                <Heading small={'Choose Your Drink'} big={'ORDER ONLINE AND SKIP THE LINE'} id="menu"/>
-                <div className="menu_container">
-                    <div className="bg-menu"></div>
+    return(
+        <section className="menu">
+            <Heading small={'Choose Your Drink'} big={'ORDER ONLINE AND SKIP THE LINE'} id="menu"/>
+            {
+                loading ? <Loading /> : error ? <Error /> :
+                <>
+                    <div className="menu_container">
+                        <div className="bg-menu"></div>
+                        {
+                            items.map((item, i) => {                           
+                                return (
+                                    <MenuItem key={i} item={item} addToCart={() => addToCart(item)}/>
+                                )
+                            })
+                        }                       
+                    </div>
                     {
-                        menuItems.map((item, i) => {                           
-                            return (
-                                <MenuItem key={i} item={item} addToCart={() => this.props.addToCart(item)}/>
-                            )
-                        })
-                    }                       
-                </div>
-                {
-                    this.state.isMoreBtnVisible ? <div className="menu_more" onClick={this.showMore}>VIEW MORE</div> : null
-                }
-                
-            </section>
-        )
-    }   
+                        isMoreBtnVisible ? <div className="menu_more" onClick={showMore}>VIEW MORE</div> : null
+                    }
+                </>
+            }
+        </section>
+    )
+       
 }
 
 const mapStateToProps = (state) => {
     return {
         menuItems: state.menuItems,
-        loading: state.loading,
-        error: state.error
     }
 }
 
 const mapDispatchToProps = {
     menuItemsLoaded,
-    menuItemsRequested,
-    menuItemsError,
-    addToCart
+    addToCart, 
+    menuItemsError, 
+    menuItemsRequested
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Menu);

@@ -1,6 +1,7 @@
 import firebase from 'firebase';
+import 'firebase/firestore';
 
-var firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyCJSRQNFupRHzt95G2R-XRAp-Twf4FZMuA",
     authDomain: "my-coffeeshop-5db03.firebaseapp.com",
     databaseURL: "https://my-coffeeshop-5db03-default-rtdb.europe-west1.firebasedatabase.app",
@@ -11,5 +12,7 @@ var firebaseConfig = {
   };
   
 firebase.initializeApp(firebaseConfig);
+
+export const db = firebase.firestore();
 
 export default firebase;

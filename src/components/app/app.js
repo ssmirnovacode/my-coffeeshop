@@ -1,5 +1,5 @@
 import React from 'react';
-import Home from '../home/home';
+import Header from '../header/header';
 import HomePage from '../pages/homePage';
 import Footer from '../footer/footer';
 import ItemDetail from '../item-detail/item-detail';
@@ -17,12 +17,20 @@ const App = () => {
         <Router> 
             <div className="app_container">  
                 <div className="app_content">
-                    <Home/>  
+                    <Header/>  
                     <Route path={`${basePath}/`} exact component={HomePage}/>                                               
                     <Route path={`${basePath}/cart`} component={Cart}/>
-                    <Route path={`${basePath}/item-detail/:id`} render={ ({match}) => {
+                    <Route path={`${basePath}/combos/:id`} render={ ({match}) => {
                         const {id} = match.params;
-                        return <ItemDetail itemId={+id}/>
+                        return <ItemDetail page='combos' itemId={id}/>
+                    }}/>
+                    <Route path={`${basePath}/menuItems/:id`} render={ ({match}) => {
+                        const {id} = match.params;
+                        return <ItemDetail page='menuItems' itemId={id}/>
+                    }}/>
+                    <Route path={`${basePath}/giftset/:id`} render={ ({match}) => {
+                        const {id} = match.params;
+                        return <ItemDetail page='giftset' itemId={id}/>
                     }}/>
                     <Route path={`${basePath}/order`} component={PlaceOrder}/>
                     <Route path={`${basePath}/thank-you`} component={ThankYou}/>

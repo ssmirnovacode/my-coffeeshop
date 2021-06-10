@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 import basePath from '../../assets/basePath';
 
 const Cart = (props) => {
-  
+
         let total = 0;
         props.cart.forEach(item => {
             total += item.price * item.qty;

@@ -1,13 +1,30 @@
 const initialState = {
-    beverages: [],
-    combos: [],
-    menuItems: [],
+    beverages: {
+        items: [],
+        loading: true,
+        error: false
+    },
+    combos: {
+        items: [],
+        loading: true,
+        error: false
+    },
+    menuItems: {
+        items: [],
+        loading: true,
+        error: false
+    },
     giftset: {
         items: [],
-        activeItemId: 7
+        loading: true,
+        error: false,
+        activeItemId: 'qxevR5yI0BPpyOH2Q5D7'
     },
-    loading: true,
-    error: false,
+    details: {
+        item: null,
+        loading: true,
+        error: false
+    },
     cart: [],
     order: null
 }
@@ -17,55 +34,114 @@ const reducer = (state = initialState, action) => {
         case 'BEVERAGES_LOADED': 
             return {
                 ...state, 
-                beverages: action.payload,
-                loading: false
+                beverages: {
+                    items: action.payload,
+                    loading: false,
+                    error: false
+                }
             }
         case 'BEVERAGES_REQUESTED': 
             return {
-                ...state,
-                loading: true
+                ...state, 
+                beverages: {
+                    ...state.beverages,
+                    loading: true,
+                    error: false
+                }
             }
         case 'BEVERAGES_ERROR': 
             return {
-                ...state,
-                error: true
+                ...state, 
+                beverages: {
+                    ...state.beverages,
+                    loading: false,
+                    error: true
+                }
             }
 
         case 'MENU_ITEMS_LOADED': 
             return {
                 ...state, 
-                menuItems: action.payload,
-                loading: false
+                menuItems: {
+                    items: action.payload,
+                    loading: false,
+                    error: false
+                }
             }
         case 'MENU_ITEMS_REQUESTED': 
             return {
-                ...state,
-                loading: true
+                ...state, 
+                menuItems: {
+                    ...state.menuItems,
+                    loading: true,
+                    error: false
+                }
             }
         case 'MENU_ITEMS_ERROR': 
             return {
-                ...state,
-                error: true
+                ...state, 
+                menuItems: {
+                    ...state.menuItems,
+                    loading: false,
+                    error: true
+                }
+            }
+
+        case 'DETAILS_LOADED': 
+            return {
+                ...state, 
+                details: {
+                    item: action.payload,
+                    loading: false,
+                    error: false
+                }
+            }
+        case 'DETAILS_REQUESTED': 
+            return {
+                ...state, 
+                details: {
+                    ...state.details,
+                    loading: true,
+                    error: false
+                }
+            }
+        case 'DETAILS_ERROR': 
+            return {
+                ...state, 
+                details: {
+                    ...state.details,
+                    loading: false,
+                    error: true
+                }
             }
 
         case 'GIFTSET_LOADED': 
             return {
                 ...state, 
                 giftset: {
+                    ...state.giftset,
                     items: action.payload,
-                    activeItemId: state.giftset.activeItemId
-                },
-                loading: false
+                    loading: false,
+                    error: false
+                }
             }
         case 'GIFTSET_REQUESTED': 
             return {
-                ...state,
-                loading: true
+                ...state, 
+                giftset: {
+                    ...state.giftset,
+                    loading: true,
+                    error: false
+                }
             }
         case 'GIFTSET_ERROR': 
             return {
-                ...state,
-                error: true
+                ...state, 
+                giftset: {
+                    ...state.giftset,
+                    loading: false,
+                    error: true
+                }
             }
         case 'GIFTSET_TAB_CLICK':
             return {
@@ -78,18 +154,29 @@ const reducer = (state = initialState, action) => {
         case 'COMBOS_LOADED': 
             return {
                 ...state, 
-                combos: action.payload,
-                loading: false
+                combos: {
+                    items: action.payload,
+                    loading: false,
+                    error: false
+                }
             }
         case 'COMBOS_REQUESTED': 
             return {
-                ...state,
-                loading: true
+                ...state, 
+                combos: {
+                    items: action.payload,
+                    loading: true,
+                    error: false
+                }
             }
         case 'COMBOS_ERROR': 
             return {
-                ...state,
-                error: true
+                ...state, 
+                combos: {
+                    items: action.payload,
+                    loading: false,
+                    error: true
+                }
             }
         case 'ADD_TO_CART':
             const itemToAdd = action.payload;

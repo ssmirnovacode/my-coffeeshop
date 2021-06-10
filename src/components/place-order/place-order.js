@@ -8,7 +8,7 @@ import basePath from '../../assets/basePath';
 import {orderSubmitted, orderError} from '../../redux/actions/orderAC';
 import { useFormik } from 'formik';
 import validate from '../../services/validate';
-import firebase from '../../firebase.config';
+import { db } from '../../firebase.config';
 
 const PlaceOrder = (props) => {
 
@@ -28,11 +28,10 @@ const PlaceOrder = (props) => {
                     qty: item.qty
                 }));
                 values.id = Math.random().toString(36).substr(2, 9);
-                const orderRef = firebase.database().ref('orders');
-                orderRef.push(values);
+                db.collection('orders').doc().set(values);
                 console.log(values);
                 props.orderSubmitted(values);
-                console.log(props.order);
+                //console.log(props.order);
                 resetForm();
                 props.clearCart();
                 props.history.push(`${basePath}/thank-you`);
