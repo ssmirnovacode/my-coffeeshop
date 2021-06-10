@@ -13,13 +13,13 @@ class Beverages extends Component {
 
     componentDidMount() {
         this.props.beveragesRequested();
-        this.props.beveragesRequested();
 
         db.collection('beverages').get()
         .then(snapshot => {
-            this.props.beveragesLoaded(firebaseLoop(snapshot));
+            firebaseLoop(snapshot).length > 0 ? this.props.beveragesLoaded(firebaseLoop(snapshot)) :
+            this.props.beveragesError();
         })
-        .catch( () => this.props.beveragesError());
+        .catch( err => console.error(err.message));
     };
 
     render() {
@@ -40,15 +40,18 @@ class Beverages extends Component {
         return (
             <section>
                 <Heading small={'Your Personalized Coffee'} big={'COFFEE BUILD YOUR BASE'} id="beverages"/>
-                <div className="beverages_container">
-                    {
-                        beverages.map(item => {
-                            return(
-                                <BeverageItem key={item.id} item={item}/>
-                            )
-                        })
-                    }
-                </div>
+                {
+                    loading ? <Loading /> : error ? <Error /> :
+                    <div className="beverages_container">
+                        {
+                            beverages.items.map(item => {
+                                return(
+                                    <BeverageItem key={item.id} item={item}/>
+                                )
+                            })
+                        }
+                    </div>
+                } 
             </section>
         )
     } 
@@ -56,9 +59,7 @@ class Beverages extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        beverages: state.beverages,
-        loading: state.loading,
-        error: state.error
+        beverages: state.beverages
     }
 }
 

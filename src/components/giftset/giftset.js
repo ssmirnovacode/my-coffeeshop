@@ -3,7 +3,7 @@ import './giftset.scss';
 import Heading from  '../heading/heading';
 import GiftsetItem from '../giftset-item/giftset-item';
 import {connect} from 'react-redux';
-import { giftsetLoaded, giftsetTabClick } from '../../redux/actions/giftset';
+import { giftsetLoaded, giftsetTabClick, giftsetError, giftsetRequested } from '../../redux/actions/giftset';
 import {addToCart} from '../../redux/actions/cartAC';
 import Loading from '../loading/loading';
 import Error from '../error/error';
@@ -12,51 +12,25 @@ import {firebaseLoop} from '../../services/tools';
 
 class Giftset extends Component {
 
-    state = {
-        items: this.props.combos,
-        loading: true,
-        error: false
-    }
-
     componentDidMount() {
+        this.props.giftsetRequested();
         db.collection('giftset').get()
         .then(snapshot => {
-            this.props.giftsetLoaded(firebaseLoop(snapshot));
-            firebaseLoop(snapshot).length > 0 ? this.setState(state => ({
-                items: firebaseLoop(snapshot),
-                loading: false,
-                error: state.error
-            })) :
-            this.setState(state => ({
-                ...state,
-                loading: false,
-                error: true
-            }))
+            firebaseLoop(snapshot).length > 0 ? this.props.giftsetLoaded(firebaseLoop(snapshot)) :
+            this.props.giftsetError();
         })
         .catch( err => console.error(err.message));
 
     }
     
     render() {
-        const {giftset} = this.props;
-
-        /* if (this.state.loading) {
-            return(
-                <Loading/>
-            )
-        }
-
-        else if (this.state.error) {
-            return (
-                <Error/>
-            )
-        } */
+        const {giftset, loading, error} = this.props;
 
         return(
             <section>
                 <Heading small={'Best Gift For Best Friend'} big={'GIFTSET'} id="giftset"/>
                 {
-                    this.state.loading ? <Loading /> : this.state.error ? <Error /> :
+                    loading ? <Loading /> : error ? <Error /> :
                     <div className="giftset_container">
                         <div className="bg-giftset"></div>
                         {
@@ -98,7 +72,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
     giftsetLoaded,
     giftsetTabClick,
-    addToCart
+    addToCart, 
+    giftsetError, 
+    giftsetRequested 
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Giftset);

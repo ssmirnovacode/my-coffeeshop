@@ -24,13 +24,13 @@ class Combo extends Component {
 
     render() {
 
-        const {items} = this.props.combos;
+        const {items, loading, error} = this.props.combos;
 
         return(
             <section>
                 <Heading small={'Our artesan pastry'} big={'ORGANIC INGREDIENTS ONLY'} id="combo"/>
                 {
-                    this.state.loading ? <Loading /> : this.state.error ? <Error /> :
+                    loading ? <Loading /> : error ? <Error /> :
                         <div className="combo_container">
                             <div className="bg-combo"></div>
                             {

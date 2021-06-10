@@ -3,7 +3,7 @@ import './menu.scss';
 import Heading from '../heading/heading';
 import MenuItem from '../menu-item/menu-item';
 import {connect} from 'react-redux';
-import { menuItemsLoaded} from '../../redux/actions/menu-itemsAC';
+import { menuItemsLoaded, menuItemsError, menuItemsRequested} from '../../redux/actions/menu-itemsAC';
 import {addToCart} from '../../redux/actions/cartAC';
 import Loading from '../loading/loading';
 import Error from '../error/error';
@@ -13,11 +13,6 @@ import {firebaseLoop} from '../../services/tools';
 class Menu extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            items: this.props.combos,
-            loading: true,
-            error: false
-        }
         this.showMore = this.showMore.bind(this);
         this.state = {
             isMoreBtnVisible: true
@@ -25,19 +20,11 @@ class Menu extends Component {
     }
 
     componentDidMount() {
+        this.props.menuItemsRequested();
         db.collection('menuItems').get()
         .then(snapshot => {
-            this.props.menuItemsLoaded(firebaseLoop(snapshot).filter((item, i) => i < 4));
-            firebaseLoop(snapshot).length > 0 ? this.setState(state => ({
-                items: firebaseLoop(snapshot).filter((item, i) => i < 4),
-                loading: false,
-                error: state.error
-            })) :
-            this.setState(state => ({
-                ...state,
-                loading: false,
-                error: true
-            }))
+            firebaseLoop(snapshot).length > 0 ? this.props.menuItemsLoaded(firebaseLoop(snapshot).filter((item, i) => i < 4)) :
+            this.props.menuItemsError();
         })
         .catch( err => console.error(err.message));
     }
@@ -45,12 +32,8 @@ class Menu extends Component {
     showMore = () => {
         db.collection('menuItems').get()
         .then(snapshot => {
-            this.props.menuItemsLoaded(firebaseLoop(snapshot));
-            this.setState(state => ({
-                items: firebaseLoop(snapshot),
-                loading: false,
-                error: state.error
-            }));
+            firebaseLoop(snapshot).length > 4 ? this.props.menuItemsLoaded(firebaseLoop(snapshot)) :
+            this.props.menuItemsError();
             this.setState({
                 isMoreBtnVisible: false
             });
@@ -59,18 +42,18 @@ class Menu extends Component {
 
     render() {
 
-        const {menuItems} = this.props;
+        const {items, loading, error} = this.props.menuItems;
 
         return(
             <section className="menu">
                 <Heading small={'Choose Your Drink'} big={'ORDER ONLINE AND SKIP THE LINE'} id="menu"/>
                 {
-                    this.state.loading ? <Loading /> : this.state.error ? <Error /> :
+                    loading ? <Loading /> : error ? <Error /> :
                     <>
                         <div className="menu_container">
                             <div className="bg-menu"></div>
                             {
-                                menuItems.map((item, i) => {                           
+                                items.map((item, i) => {                           
                                     return (
                                         <MenuItem key={i} item={item} addToCart={() => this.props.addToCart(item)}/>
                                     )
@@ -95,7 +78,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
     menuItemsLoaded,
-    addToCart
+    addToCart, 
+    menuItemsError, 
+    menuItemsRequested
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Menu);
