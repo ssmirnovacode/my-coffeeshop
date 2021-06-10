@@ -20,9 +20,9 @@ const Beverages = props => {
         .then(snapshot => {
             firebaseLoop(snapshot).length > 0 ? beveragesLoaded(firebaseLoop(snapshot)) :
             beveragesError();
-            console.log('Beverages loaded');
         })
         .catch( err => console.error(err.message));
+        return () => mounted = false;
     }, [beveragesRequested, beveragesError, beveragesLoaded]);
 
     return (
@@ -41,8 +41,7 @@ const Beverages = props => {
                 </div>
             } 
         </section>
-    )
-    
+    ) 
 }
 
 const mapStateToProps = (state) => {
