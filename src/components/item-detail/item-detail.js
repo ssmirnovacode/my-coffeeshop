@@ -20,7 +20,7 @@ const ItemDetail = (props) => {
         detailsRequested();
         mounted && db.collection(page).doc(itemId).get()
         .then( snapshot => {
-            snapshot.data() ? detailsLoaded(snapshot.data()) :
+            snapshot.data() ? detailsLoaded({...snapshot.data(), id: itemId}) :
             detailsError();
             console.log('Deatils loaded');
         })

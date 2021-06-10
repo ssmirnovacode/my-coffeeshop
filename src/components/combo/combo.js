@@ -46,7 +46,6 @@ const Combo = props => {
                 } 
         </section>
     )
-    
 }
 
 const mapStateToProps = (state) => {

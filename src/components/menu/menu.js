@@ -34,7 +34,6 @@ const Menu = props => {
             if (firebaseLoop(snapshot).length > 4) {
                 menuItemsLoaded(firebaseLoop(snapshot)); // showing all menu items
                 setMoreBtnVisible(false);
-                console.log('menu loaded');
             }
         })
         .catch( err => console.error(err.message));
