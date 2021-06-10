@@ -15,7 +15,7 @@ https://ssmirnovacode.github.io/my-coffeeshop/
  - Redux
  - SCSS
  - JavaScript
- - Firebase Realtime Database
+ - Firebase Cloud Firestore
 
 ### Additional libraries
  - Formik

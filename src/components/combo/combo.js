@@ -3,7 +3,7 @@ import './combo.scss';
 import Heading from '../heading/heading';
 import ComboItem from '../combo-item/combo-item';
 import {connect} from 'react-redux';
-import { combosLoaded, combosError, combosRequested } from '../../redux/actions/combosAC';
+import { combosLoaded  } from '../../redux/actions/combosAC';
 import {addToCart} from '../../redux/actions/cartAC';
 import Loading from '../loading/loading';
 import Error from '../error/error';
@@ -12,27 +12,38 @@ import {firebaseLoop} from '../../services/tools';
 
 class Combo extends Component {
 
+    state = {
+        items: this.props.combos,
+        loading: true,
+        error: false
+    }
+
     componentDidMount() {
-        this.props.combosRequested();
+        //this.props.combosRequested();
 
         db.collection('combos').get()
         .then(snapshot => {
             this.props.combosLoaded(firebaseLoop(snapshot));
+            this.setState(state => ({
+                items: firebaseLoop(snapshot),
+                loading: false,
+                error: state.error
+            }));
         })
         .catch( () => this.props.combosError());
     }
 
     render() {
 
-        const {combos, loading, error} = this.props;
+        const {combos} = this.props;
 
-        if (loading) {
+        if (this.state.loading) {
             return(
                 <Loading/>
             )
         }
 
-        else if (error) {
+        else if (this.state.error) {
             return (
                 <Error/>
             )
@@ -68,8 +79,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
     combosLoaded,
-    combosRequested,
-    combosError,
     addToCart
 }
 

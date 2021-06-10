@@ -6,8 +6,6 @@ const initialState = {
         items: [],
         activeItemId: 'qxevR5yI0BPpyOH2Q5D7'
     },
-    loading: true,
-    error: false,
     cart: [],
     order: null
 }
@@ -18,9 +16,8 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state, 
                 beverages: action.payload,
-                loading: false
             }
-        case 'BEVERAGES_REQUESTED': 
+        /* case 'BEVERAGES_REQUESTED': 
             return {
                 ...state,
                 loading: true
@@ -29,15 +26,14 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 error: true
-            }
+            } */
 
         case 'MENU_ITEMS_LOADED': 
             return {
                 ...state, 
-                menuItems: action.payload,
-                loading: false
+                menuItems: action.payload
             }
-        case 'MENU_ITEMS_REQUESTED': 
+        /* case 'MENU_ITEMS_REQUESTED': 
             return {
                 ...state,
                 loading: true
@@ -46,7 +42,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 error: true
-            }
+            } */
 
         case 'GIFTSET_LOADED': 
             return {
@@ -54,10 +50,9 @@ const reducer = (state = initialState, action) => {
                 giftset: {
                     items: action.payload,
                     activeItemId: state.giftset.activeItemId
-                },
-                loading: false
+                }
             }
-        case 'GIFTSET_REQUESTED': 
+        /* case 'GIFTSET_REQUESTED': 
             return {
                 ...state,
                 loading: true
@@ -66,7 +61,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 error: true
-            }
+            } */
         case 'GIFTSET_TAB_CLICK':
             return {
                 ...state,
@@ -78,10 +73,9 @@ const reducer = (state = initialState, action) => {
         case 'COMBOS_LOADED': 
             return {
                 ...state, 
-                combos: action.payload,
-                loading: false
+                combos: action.payload
             }
-        case 'COMBOS_REQUESTED': 
+        /* case 'COMBOS_REQUESTED': 
             return {
                 ...state,
                 loading: true
@@ -90,7 +84,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 error: true
-            }
+            } */
         case 'ADD_TO_CART':
             const itemToAdd = action.payload;
             itemToAdd.qty = 1;
