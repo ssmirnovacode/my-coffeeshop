@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {useEffect} from 'react';
 import './giftset.scss';
 import Heading from  '../heading/heading';
 import GiftsetItem from '../giftset-item/giftset-item';
@@ -10,57 +10,59 @@ import Error from '../error/error';
 import { db } from '../../firebase.config';
 import {firebaseLoop} from '../../services/tools';
 
-class Giftset extends Component {
+const Giftset = props => {
 
-    componentDidMount() {
-        this.props.giftsetRequested();
-        db.collection('giftset').get()
+    const {giftset, giftsetError, giftsetLoaded, giftsetRequested, addToCart, giftsetTabClick} = props;
+
+    useEffect( () => {
+        let mounted = true;
+        giftsetRequested();
+        mounted && db.collection('giftset').get()
         .then(snapshot => {
-            firebaseLoop(snapshot).length > 0 ? this.props.giftsetLoaded(firebaseLoop(snapshot)) :
-            this.props.giftsetError();
+            firebaseLoop(snapshot).length > 0 ? giftsetLoaded(firebaseLoop(snapshot)) :
+            giftsetError();
         })
         .catch( err => console.error(err.message));
-
-    }
+        return () => mounted = false;
+    }, [giftsetRequested, giftsetLoaded, giftsetError]);
     
-    render() {
-        const {giftset, loading, error} = this.props;
+    const {items, loading, error, activeItemId} = giftset;
 
-        return(
-            <section>
-                <Heading small={'Best Gift For Best Friend'} big={'GIFTSET'} id="giftset"/>
-                {
-                    loading ? <Loading /> : error ? <Error /> :
-                    <div className="giftset_container">
-                        <div className="bg-giftset"></div>
+    return(
+        <section>
+            <Heading small={'Best Gift For Best Friend'} big={'GIFTSET'} id="giftset"/>
+            {
+                loading ? <Loading /> : error ? <Error /> :
+                <div className="giftset_container">
+                    <div className="bg-giftset"></div>
+                    {
+                        items.map(item => {
+
+                            if (item.id === activeItemId) {
+                                return(
+                                    <GiftsetItem key={item.id} item={item} addToCart={() => addToCart(item)}/>
+                                )         
+                            }
+                            else return null;
+                        })
+                    }
+                    <div className="giftset_tabs">
                         {
-                            giftset.items.map(item => {
-
-                                if (item.id === giftset.activeItemId) {
-                                    return(
-                                        <GiftsetItem key={item.id} item={item} addToCart={() => this.props.addToCart(item)}/>
-                                    )         
-                                }
-                                else return null;
+                            items.map((item,i ) => {
+                                return (
+                                <div className={activeItemId === item.id ? "giftset_tabs_item active" : "giftset_tabs_item"} key={item.id} 
+                                        onClick={(e) =>{
+                                            giftsetTabClick(item.id);
+                                        }}>{i+1}</div>
+                                )
                             })
                         }
-                        <div className="giftset_tabs">
-                            {
-                                giftset.items.map((item,i ) => {
-                                    return (
-                                    <div className={giftset.activeItemId === item.id ? "giftset_tabs_item active" : "giftset_tabs_item"} key={item.id} 
-                                            onClick={(e) =>{
-                                                this.props.giftsetTabClick(item.id);
-                                            }}>{i+1}</div>
-                                    )
-                                })
-                            }
-                        </div>
                     </div>
-                }
-            </section>
-        )
-    }  
+                </div>
+            }
+        </section>
+    )
+     
 }
 
 const mapStateToProps = (state) => {
