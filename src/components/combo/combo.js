@@ -7,28 +7,19 @@ import { combosLoaded, combosError, combosRequested } from '../../redux/actions/
 import {addToCart} from '../../redux/actions/cartAC';
 import Loading from '../loading/loading';
 import Error from '../error/error';
-import firebase from '../../firebase.config';
+import { db } from '../../firebase.config';
+import {firebaseLoop} from '../../services/tools';
 
 class Combo extends Component {
 
     componentDidMount() {
         this.props.combosRequested();
 
-        const itemRef = firebase.database().ref('combos');
-        itemRef.on('value', (snapshot) => {
-            const items = snapshot.val();
-            if (items) {
-                const itemList = [];
-                for (let id in items) {
-                    itemList.push({ id, ...items[id] });
-                };
-                this.props.combosLoaded(itemList);
-            }
-            else {
-                this.props.combosError();
-                console.log(this.props.error);
-            }
-        });
+        db.collection('combos').get()
+        .then(snapshot => {
+            this.props.combosLoaded(firebaseLoop(snapshot));
+        })
+        .catch( () => this.props.combosError());
     }
 
     render() {
