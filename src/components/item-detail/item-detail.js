@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './item-detail.scss';
 import {connect} from 'react-redux';
 import {addToCart} from '../../redux/actions/cartAC';
@@ -8,6 +8,7 @@ import basePath from '../../assets/basePath';
 
 const ItemDetail = (props) => {
     const {itemId} = props;
+    console.log(itemId);
     const allItems = [...props.menuItems, ...props.combos, ...props.giftset.items]; // 2 из 3 массивов не загрузятся, но нужный будет
     const item = allItems.filter(item => item.id === itemId)[0]; 
     const {id, image, title, price, content} = item;
@@ -16,8 +17,12 @@ const ItemDetail = (props) => {
 
     const toggleBtn = () => {
         setActiveBtn('viewCart');
-        const timerId = setTimeout( () => {setActiveBtn('addToCart'); clearInterval(timerId);}, 2000);
     }
+
+    useEffect( () => {
+        const timerId = setTimeout( () => setActiveBtn('addToCart'), 2000);
+        return () => clearInterval(timerId);
+    }, [activeBtn]);
 
     return(
         <div className="item-detail_container" > 
