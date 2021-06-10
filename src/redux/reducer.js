@@ -20,6 +20,11 @@ const initialState = {
         error: false,
         activeItemId: 'qxevR5yI0BPpyOH2Q5D7'
     },
+    details: {
+        item: null,
+        loading: true,
+        error: false
+    },
     cart: [],
     order: null
 }
@@ -77,6 +82,34 @@ const reducer = (state = initialState, action) => {
                 ...state, 
                 menuItems: {
                     ...state.menuItems,
+                    loading: false,
+                    error: true
+                }
+            }
+
+        case 'DETAILS_LOADED': 
+            return {
+                ...state, 
+                details: {
+                    item: action.payload,
+                    loading: false,
+                    error: false
+                }
+            }
+        case 'DETAILS_REQUESTED': 
+            return {
+                ...state, 
+                details: {
+                    ...state.details,
+                    loading: true,
+                    error: false
+                }
+            }
+        case 'DETAILS_ERROR': 
+            return {
+                ...state, 
+                details: {
+                    ...state.details,
                     loading: false,
                     error: true
                 }
