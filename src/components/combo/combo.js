@@ -3,7 +3,7 @@ import './combo.scss';
 import Heading from '../heading/heading';
 import ComboItem from '../combo-item/combo-item';
 import {connect} from 'react-redux';
-import { combosLoaded  } from '../../redux/actions/combosAC';
+import { combosLoaded, combosError, combosRequested  } from '../../redux/actions/combosAC';
 import {addToCart} from '../../redux/actions/cartAC';
 import Loading from '../loading/loading';
 import Error from '../error/error';
@@ -12,33 +12,19 @@ import {firebaseLoop} from '../../services/tools';
 
 class Combo extends Component {
 
-    state = {
-        items: this.props.combos,
-        loading: true,
-        error: false
-    }
-
     componentDidMount() {
+        this.props.combosRequested();
         db.collection('combos').get()
         .then(snapshot => {
-            this.props.combosLoaded(firebaseLoop(snapshot));
-            firebaseLoop(snapshot).length > 0 ? this.setState(state => ({
-                items: firebaseLoop(snapshot),
-                loading: false,
-                error: state.error
-            })) :
-            this.setState(state => ({
-                ...state,
-                loading: false,
-                error: true
-            }))
+            firebaseLoop(snapshot).length > 0 ? this.props.combosLoaded(firebaseLoop(snapshot)) :
+            this.props.combosError();
         })
         .catch( err => console.error(err.message));
     }
 
     render() {
 
-        const {combos} = this.props;
+        const {items} = this.props.combos;
 
         return(
             <section>
@@ -48,20 +34,17 @@ class Combo extends Component {
                         <div className="combo_container">
                             <div className="bg-combo"></div>
                             {
-                                combos.map(item => {
+                                items.map(item => {
                                     return(
                                         <ComboItem key={item.id} item={item} addToCart={() => this.props.addToCart(item)}/>
                                     )
                                 })
                             }
-                            
                         </div>
-                    }
-                
+                    } 
             </section>
         )
-    }
-    
+    }  
 }
 
 const mapStateToProps = (state) => {
@@ -72,6 +55,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
     combosLoaded,
+    combosError,
+    combosRequested,
     addToCart
 }
 

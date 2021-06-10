@@ -1,9 +1,23 @@
 const initialState = {
-    beverages: [],
-    combos: [],
-    menuItems: [],
+    beverages: {
+        items: [],
+        loading: true,
+        error: false
+    },
+    combos: {
+        items: [],
+        loading: true,
+        error: false
+    },
+    menuItems: {
+        items: [],
+        loading: true,
+        error: false
+    },
     giftset: {
         items: [],
+        loading: true,
+        error: false,
         activeItemId: 'qxevR5yI0BPpyOH2Q5D7'
     },
     cart: [],
@@ -15,19 +29,85 @@ const reducer = (state = initialState, action) => {
         case 'BEVERAGES_LOADED': 
             return {
                 ...state, 
-                beverages: action.payload,
+                beverages: {
+                    items: action.payload,
+                    loading: false,
+                    error: false
+                }
             }
+        case 'BEVERAGES_REQUESTED': 
+            return {
+                ...state, 
+                beverages: {
+                    ...state.beverages,
+                    loading: true,
+                    error: false
+                }
+            }
+        case 'BEVERAGES_ERROR': 
+            return {
+                ...state, 
+                beverages: {
+                    ...state.beverages,
+                    loading: false,
+                    error: true
+                }
+            }
+
         case 'MENU_ITEMS_LOADED': 
             return {
                 ...state, 
-                menuItems: action.payload
+                menuItems: {
+                    items: action.payload,
+                    loading: false,
+                    error: false
+                }
             }
+        case 'MENU_ITEMS_REQUESTED': 
+            return {
+                ...state, 
+                menuItems: {
+                    ...state.menuItems,
+                    loading: true,
+                    error: false
+                }
+            }
+        case 'MENU_ITEMS_ERROR': 
+            return {
+                ...state, 
+                menuItems: {
+                    ...state.menuItems,
+                    loading: false,
+                    error: true
+                }
+            }
+
         case 'GIFTSET_LOADED': 
             return {
                 ...state, 
                 giftset: {
+                    ...state.giftset,
                     items: action.payload,
-                    activeItemId: state.giftset.activeItemId
+                    loading: false,
+                    error: false
+                }
+            }
+        case 'GIFTSET_REQUESTED': 
+            return {
+                ...state, 
+                giftset: {
+                    ...state.giftset,
+                    loading: true,
+                    error: false
+                }
+            }
+        case 'GIFTSET_ERROR': 
+            return {
+                ...state, 
+                giftset: {
+                    ...state.giftset,
+                    loading: false,
+                    error: true
                 }
             }
         case 'GIFTSET_TAB_CLICK':
@@ -41,7 +121,29 @@ const reducer = (state = initialState, action) => {
         case 'COMBOS_LOADED': 
             return {
                 ...state, 
-                combos: action.payload
+                combos: {
+                    items: action.payload,
+                    loading: false,
+                    error: false
+                }
+            }
+        case 'COMBOS_REQUESTED': 
+            return {
+                ...state, 
+                combos: {
+                    items: action.payload,
+                    loading: true,
+                    error: false
+                }
+            }
+        case 'COMBOS_ERROR': 
+            return {
+                ...state, 
+                combos: {
+                    items: action.payload,
+                    loading: false,
+                    error: true
+                }
             }
         case 'ADD_TO_CART':
             const itemToAdd = action.payload;
