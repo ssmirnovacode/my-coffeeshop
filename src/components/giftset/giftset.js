@@ -7,22 +7,19 @@ import { giftsetLoaded, giftsetError, giftsetRequested, giftsetTabClick } from '
 import {addToCart} from '../../redux/actions/cartAC';
 import Loading from '../loading/loading';
 import Error from '../error/error';
-import firebase from '../../firebase.config';
+import { db } from '../../firebase.config';
+import {firebaseLoop} from '../../services/tools';
 
 class Giftset extends Component {
 
     componentDidMount() {
         this.props.giftsetRequested();
 
-        const itemRef = firebase.database().ref('giftset');
-        itemRef.on('value', (snapshot) => {
-        const items = snapshot.val();
-        const itemList = [];
-        for (let id in items) {
-            itemList.push({ id, ...items[id] });
-        }
-        this.props.giftsetLoaded(itemList);
-        }, (err) => {this.props.giftsetError(err)});
+        db.collection('giftset').get()
+        .then(snapshot => {
+            this.props.giftsetLoaded(firebaseLoop(snapshot));
+        })
+        .catch( () => this.props.giftsetError());
 
     }
     

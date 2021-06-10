@@ -4,7 +4,7 @@ const initialState = {
     menuItems: [],
     giftset: {
         items: [],
-        activeItemId: 7
+        activeItemId: 'qxevR5yI0BPpyOH2Q5D7'
     },
     loading: true,
     error: false,
