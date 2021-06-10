@@ -7,7 +7,8 @@ import { menuItemsLoaded, menuItemsError, menuItemsRequested } from '../../redux
 import {addToCart} from '../../redux/actions/cartAC';
 import Loading from '../loading/loading';
 import Error from '../error/error';
-import firebase from '../../firebase.config';
+import { db } from '../../firebase.config';
+import {firebaseLoop} from '../../services/tools';
 
 class Menu extends Component {
     constructor(props) {
@@ -21,41 +22,21 @@ class Menu extends Component {
 
     componentDidMount() {
         this.props.menuItemsRequested();
-
-        const itemRef = firebase.database().ref('menuItems');
-        itemRef.on('value', (snapshot) => {
-            const items = snapshot.val();
-            if (items) {
-                const itemList = [];
-                for (let id in items) {
-                    itemList.push({ id, ...items[id] });
-                };
-                this.props.menuItemsLoaded(itemList.filter((item, i) => i < 4));
-            }
-            else {
-                this.props.menuItemsError();
-            }
-        });
+        db.collection('menuItems').get()
+        .then(snapshot => {
+            this.props.menuItemsLoaded(firebaseLoop(snapshot).filter((item, i) => i < 4));
+        })
+        .catch( () => this.props.menuItemsError());
     }
 
     showMore = () => {
-        const itemRef = firebase.database().ref('menuItems');
-        itemRef.on('value', (snapshot) => {
-        const items = snapshot.val();
-        if (items) {
-            const itemList = [];
-            for (let id in items) {
-                itemList.push({ id, ...items[id] });
-            };
-            this.props.menuItemsLoaded(itemList);
+        db.collection('menuItems').get()
+        .then(snapshot => {
+            this.props.menuItemsLoaded(firebaseLoop(snapshot));
             this.setState({
                 isMoreBtnVisible: false
-            })
-        }
-        else {
-            this.props.menuItemsError();
-        }
-        });
+            });
+        })
     }
 
     render() {

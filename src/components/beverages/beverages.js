@@ -6,28 +6,20 @@ import {connect} from 'react-redux';
 import { beveragesLoaded, beveragesError, beveragesRequested } from '../../redux/actions/beveragesAC';
 import Loading from '../loading/loading';
 import Error from '../error/error';
-import firebase from '../../firebase.config';
+import { db } from '../../firebase.config';
+import {firebaseLoop} from '../../services/tools';
 
 class Beverages extends Component {
 
     componentDidMount() {
         this.props.beveragesRequested();
-        const bevRef = firebase.database().ref('beverages');
+        this.props.beveragesRequested();
 
-        bevRef.on('value', (snapshot) => {
-            const items = snapshot.val();
-            if (items) {
-                const itemList = [];
-                for (let id in items) {
-                    itemList.push({ id, ...items[id] });
-                };
-                this.props.beveragesLoaded(itemList);
-            }
-            else {
-                this.props.beveragesError();
-                console.log(this.props.error);
-            }
-        });
+        db.collection('beverages').get()
+        .then(snapshot => {
+            this.props.beveragesLoaded(firebaseLoop(snapshot));
+        })
+        .catch( () => this.props.beveragesError());
     };
 
     render() {
