@@ -22,7 +22,6 @@ const ItemDetail = (props) => {
         .then( snapshot => {
             snapshot.data() ? detailsLoaded({...snapshot.data(), id: itemId}) :
             detailsError();
-            console.log('Deatils loaded');
         })
         .catch(err => console.error(err.message));
         return () => mounted = false;
