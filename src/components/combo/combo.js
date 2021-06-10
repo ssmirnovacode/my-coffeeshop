@@ -12,7 +12,7 @@ import {firebaseLoop} from '../../services/tools';
 
 const Combo = props => {
 
-    const {combos, combosLoaded, combosRequested, combosError} = props;
+    const {combos, combosLoaded, combosRequested, combosError, addToCart} = props;
 
     useEffect(() => {
         let mounted = true;
@@ -38,7 +38,7 @@ const Combo = props => {
                         {
                             items.map(item => {
                                 return(
-                                    <ComboItem key={item.id} item={item} addToCart={() => this.props.addToCart(item)}/>
+                                    <ComboItem key={item.id} item={item} addToCart={() => addToCart(item)}/>
                                 )
                             })
                         }
