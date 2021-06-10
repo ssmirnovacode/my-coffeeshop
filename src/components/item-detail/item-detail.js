@@ -10,6 +10,7 @@ import Loading from '../loading/loading';
 import Error from '../error/error';
 
 const ItemDetail = (props) => {
+    
     const {itemId, page, details, detailsError, detailsLoaded, detailsRequested} = props;
 
     const [activeBtn, setActiveBtn] = useState('addToCart');
