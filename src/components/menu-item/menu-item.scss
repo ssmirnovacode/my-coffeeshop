@@ -25,7 +25,6 @@
     &_content {
         @include content;
         margin: 7% auto;
-        padding: 0 0 10% 0;
         display: block;
     }
     &_details {
@@ -34,13 +33,7 @@
         }
     }
     &_btns {
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        position: absolute;
-        left: 5%;
-        right: 5%;
-        bottom: 10%;
+        @include btns-box;
     }
     &_btn {
         @include btn;
