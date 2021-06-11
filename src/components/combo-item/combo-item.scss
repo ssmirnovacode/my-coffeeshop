@@ -35,11 +35,21 @@
     &_content {
         @include content;
         margin: 10% auto;
+        padding: 0 0 10% 0;
     }
     &_details a {
         @include details;
         //margin-left: 10%;
 
+    }
+    &_btns {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        position: absolute;
+        left: 5%;
+        right: 5%;
+        bottom: 10%;
     }
     &_btn {
         @include btn;
