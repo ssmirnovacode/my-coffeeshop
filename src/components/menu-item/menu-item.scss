@@ -33,7 +33,8 @@
         }
     }
     &_btns {
-        @include btns-box;
+        display: block;
+
     }
     &_btn {
         @include btn;

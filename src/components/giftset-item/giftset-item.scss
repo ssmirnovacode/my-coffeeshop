@@ -2,23 +2,6 @@
 
 .giftset {
     color: $dark;
-    &_wrapper {
-        position: relative;
-    }
-    &-item {
-        position: relative;
-        &_msg-btn-box {
-        position: relative;
-            &_message {
-                position: absolute;
-                color: #1e8731;
-                top: -.4rem;
-                left: .6rem;
-                font-size: .8rem;
-                font-weight: bold;
-            }
-        }
-    }
     &_content {
         @include appear;
         //height: auto;
@@ -32,14 +15,12 @@
         border-radius: 5px;
         box-sizing: border-box;
         box-shadow: 5px 5px 15px 5px rgb(185, 185, 185);
-
-        @media (max-width: 560px) {
-            padding: 50% 20% 55% 10%;
+        @media only screen and (max-width: 560px) {
+            padding-top: 50%;
             left: 5%;
+            padding-left: 10%;
+            padding-right: 20%;
         }
-        /* @media (max-width: 355px) {
-            padding-bottom: 10%;
-        } */
     }
     &_img{
         position: absolute;
@@ -70,21 +51,13 @@
     }
     &_text {
         @include content;
-        margin: 7% 2% 10% auto;
+        margin: 7% 2% 2% auto;
     }
     &_details a {
         @include details;
         margin-left: 60%;
         display: block;
         margin-top: 8%;
-    }
-    &_btns {
-        @include btns-box;
-        @media (max-width: 400px) {
-            justify-content: flex-start;
-            left: 0;
-            bottom: 3%;
-        }
     }
     &_btn {
         @include btn;
@@ -97,6 +70,17 @@
             margin-top: 5%;
         }
     }
-    
+    &-item {
+        &_msg-btn-box {
+        position: relative;
+            &_message {
+                position: absolute;
+                color: #1e8731;
+                top: -.4rem;
+                left: .6rem;
+                font-size: .8rem;
+                font-weight: bold;
+            }
+        }
+    }
 }
-

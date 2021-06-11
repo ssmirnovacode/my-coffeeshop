@@ -24,11 +24,9 @@ const MenuItem = ({item, addToCart}) => {
                     <img src={image} alt={title}/> 
                 </Link>
             </div>
-            
             <div className="menu-item_price">{price} $</div>
             <div className="menu-item_title">{title}</div>
             <div className="menu-item_content">{content}</div><br/>
-            
             <div className="menu-item_btns">
                 {
                     activeBtn === 'addToCart' ? <button className="menu-item_btn" data-id={id} onClick={(e) => {

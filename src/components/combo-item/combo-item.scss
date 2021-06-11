@@ -38,10 +38,8 @@
     }
     &_details a {
         @include details;
+        //margin-left: 10%;
 
-    }
-    &_btns {
-        @include btns-box;
     }
     &_btn {
         @include btn;

@@ -51,7 +51,6 @@ $background: #fcfcfc;
     font-weight: 300;
     @include fz-text-basic;
     min-height: 5rem;
-    padding: 0 0 10% 0;
 }
 
 @mixin img {
@@ -115,16 +114,6 @@ $background: #fcfcfc;
     &.hidden {
         display: none;
     }
-}
-
-@mixin btns-box {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    position: absolute;
-    left: 5%;
-    right: 5%;
-    bottom: 10%;
 }
 
 @mixin item-box {
