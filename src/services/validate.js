@@ -5,8 +5,8 @@ const validate = (values) => {
         errors.firstname = 'Name can only contain letters';
       }
 
-    if (values.tel.length > 0 && !/([+]\d{1,2}[.-\s]?)?(\d{3}[.-]?){2}\d{4}/i.test(values.tel)) {
-    errors.tel = 'Invalid phone number';
+    if (values.tel.length > 0 && !/([+]\d{1,2}[.-\s]?)?(\d{3}[.-]?){2}\d{3}/i.test(values.tel)) {
+    errors.tel = 'Invalid phone number: must contain at least 9 digits';
     }
   
     return errors;
