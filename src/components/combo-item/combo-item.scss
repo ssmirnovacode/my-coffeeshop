@@ -9,11 +9,6 @@
         padding: 5% 10%;
         text-align: center;
         @include item-box;
-        & .message {
-            position: absolute;
-            bottom: 20%;
-            left: 10%;
-        }
     }
     &_img img{
         max-width: 130px;
@@ -53,6 +48,15 @@
         }
         &_viewcart {
             @include btn-viewCart;
+        }
+    }
+    &_msg-btn-box {
+        position: relative;
+        &_message {
+            position: absolute;
+            color: #1e8731;
+            top: -30px;
+
         }
     }
 }

@@ -10,8 +10,8 @@ const ComboItem = ({item, addToCart}) => {
     const [activeBtn, setActiveBtn] = useState('addToCart');
 
     useEffect( () => {
-        const timerId = setTimeout( () => setActiveBtn('addToCart'), 2000);
-        return () => clearInterval(timerId);
+        //const timerId = setTimeout( () => setActiveBtn('addToCart'), 2000);
+        //return () => clearInterval(timerId);
     }, [activeBtn])
 
     const toggleBtn = () => {
@@ -33,13 +33,17 @@ const ComboItem = ({item, addToCart}) => {
                   activeBtn === 'addToCart' ? <button className="combo-item_btn" data-id={id} onClick={(e) => {
                     addToCart();
                     toggleBtn();
-                }}>ADD TO CART</button> :
-                <Link to={`${basePath}/cart`}  className="combo-item_btn_viewcart" data-id={id}>VIEW CART</Link>
+                }}>ADD TO CART</button> : 
+                <div className="combo-item_msg-btn-box">
+                    <Link to={`${basePath}/cart`}  className="combo-item_btn_viewcart" data-id={id}>VIEW CART</Link>
+                    {
+                    activeBtn === 'addToCart' ? null : <div className="combo-item_msg-btn-box_message">Added to cart!</div>
+                    }
+                </div>
+                
             }
             <div className="combo-item_details"><Link to={`${basePath}/combos/${id}`}>Details</Link></div><br/>
-            {
-                    activeBtn === 'addToCart' ? null : <div className="message">Added to cart</div>
-                }
+            
         </div>
     )
 }
