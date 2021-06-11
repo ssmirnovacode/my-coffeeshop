@@ -33,12 +33,15 @@ const MenuItem = ({item, addToCart}) => {
                         addToCart();
                         toggleBtn();
                         }}>ADD TO CART</button> :
-                        <button className="menu-item_btn_viewcart" data-id={id}><Link to={`${basePath}/cart`} >VIEW CART</Link></button> 
+                        <div className="menu-item_msg-btn-box">
+                            <button className="menu-item_btn_viewcart" data-id={id}><Link to={`${basePath}/cart`} >VIEW CART</Link></button>
+                            {
+                                activeBtn === 'addToCart' ? null : <div className="menu-item_msg-btn-box_message">Added to cart!</div>
+                            }
+                        </div>
                 }
                 <div className="menu-item_details"><Link to={`${basePath}/menuItems/${id}`}>Details</Link></div><br/>
-                {
-                    activeBtn === 'addToCart' ? null : <div className="message">Added to cart</div>
-                }
+                
             </div>
             
         </div>

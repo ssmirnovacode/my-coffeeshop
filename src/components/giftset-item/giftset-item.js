@@ -35,12 +35,15 @@ const GiftsetItem = ({item, addToCart}) => {
                             addToCart();
                             toggleBtn();            
                         }}>ADD TO CART</button> :
-                        <Link to={`${basePath}/cart`}  className="giftset_btn_viewcart" data-id={id}>VIEW CART</Link>
+                        <div className="giftset-item_msg-btn-box">
+                            <Link to={`${basePath}/cart`}  className="giftset_btn_viewcart" data-id={id}>VIEW CART</Link>
+                            {
+                                activeBtn === 'addToCart' ? null : <div className="giftset-item_msg-btn-box_message">Added to cart!</div>
+                            }
+                        </div>
                     }
                     <div className="giftset_details"><Link to={`${basePath}/giftset/${id}`}>Details</Link></div><br/>
-                    {
-                    activeBtn === 'addToCart' ? null : <div className="message">Added to cart</div>
-                }
+                    
             </div>
         </div>
     )

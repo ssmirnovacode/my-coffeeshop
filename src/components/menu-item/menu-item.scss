@@ -9,11 +9,6 @@
         font-style: normal;
         padding: 5%;
         @include item-box;
-        & .message {
-            position: absolute;
-            bottom: 22%;
-            left: 10%;
-        }
     }
     &_img {
         & img {
@@ -50,10 +45,15 @@
             @include btn-viewCart;
         }
     }
-}
-
-.message {
-    font-size: .8rem;
-    //padding: 0.5rem;
-    
+    &_msg-btn-box {
+        position: relative;
+        &_message {
+            position: absolute;
+            color: #1e8731;
+            top: -1.5rem;
+            left: .5rem;
+            font-size: .8rem;
+            font-weight: bold;
+        }
+    }
 }

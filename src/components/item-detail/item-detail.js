@@ -48,16 +48,19 @@ const ItemDetail = (props) => {
                         <div className="item-detail_price">{details.item.price} $</div>  
                         <div className="item-detail_text">{details.item.content}</div>
                     </div>
-                    {
-                            activeBtn === 'addToCart' ? null : <div className="message">Added to cart</div>
-                        }  
+                     
                         {
                             activeBtn === 'addToCart' ? <button className="item-detail_btn" data-id={itemId}
                             onClick={(e) => {                                           
                                 props.addToCart(details.item); 
                                 toggleBtn();
                                 }}>ADD TO CART</button> :
-                            <Link to={`${basePath}/cart`}  className="item-detail_btn_viewcart" data-id={itemId}>VIEW CART</Link>
+                                <div className="item-detail_msg-btn-box">    
+                                    <Link to={`${basePath}/cart`}  className="item-detail_btn_viewcart" data-id={itemId}>VIEW CART</Link>
+                                    {
+                                        activeBtn === 'addToCart' ? null : <div className="item-detail_msg-btn-box_message">Added to cart!</div>
+                                    } 
+                                </div>
                         }
                     <Link to={`${basePath}/`} className="item-detail_back">Back</Link><br/>
                 </>

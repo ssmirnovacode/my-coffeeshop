@@ -10,8 +10,8 @@ const ComboItem = ({item, addToCart}) => {
     const [activeBtn, setActiveBtn] = useState('addToCart');
 
     useEffect( () => {
-        //const timerId = setTimeout( () => setActiveBtn('addToCart'), 2000);
-        //return () => clearInterval(timerId);
+        const timerId = setTimeout( () => setActiveBtn('addToCart'), 2000);
+        return () => clearInterval(timerId);
     }, [activeBtn])
 
     const toggleBtn = () => {

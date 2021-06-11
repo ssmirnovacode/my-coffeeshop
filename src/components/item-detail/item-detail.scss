@@ -16,11 +16,6 @@
         @media only screen and (min-width: 1040px) { //570px
             width: 60%;
         } 
-        & .message  {
-            position: absolute;
-            bottom: 15%;
-            left: 10%;
-        }
     }
     &_img {
         & img{
@@ -60,6 +55,17 @@
         @include details;
         //text-align: right;
         margin-left: 10%;
+    }
+    &_msg-btn-box {
+        position: relative;
+        &_message {
+            position: absolute;
+            color: #1e8731;
+            top: -1.5rem;
+            left: 7%;
+            font-size: .8rem;
+            font-weight: bold;
+        }
     }
 }
 

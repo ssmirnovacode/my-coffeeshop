@@ -4,6 +4,7 @@
     color: $dark;
     &_content {
         @include appear;
+        //height: auto;
         position: absolute;
         left: 22.5%;
         //right: 7.73%;
@@ -67,6 +68,19 @@
         &_viewcart {
             @include btn-viewCart;
             margin-top: 5%;
+        }
+    }
+    &-item {
+        &_msg-btn-box {
+        position: relative;
+            &_message {
+                position: absolute;
+                color: #1e8731;
+                top: -.4rem;
+                left: .6rem;
+                font-size: .8rem;
+                font-weight: bold;
+            }
         }
     }
 }
