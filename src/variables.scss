@@ -48,8 +48,8 @@ $background: #fcfcfc;
 
 //box elements
 @mixin content {
-    font-weight: 300;
     @include fz-text-basic;
+    font-weight: 300;
     min-height: 5rem;
 }
 
@@ -61,10 +61,10 @@ $background: #fcfcfc;
 }
 
 @mixin details {
+    @include fz-text-basic;
     text-decoration: none;
     color: $dark;
     font-weight: bold;
-    @include fz-text-basic;
     cursor: pointer;
     &:active {
         text-decoration: underline;
@@ -72,15 +72,15 @@ $background: #fcfcfc;
 }
 
 @mixin title {
-    font-weight: bold;
     @include fz-title-basic;
+    font-weight: bold;
      
 }
 
 @mixin price {
+    @include fz-price-basic;
     color: $beige;
     font-weight: 600;
-    @include fz-price-basic;
     margin-bottom: 2%;
     /* identical to box height, or 120% */
 }
@@ -91,7 +91,6 @@ $background: #fcfcfc;
     color: $light;
     border-radius: 19px;
     float: left;
-    //width: 100px;
     font-size: 16px;
     padding: 10px;
     margin-right: 10%;

@@ -1,17 +1,16 @@
 @import '../../variables';
 
 .menu_container {
-   
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    @media only screen and (max-width: 1045px) {
-        grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-    }
     height: auto;
     margin: 0 10%;
     row-gap: 50px;
     column-gap: 30px;
     position: relative;
+    @media (max-width: 1045px) {
+        grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    }
 }
 
 .menu_more {
@@ -37,10 +36,10 @@
     top:-20%;
     bottom: -10%;
     left: -10%;
-    @media  only screen and (max-width: 1053px) {
+    @media (max-width: 1053px) {
         top:-5%;
     }
-    @media only screen and (max-width: 436px) {
+    @media (max-width: 436px) {
         display: none;
     }
 }

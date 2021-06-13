@@ -21,11 +21,11 @@
         font-weight: 500;
         @include fz-text-basic;  
         padding: 5% 5%;
-        @media only screen and (max-width: 630px) {
+        @media (max-width: 630px) {
             height: auto;
             grid-template-columns: 1fr 1fr;
         }
-        @media only screen and (max-width: 470px) {
+        @media (max-width: 470px) {
             font-size: 80%;
             padding: 5% 5%;
         }
@@ -36,7 +36,7 @@
     }
     &_social {
         
-        @media only screen and (max-width: 630px) {
+        @media (max-width: 630px) {
             margin-top: 2%;
             &_title {
                 display: none;

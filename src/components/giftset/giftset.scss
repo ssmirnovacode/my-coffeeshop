@@ -9,7 +9,7 @@
         position: relative;
         height: 60vh;
         margin: 0 10%;
-        @media only screen and (max-width: 902px) {
+        @media (max-width: 902px) {
             margin: 0 3% 0 0;
             height: 68vh;
         }
@@ -23,9 +23,6 @@
         grid-template-rows: 1fr 1fr 1fr;
         &_item {   
             width: 88px;
-            @media only screen and (max-width: 902px) {
-                width: 50px;
-            }
             height: auto;
             text-align: center;
             padding-top: 20%;
@@ -40,13 +37,15 @@
             color: grey;
             background-color: $light;
             cursor: pointer;
+            @media (max-width: 902px) {
+                width: 50px;
+            }
             &.active {
                 background-color: #fff;
                 color: $grey;
             }
         }
-    }
-    
+    }  
 }
 
 .bg-giftset {

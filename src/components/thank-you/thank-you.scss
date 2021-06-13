@@ -3,17 +3,17 @@
 .thank-you {
     &_container {
         @include appear;
+        @include item-box;
         font-family: Nunito, sans-serif;
         background-color: $background;
         color: $grey;
-        @include item-box;
         text-align: center;
         max-width: 800px;
         margin: 5% auto;
-        @media only screen and (min-width: 1040px) { //570px
+        @media (min-width: 1040px) { //570px
             width: 60%;
         }  
-        @media only screen and (max-width: 523px) {
+        @media (max-width: 523px) {
             margin: 15% auto;
         }
     }
@@ -30,11 +30,11 @@
         }
     }
     &_back {
+        @include details;
         cursor: pointer;
         text-align: right;
         font-weight: bold;
         padding: 0 5% 10% 0;
-        @include details;
         & a {
             text-decoration: none;
             color: black;

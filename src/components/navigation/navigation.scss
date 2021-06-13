@@ -2,7 +2,8 @@
 
 .nav {
     &_burger {
-        @media only screen and (max-width: 942px) {
+        display: none;
+        @media (max-width: 942px) {
             display: block;
             text-align: center;
             margin-top: 15%;
@@ -10,16 +11,15 @@
             font-size: 30px;
             cursor: pointer;
         }
-        display: none;
     }
     &_menu {
-        @media only screen and (max-width: 942px) {
-            display: none;
-        }
         list-style-type: none;
         position: absolute;
         left: 5%;
         top: 25%;
+        @media (max-width: 942px) {
+            display: none;
+        }
         & li, & li a {
             text-decoration: none;
             color: $light;
@@ -42,11 +42,9 @@
             }
         }  
         &_sidebar {
-            //display: none;
             z-index: 5;
             margin-left: -50%;
             list-style-type: none;
-            //width: 0;
             & li, & li a  {
                 display: none;
             }
@@ -70,7 +68,7 @@
                     font-size: 16px;
                     line-height: 24px;
                     line-height: 300%;
-                    @media only screen and (max-width: 360px) {
+                    @media (max-width: 360px) {
                         font-size: 14px;
                         line-height: 18px;
                         line-height: 250%;

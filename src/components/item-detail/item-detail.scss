@@ -2,18 +2,15 @@
 
 .item-detail {
     &_container {
-        position: relative;
         @include appear;
+        @include item-box;
+        position: relative;
         color: $dark;
         font-family: Nunito, sans-serif;
         font-style: normal;
-        /* display: grid;
-        grid-template-columns: 4fr 8fr; */
-        //padding: 5%;
         margin: 5% auto;
         max-width: 700px;
-        @include item-box;
-        @media only screen and (min-width: 1040px) { //570px
+        @media (min-width: 1040px) { //570px
             width: 60%;
         } 
     }
@@ -33,7 +30,6 @@
         @include price;     
     }
     &_text {
-        //margin: 0 0 5% 2%;
         @include content;
         margin: 7% auto;
         display: block;
@@ -53,7 +49,6 @@
     }
     &_back {
         @include details;
-        //text-align: right;
         margin-left: 10%;
     }
     &_msg-btn-box {

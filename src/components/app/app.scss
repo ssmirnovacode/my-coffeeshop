@@ -7,7 +7,7 @@ html, body {
 
 .app_container {
     margin: 0 10%; 
-    @media only screen and (max-width: 1600px) {
+    @media (max-width: 1600px) {
         margin: 0;
     }
 }

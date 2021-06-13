@@ -19,15 +19,15 @@
     background-color: $grey;
     width: 35%;
     z-index: -1;
-    @media only screen and (max-width: 790px) {
+    @media (max-width: 790px) {
         top: -10%; 
     }
-    @media only screen and (max-width: 628px) {
+    @media (max-width: 628px) {
         top: -5%; 
         //right: -30%;
         
     }
-    @media only screen and (max-width: 436px) {
+    @media (max-width: 436px) {
         display: none;
     }
 }
