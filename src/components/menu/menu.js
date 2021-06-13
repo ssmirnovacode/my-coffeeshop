@@ -45,7 +45,7 @@ const Menu = props => {
         <section className="menu">
             <Heading small={'Choose Your Drink'} big={'ORDER ONLINE AND SKIP THE LINE'} id="menu"/>
             {
-                loading ? <Loading /> : error ? <Error /> :
+                loading ? <Loading /> : error ? <Error text='The database does not respond. Please try again later' /> :
                 <>
                     <div className="menu_container">
                         <div className="bg-menu"></div>

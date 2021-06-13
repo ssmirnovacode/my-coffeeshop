@@ -32,7 +32,7 @@ const Combo = props => {
         <section>
             <Heading small={'Our artesan pastry'} big={'ORGANIC INGREDIENTS ONLY'} id="combo"/>
             {
-                loading ? <Loading /> : error ? <Error /> :
+                loading ? <Loading /> : error ? <Error text='The database does not respond. Please try again later' /> :
                     <div className="combo_container">
                         <div className="bg-combo"></div>
                         {

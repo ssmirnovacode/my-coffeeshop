@@ -1,9 +1,9 @@
 import React from 'react';
 import './error.scss';
 
-const Error = () => {
+const Error = ({text=''}) => {
     return(
-        <div className="error"></div>
+        <div className="error">{text}</div>
     )
 }
 

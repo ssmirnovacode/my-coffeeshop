@@ -20,7 +20,7 @@ const ItemDetail = (props) => {
         detailsRequested();
         mounted && db.collection(page).doc(itemId).get()
         .then( snapshot => {
-            snapshot.data() ? detailsLoaded({...snapshot.data(), id: itemId}) :
+            snapshot.exists ? detailsLoaded({...snapshot.data(), id: itemId}) :
             detailsError();
         })
         .catch(err => console.error(err.message));
@@ -39,7 +39,7 @@ const ItemDetail = (props) => {
     return(
         <div className="item-detail_container" > 
             {
-                details.loading ? <Loading /> : details.error ? <Error /> :
+                details.loading ? <Loading /> : details.error ? <Error text='Sorry, the beverage was not found' /> :
                 <>
                     <div className="item-detail_img"><img src={details.item.image} alt={details.item.title}/></div>
             

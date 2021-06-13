@@ -32,7 +32,7 @@ const Giftset = props => {
         <section>
             <Heading small={'Best Gift For Best Friend'} big={'GIFTSET'} id="giftset"/>
             {
-                loading ? <Loading /> : error ? <Error /> :
+                loading ? <Loading /> : error ? <Error text='The database does not respond. Please try again later' /> :
                 <div className="giftset_container">
                     <div className="bg-giftset"></div>
                     {
