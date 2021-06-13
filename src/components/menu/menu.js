@@ -19,9 +19,9 @@ const Menu = props => {
     useEffect(() => {
         let mounted = true;
         menuItemsRequested();
-        mounted && db.collection('menuItems').get()
+        mounted && db.collection('menuItems').limit(4).get()
         .then(snapshot => {
-            firebaseLoop(snapshot).length > 0 ? menuItemsLoaded(firebaseLoop(snapshot).filter((item, i) => i < 4)) :
+            firebaseLoop(snapshot).length > 0 ? menuItemsLoaded(firebaseLoop(snapshot)) :
             menuItemsError();
         })
         .catch( err => console.error(err.message));
