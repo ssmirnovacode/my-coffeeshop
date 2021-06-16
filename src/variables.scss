@@ -134,3 +134,60 @@ body {
     font-weight: bold;
     font-size: 0.9rem;
 }
+
+@mixin signup {
+    &.wrapper {
+        @include appear;
+        @include item-box;
+        display: flex;
+        flex-direction: column;
+        margin: 2% auto;
+        justify-self: center;
+        font-family: Nunito, sans-serif;
+        background-color: $background;
+        color: $dark;
+        text-align: center;
+        max-width: 600px;
+        position: relative;
+        /* @media (max-width: 380px) {
+            margin: 2% auto;
+        }  */
+    }
+    &.form {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1rem;
+        gap: .8rem;
+        &-field {
+            display: flex;
+            gap: .3rem;
+            justify-content: space-between; 
+            @media (max-width: 430px) {
+                padding-left: 0;
+            }
+            & input {
+                width:70%;
+            }
+        }
+    }
+    &_title {
+        @include title;
+    }
+    &_btn {
+        @include btn;
+        margin: 1rem auto;
+    }
+    &_back {
+        @include details;
+        cursor: pointer;
+        text-align: right;
+        font-weight: bold;
+        padding: 0 5% 5% 0;
+        text-align: left;
+        margin-left: 5%;
+        & a {
+            text-decoration: none;
+            color: $dark;
+        }
+    }
+}

@@ -1,0 +1,14 @@
+@import '../../variables';
+
+.reg {
+    @include signup;
+    
+}
+@media (max-width: 545px) {
+    &.form-field {
+        &.repeat label {
+            text-align: left;
+            width:min-content;
+        }
+    }
+}
