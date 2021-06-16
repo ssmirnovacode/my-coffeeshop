@@ -19,20 +19,28 @@ const App = (props) => {
 
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
-            setLoginStatus(true);
+            props.setLoginStatus(true);
             console.log('User logged in');
+            console.log(props.loggedIn);
         }
         else {
-            setLoginStatus(false); 
+            props.setLoginStatus(false); 
             console.log('Noone logged in');
+            console.log(props.loggedIn);
         } 
       });
+
+    const handleLogout = () => {
+        firebase.auth().signOut()
+        //.then( () => props.history.push(`${basePath}/login`))
+        .catch(err => console.error(err.message));
+    }
 
     return (
         <Router> 
             <div className="app_container">  
                 <div className="app_content">
-                    <Header loggedIn={props.loggedIn}/>  
+                    <Header loggedIn={props.loggedIn} handleLogout={handleLogout}/>  
                     <Route path={`${basePath}/`} exact component={HomePage}/> 
                     <Route path={`${basePath}/login`} exact component={Login}/> 
                     <Route path={`${basePath}/register`} exact component={Register}/>                                             
@@ -60,7 +68,7 @@ const App = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        loggedIn: state.loginStatus
+        loggedIn: state.loggedIn
     }
 }
 

@@ -24,7 +24,7 @@ const Login = props => {
     const handleSubmit = e => {
         e.preventDefault();
         firebase.auth().signInWithEmailAndPassword(loginState.email, loginState.password)
-        .then( () => props.setLoginStatus(true))
+        //.then( () => props.setLoginStatus(true))
         .then( () => props.history.push(`${basePath}/`))
         .catch(err => setLoginState(state => ({
             ...state,

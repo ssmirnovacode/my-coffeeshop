@@ -39,13 +39,13 @@ const Header = props => {
                         : null;
 
     const loginIcon = <Link to={props.loggedIn ? `${basePath}/perfil` :`${basePath}/login`}><i className="fa fa-user profile-icon" aria-hidden="true"></i></Link>;
-    const logoutIcon = <Link to={`${basePath}/`} /* onClick={logout} */><i className="fa fa-sign-out profile-icon" aria-hidden="true"></i></Link>
+    const logoutIcon = <Link to={`${basePath}/`} onClick={props.handleLogout}><i className="fa fa-sign-out profile-icon" aria-hidden="true"></i></Link>
 
     return (
         <header className="home_container" id="home">
             <div className="left block">
                 {loginIcon} 
-                {props.loggedIn ? logoutIcon : null}
+                {props.loggedIn ? logoutIcon : null} 
                 <div className="moto">YOUR <span>PERSONALIZED</span> COFFEE</div>
             </div>
 
