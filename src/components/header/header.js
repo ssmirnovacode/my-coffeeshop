@@ -44,7 +44,8 @@ const Header = props => {
     return (
         <header className="home_container" id="home">
             <div className="left block">
-                {loginIcon} {logoutIcon}
+                {loginIcon} 
+                {isLoggedIn ? logoutIcon : null}
                 <div className="moto">YOUR <span>PERSONALIZED</span> COFFEE</div>
             </div>
 
