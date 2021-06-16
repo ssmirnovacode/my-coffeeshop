@@ -146,3 +146,13 @@
         cursor: pointer;   
     }
 }
+
+.profile-icon {
+    color: $grey;
+    font-size: 3rem;
+    margin: 1rem 2rem;
+    @media (max-width: 570px) {
+        font-size: 2rem; 
+        margin: 1rem 1rem;  
+    }
+}

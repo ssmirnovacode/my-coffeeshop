@@ -36,9 +36,13 @@ const Header = props => {
                         </div>
                         : null;
 
+    const loginIcon = <Link to={`${basePath}/login`}><i className="fa fa-user profile-icon" aria-hidden="true"></i></Link>;
+    const logoutIcon = <Link to={`${basePath}/`} /* onClick={logout} */><i className="fa fa-sign-out profile-icon" aria-hidden="true"></i></Link>
+
     return (
         <header className="home_container" id="home">
             <div className="left block">
+                {loginIcon}
                 <div className="moto">YOUR <span>PERSONALIZED</span> COFFEE</div>
             </div>
 

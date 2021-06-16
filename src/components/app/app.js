@@ -6,10 +6,10 @@ import ItemDetail from '../item-detail/item-detail';
 import Cart from '../cart/cart';
 import PlaceOrder from '../place-order/place-order';
 import ThankYou from '../thank-you/thank-you';
+import Login from '../login/login';
 import {BrowserRouter as Router, Route } from 'react-router-dom';
 import basePath from '../../assets/basePath';
 import './app.scss';
-
 
 const App = () => {
 
@@ -18,7 +18,8 @@ const App = () => {
             <div className="app_container">  
                 <div className="app_content">
                     <Header/>  
-                    <Route path={`${basePath}/`} exact component={HomePage}/>                                               
+                    <Route path={`${basePath}/`} exact component={HomePage}/> 
+                    <Route path={`${basePath}/login`} exact component={Login}/>                                              
                     <Route path={`${basePath}/cart`} component={Cart}/>
                     <Route path={`${basePath}/combos/:id`} render={ ({match}) => {
                         const {id} = match.params;
