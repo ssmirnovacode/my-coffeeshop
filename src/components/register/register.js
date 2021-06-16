@@ -11,7 +11,8 @@ const Register = props => {
         email: '',
         password: '',
         password2: '',
-        error: 'some shit'
+        error: 'some shit',
+        success: ''
     });
 
     const handleChange = e => {
@@ -23,8 +24,17 @@ const Register = props => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        firebase.auth().createUserWithEmailAndPassword(regState.email, regState.password)   
-        .then( () => console.log('registered!'))
+        firebase.auth().createUserWithEmailAndPassword(regState.email, regState.password)  
+        .then( () =>  firebase.auth().currentUser.sendEmailVerification()
+                        .then(() => setRegState(state => ({
+                            ...state,
+                            success: 'Please check your email and confirm your registration'
+                        })))
+                        .catch(err => setRegState(state => ({
+                            ...state,
+                            error: err.message
+                        })))) 
+        .then( () => console.log('mail sent!'))
         .then(() => firebase.auth().currentUser.updateProfile({
             displayName: regState.name
         }))
@@ -40,7 +50,7 @@ const Register = props => {
             <form className="reg form" onSubmit={handleSubmit}>
                 <h2 className="reg_title">Enter your data to register:</h2>
                 <div className="errMess">{regState.error ? regState.error : null}</div>
-                
+                <div className="successMess">{regState.success ? regState.success : null}</div>
                 <div className="reg form-field">
                     <label htmlFor="name">Name: </label>
                     <input type="text" name="name" placeholder="Enter your name" value={regState.name} onChange={e => handleChange(e)} />

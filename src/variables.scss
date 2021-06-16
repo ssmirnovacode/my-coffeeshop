@@ -135,6 +135,12 @@ body {
     font-size: 0.9rem;
 }
 
+.successMess {
+    color: green;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
 @mixin signup {
     &.wrapper {
         @include appear;
