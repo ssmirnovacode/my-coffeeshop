@@ -9,7 +9,7 @@ const Login = props => {
     const [loginState, setLoginState] = useState({
         email: '',
         password: '',
-        error: ''
+        error: 'some login shit'
     });
 
     const handleChange = e => {
@@ -23,13 +23,17 @@ const Login = props => {
         e.preventDefault();
         firebase.auth().signInWithEmailAndPassword(loginState.email, loginState.password)
         .then( () => console.log('singed in!'))
-        .catch(err => console.error(err.message));
+        .catch(err => setLoginState(state => ({
+            ...state,
+            error: err.message
+        })));
     }
 
     return(
         <section className="login wrapper">
             <form className="login form" onSubmit={handleSubmit}>
                 <h2 className="login_title">Please log in:</h2>
+                <div className="errMess">{loginState.error ? loginState.error : null}</div>
                 <div className="login form-field">
                     <label htmlFor="email">Email: </label>
                     <input type="email" name="email" placeholder="Enter your email" value={loginState.email} onChange={e => handleChange(e)} />

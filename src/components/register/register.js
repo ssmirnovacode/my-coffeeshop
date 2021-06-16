@@ -6,16 +6,16 @@ import basePath from '../../assets/basePath';
 
 const Register = props => {
 
-    const [regState, setLoginState] = useState({
+    const [regState, setRegState] = useState({
         name: '',
         email: '',
         password: '',
         password2: '',
-        error: ''
+        error: 'some shit'
     });
 
     const handleChange = e => {
-        setLoginState(prevState => ({
+        setRegState(prevState => ({
             ...prevState,
             [e.target.name]: e.target.value
         }))
@@ -23,15 +23,24 @@ const Register = props => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        firebase.auth().createUserWithEmailAndPassword(regState.email, regState.password)
+        firebase.auth().createUserWithEmailAndPassword(regState.email, regState.password)   
         .then( () => console.log('registered!'))
-        .catch(err => console.error(err.message));
+        .then(() => firebase.auth().currentUser.updateProfile({
+            displayName: regState.name
+        }))
+        .then( () => console.log('Name updated!'))
+        .catch(err => setRegState(state => ({
+            ...state,
+            error: err.message
+        })));
     }
 
     return(
         <section className="reg wrapper">
             <form className="reg form" onSubmit={handleSubmit}>
                 <h2 className="reg_title">Enter your data to register:</h2>
+                <div className="errMess">{regState.error ? regState.error : null}</div>
+                
                 <div className="reg form-field">
                     <label htmlFor="name">Name: </label>
                     <input type="text" name="name" placeholder="Enter your name" value={regState.name} onChange={e => handleChange(e)} />
