@@ -11,7 +11,7 @@ const Register = props => {
         email: '',
         password: '',
         password2: '',
-        error: 'some shit',
+        error: '',
         success: ''
     });
 
@@ -34,6 +34,13 @@ const Register = props => {
                             ...state,
                             error: err.message
                         })))) 
+        .then( () => setRegState(state => ({
+            ...state,
+            name: '',
+            email: '',
+            password: '',
+            password2: '',
+        })))
         .then( () => console.log('mail sent!'))
         .then(() => firebase.auth().currentUser.updateProfile({
             displayName: regState.name
@@ -49,7 +56,6 @@ const Register = props => {
         <section className="reg wrapper">
             <form className="reg form" onSubmit={handleSubmit}>
                 <h2 className="reg_title">Enter your data to register:</h2>
-                <div className="errMess">{regState.error ? regState.error : null}</div>
                 <div className="successMess">{regState.success ? regState.success : null}</div>
                 <div className="reg form-field">
                     <label htmlFor="name">Name: </label>
@@ -67,6 +73,7 @@ const Register = props => {
                     <label htmlFor="password2">Repeat password: </label>
                     <input type="password" name="password2" placeholder="Repeat your password" value={regState.password2} onChange={e => handleChange(e)} /> 
                 </div>
+                <div className="errMess">{regState.error ? regState.error : null}</div>
                 
                 <input type="submit" className="login_btn" />
             </form>

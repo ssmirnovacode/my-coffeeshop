@@ -26,7 +26,8 @@ const initialState = {
         error: false
     },
     cart: [],
-    order: null
+    order: null,
+    loggedIn: false
 }
 
 const reducer = (state = initialState, action) => {
@@ -248,6 +249,11 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 error: true
+            }
+        case 'SET_LOGIN_STATUS': 
+            return {
+                ...state, 
+                loggedIn: action.payload
             }
         default:
             return state;		

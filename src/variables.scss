@@ -178,6 +178,7 @@ body {
     }
     &_title {
         @include title;
+        margin-bottom: 0;
     }
     &_btn {
         @include btn;

@@ -10,15 +10,29 @@ import Login from '../login/login';
 import Register from '../register/register';
 import {BrowserRouter as Router, Route } from 'react-router-dom';
 import basePath from '../../assets/basePath';
+import firebase from '../../firebase.config';
+import { connect } from 'react-redux';
+import { setLoginStatus } from '../../redux/actions/loginAC';
 import './app.scss';
 
-const App = () => {
+const App = (props) => {
+
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            setLoginStatus(true);
+            console.log('User logged in');
+        }
+        else {
+            setLoginStatus(false); 
+            console.log('Noone logged in');
+        } 
+      });
 
     return (
         <Router> 
             <div className="app_container">  
                 <div className="app_content">
-                    <Header/>  
+                    <Header loggedIn={props.loggedIn}/>  
                     <Route path={`${basePath}/`} exact component={HomePage}/> 
                     <Route path={`${basePath}/login`} exact component={Login}/> 
                     <Route path={`${basePath}/register`} exact component={Register}/>                                             
@@ -44,4 +58,14 @@ const App = () => {
     )
 }
 
-export default App;
+const mapStateToProps = (state) => {
+    return {
+        loggedIn: state.loginStatus
+    }
+}
+
+const mapDispatchToProps = {
+    setLoginStatus
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

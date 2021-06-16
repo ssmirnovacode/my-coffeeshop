@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './header.scss';
 import Navigation from '../navigation/navigation';
 import cartIcon from '../../img/shopping-cart-solid.svg';
@@ -10,7 +10,7 @@ import { withRouter } from "react-router-dom";
 
 const Header = props => {
 
-    const [isLoggedIn, setLoggedIn] = useState(false);
+    //const [isLoggedIn, setLoggedIn] = useState(false);
 
     let total = 0;
     props.cart.forEach(item => {
@@ -38,14 +38,14 @@ const Header = props => {
                         </div>
                         : null;
 
-    const loginIcon = <Link to={isLoggedIn ? `${basePath}/perfil` :`${basePath}/login`}><i className="fa fa-user profile-icon" aria-hidden="true"></i></Link>;
+    const loginIcon = <Link to={props.loggedIn ? `${basePath}/perfil` :`${basePath}/login`}><i className="fa fa-user profile-icon" aria-hidden="true"></i></Link>;
     const logoutIcon = <Link to={`${basePath}/`} /* onClick={logout} */><i className="fa fa-sign-out profile-icon" aria-hidden="true"></i></Link>
 
     return (
         <header className="home_container" id="home">
             <div className="left block">
                 {loginIcon} 
-                {isLoggedIn ? logoutIcon : null}
+                {props.loggedIn ? logoutIcon : null}
                 <div className="moto">YOUR <span>PERSONALIZED</span> COFFEE</div>
             </div>
 
