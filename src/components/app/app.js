@@ -40,7 +40,7 @@ const App = (props) => {
         <Router> 
             <div className="app_container">  
                 <div className="app_content">
-                    <Header loggedIn={props.loggedIn} handleLogout={handleLogout}/>  
+                    <Header loggedIn={props.loggedIn} handleLogout={handleLogout} cart={props.cart}/>  
                     <Route path={`${basePath}/`} exact component={HomePage}/> 
                     <Route path={`${basePath}/login`} exact component={Login}/> 
                     <Route path={`${basePath}/register`} exact component={Register}/>                                             
@@ -68,7 +68,8 @@ const App = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        loggedIn: state.loggedIn
+        loggedIn: state.loggedIn,
+        cart: state.cart
     }
 }
 

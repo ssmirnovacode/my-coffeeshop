@@ -2,7 +2,7 @@ import React from 'react';
 import './header.scss';
 import Navigation from '../navigation/navigation';
 import cartIcon from '../../img/shopping-cart-solid.svg';
-import {connect} from 'react-redux';
+//import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import basePath from '../../assets/basePath';
 import animateScrollTo from 'animated-scroll-to';
@@ -66,10 +66,4 @@ const Header = props => {
      
 }
 
-const mapStateToProps = (state) => {
-    return {
-        cart: state.cart
-    }
-}
-
-export default withRouter(connect(mapStateToProps)(Header));
+export default withRouter(Header);
