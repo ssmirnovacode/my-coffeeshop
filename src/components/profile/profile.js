@@ -35,7 +35,7 @@ const Profile = props => {
             email: snapshot.data().email
         }) : updateMessage('error', 'User does not exist!'))
         .then( () => console.log('Data fetch done'))
-        .then( () => console.log(userData))
+        //.then( () => console.log(userData))
         .catch(err => updateMessage('error', err.message))
     }, [user.uid]);
 
