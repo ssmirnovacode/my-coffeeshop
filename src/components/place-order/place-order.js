@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './place-order.scss';
 import Cart from '../cart/cart';
 import {connect} from 'react-redux';
@@ -12,12 +12,30 @@ import { db } from '../../firebase.config';
 
 const PlaceOrder = (props) => {
 
+    console.log(props.userId);
     const [isFailMsgVisible, setFailMsg] = useState(false);
+
+    const [userData, setUserData] = useState({
+        name: '',
+        tel: ''
+    });
+
+    // If user is registered, we fetch data automatically
+    useEffect( () => {
+        props.userId && db.collection('users').doc(props.userId).get()
+        .then(snapshot => snapshot.exists && setUserData({
+            name: snapshot.data().name,
+            tel: snapshot.data().tel
+        }))
+        .then( () => console.log('Data fetch done'))
+        .catch(err => console.error(err.message))
+    }, [props.userId]);
 
     const formik = useFormik({
         initialValues: {
-            firstname: '',
-            tel: ''
+            firstname: userData.name,
+            tel: userData.tel,
+            userId: props.userId
         },
         validate,
         onSubmit: (values, { resetForm }) => {
@@ -93,7 +111,9 @@ const PlaceOrder = (props) => {
 const mapStateToProps = (state) => {
     return {
         cart: state.cart,
-        order: state.order
+        order: state.order,
+        loggedIn: state.loggedIn,
+        userId: state.userId
     }
 }
 

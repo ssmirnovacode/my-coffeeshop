@@ -42,17 +42,14 @@ const Register = props => {
                                 .then(() => updateRegState('success', 'Please check your email and confirm your registration'))
                                 .catch(err => updateRegState('error', err.message))) 
                 .then( () => resetForm())
-                //.then( () => console.log('mail sent!'))
                 .then(() => firebase.auth().currentUser.updateProfile({
                     displayName: values.name
                 }))
-                //.then( () => console.log('Name updated!'))
                 .then( () => db.collection('users').doc(firebase.auth().currentUser.uid).set({
                     name: values.name,
                     tel: values.tel,
                     email: values.email
                 }))
-                //.then( () => console.log('User doc created!'))
                 .then( () => props.history.push(`${basePath}/profile`))
                 .catch(err => updateRegState('error', err.message));        
         },
