@@ -13,6 +13,16 @@ const Register = props => {
         success: ''
     });
 
+    const updateRegState = (type, msg) => {
+        type === 'error' ? setRegState({
+            success: '',
+            error: msg
+        }) : setRegState({
+            error: '',
+            success: msg
+        })
+    }
+
     const formik = useFormik({
         initialValues: {
             name: '',
@@ -23,41 +33,28 @@ const Register = props => {
         },
         validate,
         onSubmit: (values, { resetForm }) => {
-            
-                console.log(values);
                 if (values.password !== values.password2) {
-                    setRegState(state => ({
-                        ...state,
-                        error: 'Passwords do not match!'
-                    }));
+                    updateRegState('error', "Passwords don't match!");
                     return;
                 }
                 firebase.auth().createUserWithEmailAndPassword(values.email, values.password)  
-                .then( () =>  firebase.auth().currentUser.sendEmailVerification()
-                                .then(() => setRegState(state => ({
-                                    ...state,
-                                    success: 'Please check your email and confirm your registration'
-                                })))
-                                .catch(err => setRegState(state => ({
-                                    ...state,
-                                    error: err.message
-                                })))) 
+                .then( () =>  firebase.auth().currentUser.sendEmailVerification() 
+                                .then(() => updateRegState('success', 'Please check your email and confirm your registration'))
+                                .catch(err => updateRegState('error', err.message))) 
                 .then( () => resetForm())
-                .then( () => console.log('mail sent!'))
+                //.then( () => console.log('mail sent!'))
                 .then(() => firebase.auth().currentUser.updateProfile({
                     displayName: values.name
                 }))
-                .then( () => console.log('Name updated!'))
+                //.then( () => console.log('Name updated!'))
                 .then( () => db.collection('users').doc(firebase.auth().currentUser.uid).set({
                     name: values.name,
                     tel: values.tel,
                     email: values.email
                 }))
-                .then( () => console.log('User doc created!'))
-                .catch(err => setRegState(state => ({
-                    ...state,
-                    error: err.message
-                })));        
+                //.then( () => console.log('User doc created!'))
+                .then( () => props.history.push(`${basePath}/profile`))
+                .catch(err => updateRegState('error', err.message));        
         },
       });
 
