@@ -8,6 +8,7 @@ import PlaceOrder from '../place-order/place-order';
 import ThankYou from '../thank-you/thank-you';
 import Login from '../login/login';
 import Register from '../register/register';
+import Profile from '../profile/profile';
 import {BrowserRouter as Router, Route } from 'react-router-dom';
 import basePath from '../../assets/basePath';
 import firebase from '../../firebase.config';
@@ -43,7 +44,8 @@ const App = (props) => {
                     <Header loggedIn={props.loggedIn} handleLogout={handleLogout} cart={props.cart}/>  
                     <Route path={`${basePath}/`} exact component={HomePage}/> 
                     <Route path={`${basePath}/login`} exact component={Login}/> 
-                    <Route path={`${basePath}/register`} exact component={Register}/>                                             
+                    <Route path={`${basePath}/register`} exact component={Register}/>  
+                    <Route path={`${basePath}/profile`} exact component={Profile}/>                                            
                     <Route path={`${basePath}/cart`} component={Cart}/>
                     <Route path={`${basePath}/combos/:id`} render={ ({match}) => {
                         const {id} = match.params;

@@ -149,10 +149,11 @@
 
 .profile-icon {
     color: $grey;
-    font-size: 3rem;
-    margin: 1rem 2rem;
+    font-size: 2rem;
+    margin-top: 2rem;
+    margin-left: 2rem;
     @media (max-width: 570px) {
-        font-size: 2rem; 
-        margin: 1rem 1rem;  
+        font-size: 1.5rem; 
+        margin-left: 1rem;  
     }
 }

@@ -2,15 +2,12 @@ import React from 'react';
 import './header.scss';
 import Navigation from '../navigation/navigation';
 import cartIcon from '../../img/shopping-cart-solid.svg';
-//import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import basePath from '../../assets/basePath';
 import animateScrollTo from 'animated-scroll-to';
 import { withRouter } from "react-router-dom";
 
 const Header = props => {
-
-    //const [isLoggedIn, setLoggedIn] = useState(false);
 
     let total = 0;
     props.cart.forEach(item => {
@@ -38,7 +35,7 @@ const Header = props => {
                         </div>
                         : null;
 
-    const loginIcon = <Link to={props.loggedIn ? `${basePath}/perfil` :`${basePath}/login`}><i className="fa fa-user profile-icon" aria-hidden="true"></i></Link>;
+    const loginIcon = <Link to={props.loggedIn ? `${basePath}/profile` :`${basePath}/login`}><i className="fa fa-user profile-icon" aria-hidden="true"></i></Link>;
     const logoutIcon = <Link to={`${basePath}/`} onClick={props.handleLogout}><i className="fa fa-sign-out profile-icon" aria-hidden="true"></i></Link>
 
     return (
