@@ -13,7 +13,7 @@ import {BrowserRouter as Router, Route } from 'react-router-dom';
 import basePath from '../../assets/basePath';
 import firebase from '../../firebase.config';
 import { connect } from 'react-redux';
-import { setLoginStatus } from '../../redux/actions/loginAC';
+import { setLoginStatus, setUserId } from '../../redux/actions/loginAC';
 import './app.scss';
 
 const App = (props) => {
@@ -21,13 +21,12 @@ const App = (props) => {
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
             props.setLoginStatus(true);
+            props.setUserId(firebase.auth().currentUser.uid);
             console.log('User logged in');
-            console.log(props.loggedIn);
         }
         else {
             props.setLoginStatus(false); 
             console.log('Noone logged in');
-            console.log(props.loggedIn);
         } 
       });
 
@@ -43,9 +42,9 @@ const App = (props) => {
                 <div className="app_content">
                     <Header loggedIn={props.loggedIn} handleLogout={handleLogout} cart={props.cart}/>  
                     <Route path={`${basePath}/`} exact component={HomePage}/> 
-                    <Route path={`${basePath}/login`} exact component={Login}/> 
-                    <Route path={`${basePath}/register`} exact component={Register}/>  
-                    <Route path={`${basePath}/profile`} exact component={Profile}/>                                            
+                    <Route path={`${basePath}/login`} component={Login}/> 
+                    <Route path={`${basePath}/register`} component={Register}/>  
+                    <Route path={`${basePath}/profile`} /* userId={props.userId}  */component={Profile}/>                                            
                     <Route path={`${basePath}/cart`} component={Cart}/>
                     <Route path={`${basePath}/combos/:id`} render={ ({match}) => {
                         const {id} = match.params;
@@ -71,12 +70,14 @@ const App = (props) => {
 const mapStateToProps = (state) => {
     return {
         loggedIn: state.loggedIn,
-        cart: state.cart
+        cart: state.cart,
+        userId: state.userId
     }
 }
 
 const mapDispatchToProps = {
-    setLoginStatus
+    setLoginStatus,
+    setUserId
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -1,0 +1,41 @@
+@import '../../variables';
+
+.profile_info {
+    @include appear;
+    font-family: $nunito;
+    &.container {
+        @include item-box;
+        margin: 2% auto;
+        max-width: 600px;
+    }
+    &.title {
+        @include title;
+    }
+    &.content {  
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        &-item {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: .5rem;
+            &_label {
+                font-weight: bold;
+            }
+            &_btn {
+                @include btn;
+            }
+            & span.verified {
+                color: green;
+                font-style: italic;
+                font-weight: bold;
+            }
+            & span.not-verified {
+                color: red;
+                font-style: italic;
+                font-weight: bold;
+            }
+        }
+    }
+}

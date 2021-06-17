@@ -27,7 +27,8 @@ const initialState = {
     },
     cart: [],
     order: null,
-    loggedIn: false
+    loggedIn: false,
+    userId: ''
 }
 
 const reducer = (state = initialState, action) => {
@@ -254,6 +255,11 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state, 
                 loggedIn: action.payload
+            }
+        case 'SET_USER_ID': 
+            return {
+                ...state, 
+                userId: action.payload
             }
         default:
             return state;		
