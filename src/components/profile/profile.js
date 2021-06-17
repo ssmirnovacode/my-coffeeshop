@@ -1,10 +1,16 @@
 import React, {useState, useEffect} from 'react';
 import './profile.scss';
-import firebase from '../../firebase.config';
+import firebase, {db} from '../../firebase.config';
 
 const Profile = props => {
 
     const user = firebase.auth().currentUser;
+
+    const [userData, setUserData] = useState({
+        name: '',
+        tel: '',
+        email: ''
+    });
 
     const [message, setMessage] = useState({
         error: '',
@@ -20,6 +26,18 @@ const Profile = props => {
             success: msg
         })
     }
+
+    useEffect( () => {
+        db.collection('users').doc(user.uid).get()
+        .then(snapshot => snapshot.exists ? setUserData({
+            name: snapshot.data().name,
+            tel: snapshot.data().tel,
+            email: snapshot.data().email
+        }) : updateMessage('error', 'User does not exist!'))
+        .then( () => console.log('Data fetch done'))
+        .then( () => console.log(userData))
+        .catch(err => updateMessage('error', err.message))
+    }, [user.uid]);
 
     useEffect( () => {
         const timerIdErr = message.error && setTimeout(() => updateMessage('error', ''), 4000);
@@ -45,8 +63,8 @@ const Profile = props => {
 
     const updatePhone = () => {
         const newPhone = prompt('Enter your phone number');
-        newPhone && user.updateProfile({
-            phoneNumber: newPhone
+        newPhone && db.collection('users').doc(user.uid).set({
+            tel: newPhone
         })
         .then( () => updateMessage('success', 'Phone number updated successfully'))
         .catch(err => updateMessage('error', err.message));
@@ -70,7 +88,7 @@ const Profile = props => {
                     </div>
                     <div className="profile_info content-item"> 
                         <div className="profile_info content-item_label" >Phone number: </div>
-                        <div className="profile_info content-item_value" >{user.phoneNumber ? user.phoneNumber : 'unknown'}</div>
+                        <div className="profile_info content-item_value" >{userData.tel ? userData.tel : 'unknown'}</div>
                         
                     </div>
                     <div className="profile_info content-item"> 

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './register.scss';
-import firebase from '../../firebase.config';
+import firebase, {db} from '../../firebase.config';
 import {Link} from 'react-router-dom';
 import basePath from '../../assets/basePath';
 
@@ -9,6 +9,7 @@ const Register = props => {
     const [regState, setRegState] = useState({
         name: '',
         email: '',
+        tel: '',
         password: '',
         password2: '',
         error: '',
@@ -40,12 +41,19 @@ const Register = props => {
             email: '',
             password: '',
             password2: '',
+            tel: ''
         })))
         .then( () => console.log('mail sent!'))
         .then(() => firebase.auth().currentUser.updateProfile({
             displayName: regState.name
         }))
         .then( () => console.log('Name updated!'))
+        .then( () => db.collection('users').doc(firebase.auth().currentUser.uid).set({
+            name: regState.name,
+            tel: regState.tel,
+            email: regState.email
+        }))
+        .then( () => console.log('User doc created!'))
         .catch(err => setRegState(state => ({
             ...state,
             error: err.message
@@ -60,6 +68,10 @@ const Register = props => {
                 <div className="reg form-field">
                     <label htmlFor="name">Name: </label>
                     <input type="text" name="name" placeholder="Enter your name" value={regState.name} onChange={e => handleChange(e)} />
+                </div>
+                <div className="reg form-field">
+                    <label htmlFor="tel">Name: </label>
+                    <input type="text" name="tel" placeholder="+34xxxxxxxxx" value={regState.tel} onChange={e => handleChange(e)} />
                 </div>
                 <div className="reg form-field">
                     <label htmlFor="email">Email: </label>
