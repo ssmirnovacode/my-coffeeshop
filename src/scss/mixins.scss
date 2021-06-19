@@ -1,50 +1,6 @@
-$grey: #415167;
-$beige: #C7A17A;
-$light: #EDF0F5;
-$dark: #151D28;
-$background: #fcfcfc;
-
-//Animations
-@mixin appear {
-    animation: appear 1.5s;
-    @keyframes appear {
-        from {opacity: 0;}
-        to {opacity: 1;}
-        }
-}
-
-//font-sizes
-@mixin fz-price-basic {
-    font-size: 20px;
-    line-height: 24px;
-}
-
-@mixin fz-title-basic {
-    font-size: 22px;
-    line-height: 28px;
-    /* identical to box height, or 117% */
-}
-
-@mixin fz-text-basic {
-    font-size: 16px;
-    line-height: 22px;
-}
-
-@mixin fz-price-small {
-    font-size: 18px;
-    line-height: 21px;
-}
-
-@mixin fz-title-small {
-    font-size: 21px;
-    line-height: 25px;
-    /* identical to box height, or 117% */
-}
-
-@mixin fz-text-small {
-    font-size: 14px;
-    line-height: 19px;
-}
+@import './variables.scss';
+@import './animations.scss';
+@import './typography.scss';
 
 //box elements
 @mixin content {

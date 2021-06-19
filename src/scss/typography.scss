@@ -1,0 +1,31 @@
+@mixin fz-price-basic {
+    font-size: 20px;
+    line-height: 24px;
+}
+
+@mixin fz-title-basic {
+    font-size: 22px;
+    line-height: 28px;
+    /* identical to box height, or 117% */
+}
+
+@mixin fz-text-basic {
+    font-size: 16px;
+    line-height: 22px;
+}
+
+@mixin fz-price-small {
+    font-size: 18px;
+    line-height: 21px;
+}
+
+@mixin fz-title-small {
+    font-size: 21px;
+    line-height: 25px;
+    /* identical to box height, or 117% */
+}
+
+@mixin fz-text-small {
+    font-size: 14px;
+    line-height: 19px;
+}
