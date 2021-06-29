@@ -8,7 +8,7 @@ import PlaceOrder from '../place-order/place-order';
 import ThankYou from '../thank-you/thank-you';
 import Login from '../login/login';
 import Register from '../register/register';
-import Profile from '../profile/profile';
+import Profile from '../profile-info/profile-info';
 import {BrowserRouter as Router, Route } from 'react-router-dom';
 import basePath from '../../assets/basePath';
 import firebase from '../../firebase.config';

@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import './profile.scss';
+import './profile-info.scss';
 import firebase, {db} from '../../firebase.config';
 
-const Profile = props => {
+const ProfileInfo = props => {
 
     const user = firebase.auth().currentUser;
 
@@ -71,7 +71,6 @@ const Profile = props => {
     }
 
     return(
-        <section>
 
             <div className="profile_info container">
                 <h3 className="profile_info title">Profile information:</h3>
@@ -100,12 +99,8 @@ const Profile = props => {
                 <div className="profile_info errMess">{message.error}</div>
                 <div className="profile_info successMess">{message.success}</div>
             </div>
-
-            <div className="profile_orders">Orders</div>
-
-        </section>
         
     )
 }
 
-export default Profile;
+export default ProfileInfo;
