@@ -37,7 +37,7 @@ const Profile = props => {
         .then( () => console.log('Data fetch done'))
         //.then( () => console.log(userData))
         .catch(err => updateMessage('error', err.message))
-    }, [user.uid]);
+    }, [user.uid, message.success]);
 
     useEffect( () => {
         const timerIdErr = message.error && setTimeout(() => updateMessage('error', ''), 4000);

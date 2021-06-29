@@ -29,7 +29,7 @@ const Beverages = props => {
         <section>
             <Heading small={'Your Personalized Coffee'} big={'COFFEE BUILD YOUR BASE'} id="beverages"/>
             {
-                loading ? <Loading /> : error ? <Error /> :
+                loading ? <Loading /> : error ? <Error text='The database does not respond. Please try again later' /> :
                 <div className="beverages_container">
                     {
                         beverages.items.map(item => {

@@ -42,7 +42,7 @@
 }
 
 @mixin btn {
-    font-family: Nunito, sans-serif;
+    font-family: $nunito;
     background-color: $beige;
     color: $light;
     border-radius: 19px;
@@ -87,7 +87,7 @@
         flex-direction: column;
         margin: 2% auto;
         justify-self: center;
-        font-family: Nunito, sans-serif;
+        font-family: $nunito;
         background-color: $background;
         color: $dark;
         text-align: center;
@@ -146,4 +146,11 @@ body {
     color: red;
     font-weight: bold;
     font-size: 0.9rem;
+}
+
+.successMess {
+    color: green;
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-top: 1rem;
 }
