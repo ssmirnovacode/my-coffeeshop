@@ -23,13 +23,24 @@ const Login = props => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        firebase.auth().signInWithEmailAndPassword(loginState.email, loginState.password)
-        //.then( () => props.setLoginStatus(true))
-        .then( () => props.history.push(`${basePath}/`))
+        //firebase.auth().signInWithEmailAndPassword(loginState.email, loginState.password)
+        firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
+        .then(() => firebase.auth().signInWithEmailAndPassword(loginState.email, loginState.password)
+                    .then( () => props.history.push(`${basePath}/`))
+                    .catch(err => setLoginState(state => ({
+                        ...state,
+                        error: err.message
+                    })))   
+          )
+          .catch(err => setLoginState(state => ({
+            ...state,
+            error: err.message
+        })))
+        /* .then( () => props.history.push(`${basePath}/`))
         .catch(err => setLoginState(state => ({
             ...state,
             error: err.message
-        })));
+        }))); */
     }
 
     return(
