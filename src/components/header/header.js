@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom';
 import basePath from '../../assets/basePath';
 import animateScrollTo from 'animated-scroll-to';
 import { withRouter } from "react-router-dom";
+import firebase from '../../firebase.config';
 
 const Header = props => {
 
@@ -42,7 +43,13 @@ const Header = props => {
         <header className="home_container" id="home">
             <div className="left block">
                 {loginIcon} 
-                {props.loggedIn ? logoutIcon : null} 
+                {props.loggedIn ? 
+                <>
+                {logoutIcon }
+                <div className="home_greeting">Hello, {firebase.auth().currentUser.displayName}!</div>
+                </>
+                : null} 
+                
                 <div className="moto">YOUR <span>PERSONALIZED</span> COFFEE</div>
             </div>
 

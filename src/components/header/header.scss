@@ -1,14 +1,27 @@
 @import '../../scss/mixins';
 
-.home_container {
-    display: grid;
-    grid-template-columns: 3fr 6fr 3fr; /* try auto-fill */
-    height: 60vh;
-    @media (max-width: 942px) {
-        grid-template-columns: 3fr 7fr 2fr;
-        height: 40vh;
+.home {
+    &_container {
+        display: grid;
+        grid-template-columns: 3fr 6fr 3fr; /* try auto-fill */
+        height: 60vh;
+        @media (max-width: 942px) {
+            grid-template-columns: 3fr 7fr 2fr;
+            height: 40vh;
+        }
     }
-}
+    &_greeting {
+        @include fz-text-basic;
+        font-family: $nunito; 
+        color: $grey;
+        font-weight: bold;
+        margin: 1rem 2rem;
+        @media (max-width: 570px) {
+            @include fz-text-small;
+            margin: 1rem;
+        }
+    }
+} 
 
 .home-image {
     background: url(../../img/home.png) no-repeat center center;
