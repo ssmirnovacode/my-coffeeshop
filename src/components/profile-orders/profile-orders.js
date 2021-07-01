@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './profile-orders.scss';
 import firebase, {db} from '../../firebase.config';
-import {firebaseLoop} from '../../services/tools';
+import {firebaseLoop, formatDate} from '../../services/tools';
 import Loading from '../loading/loading';
 import Error from '../error/error';
 
@@ -48,7 +48,7 @@ const ProfileOrders = (props) => {
                             return(
                                 <div key={item.id} className="profile_info content-item"> 
                                     <div > Order ID: {item.id}</div>
-                                    <div>Name: {item.firstname}</div>
+                                    <div>Submitted: {formatDate(item.timestamp)}</div>
                                 </div>
                             )
                         })

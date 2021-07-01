@@ -8,11 +8,11 @@ import basePath from '../../assets/basePath';
 import {orderSubmitted, orderError} from '../../redux/actions/orderAC';
 import { useFormik } from 'formik';
 import validate from '../../services/validate';
-import { db } from '../../firebase.config';
+import firebase, { db, fbTimestamp } from '../../firebase.config';
 
 const PlaceOrder = (props) => {
 
-    console.log(props.userId);
+    //console.log(firebase.firestore.Timestamp.now().toDate().toString());
     const [isFailMsgVisible, setFailMsg] = useState(false);
 
     const [userData, setUserData] = useState({
@@ -35,7 +35,8 @@ const PlaceOrder = (props) => {
         initialValues: {
             firstname: userData.name,
             tel: userData.tel,
-            userId: props.userId
+            userId: props.userId,
+            timestamp: firebase.firestore.Timestamp.now().toDate()/* .toString() */
         },
         validate,
         onSubmit: (values, { resetForm }) => {
