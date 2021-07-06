@@ -5,13 +5,8 @@ const orderReducer = (state=null, action) => {
         case 'ORDER_SUBMITTED':
             return action.payload
             
-        /* case 'ORDER_ERROR':
-            return {
-                ...state,
-                error: true
-            } */
-            default:
-                return state;		
+        default:
+            return state;		
         }
 }
 

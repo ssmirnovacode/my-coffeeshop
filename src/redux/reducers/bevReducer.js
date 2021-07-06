@@ -1,8 +1,8 @@
 
 const bevReducer = (state={
-                                items: [],
-                                loading: true,
-                                error: false
+                            items: [],
+                            loading: true,
+                            error: false
                             }, action) => {
     switch (action.type) {
         case 'BEVERAGES_LOADED': 

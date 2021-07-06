@@ -1,10 +1,10 @@
 
 
 const comboReducer = (state={
-        items: [],
-        loading: true,
-        error: false
-}, action) => {
+                            items: [],
+                            loading: true,
+                            error: false
+                    }, action) => {
     switch (action.type) {
         case 'COMBOS_LOADED': 
             return {

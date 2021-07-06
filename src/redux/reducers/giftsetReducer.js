@@ -1,11 +1,11 @@
 
 
 const giftsetReducer = (state={
-        items: [],
-        loading: true,
-        error: false,
-        activeItemId: 'qxevR5yI0BPpyOH2Q5D7'
-}, action) => {
+                            items: [],
+                            loading: true,
+                            error: false,
+                            activeItemId: 'qxevR5yI0BPpyOH2Q5D7'
+                    }, action) => {
     switch (action.type) {
         case 'GIFTSET_LOADED': 
             return {

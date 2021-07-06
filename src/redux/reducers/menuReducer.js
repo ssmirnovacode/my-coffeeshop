@@ -1,9 +1,9 @@
 
 const menuReducer = (state={
-        items: [],
-        loading: true,
-        error: false
-}, action) => {
+                            items: [],
+                            loading: true,
+                            error: false
+                    }, action) => {
     switch (action.type) {
         case 'MENU_ITEMS_LOADED': 
             return {

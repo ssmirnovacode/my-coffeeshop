@@ -1,10 +1,10 @@
 
 
 const detailsReducer = (state={
-        item: null,
-        loading: true,
-        error: false
-}, action) => {
+                            item: null,
+                            loading: true,
+                            error: false
+                    }, action) => {
     switch (action.type) {
         case 'DETAILS_LOADED': 
             return {
