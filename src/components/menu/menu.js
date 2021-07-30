@@ -7,8 +7,7 @@ import { menuItemsLoaded, menuItemsError, menuItemsRequested} from '../../redux/
 import {addToCart} from '../../redux/actions/cartAC';
 import Loading from '../loading/loading';
 import Error from '../error/error';
-import { db } from '../../firebase.config';
-import {firebaseLoop} from '../../services/tools';
+import { getItems } from '../../services/service';
 
 const Menu = props => {
 
@@ -19,16 +18,15 @@ const Menu = props => {
     useEffect(() => {
         let mounted = true;
         menuItemsRequested();
-        mounted && db.collection('menuItems').limit(4).get()
-        .then(snapshot => {
-            firebaseLoop(snapshot).length > 0 ? menuItemsLoaded(firebaseLoop(snapshot)) :
-            menuItemsError();
+        mounted && getItems('http://localhost:3001/menuItems')
+        .then(res => {
+            res.length > 0 ? menuItemsLoaded(res) : menuItemsError();
         })
         .catch( err => console.error(err.message));
         return () => mounted = false;
     }, [menuItemsRequested, menuItemsError, menuItemsLoaded])
 
-    const showMore = () => {
+    /* const showMore = () => {
         db.collection('menuItems').get()
         .then(snapshot => {
             if (firebaseLoop(snapshot).length > 4) {
@@ -37,7 +35,7 @@ const Menu = props => {
             }
         })
         .catch( err => console.error(err.message));
-    }
+    } */
 
     const {items, loading, error} = menuItems;
 
@@ -58,7 +56,7 @@ const Menu = props => {
                         }                       
                     </div>
                     {
-                        isMoreBtnVisible ? <div className="menu_more" onClick={showMore}>VIEW MORE</div> : null
+                        isMoreBtnVisible ? <div className="menu_more" /* onClick={showMore} */>VIEW MORE</div> : null
                     }
                 </>
             }

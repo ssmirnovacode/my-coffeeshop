@@ -7,8 +7,7 @@ import { giftsetLoaded, giftsetTabClick, giftsetError, giftsetRequested } from '
 import {addToCart} from '../../redux/actions/cartAC';
 import Loading from '../loading/loading';
 import Error from '../error/error';
-import { db } from '../../firebase.config';
-import {firebaseLoop} from '../../services/tools';
+import { getItems } from '../../services/service';
 
 const Giftset = props => {
 
@@ -17,10 +16,9 @@ const Giftset = props => {
     useEffect( () => {
         let mounted = true;
         giftsetRequested();
-        mounted && db.collection('giftset').get()
-        .then(snapshot => {
-            firebaseLoop(snapshot).length > 0 ? giftsetLoaded(firebaseLoop(snapshot)) :
-            giftsetError();
+        mounted && getItems('http://localhost:3001/giftset')
+        .then(res => {
+            res.length > 0 ? giftsetLoaded(res) : giftsetError();
         })
         .catch( err => console.error(err.message));
         return () => mounted = false;

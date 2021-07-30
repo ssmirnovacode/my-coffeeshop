@@ -18,6 +18,7 @@ const Beverages = props => {
         beveragesRequested();
         mounted && getItems('http://localhost:3001/beverages')
         .then(res => {
+            console.log(res);
             res.length > 0 ? beveragesLoaded(res) : beveragesError();
         })
         .catch( err => console.error(err.message));
@@ -29,6 +30,7 @@ const Beverages = props => {
             <Heading small={'Your Personalized Coffee'} big={'COFFEE BUILD YOUR BASE'} id="beverages"/>
             {
                 loading ? <Loading /> : error ? <Error /> :
+                beverages ?
                 <div className="beverages_container">
                     {
                         beverages.items.map(item => {
@@ -38,6 +40,7 @@ const Beverages = props => {
                         })
                     }
                 </div>
+                : null
             } 
         </section>
     ) 
