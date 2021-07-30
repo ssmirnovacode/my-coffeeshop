@@ -6,8 +6,7 @@ import {connect} from 'react-redux';
 import { beveragesLoaded, beveragesError, beveragesRequested } from '../../redux/actions/beveragesAC';
 import Loading from '../loading/loading';
 import Error from '../error/error';
-import { db } from '../../firebase.config';
-import {firebaseLoop} from '../../services/tools';
+
 
 const Beverages = props => {
 
