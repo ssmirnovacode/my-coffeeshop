@@ -18,24 +18,22 @@ const Menu = props => {
     useEffect(() => {
         let mounted = true;
         menuItemsRequested();
-        mounted && getItems('http://localhost:3001/menuItems')
+        mounted && getItems('http://localhost:3001/menu-items')
         .then(res => {
-            res.length > 0 ? menuItemsLoaded(res) : menuItemsError();
+            res.length > 0 ? menuItemsLoaded(res.slice(0,4)) : menuItemsError();
         })
         .catch( err => console.error(err.message));
         return () => mounted = false;
     }, [menuItemsRequested, menuItemsError, menuItemsLoaded])
 
-    /* const showMore = () => {
-        db.collection('menuItems').get()
-        .then(snapshot => {
-            if (firebaseLoop(snapshot).length > 4) {
-                menuItemsLoaded(firebaseLoop(snapshot)); // showing all menu items
-                setMoreBtnVisible(false);
-            }
+    const showMore = () => {
+        getItems('http://localhost:3001/menu-items')
+        .then(res => {
+            res.length > 0 ? menuItemsLoaded(res) : menuItemsError();
+            setMoreBtnVisible(false);
         })
         .catch( err => console.error(err.message));
-    } */
+    }
 
     const {items, loading, error} = menuItems;
 
@@ -56,7 +54,7 @@ const Menu = props => {
                         }                       
                     </div>
                     {
-                        isMoreBtnVisible ? <div className="menu_more" /* onClick={showMore} */>VIEW MORE</div> : null
+                        isMoreBtnVisible ? <div className="menu_more" onClick={showMore}>VIEW MORE</div> : null
                     }
                 </>
             }

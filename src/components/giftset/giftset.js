@@ -18,6 +18,7 @@ const Giftset = props => {
         giftsetRequested();
         mounted && getItems('http://localhost:3001/giftset')
         .then(res => {
+            console.log(res);
             res.length > 0 ? giftsetLoaded(res) : giftsetError();
         })
         .catch( err => console.error(err.message));
