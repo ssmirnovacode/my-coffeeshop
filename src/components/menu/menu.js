@@ -7,7 +7,7 @@ import { menuItemsLoaded, menuItemsError, menuItemsRequested} from '../../redux/
 import {addToCart} from '../../redux/actions/cartAC';
 import Loading from '../loading/loading';
 import Error from '../error/error';
-import { getItems } from '../../services/service';
+import { getItems, baseApiUrl } from '../../services/service';
 
 const Menu = props => {
 
@@ -18,7 +18,7 @@ const Menu = props => {
     useEffect(() => {
         let mounted = true;
         menuItemsRequested();
-        mounted && getItems('http://localhost:3001/menu-items')
+        mounted && getItems(`${baseApiUrl}/menu-items`)
         .then(res => {
             res.length > 0 ? menuItemsLoaded(res.slice(0,4)) : menuItemsError();
         })
@@ -27,7 +27,7 @@ const Menu = props => {
     }, [menuItemsRequested, menuItemsError, menuItemsLoaded])
 
     const showMore = () => {
-        getItems('http://localhost:3001/menu-items')
+        getItems(`${baseApiUrl}/menu-items`)
         .then(res => {
             res.length > 0 ? menuItemsLoaded(res) : menuItemsError();
             setMoreBtnVisible(false);

@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import { beveragesLoaded, beveragesError, beveragesRequested } from '../../redux/actions/beveragesAC';
 import Loading from '../loading/loading';
 import Error from '../error/error';
-import { getItems } from '../../services/service';
+import { getItems, baseApiUrl } from '../../services/service';
 
 
 const Beverages = props => {
@@ -16,7 +16,7 @@ const Beverages = props => {
     useEffect( () => {
         let mounted = true;
         beveragesRequested();
-        mounted && getItems('http://localhost:3001/beverages')
+        mounted && getItems(`${baseApiUrl}/beverages`)
         .then(res => {
             console.log(res);
             res.length > 0 ? beveragesLoaded(res) : beveragesError();

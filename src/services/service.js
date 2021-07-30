@@ -6,3 +6,5 @@ export const getItems = async (url) => {
     return await res.json();
 }
 
+export const baseApiUrl = 'http://localhost:3001';
+

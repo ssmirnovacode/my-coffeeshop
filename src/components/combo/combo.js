@@ -7,7 +7,7 @@ import { combosLoaded, combosError, combosRequested  } from '../../redux/actions
 import {addToCart} from '../../redux/actions/cartAC';
 import Loading from '../loading/loading';
 import Error from '../error/error';
-import { getItems } from '../../services/service';
+import { getItems, baseApiUrl } from '../../services/service';
 
 const Combo = props => {
 
@@ -16,7 +16,7 @@ const Combo = props => {
     useEffect(() => {
         let mounted = true;
         combosRequested();
-        mounted && getItems('http://localhost:3001/combos')
+        mounted && getItems(`${baseApiUrl}/combos`)
         .then(res => {
             res.length > 0 ? combosLoaded(res) : combosError();
         })
