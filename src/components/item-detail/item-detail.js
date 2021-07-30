@@ -5,23 +5,22 @@ import {detailsLoaded, detailsError, detailsRequested} from '../../redux/actions
 import {addToCart} from '../../redux/actions/cartAC';
 import {Link} from 'react-router-dom';
 import basePath from '../../assets/basePath';
-import { db } from '../../firebase.config';
+import { getItemById, baseApiUrl } from '../../services/service';
 import Loading from '../loading/loading';
 import Error from '../error/error';
 
 const ItemDetail = (props) => {
     
     const {itemId, page, details, detailsError, detailsLoaded, detailsRequested} = props;
-
+    
     const [activeBtn, setActiveBtn] = useState('addToCart');
 
     useEffect( () => {
         let mounted = true;
         detailsRequested();
-        mounted && db.collection(page).doc(itemId).get()
-        .then( snapshot => {
-            snapshot.exists ? detailsLoaded({...snapshot.data(), id: itemId}) :
-            detailsError();
+        mounted && getItemById(`${baseApiUrl}/${page}`, itemId)
+        .then(res => {
+            res ? detailsLoaded(res) : detailsError();
         })
         .catch(err => console.error(err.message));
         return () => mounted = false;

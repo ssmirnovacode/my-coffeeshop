@@ -18,7 +18,6 @@ const Giftset = props => {
         giftsetRequested();
         mounted && getItems(`${baseApiUrl}/giftset`)
         .then(res => {
-            console.log(res);
             res.length > 0 ? giftsetLoaded(res) : giftsetError();
         })
         .catch( err => console.error(err.message));

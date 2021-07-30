@@ -18,7 +18,6 @@ const Beverages = props => {
         beveragesRequested();
         mounted && getItems(`${baseApiUrl}/beverages`)
         .then(res => {
-            console.log(res);
             res.length > 0 ? beveragesLoaded(res) : beveragesError();
         })
         .catch( err => console.error(err.message));

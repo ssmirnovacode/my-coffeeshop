@@ -19,21 +19,21 @@ const App = () => {
                 <div className="app_content">
                     <Header/>  
                     <Route path={`${basePath}/`} exact component={HomePage}/>                                               
-                    {/* <Route path={`${basePath}/cart`} component={Cart}/>
+                    <Route path={`${basePath}/cart`} component={Cart}/>
                     <Route path={`${basePath}/combos/:id`} render={ ({match}) => {
                         const {id} = match.params;
                         return <ItemDetail page='combos' itemId={id}/>
                     }}/>
                     <Route path={`${basePath}/menuItems/:id`} render={ ({match}) => {
                         const {id} = match.params;
-                        return <ItemDetail page='menuItems' itemId={id}/>
+                        return <ItemDetail page='menu-items' itemId={id}/>
                     }}/>
                     <Route path={`${basePath}/giftset/:id`} render={ ({match}) => {
                         const {id} = match.params;
                         return <ItemDetail page='giftset' itemId={id}/>
                     }}/>
                     <Route path={`${basePath}/order`} component={PlaceOrder}/>
-                    <Route path={`${basePath}/thank-you`} component={ThankYou}/> */}
+                    <Route path={`${basePath}/thank-you`} component={ThankYou}/>
                 </div> 
                 <Footer/>
             </div> 
