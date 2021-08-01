@@ -26,7 +26,7 @@ const App = () => {
                     }}/>
                     <Route path={`${basePath}/menuItems/:id`} render={ ({match}) => {
                         const {id} = match.params;
-                        return <ItemDetail page='menuItems' itemId={id}/>
+                        return <ItemDetail page='menu-items' itemId={id}/>
                     }}/>
                     <Route path={`${basePath}/giftset/:id`} render={ ({match}) => {
                         const {id} = match.params;

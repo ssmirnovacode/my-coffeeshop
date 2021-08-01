@@ -6,8 +6,8 @@ import {connect} from 'react-redux';
 import { beveragesLoaded, beveragesError, beveragesRequested } from '../../redux/actions/beveragesAC';
 import Loading from '../loading/loading';
 import Error from '../error/error';
-import { db } from '../../firebase.config';
-import {firebaseLoop} from '../../services/tools';
+import { getItems, baseApiUrl } from '../../services/service';
+
 
 const Beverages = props => {
 
@@ -16,10 +16,9 @@ const Beverages = props => {
     useEffect( () => {
         let mounted = true;
         beveragesRequested();
-        mounted && db.collection('beverages').get()
-        .then(snapshot => {
-            firebaseLoop(snapshot).length > 0 ? beveragesLoaded(firebaseLoop(snapshot)) :
-            beveragesError();
+        mounted && getItems(`${baseApiUrl}/beverages`)
+        .then(res => {
+            res.length > 0 ? beveragesLoaded(res) : beveragesError();
         })
         .catch( err => console.error(err.message));
         return () => mounted = false;
@@ -30,6 +29,7 @@ const Beverages = props => {
             <Heading small={'Your Personalized Coffee'} big={'COFFEE BUILD YOUR BASE'} id="beverages"/>
             {
                 loading ? <Loading /> : error ? <Error /> :
+                beverages ?
                 <div className="beverages_container">
                     {
                         beverages.items.map(item => {
@@ -39,6 +39,7 @@ const Beverages = props => {
                         })
                     }
                 </div>
+                : null
             } 
         </section>
     ) 

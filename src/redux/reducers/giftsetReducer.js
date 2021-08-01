@@ -4,7 +4,7 @@ const giftsetReducer = (state={
                             items: [],
                             loading: true,
                             error: false,
-                            activeItemId: 'qxevR5yI0BPpyOH2Q5D7'
+                            activeItemId: 'tf27bh'
                     }, action) => {
     switch (action.type) {
         case 'GIFTSET_LOADED': 

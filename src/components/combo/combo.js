@@ -7,8 +7,7 @@ import { combosLoaded, combosError, combosRequested  } from '../../redux/actions
 import {addToCart} from '../../redux/actions/cartAC';
 import Loading from '../loading/loading';
 import Error from '../error/error';
-import { db } from '../../firebase.config';
-import {firebaseLoop} from '../../services/tools';
+import { getItems, baseApiUrl } from '../../services/service';
 
 const Combo = props => {
 
@@ -17,10 +16,9 @@ const Combo = props => {
     useEffect(() => {
         let mounted = true;
         combosRequested();
-        mounted && db.collection('combos').get()
-        .then(snapshot => {
-            firebaseLoop(snapshot).length > 0 ? combosLoaded(firebaseLoop(snapshot)) :
-            combosError();
+        mounted && getItems(`${baseApiUrl}/combos`)
+        .then(res => {
+            res.length > 0 ? combosLoaded(res) : combosError();
         })
         .catch( err => console.error(err.message));
         return () => mounted = false;

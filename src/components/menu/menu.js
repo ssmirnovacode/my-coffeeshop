@@ -7,8 +7,7 @@ import { menuItemsLoaded, menuItemsError, menuItemsRequested} from '../../redux/
 import {addToCart} from '../../redux/actions/cartAC';
 import Loading from '../loading/loading';
 import Error from '../error/error';
-import { db } from '../../firebase.config';
-import {firebaseLoop} from '../../services/tools';
+import { getItems, baseApiUrl } from '../../services/service';
 
 const Menu = props => {
 
@@ -19,22 +18,19 @@ const Menu = props => {
     useEffect(() => {
         let mounted = true;
         menuItemsRequested();
-        mounted && db.collection('menuItems').limit(4).get()
-        .then(snapshot => {
-            firebaseLoop(snapshot).length > 0 ? menuItemsLoaded(firebaseLoop(snapshot)) :
-            menuItemsError();
+        mounted && getItems(`${baseApiUrl}/menu-items`)
+        .then(res => {
+            res.length > 0 ? menuItemsLoaded(res.slice(0,4)) : menuItemsError();
         })
         .catch( err => console.error(err.message));
         return () => mounted = false;
     }, [menuItemsRequested, menuItemsError, menuItemsLoaded])
 
     const showMore = () => {
-        db.collection('menuItems').get()
-        .then(snapshot => {
-            if (firebaseLoop(snapshot).length > 4) {
-                menuItemsLoaded(firebaseLoop(snapshot)); // showing all menu items
-                setMoreBtnVisible(false);
-            }
+        getItems(`${baseApiUrl}/menu-items`)
+        .then(res => {
+            res.length > 0 ? menuItemsLoaded(res) : menuItemsError();
+            setMoreBtnVisible(false);
         })
         .catch( err => console.error(err.message));
     }
