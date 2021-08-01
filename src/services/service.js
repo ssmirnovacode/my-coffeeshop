@@ -33,5 +33,5 @@ export const postOrder = async (url, data) => {
     return await res.json();
 }
 
-export const baseApiUrl = 'https://my-coffeeshop-rest.herokuapp.com';
-//export const baseApiUrl = 'http://localhost:3000';
+//export const baseApiUrl = 'https://my-coffeeshop-rest.herokuapp.com';
+export const baseApiUrl = 'http://localhost:3001';
