@@ -14,5 +14,5 @@ export const getItemById = async (url, id) => {
     return await res.json();
 }
 
-export const baseApiUrl = 'http://localhost:3001';
+export const baseApiUrl = 'https://my-coffeeshop-rest.herokuapp.com';
 
