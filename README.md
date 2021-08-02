@@ -14,7 +14,7 @@ https://ssmirnovacode.github.io/my-coffeeshop/
  - React hooks
  - Redux
  - SCSS
- - REST API
+ - REST API built with ExpressJS, MySQL and Sequelize.
 
 ### Additional libraries
  - Formik
