@@ -8,7 +8,7 @@ import basePath from '../../assets/basePath';
 import {orderSubmitted, orderError} from '../../redux/actions/orderAC';
 import { useFormik } from 'formik';
 import validate from '../../services/validate';
-import { db } from '../../firebase.config';
+import { postOrder, baseApiUrl } from '../../services/service';
 
 const PlaceOrder = (props) => {
 
@@ -25,13 +25,19 @@ const PlaceOrder = (props) => {
                 values.items = props.cart.map(item => ({
                     id: item.id,
                     title: item.title,
-                    qty: item.qty
+                    qty: item.qty,
+                    subtotal: item.price * item.qty
                 }));
-                values.id = Math.random().toString(36).substr(2, 9);
-                db.collection('orders').doc().set(values);
+                values.total = values.items.map(item => item.subtotal).reduce( (a,b) => a + b);
+                values.number = Math.random().toString(36).substr(2, 9); 
                 console.log(values);
+                postOrder(baseApiUrl + '/order', values)
+                    .then( res => {
+                        console.log('Order submitted');
+                    })
+                    .catch(err => console.error(err.message));
+
                 props.orderSubmitted(values);
-                //console.log(props.order);
                 resetForm();
                 props.clearCart();
                 props.history.push(`${basePath}/thank-you`);
@@ -49,7 +55,7 @@ const PlaceOrder = (props) => {
             
             <div className="order_container" >            
                 <div className="order_title">Please fill in your data</div>
-                <form onSubmit={formik.handleSubmit}>
+                <form method="POST" onSubmit={formik.handleSubmit}>
 
                     <div className="order_form-field">
                         <label>Name:   

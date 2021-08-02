@@ -14,7 +14,7 @@ const ThankYou = (props) => {
         <div className="thank-you_container">
             <div className="thank-you_title">Thank you for your order, <span>{firstname}</span>!</div>
             <p className="thank-you_text">
-                Your order # <span>{props.order.id}</span> has been submitted successfully. When it´s ready to be picked up, we will notify you by SMS.
+                Your order # <span>{props.order.number}</span> has been submitted successfully. When it´s ready to be picked up, we will notify you by SMS.
                 Remember, you can skip the line and go straight to the register to pay and pick up your coffee.
             </p>
             <Link className="thank-you_back" to={`${basePath}/`}>Back to the store</Link>
