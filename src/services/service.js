@@ -29,7 +29,8 @@ export const postOrder = async (url, data) => {
         firstname: data.firstname,
         tel: data.tel,
         items: data.items,
-        number: data.number
+        number: data.number,
+        total: data.total
     };
     const res = await fetch(url, {
         method: "POST",

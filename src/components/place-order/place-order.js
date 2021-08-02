@@ -25,11 +25,13 @@ const PlaceOrder = (props) => {
                 values.items = props.cart.map(item => ({
                     id: item.id,
                     title: item.title,
-                    qty: item.qty
+                    qty: item.qty,
+                    subtotal: item.price * item.qty
                 }));
+                values.total = values.items.map(item => item.subtotal).reduce( (a,b) => a + b);
                 values.number = Math.random().toString(36).substr(2, 9); 
                 console.log(values);
-                postOrder('http://localhost:3001/order', values)
+                postOrder(baseApiUrl + '/order', values)
                     .then( res => {
                         console.log('Order submitted');
                     })
