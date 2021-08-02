@@ -17,14 +17,8 @@ export const getItemById = async (url, id) => {
     return await res.json();
 };
 
-/* const getOrderIdNumber = async () => {
-    const res = await fetch(baseApiUrl+'/orders');
-    const orderNumber = res.length+1;
-    return orderNumber;
-} */
-
 export const postOrder = async (url, data) => {
-    //const number = await getOrderIdNumber();
+
     const newOrder = {
         firstname: data.firstname,
         tel: data.tel,
