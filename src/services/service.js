@@ -1,3 +1,6 @@
+//export const baseApiUrl = 'https://my-coffeeshop-rest.herokuapp.com';
+export const baseApiUrl = 'http://localhost:3001';
+
 export const getItems = async (url) => {
     const res = await fetch(url);
     if (!res.ok) {
@@ -14,11 +17,19 @@ export const getItemById = async (url, id) => {
     return await res.json();
 };
 
+/* const getOrderIdNumber = async () => {
+    const res = await fetch(baseApiUrl+'/orders');
+    const orderNumber = res.length+1;
+    return orderNumber;
+} */
+
 export const postOrder = async (url, data) => {
+    //const number = await getOrderIdNumber();
     const newOrder = {
         firstname: data.firstname,
         tel: data.tel,
-        items: data.items
+        items: data.items,
+        number: data.number
     };
     const res = await fetch(url, {
         method: "POST",
@@ -31,7 +42,9 @@ export const postOrder = async (url, data) => {
         throw new Error(`Cound not fetch ${url}, status: ${res.status}`);
     }
     return await res.json();
-}
+};
 
-//export const baseApiUrl = 'https://my-coffeeshop-rest.herokuapp.com';
-export const baseApiUrl = 'http://localhost:3001';
+
+
+
+

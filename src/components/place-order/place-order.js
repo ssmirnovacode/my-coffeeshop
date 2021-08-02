@@ -27,21 +27,18 @@ const PlaceOrder = (props) => {
                     title: item.title,
                     qty: item.qty
                 }));
-                values.id = Math.random().toString(36).substr(2, 9); // change: in db its integer
+                values.number = Math.random().toString(36).substr(2, 9); 
                 console.log(values);
                 postOrder('http://localhost:3001/order', values)
-                    .then( () => {
+                    .then( res => {
                         console.log('Order submitted');
                     })
                     .catch(err => console.error(err.message));
-                    props.orderSubmitted(values);
-                    resetForm();
-                    props.clearCart();
-                    props.history.push(`${basePath}/thank-you`);
-                //props.orderSubmitted(values);
-                //resetForm();
-                //props.clearCart();
-                //props.history.push(`${basePath}/thank-you`);
+
+                props.orderSubmitted(values);
+                resetForm();
+                props.clearCart();
+                props.history.push(`${basePath}/thank-you`);
             }
             else {
                 setFailMsg(true);
