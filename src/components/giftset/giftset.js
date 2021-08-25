@@ -28,6 +28,7 @@ const Giftset = props => {
     }, [giftsetRequested, dispatch]);
     
     const {items, loading, error, activeItemId} = giftset;
+    console.log(items);
 
     return(
         <section>
