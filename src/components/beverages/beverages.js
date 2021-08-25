@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import './beverages.scss';
 import BeverageItem from '../beverage-item/beverage-item';
 import Heading from '../heading/heading';
-import {connect} from 'react-redux';
+import {connect, useDispatch} from 'react-redux';
 import { beveragesLoaded, beveragesError, beveragesRequested } from '../../redux/actions/beveragesAC';
 import Loading from '../loading/loading';
 import Error from '../error/error';
@@ -13,16 +13,13 @@ const Beverages = props => {
 
     const {beverages, loading, error, beveragesError, beveragesLoaded, beveragesRequested} = props;
 
+    const dispatch = useDispatch();
+
     useEffect( () => {
-        let mounted = true;
-        beveragesRequested();
-        mounted && getItems(`${baseApiUrl}/beverages`)
-        .then(res => {
-            res.length > 0 ? beveragesLoaded(res) : beveragesError();
-        })
-        .catch( err => console.error(err.message));
-        return () => mounted = false;
-    }, [beveragesRequested, beveragesError, beveragesLoaded]);
+        //let mounted = true;
+        dispatch(beveragesRequested());
+        //return () => mounted = false;
+    }, []);
 
     return (
         <section>
