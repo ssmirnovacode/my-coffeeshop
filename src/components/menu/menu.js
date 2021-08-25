@@ -3,7 +3,7 @@ import './menu.scss';
 import Heading from '../heading/heading';
 import MenuItem from '../menu-item/menu-item';
 import {connect, useDispatch} from 'react-redux';
-import { menuItemsLoaded, menuItemsError, menuItemsRequested} from '../../redux/actions/menu-itemsAC';
+import { menuItemsLoaded, menuItemsError, menuItemsRequested, menuItemsRequestedMore} from '../../redux/actions/menu-itemsAC';
 import {addToCart} from '../../redux/actions/cartAC';
 import Loading from '../loading/loading';
 import Error from '../error/error';
@@ -30,12 +30,13 @@ const Menu = props => {
     }, [])
 
     const showMore = () => {
-        getItems(`${baseApiUrl}/menu-items`)
+        dispatch(menuItemsRequestedMore());
+        /* getItems(`${baseApiUrl}/menu-items`)
         .then(res => {
             res.length > 0 ? menuItemsLoaded(res) : menuItemsError();
             setMoreBtnVisible(false);
         })
-        .catch( err => console.error(err.message));
+        .catch( err => console.error(err.message)); */
     }
 
     const {items, loading, error} = menuItems;
