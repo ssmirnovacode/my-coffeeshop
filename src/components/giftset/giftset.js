@@ -2,27 +2,30 @@ import React, {useEffect} from 'react';
 import './giftset.scss';
 import Heading from  '../heading/heading';
 import GiftsetItem from '../giftset-item/giftset-item';
-import {connect} from 'react-redux';
+import {connect, useDispatch} from 'react-redux';
 import { giftsetLoaded, giftsetTabClick, giftsetError, giftsetRequested } from '../../redux/actions/giftset';
 import {addToCart} from '../../redux/actions/cartAC';
 import Loading from '../loading/loading';
 import Error from '../error/error';
-import { getItems, baseApiUrl } from '../../services/service';
+//import { getItems, baseApiUrl } from '../../services/service';
 
 const Giftset = props => {
 
-    const {giftset, giftsetError, giftsetLoaded, giftsetRequested, addToCart, giftsetTabClick} = props;
+    const {giftset, /* giftsetError, giftsetLoaded, */ giftsetRequested, addToCart, giftsetTabClick} = props;
+
+    const dispatch = useDispatch();
 
     useEffect( () => {
-        let mounted = true;
+        dispatch(giftsetRequested())
+        /* let mounted = true;
         giftsetRequested();
         mounted && getItems(`${baseApiUrl}/giftset`)
         .then(res => {
             res.length > 0 ? giftsetLoaded(res) : giftsetError();
         })
         .catch( err => console.error(err.message));
-        return () => mounted = false;
-    }, [giftsetRequested, giftsetLoaded, giftsetError]);
+        return () => mounted = false; */
+    }, [giftsetRequested, dispatch]);
     
     const {items, loading, error, activeItemId} = giftset;
 

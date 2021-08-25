@@ -7,11 +7,11 @@ import { menuItemsLoaded, menuItemsError, menuItemsRequested, menuItemsRequested
 import {addToCart} from '../../redux/actions/cartAC';
 import Loading from '../loading/loading';
 import Error from '../error/error';
-import { getItems, baseApiUrl } from '../../services/service';
+//import { getItems, baseApiUrl } from '../../services/service';
 
 const Menu = props => {
 
-    const {menuItems, menuItemsError, menuItemsLoaded, menuItemsRequested, addToCart} = props;
+    const {menuItems, /* menuItemsError, menuItemsLoaded, */ menuItemsRequested, addToCart} = props;
 
     const dispatch = useDispatch();
 
@@ -27,10 +27,11 @@ const Menu = props => {
         .catch( err => console.error(err.message));
         return () => mounted = false; */
         dispatch(menuItemsRequested());
-    }, [])
+    }, [menuItemsRequested, dispatch])
 
     const showMore = () => {
         dispatch(menuItemsRequestedMore());
+        setMoreBtnVisible(false);
         /* getItems(`${baseApiUrl}/menu-items`)
         .then(res => {
             res.length > 0 ? menuItemsLoaded(res) : menuItemsError();

@@ -6,19 +6,19 @@ import {connect, useDispatch} from 'react-redux';
 import { beveragesLoaded, beveragesError, beveragesRequested } from '../../redux/actions/beveragesAC';
 import Loading from '../loading/loading';
 import Error from '../error/error';
-import { getItems, baseApiUrl } from '../../services/service';
+//import { getItems, baseApiUrl } from '../../services/service';
 
 
 const Beverages = props => {
 
-    const {beverages, loading, error, beveragesError, beveragesLoaded, beveragesRequested} = props;
+    const {beverages, loading, error, /* beveragesError, beveragesLoaded, */ beveragesRequested} = props;
 
     const dispatch = useDispatch();
 
     useEffect( () => {
         //let mounted = true;
         dispatch(beveragesRequested());
-    }, []);
+    }, [beveragesRequested, dispatch]);
 
     return (
         <section>

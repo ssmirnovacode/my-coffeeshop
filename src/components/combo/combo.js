@@ -7,11 +7,11 @@ import { combosLoaded, combosError, combosRequested  } from '../../redux/actions
 import {addToCart} from '../../redux/actions/cartAC';
 import Loading from '../loading/loading';
 import Error from '../error/error';
-import { getItems, baseApiUrl } from '../../services/service';
+//import { getItems, baseApiUrl } from '../../services/service';
 
 const Combo = props => {
 
-    const {combos, combosLoaded, combosRequested, combosError, addToCart} = props;
+    const {combos, combosRequested, /* combosLoaded, combosError, */ addToCart} = props;
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -24,7 +24,7 @@ const Combo = props => {
         .catch( err => console.error(err.message));
         return () => mounted = false; */
         dispatch(combosRequested());
-    }, []);
+    }, [combosRequested, dispatch]);
 
     const {items, loading, error} = combos;
 
