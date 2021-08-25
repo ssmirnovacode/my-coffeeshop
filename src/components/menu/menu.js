@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import './menu.scss';
 import Heading from '../heading/heading';
 import MenuItem from '../menu-item/menu-item';
-import {connect} from 'react-redux';
+import {connect, useDispatch} from 'react-redux';
 import { menuItemsLoaded, menuItemsError, menuItemsRequested} from '../../redux/actions/menu-itemsAC';
 import {addToCart} from '../../redux/actions/cartAC';
 import Loading from '../loading/loading';
@@ -13,18 +13,21 @@ const Menu = props => {
 
     const {menuItems, menuItemsError, menuItemsLoaded, menuItemsRequested, addToCart} = props;
 
+    const dispatch = useDispatch();
+
     const [isMoreBtnVisible, setMoreBtnVisible] = useState(true);
 
     useEffect(() => {
-        let mounted = true;
+        /* let mounted = true;
         menuItemsRequested();
         mounted && getItems(`${baseApiUrl}/menu-items`)
         .then(res => {
             res.length > 0 ? menuItemsLoaded(res.slice(0,4)) : menuItemsError();
         })
         .catch( err => console.error(err.message));
-        return () => mounted = false;
-    }, [menuItemsRequested, menuItemsError, menuItemsLoaded])
+        return () => mounted = false; */
+        dispatch(menuItemsRequested());
+    }, [])
 
     const showMore = () => {
         getItems(`${baseApiUrl}/menu-items`)

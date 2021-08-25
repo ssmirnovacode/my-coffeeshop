@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import './combo.scss';
 import Heading from '../heading/heading';
 import ComboItem from '../combo-item/combo-item';
-import {connect} from 'react-redux';
+import {connect, useDispatch} from 'react-redux';
 import { combosLoaded, combosError, combosRequested  } from '../../redux/actions/combosAC';
 import {addToCart} from '../../redux/actions/cartAC';
 import Loading from '../loading/loading';
@@ -12,17 +12,19 @@ import { getItems, baseApiUrl } from '../../services/service';
 const Combo = props => {
 
     const {combos, combosLoaded, combosRequested, combosError, addToCart} = props;
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        let mounted = true;
+        /* let mounted = true;
         combosRequested();
         mounted && getItems(`${baseApiUrl}/combos`)
         .then(res => {
             res.length > 0 ? combosLoaded(res) : combosError();
         })
         .catch( err => console.error(err.message));
-        return () => mounted = false;
-    }, [combosError, combosLoaded, combosRequested]);
+        return () => mounted = false; */
+        dispatch(combosRequested());
+    }, []);
 
     const {items, loading, error} = combos;
 

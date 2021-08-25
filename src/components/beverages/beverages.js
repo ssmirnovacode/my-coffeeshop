@@ -18,7 +18,6 @@ const Beverages = props => {
     useEffect( () => {
         //let mounted = true;
         dispatch(beveragesRequested());
-        //return () => mounted = false;
     }, []);
 
     return (
