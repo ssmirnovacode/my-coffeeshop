@@ -1,11 +1,11 @@
 import { takeLatest } from 'redux-saga/effects';
 import { handleGetItems } from './handlers/fetchAllHandler';
-import { handlerGetItemById } from './handlers/fetchOneHandler';
+import { handlerGetComboById, handlerGetGiftsetById, handlerGetMenuById } from './handlers/fetchOneHandler';
 import { beveragesLoaded, beveragesError, beveragesRequested } from '../../redux/actions/beveragesAC';
 import { combosLoaded, combosError, combosRequested  } from '../../redux/actions/combosAC';
 import { menuItemsLoaded, menuItemsError, menuItemsRequested, menuItemsRequestedMore } from '../../redux/actions/menu-itemsAC';
 import { giftsetLoaded, giftsetError, giftsetRequested } from '../../redux/actions/giftset';
-import { detailsRequested } from '../actions/detailsAC';
+//
 
 // watcher - generator function:
 export function* watcherSaga() {
@@ -16,5 +16,7 @@ export function* watcherSaga() {
     yield takeLatest('MENU_ITEMS_REQUESTED', () => handleGetItems('menu-items', menuItemsRequested, menuItemsLoaded, menuItemsError, 4));
     yield takeLatest('MENU_ITEMS_REQUESTED_MORE', () => handleGetItems('menu-items', menuItemsRequestedMore, menuItemsLoaded, menuItemsError));
 
-    yield takeLatest('DETAILS_REQUESTED', /* () =>  */handlerGetItemById/* (detailsRequested) */);
+    yield takeLatest('COMBO_DETAILS_REQUESTED', handlerGetComboById);
+    yield takeLatest('MENU_DETAILS_REQUESTED', handlerGetMenuById);
+    yield takeLatest('GIFTSET_DETAILS_REQUESTED', handlerGetGiftsetById);
 }

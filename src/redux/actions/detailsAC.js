@@ -5,9 +5,23 @@ const detailsLoaded = (newBev) => {
     };
 };
 
-const detailsRequested = (id) => {
+const comboDetailsRequested = (id) => {
     return {
-        type: 'DETAILS_REQUESTED',
+        type: 'COMBO_DETAILS_REQUESTED',
+        payload: id
+    };
+};
+
+const menuDetailsRequested = (id) => {
+    return {
+        type: 'MENU_DETAILS_REQUESTED',
+        payload: id
+    };
+};
+
+const giftsetDetailsRequested = (id) => {
+    return {
+        type: 'GIFTSET_DETAILS_REQUESTED',
         payload: id
     };
 };
@@ -18,4 +32,4 @@ const detailsError = () => {
     };
 };
 
-export {detailsLoaded, detailsRequested, detailsError};
+export {detailsLoaded, comboDetailsRequested, detailsError, menuDetailsRequested, giftsetDetailsRequested};
