@@ -1,17 +1,16 @@
 import React, {useState, useEffect} from 'react';
 import './item-detail.scss';
 import {connect, useDispatch} from 'react-redux';
-import {detailsLoaded, detailsError, comboDetailsRequested, menuDetailsRequested, giftsetDetailsRequested} from '../../redux/actions/detailsAC';
+import {comboDetailsRequested, menuDetailsRequested, giftsetDetailsRequested} from '../../redux/actions/detailsAC';
 import {addToCart} from '../../redux/actions/cartAC';
 import {Link} from 'react-router-dom';
 import basePath from '../../assets/basePath';
-import { getItemById, baseApiUrl } from '../../services/service';
 import Loading from '../loading/loading';
 import Error from '../error/error';
 
 const ItemDetail = (props) => {
     
-    const {itemId, page, details, detailsError, detailsLoaded, detailsRequested} = props;
+    const {itemId, page, details} = props;
     
     const [activeBtn, setActiveBtn] = useState('addToCart');
 
@@ -27,14 +26,6 @@ const ItemDetail = (props) => {
         else {
             dispatch(menuDetailsRequested(itemId))
         }
-        /* let mounted = true;
-        detailsRequested();
-        mounted && getItemById(`${baseApiUrl}/${page}`, itemId)
-        .then(res => {
-            res ? detailsLoaded(res) : detailsError();
-        })
-        .catch(err => console.error(err.message));
-        return () => mounted = false; */
     }, [dispatch, page, itemId]);
 
     const toggleBtn = () => {
@@ -87,9 +78,6 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    detailsLoaded, 
-    detailsError, 
-    //detailsRequested,
     addToCart
 }
 

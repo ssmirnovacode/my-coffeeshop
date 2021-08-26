@@ -3,26 +3,17 @@ import './combo.scss';
 import Heading from '../heading/heading';
 import ComboItem from '../combo-item/combo-item';
 import {connect, useDispatch} from 'react-redux';
-import { combosLoaded, combosError, combosRequested  } from '../../redux/actions/combosAC';
+import { combosRequested  } from '../../redux/actions/combosAC';
 import {addToCart} from '../../redux/actions/cartAC';
 import Loading from '../loading/loading';
 import Error from '../error/error';
-//import { getItems, baseApiUrl } from '../../services/service';
 
 const Combo = props => {
 
-    const {combos, combosRequested, /* combosLoaded, combosError, */ addToCart} = props;
+    const {combos, combosRequested, addToCart} = props;
     const dispatch = useDispatch();
 
     useEffect(() => {
-        /* let mounted = true;
-        combosRequested();
-        mounted && getItems(`${baseApiUrl}/combos`)
-        .then(res => {
-            res.length > 0 ? combosLoaded(res) : combosError();
-        })
-        .catch( err => console.error(err.message));
-        return () => mounted = false; */
         dispatch(combosRequested());
     }, [combosRequested, dispatch]);
 
@@ -55,8 +46,6 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    combosLoaded,
-    combosError,
     combosRequested,
     addToCart
 }

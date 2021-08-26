@@ -3,41 +3,26 @@ import './menu.scss';
 import Heading from '../heading/heading';
 import MenuItem from '../menu-item/menu-item';
 import {connect, useDispatch} from 'react-redux';
-import { menuItemsLoaded, menuItemsError, menuItemsRequested, menuItemsRequestedMore} from '../../redux/actions/menu-itemsAC';
+import { menuItemsRequested, menuItemsRequestedMore} from '../../redux/actions/menu-itemsAC';
 import {addToCart} from '../../redux/actions/cartAC';
 import Loading from '../loading/loading';
 import Error from '../error/error';
-//import { getItems, baseApiUrl } from '../../services/service';
 
 const Menu = props => {
 
-    const {menuItems, /* menuItemsError, menuItemsLoaded, */ menuItemsRequested, addToCart} = props;
+    const {menuItems, menuItemsRequested, addToCart} = props;
 
     const dispatch = useDispatch();
 
     const [isMoreBtnVisible, setMoreBtnVisible] = useState(true);
 
     useEffect(() => {
-        /* let mounted = true;
-        menuItemsRequested();
-        mounted && getItems(`${baseApiUrl}/menu-items`)
-        .then(res => {
-            res.length > 0 ? menuItemsLoaded(res.slice(0,4)) : menuItemsError();
-        })
-        .catch( err => console.error(err.message));
-        return () => mounted = false; */
         dispatch(menuItemsRequested());
     }, [menuItemsRequested, dispatch])
 
     const showMore = () => {
         dispatch(menuItemsRequestedMore());
         setMoreBtnVisible(false);
-        /* getItems(`${baseApiUrl}/menu-items`)
-        .then(res => {
-            res.length > 0 ? menuItemsLoaded(res) : menuItemsError();
-            setMoreBtnVisible(false);
-        })
-        .catch( err => console.error(err.message)); */
     }
 
     const {items, loading, error} = menuItems;
@@ -75,9 +60,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    menuItemsLoaded,
     addToCart, 
-    menuItemsError, 
     menuItemsRequested
 }
 
