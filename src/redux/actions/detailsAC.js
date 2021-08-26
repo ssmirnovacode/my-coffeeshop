@@ -5,9 +5,10 @@ const detailsLoaded = (newBev) => {
     };
 };
 
-const detailsRequested = () => {
+const detailsRequested = (id) => {
     return {
-        type: 'DETAILS_REQUESTED'
+        type: 'DETAILS_REQUESTED',
+        payload: id
     };
 };
 
