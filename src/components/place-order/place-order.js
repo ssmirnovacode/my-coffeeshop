@@ -11,8 +11,6 @@ import validate from '../../services/validate';
 
 const PlaceOrder = (props) => {
 
-    const [isFailMsgVisible, setFailMsg] = useState(false);
-
     const [errMess, setErrMess] = useState('');
 
     const dispatch = useDispatch();
@@ -34,18 +32,17 @@ const PlaceOrder = (props) => {
                 values.total = values.items.map(item => item.subtotal).reduce( (a,b) => a + b);
                 values.number = Math.random().toString(36).substr(2, 9); 
                 dispatch(orderSubmitted(values));
-                // PENDING CONDITIONING FORM CLEAR AND REDIRECT
+
                 if (props.error) {
                     setErrMess('Invalid POST request or server down');
                     setTimeout( () => setErrMess(''), 3500);
-                    
+
                 }
                 else if (props.order) {
                     resetForm();
                     props.clearCart();
                     props.history.push(`${basePath}/thank-you`);
                 }
-                
                 
             }
             else {

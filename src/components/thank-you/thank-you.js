@@ -7,14 +7,14 @@ import Loading from '../loading/loading';
 
 const ThankYou = (props) => {
 
-    const {firstname, loading, error} = props.order;
+    const {firstname, loading} = props.order;
 
     const timerId = setTimeout(() =>{ props.history.push(`${basePath}/`); clearInterval(timerId)}, 10000);
 
     if (loading) {
         return <Loading/>
     }
-    
+
 
     return(
         <div className="thank-you_container">
@@ -31,8 +31,7 @@ const ThankYou = (props) => {
 const mapStateToProps = (state) => {
     return {
         order: state.order.order,
-        loading: state.order.loading,
-        error: state.order.error
+        loading: state.order.loading
     }
 }
 
