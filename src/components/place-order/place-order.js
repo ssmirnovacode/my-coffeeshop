@@ -13,6 +13,8 @@ const PlaceOrder = (props) => {
 
     const [isFailMsgVisible, setFailMsg] = useState(false);
 
+    const [errMess, setErrMess] = useState('');
+
     const dispatch = useDispatch();
 
     const formik = useFormik({
@@ -32,15 +34,23 @@ const PlaceOrder = (props) => {
                 values.total = values.items.map(item => item.subtotal).reduce( (a,b) => a + b);
                 values.number = Math.random().toString(36).substr(2, 9); 
                 dispatch(orderSubmitted(values));
-
                 // PENDING CONDITIONING FORM CLEAR AND REDIRECT
-                resetForm();
-                props.clearCart();
-                props.history.push(`${basePath}/thank-you`);
+                if (props.error) {
+                    setErrMess('Invalid POST request or server down');
+                    setTimeout( () => setErrMess(''), 3500);
+                    
+                }
+                else if (props.order) {
+                    resetForm();
+                    props.clearCart();
+                    props.history.push(`${basePath}/thank-you`);
+                }
+                
+                
             }
             else {
-                setFailMsg(true);
-                setTimeout( () => setFailMsg(false), 1500)
+                setErrMess('Your cart is empty');
+                setTimeout( () => setErrMess(''), 3500)
             }          
         },
       });
@@ -51,6 +61,9 @@ const PlaceOrder = (props) => {
             
             <div className="order_container" >            
                 <div className="order_title">Please fill in your data</div>
+                {
+                    errMess ? <div className="fail">{errMess}</div> : null
+                }
                 <form method="POST" onSubmit={formik.handleSubmit}>
 
                     <div className="order_form-field">
@@ -82,9 +95,7 @@ const PlaceOrder = (props) => {
                     <button className="order_btn" type="submit">ORDER NOW</button>
                 </form>
                 <div className="order_back"><Link to={`${basePath}/`}>Back to the store</Link></div>
-                {
-                    isFailMsgVisible ? <div className="fail">Cart is empty</div> : null
-                }
+                
                 
             </div>
         </div>
@@ -95,7 +106,8 @@ const PlaceOrder = (props) => {
 const mapStateToProps = (state) => {
     return {
         cart: state.cart,
-        order: state.order
+        order: state.order.order,
+        error: state.order.error
     }
 }
 

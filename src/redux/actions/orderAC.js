@@ -5,6 +5,12 @@ const orderSubmitted = (order) => {
     }
 }
 
+const orderSaved = () => {
+    return {
+        type: 'ORDER_SAVED'
+    }
+}
+
 const orderError = () => {
     return {
         type: 'ORDER_ERROR'
@@ -12,4 +18,4 @@ const orderError = () => {
 };
 
 
-export {orderSubmitted, orderError};
+export {orderSubmitted, orderError, orderSaved};
