@@ -11,4 +11,10 @@ const orderError = () => {
     };
 };
 
-export {orderSubmitted, orderError};
+const postOrderRequested = () => {
+    return {
+        type: 'POST_ORDER_REQUESTED'
+    }
+}
+
+export {orderSubmitted, orderError, postOrderRequested};

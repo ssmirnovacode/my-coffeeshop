@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import './place-order.scss';
 import Cart from '../cart/cart';
-import {connect} from 'react-redux';
+import {connect, useDispatch} from 'react-redux';
 import {clearCart} from '../../redux/actions/cartAC';
 import {Link} from 'react-router-dom';
 import basePath from '../../assets/basePath';
-import {orderSubmitted, orderError} from '../../redux/actions/orderAC';
+import {postOrderRequested, orderSubmitted, orderError} from '../../redux/actions/orderAC';
 import { useFormik } from 'formik';
 import validate from '../../services/validate';
 import { postOrder, baseApiUrl } from '../../services/service';
@@ -13,6 +13,8 @@ import { postOrder, baseApiUrl } from '../../services/service';
 const PlaceOrder = (props) => {
 
     const [isFailMsgVisible, setFailMsg] = useState(false);
+
+    const dispatch = useDispatch();
 
     const formik = useFormik({
         initialValues: {
@@ -30,14 +32,17 @@ const PlaceOrder = (props) => {
                 }));
                 values.total = values.items.map(item => item.subtotal).reduce( (a,b) => a + b);
                 values.number = Math.random().toString(36).substr(2, 9); 
-                console.log(values);
-                postOrder(baseApiUrl + '/order', values)
+                //console.log(values);
+                dispatch(postOrderRequested());
+                /* postOrder(baseApiUrl + '/order', values)
                     .then( res => {
                         console.log('Order submitted');
                     })
                     .catch(err => console.error(err.message));
 
-                props.orderSubmitted(values);
+                props.orderSubmitted(values); */
+
+                // PENDING CONDITIONING FORM CLEAR AND REDIRECT
                 resetForm();
                 props.clearCart();
                 props.history.push(`${basePath}/thank-you`);
@@ -105,8 +110,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
     clearCart,
-    orderSubmitted,
-    orderError
+    postOrderRequested
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlaceOrder);

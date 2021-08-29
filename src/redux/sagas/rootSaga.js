@@ -5,7 +5,7 @@ import { beveragesLoaded, beveragesError, beveragesRequested } from '../../redux
 import { combosLoaded, combosError, combosRequested  } from '../../redux/actions/combosAC';
 import { menuItemsLoaded, menuItemsError, menuItemsRequested, menuItemsRequestedMore } from '../../redux/actions/menu-itemsAC';
 import { giftsetLoaded, giftsetError, giftsetRequested } from '../../redux/actions/giftset';
-//
+import { handlePostOrder } from './handlers/orderHandler';
 
 // watcher - generator function:
 export function* watcherSaga() {
@@ -19,4 +19,6 @@ export function* watcherSaga() {
     yield takeLatest('COMBO_DETAILS_REQUESTED', handlerGetComboById);
     yield takeLatest('MENU_DETAILS_REQUESTED', handlerGetMenuById);
     yield takeLatest('GIFTSET_DETAILS_REQUESTED', handlerGetGiftsetById);
+
+    yield takeLatest('POST_ORDER_REQUESTED', handlePostOrder)
 }

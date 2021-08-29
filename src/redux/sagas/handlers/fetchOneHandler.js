@@ -10,7 +10,7 @@ export function* handlerGetComboById(action) {
     }
     catch(err) {
         console.log(err);
-        yield put(detailsError);
+        yield put(detailsError());
     }  
 }
 
@@ -22,7 +22,7 @@ export function* handlerGetMenuById(action) {
     }
     catch(err) {
         console.log(err);
-        yield put(detailsError);
+        yield put(detailsError());
     }  
 }
 
@@ -34,6 +34,6 @@ export function* handlerGetGiftsetById(action) {
     }
     catch(err) {
         console.log(err);
-        yield put(detailsError);
+        yield put(detailsError());
     }  
 }
