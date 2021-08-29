@@ -5,9 +5,8 @@ import { orderSubmitted, orderError } from "../../actions/orderAC";
 export function* handlePostOrder(action) {
     try {
         console.log('handler ran');
-        const res = yield call(() => postOrder(`${baseApiUrl}/order`, action.payload));
-        yield put(orderSubmitted(res));
-        console.log(res);
+        yield call(() => postOrder(`${baseApiUrl}/order`, action.payload));
+        console.log(action.payload);
     }
     catch(err) {
         console.log(err);

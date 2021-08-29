@@ -5,7 +5,7 @@ import {connect, useDispatch} from 'react-redux';
 import {clearCart} from '../../redux/actions/cartAC';
 import {Link} from 'react-router-dom';
 import basePath from '../../assets/basePath';
-import {postOrderRequested, orderSubmitted, orderError} from '../../redux/actions/orderAC';
+import {orderSubmitted, orderError} from '../../redux/actions/orderAC';
 import { useFormik } from 'formik';
 import validate from '../../services/validate';
 import { postOrder, baseApiUrl } from '../../services/service';
@@ -33,7 +33,7 @@ const PlaceOrder = (props) => {
                 values.total = values.items.map(item => item.subtotal).reduce( (a,b) => a + b);
                 values.number = Math.random().toString(36).substr(2, 9); 
                 //console.log(values);
-                dispatch(postOrderRequested());
+                dispatch(orderSubmitted(values));
                 /* postOrder(baseApiUrl + '/order', values)
                     .then( res => {
                         console.log('Order submitted');
@@ -110,7 +110,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
     clearCart,
-    postOrderRequested
+    orderSubmitted
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlaceOrder);

@@ -20,5 +20,5 @@ export function* watcherSaga() {
     yield takeLatest('MENU_DETAILS_REQUESTED', handlerGetMenuById);
     yield takeLatest('GIFTSET_DETAILS_REQUESTED', handlerGetGiftsetById);
 
-    yield takeLatest('POST_ORDER_REQUESTED', handlePostOrder)
+    yield takeLatest('ORDER_SUBMITTED', handlePostOrder)
 }
