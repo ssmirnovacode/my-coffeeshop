@@ -10,7 +10,7 @@ const HomePage = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch({type: 'FETCH_ALL_DATA'})
+        dispatch({ type: 'FETCH_ALL_DATA' })
     }, [dispatch])
 
     return (

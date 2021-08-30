@@ -1,24 +1,20 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import './menu.scss';
 import Heading from '../heading/heading';
 import MenuItem from '../menu-item/menu-item';
 import {connect, useDispatch} from 'react-redux';
-import { menuItemsRequested, menuItemsRequestedMore} from '../../redux/actions/menu-itemsAC';
+import { menuItemsRequestedMore} from '../../redux/actions/menu-itemsAC';
 import {addToCart} from '../../redux/actions/cartAC';
 import Loading from '../loading/loading';
 import Error from '../error/error';
 
 const Menu = props => {
 
-    const {menuItems, menuItemsRequested, addToCart} = props;
+    const {menuItems, addToCart} = props;
 
     const dispatch = useDispatch();
 
     const [isMoreBtnVisible, setMoreBtnVisible] = useState(true);
-
-   /*  useEffect(() => {
-        dispatch(menuItemsRequested());
-    }, [menuItemsRequested, dispatch]) */
 
     const showMore = () => {
         dispatch(menuItemsRequestedMore());
@@ -60,8 +56,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    addToCart, 
-    menuItemsRequested
+    addToCart
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Menu);

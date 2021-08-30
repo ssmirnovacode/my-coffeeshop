@@ -6,36 +6,15 @@ import { menuItemsLoaded, menuItemsError, menuItemsRequested, menuItemsRequested
 import { giftsetLoaded, giftsetError, giftsetRequested } from '../../../redux/actions/giftset';
 
 export function* loadDataWorkerSaga() {
-    //console.log('loadData worker saga ran')
     yield fork(handleGetBevegares);
     yield fork(handleGetCombos);
     yield fork(handleGetMenuItems);
-    //yield fork(handleGetMenuItemsMore); // separate
     yield fork(handleGetGiftset);
 }
 
 export function* getMoreItemsworkerSaga() {
     return yield handleGetItems('menu-items', menuItemsRequestedMore, menuItemsLoaded, menuItemsError)
 }
-
-function handleGetBevegares() {
-    return /* () =>  */handleGetItems('beverages', beveragesRequested, beveragesLoaded, beveragesError)
-}
-
-function handleGetCombos() {
-    return /* () => */ handleGetItems('combos', combosRequested, combosLoaded, combosError)
-}
-
-function handleGetMenuItems() {
-    return /* () => */ handleGetItems('menu-items', menuItemsRequested, menuItemsLoaded, menuItemsError, 4)
-}
-
-
-
-function handleGetGiftset() {
-    return /* () => */ handleGetItems('giftset', giftsetRequested, giftsetLoaded, giftsetError)
-}
-
 
 function* handleGetItems(items, requestFunc, loadedFunc, errorFunc, slicer=undefined) {
     try {
@@ -46,6 +25,23 @@ function* handleGetItems(items, requestFunc, loadedFunc, errorFunc, slicer=undef
     catch(err) {
         console.log(err);
         yield put(errorFunc()); 
-        
     }
 }
+
+function handleGetBevegares() {
+    return handleGetItems('beverages', beveragesRequested, beveragesLoaded, beveragesError)
+}
+
+function handleGetCombos() {
+    return handleGetItems('combos', combosRequested, combosLoaded, combosError)
+}
+
+function handleGetMenuItems() {
+    return handleGetItems('menu-items', menuItemsRequested, menuItemsLoaded, menuItemsError, 4)
+}
+
+function handleGetGiftset() {
+    return handleGetItems('giftset', giftsetRequested, giftsetLoaded, giftsetError)
+}
+
+

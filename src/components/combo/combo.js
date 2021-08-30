@@ -1,21 +1,15 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import './combo.scss';
 import Heading from '../heading/heading';
 import ComboItem from '../combo-item/combo-item';
-import {connect, useDispatch} from 'react-redux';
-import { combosRequested  } from '../../redux/actions/combosAC';
+import {connect} from 'react-redux';
 import {addToCart} from '../../redux/actions/cartAC';
 import Loading from '../loading/loading';
 import Error from '../error/error';
 
 const Combo = props => {
 
-    const {combos, combosRequested, addToCart} = props;
-    const dispatch = useDispatch();
-
-    /* useEffect(() => {
-        dispatch(combosRequested());
-    }, [combosRequested, dispatch]); */
+    const {combos, addToCart} = props;
 
     const {items, loading, error} = combos;
 
@@ -46,7 +40,6 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    combosRequested,
     addToCart
 }
 

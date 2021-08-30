@@ -1,22 +1,16 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import './giftset.scss';
 import Heading from  '../heading/heading';
 import GiftsetItem from '../giftset-item/giftset-item';
-import {connect, useDispatch} from 'react-redux';
-import { giftsetTabClick, giftsetRequested } from '../../redux/actions/giftset';
+import {connect} from 'react-redux';
+import { giftsetTabClick } from '../../redux/actions/giftset';
 import {addToCart} from '../../redux/actions/cartAC';
 import Loading from '../loading/loading';
 import Error from '../error/error';
 
 const Giftset = props => {
 
-    const {giftset, giftsetRequested, addToCart, giftsetTabClick} = props;
-
-    /* const dispatch = useDispatch();
-
-    useEffect( () => {
-        dispatch(giftsetRequested())
-    }, [giftsetRequested, dispatch]); */
+    const {giftset, addToCart, giftsetTabClick} = props;
     
     const {items, loading, error, activeItemId} = giftset;
 
@@ -65,8 +59,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
     giftsetTabClick,
-    addToCart, 
-    giftsetRequested 
+    addToCart
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Giftset);

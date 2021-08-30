@@ -1,21 +1,14 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import './beverages.scss';
 import BeverageItem from '../beverage-item/beverage-item';
 import Heading from '../heading/heading';
-import {connect, useDispatch} from 'react-redux';
-import { beveragesRequested } from '../../redux/actions/beveragesAC';
+import {connect} from 'react-redux';
 import Loading from '../loading/loading';
 import Error from '../error/error';
 
 const Beverages = props => {
 
-    const {beverages, loading, error, beveragesRequested} = props;
-
-  /*   const dispatch = useDispatch();
-
-    useEffect( () => {
-        dispatch(beveragesRequested());
-    }, [beveragesRequested, dispatch]); */
+    const {beverages, loading, error} = props;
 
     return (
         <section>
@@ -44,8 +37,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = {
-    beveragesRequested
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Beverages);
+export default connect(mapStateToProps)(Beverages);
