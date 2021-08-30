@@ -4,19 +4,12 @@ import { getItems, baseApiUrl } from '../../../services/service';
 export function* handleGetItems(items, requestFunc, loadedFunc, errorFunc, slicer=undefined) {
     try {
         yield call(requestFunc);
-        const res = yield call(() => getItems(`${baseApiUrl}/${items}`)); //making a request and waiting for it to finish
-        yield put(loadedFunc(res.slice(0,slicer))); // dispatching another action after getting data
+        const res = yield call(() => getItems(`${baseApiUrl}/${items}`)); 
+        yield put(loadedFunc(res.slice(0,slicer))); 
     }
     catch(err) {
         console.log(err);
         yield put(errorFunc()); 
         
     }
-    /* const res = yield call(() => getItems(`${baseApiUrl}/beverages`));
-    if (res.length > 0) {
-        yield put(beveragesLoaded(res));
-    }
-    else {
-        yield put(beveragesError());
-    } */
 }
