@@ -13,9 +13,9 @@ const Combo = props => {
     const {combos, combosRequested, addToCart} = props;
     const dispatch = useDispatch();
 
-    useEffect(() => {
+    /* useEffect(() => {
         dispatch(combosRequested());
-    }, [combosRequested, dispatch]);
+    }, [combosRequested, dispatch]); */
 
     const {items, loading, error} = combos;
 

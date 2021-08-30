@@ -12,11 +12,11 @@ const Giftset = props => {
 
     const {giftset, giftsetRequested, addToCart, giftsetTabClick} = props;
 
-    const dispatch = useDispatch();
+    /* const dispatch = useDispatch();
 
     useEffect( () => {
         dispatch(giftsetRequested())
-    }, [giftsetRequested, dispatch]);
+    }, [giftsetRequested, dispatch]); */
     
     const {items, loading, error, activeItemId} = giftset;
 

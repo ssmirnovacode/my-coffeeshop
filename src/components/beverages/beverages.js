@@ -11,11 +11,11 @@ const Beverages = props => {
 
     const {beverages, loading, error, beveragesRequested} = props;
 
-    const dispatch = useDispatch();
+  /*   const dispatch = useDispatch();
 
     useEffect( () => {
         dispatch(beveragesRequested());
-    }, [beveragesRequested, dispatch]);
+    }, [beveragesRequested, dispatch]); */
 
     return (
         <section>

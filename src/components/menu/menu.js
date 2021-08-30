@@ -16,9 +16,9 @@ const Menu = props => {
 
     const [isMoreBtnVisible, setMoreBtnVisible] = useState(true);
 
-    useEffect(() => {
+   /*  useEffect(() => {
         dispatch(menuItemsRequested());
-    }, [menuItemsRequested, dispatch])
+    }, [menuItemsRequested, dispatch]) */
 
     const showMore = () => {
         dispatch(menuItemsRequestedMore());
