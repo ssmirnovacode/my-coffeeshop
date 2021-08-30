@@ -38,7 +38,7 @@ const PlaceOrder = (props) => {
                     setTimeout( () => setErrMess(''), 3500);
 
                 }
-                else if (props.order) {
+                else if (!props.loading) {
                     resetForm();
                     props.clearCart();
                     props.history.push(`${basePath}/thank-you`);

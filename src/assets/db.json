@@ -131,118 +131,25 @@
   ],
   "order": [
     {
-      "firstname": "Svetlana",
-      "tel": "5564545454",
+      "firstname": "John",
+      "tel": "4444455555",
       "items": [
         {
-          "id": "tf27bh",
-          "title": "Chai with spices",
-          "qty": 2,
-          "subtotal": 12
-        }
-      ],
-      "number": "5obwuwj72",
-      "total": 12,
-      "id": 2
-    },
-    {
-      "firstname": "Mike",
-      "tel": "34234234234",
-      "items": [
-        {
-          "id": 0,
-          "title": "Chai latte",
+          "id": 3,
+          "title": "Cafe con leche",
           "qty": 1,
-          "subtotal": 5.5
-        }
-      ],
-      "number": "g7ffyuam2",
-      "total": 5.5,
-      "id": 3
-    },
-    {
-      "firstname": "blabla",
-      "tel": "342342422",
-      "items": [
-        {
-          "id": 5,
-          "title": "Blueberry muffin",
-          "qty": 1,
-          "subtotal": 3
+          "subtotal": 4.5
         },
         {
-          "id": 4,
-          "title": "Chocolate croissant",
-          "qty": 1,
-          "subtotal": 2
+          "id": 11,
+          "title": "Coffee frappe",
+          "qty": 3,
+          "subtotal": 13.5
         }
       ],
-      "number": "ryxg18huo",
-      "total": 5,
-      "id": 4
-    },
-    {
-      "firstname": "ElGordo",
-      "tel": "2321321312321",
-      "items": [
-        {
-          "id": 0,
-          "title": "Chai latte",
-          "qty": 1,
-          "subtotal": 5.5
-        },
-        {
-          "id": 2,
-          "title": "Double lungo",
-          "qty": 1,
-          "subtotal": 6.5
-        }
-      ],
-      "number": "y9jh9rr1n",
-      "total": 12,
-      "id": 5
-    },
-    {
-      "firstname": "blabla",
-      "tel": "5564545454",
-      "items": [
-        {
-          "id": 0,
-          "title": "Chai latte",
-          "qty": 1,
-          "subtotal": 5.5
-        },
-        {
-          "id": 2,
-          "title": "Double lungo",
-          "qty": 1,
-          "subtotal": 6.5
-        }
-      ],
-      "number": "ypxnupw0q",
-      "total": 12,
-      "id": 6
-    },
-    {
-      "firstname": "blabla",
-      "tel": "5564545454",
-      "items": [
-        {
-          "id": 0,
-          "title": "Chai latte",
-          "qty": 1,
-          "subtotal": 5.5
-        },
-        {
-          "id": 2,
-          "title": "Double lungo",
-          "qty": 1,
-          "subtotal": 6.5
-        }
-      ],
-      "number": "hrpwyb7i5",
-      "total": 12,
-      "id": 7
+      "number": "0yjk21j46",
+      "total": 18,
+      "id": 1
     }
   ]
 }
