@@ -6,12 +6,16 @@ import { menuItemsLoaded, menuItemsError, menuItemsRequested, menuItemsRequested
 import { giftsetLoaded, giftsetError, giftsetRequested } from '../../../redux/actions/giftset';
 
 export function* loadDataWorkerSaga() {
-    console.log('loadData worker saga ran')
+    //console.log('loadData worker saga ran')
     yield fork(handleGetBevegares);
     yield fork(handleGetCombos);
     yield fork(handleGetMenuItems);
-    yield fork(handleGetMenuItemsMore); // separate
+    //yield fork(handleGetMenuItemsMore); // separate
     yield fork(handleGetGiftset);
+}
+
+export function* getMoreItemsworkerSaga() {
+    return yield handleGetItems('menu-items', menuItemsRequestedMore, menuItemsLoaded, menuItemsError)
 }
 
 function handleGetBevegares() {
@@ -26,13 +30,12 @@ function handleGetMenuItems() {
     return /* () => */ handleGetItems('menu-items', menuItemsRequested, menuItemsLoaded, menuItemsError, 4)
 }
 
-function handleGetMenuItemsMore() {
-    return handleGetItems('menu-items', menuItemsRequestedMore, menuItemsLoaded, menuItemsError)
-}
+
 
 function handleGetGiftset() {
     return /* () => */ handleGetItems('giftset', giftsetRequested, giftsetLoaded, giftsetError)
 }
+
 
 function* handleGetItems(items, requestFunc, loadedFunc, errorFunc, slicer=undefined) {
     try {
