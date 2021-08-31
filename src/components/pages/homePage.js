@@ -6,18 +6,6 @@ import Giftset from '../giftset/giftset';
 import Combo from '../combo/combo';
 
 const HomePage = () => {
-
-    const dispatch = useDispatch();
-    
-    const state = useSelector(state => state);
-
-    useEffect(() => {
-        if (!state.beverages.items.length || !state.combos.items.length || !state.giftset.items.length || !state.menuItems.items.length) {
-            dispatch({ type: 'FETCH_ALL_DATA' });
-            console.log('fetchAll dispatched')
-        }
-    }, [])
-
     return (
         <>
             <Beverages/>
@@ -28,4 +16,20 @@ const HomePage = () => {
     )
 }
 
-export default HomePage;
+const HomePageContainer = () => {
+
+    const dispatch = useDispatch();
+    
+    const state = useSelector(state => state);
+
+    useEffect(() => {
+        if (!state.beverages.items.length || !state.combos.items.length || !state.giftset.items.length || !state.menuItems.items.length) {
+            dispatch({ type: 'FETCH_ALL_DATA' });
+            //console.log('fetchAll dispatched')
+        }
+    }, [])
+
+    return <HomePage/>
+}
+
+export default HomePageContainer;
