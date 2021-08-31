@@ -2,12 +2,15 @@ import React, {useState, useEffect} from 'react';
 import './giftset-item.scss';
 import {Link} from 'react-router-dom';
 import basePath from '../../assets/basePath';
+import useToggleBtn from '../../hooks/btnHook';
 
 const GiftsetItem = ({item, addToCart}) => {
 
     const {title, image, price, content, id} = item;
 
-    const [activeBtn, setActiveBtn] = useState('addToCart');
+    const [activeBtn, toggleBtn] = useToggleBtn();
+
+    /* const [activeBtn, setActiveBtn] = useState('addToCart');
 
     useEffect( () => {
         const timerId = setTimeout( () => setActiveBtn('addToCart'), 2000);
@@ -16,7 +19,7 @@ const GiftsetItem = ({item, addToCart}) => {
 
     const toggleBtn = () => {
         setActiveBtn('viewCart');
-    }
+    } */
 
     return(
         <div className="giftset_item">
