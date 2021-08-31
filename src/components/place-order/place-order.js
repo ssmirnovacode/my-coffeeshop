@@ -1,18 +1,17 @@
 import React, {useState} from 'react';
 import './place-order.scss';
 import Cart from '../cart/cart';
-import {connect} from 'react-redux';
+import {connect, useDispatch} from 'react-redux';
 import {clearCart} from '../../redux/actions/cartAC';
 import {Link} from 'react-router-dom';
 import basePath from '../../assets/basePath';
-import {orderSubmitted, orderError} from '../../redux/actions/orderAC';
+import {orderError, orderSubmitted} from '../../redux/actions/orderAC';
 import { useFormik } from 'formik';
 import validate from '../../services/validate';
-import { postOrder, baseApiUrl } from '../../services/service';
 
 const PlaceOrder = (props) => {
 
-    const [isFailMsgVisible, setFailMsg] = useState(false);
+    const dispatch = useDispatch();
 
     const formik = useFormik({
         initialValues: {
@@ -30,21 +29,17 @@ const PlaceOrder = (props) => {
                 }));
                 values.total = values.items.map(item => item.subtotal).reduce( (a,b) => a + b);
                 values.number = Math.random().toString(36).substr(2, 9); 
-                console.log(values);
-                postOrder(baseApiUrl + '/order', values)
-                    .then( res => {
-                        console.log('Order submitted');
-                    })
-                    .catch(err => console.error(err.message));
+                dispatch(orderSubmitted(values));
 
-                props.orderSubmitted(values);
-                resetForm();
-                props.clearCart();
-                props.history.push(`${basePath}/thank-you`);
+                if (!props.loading && !props.error) {
+                    resetForm();
+                    props.clearCart();
+                    props.history.push(`${basePath}/thank-you`);
+                }
             }
             else {
-                setFailMsg(true);
-                setTimeout( () => setFailMsg(false), 1500)
+                dispatch(orderError({ message: 'Your cart is empty' }))
+                setTimeout( () => dispatch(orderError(null)), 3500)
             }          
         },
       });
@@ -55,6 +50,9 @@ const PlaceOrder = (props) => {
             
             <div className="order_container" >            
                 <div className="order_title">Please fill in your data</div>
+                {
+                    props.error ? <div className="fail">{props.error.message}</div> : null
+                }
                 <form method="POST" onSubmit={formik.handleSubmit}>
 
                     <div className="order_form-field">
@@ -86,9 +84,7 @@ const PlaceOrder = (props) => {
                     <button className="order_btn" type="submit">ORDER NOW</button>
                 </form>
                 <div className="order_back"><Link to={`${basePath}/`}>Back to the store</Link></div>
-                {
-                    isFailMsgVisible ? <div className="fail">Cart is empty</div> : null
-                }
+                
                 
             </div>
         </div>
@@ -99,14 +95,13 @@ const PlaceOrder = (props) => {
 const mapStateToProps = (state) => {
     return {
         cart: state.cart,
-        order: state.order
+        order: state.order.order,
+        error: state.order.error
     }
 }
 
 const mapDispatchToProps = {
-    clearCart,
-    orderSubmitted,
-    orderError
+    clearCart
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlaceOrder);

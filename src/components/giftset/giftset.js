@@ -1,28 +1,16 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import './giftset.scss';
 import Heading from  '../heading/heading';
 import GiftsetItem from '../giftset-item/giftset-item';
 import {connect} from 'react-redux';
-import { giftsetLoaded, giftsetTabClick, giftsetError, giftsetRequested } from '../../redux/actions/giftset';
+import { giftsetTabClick } from '../../redux/actions/giftset';
 import {addToCart} from '../../redux/actions/cartAC';
 import Loading from '../loading/loading';
 import Error from '../error/error';
-import { getItems, baseApiUrl } from '../../services/service';
 
 const Giftset = props => {
 
-    const {giftset, giftsetError, giftsetLoaded, giftsetRequested, addToCart, giftsetTabClick} = props;
-
-    useEffect( () => {
-        let mounted = true;
-        giftsetRequested();
-        mounted && getItems(`${baseApiUrl}/giftset`)
-        .then(res => {
-            res.length > 0 ? giftsetLoaded(res) : giftsetError();
-        })
-        .catch( err => console.error(err.message));
-        return () => mounted = false;
-    }, [giftsetRequested, giftsetLoaded, giftsetError]);
+    const {giftset, addToCart, giftsetTabClick} = props;
     
     const {items, loading, error, activeItemId} = giftset;
 
@@ -70,11 +58,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    giftsetLoaded,
     giftsetTabClick,
-    addToCart, 
-    giftsetError, 
-    giftsetRequested 
+    addToCart
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Giftset);

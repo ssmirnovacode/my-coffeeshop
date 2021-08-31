@@ -1,11 +1,9 @@
 @import '../../scss/mixins';
 
-html, body {
-    height: 100%;
-    width: 100%;
-}
+
 
 .app_container {
+    flex: 1 0 auto;
     margin: 0 10%; 
     @media (max-width: 1600px) {
         margin: 0;
