@@ -2,7 +2,8 @@ import React from 'react';
 import './thank-you.scss';
 import {Link} from 'react-router-dom';
 import basePath from '../../assets/basePath';
-import {connect} from 'react-redux';
+import {connect, useDispatch} from 'react-redux';
+import {orderError} from '../../redux/actions/orderAC';
 import Loading from '../loading/loading';
 import Error from '../error/error';
 
@@ -10,12 +11,15 @@ const ThankYou = (props) => {
 
     const { loading, error} = props;
     const { firstname, number } = props.order;
-    console.log(error);
-
-    const timerId = setTimeout(() =>{ props.history.push(`${basePath}/`); clearInterval(timerId)}, 10000);
+    const dispatch = useDispatch();
 
     if (error) {
-        return <Error text="Server is not responding. Try again later" />
+        const timerId = setTimeout(() =>{ 
+            dispatch(orderError(null));
+            props.history.push(`${basePath}/`); 
+            clearInterval(timerId);
+        }, 5000);
+        return <Error text={error.message} />
     }
 
     if (loading) {

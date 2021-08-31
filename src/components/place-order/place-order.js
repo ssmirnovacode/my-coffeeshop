@@ -5,13 +5,13 @@ import {connect, useDispatch} from 'react-redux';
 import {clearCart} from '../../redux/actions/cartAC';
 import {Link} from 'react-router-dom';
 import basePath from '../../assets/basePath';
-import {orderSubmitted} from '../../redux/actions/orderAC';
+import {orderError, orderSubmitted} from '../../redux/actions/orderAC';
 import { useFormik } from 'formik';
 import validate from '../../services/validate';
 
 const PlaceOrder = (props) => {
 
-    const [errMess, setErrMess] = useState('');
+    //const [errMess, setErrMess] = useState('');
 
     const dispatch = useDispatch();
 
@@ -33,25 +33,16 @@ const PlaceOrder = (props) => {
                 values.number = Math.random().toString(36).substr(2, 9); 
                 dispatch(orderSubmitted(values));
 
-                resetForm();
-                    props.clearCart();
-                    props.history.push(`${basePath}/thank-you`);
-
-                /* if (props.error) {
-                    setErrMess('Invalid POST request or server down');
-                    setTimeout( () => setErrMess(''), 3500);
-
-                }
-                else if (!props.loading) {
+                if (!props.loading && !props.error) {
                     resetForm();
                     props.clearCart();
                     props.history.push(`${basePath}/thank-you`);
-                } */
+                }
                 
             }
             else {
-                setErrMess('Your cart is empty');
-                setTimeout( () => setErrMess(''), 3500)
+                dispatch(orderError({ message: 'Your cart is empty' }))
+                setTimeout( () => dispatch(orderError(null)), 3500)
             }          
         },
       });
@@ -63,7 +54,7 @@ const PlaceOrder = (props) => {
             <div className="order_container" >            
                 <div className="order_title">Please fill in your data</div>
                 {
-                    errMess ? <div className="fail">{errMess}</div> : null
+                    props.error ? <div className="fail">{props.error.message}</div> : null
                 }
                 <form method="POST" onSubmit={formik.handleSubmit}>
 

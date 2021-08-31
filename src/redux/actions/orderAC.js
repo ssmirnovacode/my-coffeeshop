@@ -11,9 +11,10 @@ const orderSaved = () => {
     }
 }
 
-const orderError = () => {
+const orderError = err => {
     return {
-        type: 'ORDER_ERROR'
+        type: 'ORDER_ERROR',
+        payload: err
     };
 };
 

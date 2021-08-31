@@ -20,7 +20,7 @@ const orderReducer = (state={
             return {
                 ...state,
                 loading: false,
-                error: true
+                error: action.payload
             }
         default:
             return state;		

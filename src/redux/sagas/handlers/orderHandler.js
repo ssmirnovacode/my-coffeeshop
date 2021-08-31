@@ -10,6 +10,6 @@ export function* handlePostOrder(action) {
     }
     catch(err) {
         console.log(err);
-        yield put(orderError())
+        yield put(orderError(err))
     }   
 }

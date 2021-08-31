@@ -4,7 +4,7 @@ export const baseApiUrl = 'http://localhost:3001';
 export const getItems = async (url) => {
     const res = await fetch(url);
     if (!res.ok) {
-        throw new Error(`Cound not fetch ${url}, status: ${res.status}`);
+        throw new Error(`Cound not fetch data, status: ${res.status}`);
     }
     return await res.json();
 };
@@ -12,7 +12,7 @@ export const getItems = async (url) => {
 export const getItemById = async (url, id) => {
     const res = await fetch(`${url}/${id}`);
     if (!res.ok) {
-        throw new Error(`Cound not fetch ${url}, status: ${res.status}`);
+        throw new Error(`Cound not fetch data, status: ${res.status}`);
     }
     return await res.json();
 };
@@ -34,7 +34,7 @@ export const postOrder = async (url, data) => {
         body: JSON.stringify(newOrder)
     });
     if (!res.ok) {
-        throw new Error(`Cound not fetch ${url}, status: ${res.status}`);
+        throw new Error(`Server not found, status: ${res.status}`);
     }
     return await res.json();
 };
