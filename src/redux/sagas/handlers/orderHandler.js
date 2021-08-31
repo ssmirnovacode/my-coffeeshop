@@ -4,7 +4,7 @@ import { orderError, orderSaved } from "../../actions/orderAC";
 
 export function* handlePostOrder(action) {
     try {
-        yield call(() => postOrder(`${baseApiUrl}/order`, action.payload));
+        yield call(() => postOrder(`${baseApiUrl}/orderz`, action.payload));
         yield put(orderSaved())
         console.log(action.payload);
     }

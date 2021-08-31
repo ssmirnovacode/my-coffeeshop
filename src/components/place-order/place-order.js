@@ -33,7 +33,11 @@ const PlaceOrder = (props) => {
                 values.number = Math.random().toString(36).substr(2, 9); 
                 dispatch(orderSubmitted(values));
 
-                if (props.error) {
+                resetForm();
+                    props.clearCart();
+                    props.history.push(`${basePath}/thank-you`);
+
+                /* if (props.error) {
                     setErrMess('Invalid POST request or server down');
                     setTimeout( () => setErrMess(''), 3500);
 
@@ -42,7 +46,7 @@ const PlaceOrder = (props) => {
                     resetForm();
                     props.clearCart();
                     props.history.push(`${basePath}/thank-you`);
-                }
+                } */
                 
             }
             else {
