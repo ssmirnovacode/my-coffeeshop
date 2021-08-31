@@ -1,5 +1,5 @@
-//export const baseApiUrl = 'https://my-coffeeshop-rest.herokuapp.com';
-export const baseApiUrl = 'http://localhost:3001';
+export const baseApiUrl = 'https://my-coffeeshop-rest.herokuapp.com';
+//export const baseApiUrl = 'http://localhost:3001';
 
 export const getItems = async (url) => {
     const res = await fetch(url);
