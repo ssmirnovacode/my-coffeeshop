@@ -11,8 +11,6 @@ import validate from '../../services/validate';
 
 const PlaceOrder = (props) => {
 
-    //const [errMess, setErrMess] = useState('');
-
     const dispatch = useDispatch();
 
     const formik = useFormik({
@@ -38,7 +36,6 @@ const PlaceOrder = (props) => {
                     props.clearCart();
                     props.history.push(`${basePath}/thank-you`);
                 }
-                
             }
             else {
                 dispatch(orderError({ message: 'Your cart is empty' }))
@@ -104,8 +101,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    clearCart,
-    orderSubmitted
+    clearCart
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlaceOrder);
