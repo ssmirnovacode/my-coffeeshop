@@ -5,7 +5,7 @@ import { comboDetailsRequested, menuDetailsRequested, giftsetDetailsRequested, d
 export function* handlerGetComboById(action) {
     try {
         yield call(comboDetailsRequested, action.payload);
-        const res = yield call(() => getItemById(`${baseApiUrl}/combos/`, action.payload));
+        const res = yield call(() => getItemById(`${baseApiUrl}/combos`, action.payload));
         yield put(detailsLoaded(res));
     }
     catch(err) {
@@ -17,7 +17,7 @@ export function* handlerGetComboById(action) {
 export function* handlerGetMenuById(action) {
     try {
         yield call(menuDetailsRequested, action.payload);
-        const res = yield call(() => getItemById(`${baseApiUrl}/menu-items/`, action.payload));
+        const res = yield call(() => getItemById(`${baseApiUrl}/menu-items`, action.payload));
         yield put(detailsLoaded(res));
     }
     catch(err) {
@@ -29,7 +29,7 @@ export function* handlerGetMenuById(action) {
 export function* handlerGetGiftsetById(action) {
     try {
         yield call(giftsetDetailsRequested, action.payload);
-        const res = yield call(() => getItemById(`${baseApiUrl}/giftset/`, action.payload));
+        const res = yield call(() => getItemById(`${baseApiUrl}/giftset`, action.payload));
         yield put(detailsLoaded(res));
     }
     catch(err) {
