@@ -1,16 +1,30 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './giftset.scss';
 import Heading from  '../heading/heading';
 import GiftsetItem from '../giftset-item/giftset-item';
 import {connect} from 'react-redux';
-import { giftsetTabClick } from '../../redux/actions/giftset';
+import { giftsetLoaded, giftsetTabClick, giftsetError, giftsetRequested } from '../../redux/actions/giftset';
 import {addToCart} from '../../redux/actions/cartAC';
 import Loading from '../loading/loading';
 import Error from '../error/error';
+import { db } from '../../firebase.config';
+import {firebaseLoop} from '../../services/tools';
 
 const Giftset = props => {
 
-    const {giftset, addToCart, giftsetTabClick} = props;
+    const {giftset, giftsetError, giftsetLoaded, giftsetRequested, addToCart, giftsetTabClick} = props;
+
+    useEffect( () => {
+        let mounted = true;
+        giftsetRequested();
+        mounted && db.collection('giftset').get()
+        .then(snapshot => {
+            firebaseLoop(snapshot).length > 0 ? giftsetLoaded(firebaseLoop(snapshot)) :
+            giftsetError();
+        })
+        .catch( err => console.error(err.message));
+        return () => mounted = false;
+    }, [giftsetRequested, giftsetLoaded, giftsetError]);
     
     const {items, loading, error, activeItemId} = giftset;
 
@@ -58,8 +72,11 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
+    giftsetLoaded,
     giftsetTabClick,
-    addToCart
+    addToCart, 
+    giftsetError, 
+    giftsetRequested 
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Giftset);

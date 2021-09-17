@@ -1,14 +1,22 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './combo-item.scss';
 import {Link} from 'react-router-dom';
 import basePath from '../../assets/basePath';
-import useToggleBtn from '../../hooks/useToggleBtn';
 
 const ComboItem = ({item, addToCart}) => {
 
     const {title, image, price, content, id} = item;
 
-    const [activeBtn, toggleBtn] = useToggleBtn();
+    const [activeBtn, setActiveBtn] = useState('addToCart');
+
+    useEffect( () => {
+        const timerId = setTimeout( () => setActiveBtn('addToCart'), 2000);
+        return () => clearInterval(timerId);
+    }, [activeBtn])
+
+    const toggleBtn = () => {
+        setActiveBtn('viewCart');
+    }
 
     return (
         <div className="combo-item_container">

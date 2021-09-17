@@ -12,9 +12,7 @@ const detailsReducer = (state={
                     loading: false,
                     error: false
                 }
-        case 'COMBO_DETAILS_REQUESTED': 
-        case 'MENU_DETAILS_REQUESTED':
-        case 'GIFTSET_DETAILS_REQUESTED':
+        case 'DETAILS_REQUESTED': 
             return {
                     ...state,
                     loading: true,

@@ -1,12 +1,20 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './menu-item.scss';
 import {Link} from 'react-router-dom';
 import basePath from '../../assets/basePath';
-import useToggleBtn from '../../hooks/useToggleBtn';
 
 const MenuItem = ({item, addToCart}) => {
 
-    const [activeBtn, toggleBtn] = useToggleBtn();
+    const [activeBtn, setActiveBtn] = useState('addToCart');
+
+    useEffect( () => {
+        const timerId = setTimeout( () => setActiveBtn('addToCart'), 2000);
+        return () => clearInterval(timerId);
+    }, [activeBtn])
+
+    const toggleBtn = () => {
+        setActiveBtn('viewCart');
+    }
 
     const {image, price, title, content, id} = item;
     return (

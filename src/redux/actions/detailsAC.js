@@ -5,24 +5,9 @@ const detailsLoaded = (newBev) => {
     };
 };
 
-const comboDetailsRequested = (id) => {
+const detailsRequested = () => {
     return {
-        type: 'COMBO_DETAILS_REQUESTED',
-        payload: id
-    };
-};
-
-const menuDetailsRequested = (id) => {
-    return {
-        type: 'MENU_DETAILS_REQUESTED',
-        payload: id
-    };
-};
-
-const giftsetDetailsRequested = (id) => {
-    return {
-        type: 'GIFTSET_DETAILS_REQUESTED',
-        payload: id
+        type: 'DETAILS_REQUESTED'
     };
 };
 
@@ -32,4 +17,4 @@ const detailsError = () => {
     };
 };
 
-export {detailsLoaded, comboDetailsRequested, detailsError, menuDetailsRequested, giftsetDetailsRequested};
+export {detailsLoaded, detailsRequested, detailsError};

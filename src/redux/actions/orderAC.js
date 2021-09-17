@@ -5,18 +5,10 @@ const orderSubmitted = (order) => {
     }
 }
 
-const orderSaved = () => {
+const orderError = () => {
     return {
-        type: 'ORDER_SAVED'
-    }
-}
-
-const orderError = err => {
-    return {
-        type: 'ORDER_ERROR',
-        payload: err
+        type: 'ORDER_ERROR'
     };
 };
 
-
-export {orderSubmitted, orderError, orderSaved};
+export {orderSubmitted, orderError};
