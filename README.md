@@ -1,20 +1,20 @@
 # My Coffeeshop 
 
-A website of an imaginary coffeeshop, for demo purposes only.
+Al full-stack web app for a coffeeshop, demo purposes only.
 
 https://ssmirnovacode.github.io/my-coffeeshop/
 
 ## Key features
 - Responsive design (implemented with CSS grid and @media queries);
-- Data fetched from and posted to Firebase Realtime Database
+- Data fetched from and posted to custom-built REST API https://my-coffeeshop-rest.herokuapp.com/ ( ExpressJS + MySQL + Sequelize)
 - Order coffee to be picked up at the store (no payment online)
 
 ## Technologies used in this project
  - ReactJS
- - React hooks
- - Redux
+ - React hooks (including custom hooks)
+ - Redux (including Redux-saga)
  - SCSS
- - Firebase Cloud Firestore
+ - REST API built with ExpressJS, MySQL and Sequelize.
 
 ### Additional libraries
  - Formik

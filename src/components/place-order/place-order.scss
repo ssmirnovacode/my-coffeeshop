@@ -68,6 +68,10 @@
 }
 
 .fail {
+    display: block;
     color: red;
-    margin: 0 5% 5% 25%;
+    background-color: rgb(233, 165, 165);
+    padding: .5rem;
+    //margin: 0 5% 5% 25%;
+    font-size: 1rem;
 }

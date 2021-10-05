@@ -11,10 +11,16 @@ const menuItemsRequested = () => {
     };
 };
 
+const menuItemsRequestedMore = () => {
+    return {
+        type: 'MENU_ITEMS_REQUESTED_MORE'
+    };
+};
+
 const menuItemsError = () => {
     return {
         type: 'MENU_ITEMS_ERROR'
     };
 };
 
-export {menuItemsError, menuItemsLoaded, menuItemsRequested};
+export {menuItemsError, menuItemsLoaded, menuItemsRequested, menuItemsRequestedMore};

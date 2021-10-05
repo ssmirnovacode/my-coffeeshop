@@ -1,40 +1,33 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import './item-detail.scss';
-import {connect} from 'react-redux';
-import {detailsLoaded, detailsError, detailsRequested} from '../../redux/actions/detailsAC';
+import {connect, useDispatch} from 'react-redux';
+import {comboDetailsRequested, menuDetailsRequested, giftsetDetailsRequested} from '../../redux/actions/detailsAC';
 import {addToCart} from '../../redux/actions/cartAC';
 import {Link} from 'react-router-dom';
 import basePath from '../../assets/basePath';
-import { db } from '../../firebase.config';
 import Loading from '../loading/loading';
 import Error from '../error/error';
+import useToggleBtn from '../../hooks/useToggleBtn';
 
 const ItemDetail = (props) => {
     
-    const {itemId, page, details, detailsError, detailsLoaded, detailsRequested} = props;
+    const {itemId, page, details} = props;
 
-    const [activeBtn, setActiveBtn] = useState('addToCart');
-
-    useEffect( () => {
-        let mounted = true;
-        detailsRequested();
-        mounted && db.collection(page).doc(itemId).get()
-        .then( snapshot => {
-            snapshot.exists ? detailsLoaded({...snapshot.data(), id: itemId}) :
-            detailsError();
-        })
-        .catch(err => console.error(err.message));
-        return () => mounted = false;
-    }, [itemId, page, detailsError, detailsLoaded, detailsRequested]);
-
-    const toggleBtn = () => {
-        setActiveBtn('viewCart');
-    }
+    const dispatch = useDispatch();
 
     useEffect( () => {
-        const timerId = setTimeout( () => setActiveBtn('addToCart'), 2000);
-        return () => clearInterval(timerId);
-    }, [activeBtn]);
+        if (page === 'combos') {
+            dispatch(comboDetailsRequested(itemId))
+        }
+        else if (page === 'giftset') {
+            dispatch(giftsetDetailsRequested(itemId))
+        }
+        else {
+            dispatch(menuDetailsRequested(itemId))
+        }
+    }, [dispatch, page, itemId]);
+
+    const [activeBtn, toggleBtn] = useToggleBtn();
 
     return(
         <div className="item-detail_container" > 
@@ -77,9 +70,6 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    detailsLoaded, 
-    detailsError, 
-    detailsRequested,
     addToCart
 }
 

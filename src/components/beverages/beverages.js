@@ -1,35 +1,21 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import './beverages.scss';
 import BeverageItem from '../beverage-item/beverage-item';
 import Heading from '../heading/heading';
 import {connect} from 'react-redux';
-import { beveragesLoaded, beveragesError, beveragesRequested } from '../../redux/actions/beveragesAC';
 import Loading from '../loading/loading';
 import Error from '../error/error';
-import { db } from '../../firebase.config';
-import {firebaseLoop} from '../../services/tools';
 
 const Beverages = props => {
 
-    const {beverages, loading, error, beveragesError, beveragesLoaded, beveragesRequested} = props;
-
-    useEffect( () => {
-        let mounted = true;
-        beveragesRequested();
-        mounted && db.collection('beverages').get()
-        .then(snapshot => {
-            firebaseLoop(snapshot).length > 0 ? beveragesLoaded(firebaseLoop(snapshot)) :
-            beveragesError();
-        })
-        .catch( err => console.error(err.message));
-        return () => mounted = false;
-    }, [beveragesRequested, beveragesError, beveragesLoaded]);
+    const {beverages, loading, error} = props;
 
     return (
         <section>
             <Heading small={'Your Personalized Coffee'} big={'COFFEE BUILD YOUR BASE'} id="beverages"/>
             {
                 loading ? <Loading /> : error ? <Error /> :
+                beverages ?
                 <div className="beverages_container">
                     {
                         beverages.items.map(item => {
@@ -39,6 +25,7 @@ const Beverages = props => {
                         })
                     }
                 </div>
+                : null
             } 
         </section>
     ) 
@@ -50,10 +37,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = {
-    beveragesLoaded,
-    beveragesRequested,
-    beveragesError
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Beverages);
+export default connect(mapStateToProps)(Beverages);
