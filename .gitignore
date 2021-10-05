@@ -7,6 +7,7 @@ revelations.txt
 /node_modules
 /.pnp
 .pnp.js
+src/services/firebase.config.js
 
 # testing
 /coverage
